@@ -1,0 +1,35 @@
+Tentative Organization
+======================
+
+
+		RSS Feeds ->
+
+			|
+			V
+1. 		  app.js
+		 	|___________________
+			|					|
+2.		  Menu.js		    ApplicationWindow.js
+			|					|____________________________________________
+			|					|						|					 |
+3.		  MenuRow.js		Detail.js				MasterView.js			RSS.js
+														|_______________
+														|				|
+4.													PostTable.js	  Post.js
+																		|___________________
+																		|			  		|
+5.																	  FeaturePost.js	PostGroup.js
+
+
+
+# app.js
+Retrieves master RSS feed to populate Menu and ApplicationWindow.
+Creates navigation group and events for handling showing/hiding menu.
+
+# Menu.js and MenuRow.js
+Menu populates with MenuRows containing icon and feed name
+
+# ApplicationsWindow.js
+Collects RSS 
+
+
