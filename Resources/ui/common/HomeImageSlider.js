@@ -4,10 +4,11 @@ var Feed = require('ui/common/Feed');
 
 function HomeImageSlider(){
 	var Feeds = new Feed();
+	
 	var container =  Titanium.UI.createView({
 			backgroundColor: 'transparent',
 				height:			250,
-				width: 			300,
+				width: 			screenWidth - 20,
 				left: 			10,
 				top:			10,
 				bottom:			0,
@@ -20,6 +21,8 @@ function HomeImageSlider(){
 		
 		
 		var imageArray = new GetFeed (Feeds.sliderImagesFeed());
+		Ti.API.info("the image array lenght -" + imageArray.length);
+		/*
 		var imagebox = Ti.UI.createImageView({
 			image: imageArray[0].url,
 			width: 300,
@@ -122,7 +125,7 @@ function HomeImageSlider(){
 		container.add(overlay);
 		container.add(shadow);
 		container.add(view);
-		
+		*/
 		return row;
 } 
 module.exports = HomeImageSlider;

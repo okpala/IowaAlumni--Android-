@@ -107,9 +107,6 @@ var win = Titanium.UI.createWindow({
 	
 	win.open();
 	var win2 = new RootWindow();
-	win2.moving = false;
-		win2.axis = 0;
-		win2.navBarHidden = true;
 	win2.open();
 	
 	

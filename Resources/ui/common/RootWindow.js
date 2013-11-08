@@ -1,5 +1,5 @@
 var GetFeed = require('ui/common/GetFeed');
-var ApplicationWindow = require('ui/handheld/android/ApplicationWindow');
+var ApplicationWindow = require('ui/common/ApplicationWindow');
 var SingleRow = require('ui/common/SingleRow');
 var PostTable = require('ui/common/PostTable');
 var HomeImageSlider = require('ui/common/HomeImageSlider');
@@ -15,7 +15,7 @@ var Feed = require('ui/common/Feed');
  * Home Window
  */
 function RootWindow(data) {
-	/*
+	
 	var masterView = Ti.UI.createView();
 	var Feeds = new Feed();
 	var tableView = new PostTable();
@@ -83,7 +83,7 @@ function RootWindow(data) {
 	//----------------------------------------------------------------------------------------	
 		var introLabel = Ti.UI.createLabel({
 			text: "No matter how many years or miles may separate you from the campus, the UI Alumni Association can help you feel part of the life of the University of Iowa.",
-			width: 300,
+			width: screenWidth - 20,
 			top: 10,
 			left: 10,
 			font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
@@ -99,7 +99,7 @@ function RootWindow(data) {
 	
 	var alerts = new GetFeed (Feeds.mobileAlertsFeed());
 	
-	
+	/*
 	if (alerts.length > 0){
 		for (var i = 0; i < alerts.length; i++){
 			var headerLabel = Ti.UI.createLabel({
@@ -175,7 +175,7 @@ function RootWindow(data) {
 		var row = new HomeSMSection();
 		
 		rows.push(row);
-		
+		*/
 		tableView.setData(rows);
 		masterView.add(tableView);
 		
@@ -188,14 +188,15 @@ function RootWindow(data) {
 
 	// load initial rss feed
 	refreshRSS();
-
+/*
 	var ad = new StaticAd(9,392);
 	
 	
 	masterView.add(ad);
 	var self = new ApplicationWindow("Home", masterView);
 */
-	var self = new ApplicationWindow();
+	var self = new ApplicationWindow("Home");
+	self.add(masterView);
 	return self;
 
 }

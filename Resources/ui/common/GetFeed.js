@@ -150,10 +150,14 @@ var osname = Ti.Platform.osname;
 var RSS_URL = osname === 'mobileweb' ? '/feed.xml' : Feeds.magazineFeed();
 
 
-var getRssText = function(item, key) {
+var getRssText = function(item, key) {/*
 	return osname === 'mobileweb' ?
 			item.getElementsByTagName(key).item(0).textContent : 
 			item.getElementsByTagName(key).item(0).text;
+			*/
+			Ti.API.info(item.getElementsByTagName(key).item(0).text);
+			alert(item.getElementsByTagName(key).item(0).text);
+	return item.getElementsByTagName(key).item(0).text;
 };
 
 function loadXMLDoc(dname){
