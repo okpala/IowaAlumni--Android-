@@ -62,8 +62,154 @@ RSS.prototype.loadRssFeed = function(o, tries) {
 			} catch (e) {
 				image = '';
 			}
+			/*
+			if (feed == Feeds.articleOfTheWeekFeed()){
+				data.push({
+					title:  getRssText(item, 'title'),
+					url:  getRssText(item, 'link'),
+					image: getRssText(item, 'image'),
+					description: getRssText(item, 'description'),
+					pubDate: getRssText(item, 'pubDate')
+					
+					});
+			}
+	else if (feed == Feeds.todayDateFeed()){
+				data.push({
+					date:  getRssText(item, 'date')
+					
+					});
+			}
+	else if (feed == Feeds.passwordFeed()){
+		data.push({
+			pass: getRssText (item, 'pass'),
+			pass2: getRssText (item, 'pass2')
+		});
+				
+	}
+	
+	else{
+		for (var i = 0; i < items.length; i++) {
+			var item = items.item(i);
 			
-			try {
+		
+			if (feed == Feeds.gameWatchFeed()){
+				data.push({
+					state:  getRssText(item, 'state'),
+					club:  getRssText(item, 'club'),
+					place: getRssText(item, 'place'),
+					phone: getRssText(item, 'phone'),
+					latitude: getRssText(item, 'latitude'),
+					longitude: getRssText(item, 'longitude'),
+					street: getRssText(item, 'street')
+					});
+			}
+			else if (feed == Feeds.nationalDiscountFeed()){
+				data.push({
+					title:  getRssText(item, 'title'),
+					link:  getRssText(item, 'link'),
+					description: getRssText(item, 'description')
+					});
+			}
+			else if (feed == "http://www.iowalum.com/mobile-app/events_category_feed.cfm"){
+				data.push({
+					category:getRssText(item, 'category')
+					});
+			}
+			else if (feed == Feeds.mobileAlertsFeed()){
+				data.push({
+					title:  getRssText(item, 'title'),
+					header:  getRssText(item, 'header'),
+					url:  getRssText(item, 'link'),
+					image: getRssText(item, 'image'),
+					description: getRssText(item, 'description'),
+					pubDate: getRssText(item, 'pubDate')
+					
+					});
+			}
+			
+			else if (feed == Feeds.staticaAdFeed()){
+				data.push({
+					ad:   getRssText(item, 'ad'),
+					adUrl:  getRssText(item, 'adUrl')
+					});
+		}
+			
+			else if (feed == Feeds.mobileAlertsFeed()){
+				data.push({
+					snl: getRssText(item, 'snl'),
+					place: getRssText(item, 'place'),
+					title: getRssText(item, 'title'),
+					url: getRssText(item, 'link'),
+					description: getRssText(item, 'description'),
+					pubDate: getRssText(item, 'pubDate')
+				
+					
+					});
+			}
+			
+			else if (feed == Feeds.clubsFeed()){
+				data.push({
+					state:  getRssText(item, 'state'),
+					leader:  getRssText(item, 'leader'),
+					city: getRssText(item, 'city'),
+					web: getRssText(item, 'web'),
+					email: getRssText(item, 'email'),
+					phone: getRssText(item, 'phone')
+					});
+			}
+			
+			else if (feed == Feeds.adFeed()){
+				data.push({
+					ad: getRssText(item, 'ad'),
+					link: getRssText(item, 'link'),
+				});
+				
+			}
+			
+			else if (feed == Feeds.sliderImagesFeed()){
+				data.push({
+					url: getRssText(item, 'url')
+				});
+				
+			}
+			
+			else if (feed == Feeds.iowaCityFeed()) {
+				data.push({
+					company:  getRssText(item, 'company'),
+					discount: getRssText(item, 'discount'),
+					latitude: getRssText(item, 'latitude'),
+					longitude: getRssText(item, 'longitude'),
+					street: getRssText(item, 'street')
+					});
+			}
+			else if (feed == Feeds.eventsFeed) {
+				data.push({
+					title: getRssText(item, 'title'),
+					link: getRssText(item, 'link'),
+					description: getRssText(item, 'description'),
+					pubDate: getRssText(item, 'pubDate'),
+					image: image
+					});
+			}
+			else {
+				data.push({
+					snl: getRssText(item, 'snl'),
+					place: getRssText(item, 'place'),
+					title: getRssText(item, 'title'),
+					link: getRssText(item, 'link'),
+					description: getRssText(item, 'description'),
+					pubDate: getRssText(item, 'pubDate'),
+					hlink: getRssText(item, 'hlink'),
+					category:getRssText(item, 'category'),
+					image: image
+					});
+				
+			}
+			
+			
+		}
+	}
+		*/	try {
 					data.push({
 					snl: getRssText(item, 'snl'),
 					place: getRssText(item, 'place'),

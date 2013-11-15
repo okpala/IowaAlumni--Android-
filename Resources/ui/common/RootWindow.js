@@ -10,7 +10,7 @@ var FormatDate = require('ui/common/FormatDate');
 var StaticAd = require('ui/common/StaticAd');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
-
+RSS = require('services/rss');
 /*
  * Home Window
  */

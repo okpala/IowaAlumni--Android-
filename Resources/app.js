@@ -7,6 +7,7 @@
 		var MenuRow = require('ui/common/MenuRow');
 		var NationalBenefitsWindow = require('ui/common/NationalBenefitsWindow');
 		var Feed = new Feed();
+		var GetFeed = require('ui/common/GetFeed');
 
 
 var osname = Ti.Platform.osname,
@@ -106,8 +107,10 @@ var win = Titanium.UI.createWindow({
 
 	
 	win.open();
+	//var win2 = new GetFeed (Feed.mobileAlertsFeed(), home);
 	var win2 = new RootWindow();
 	win2.open();
+	
 	
 	
 
