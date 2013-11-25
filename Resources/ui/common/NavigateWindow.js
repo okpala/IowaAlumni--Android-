@@ -2,52 +2,38 @@ function NavigateWindow(windowtitle, webview) {
 	
 	var self = Ti.UI.createWindow({
 	    backgroundColor:'#e2e2e2',
-		navBarHidden: true
+		navBarHidden: false,
+		//barColor:'#99cc66',
+		
+		
 	});
 
-	 var statusBar = Ti.UI.createView({
-	    backgroundColor:'#000',
-	    top: 0,
-	    height: 20
+	var navbar = Ti.UI.createImageView({
+			image:  Ti.Filesystem.resourcesDirectory + 'navbar.png',
+			height: 60
 	});
 	
-	self.add(statusBar);
-	
-	//create master view container
-	var masterContainerWindow = Ti.UI.createWindow({
-		title: windowtitle,
-		navBarHidden:false,
-		barImage:'navbar.png',
-		//hires:true,
-		moving:false, // Custom property for movement
-		    axis:0 // Custom property for X axis
-	});
-	var menuButton = Ti.UI.createButton({
-		
-		//title: 'Back',
-		height: 26,
-		width:15,
-		left: 10,
-		
-		backgroundImage: 'back.png',
-		font: {fontFamily:'Helvetica Neue',fontSize:14,fontWeight:'bold'},
-    	toggle:false // Custom property for menu toggle
-	});
-	masterContainerWindow.setLeftNavButton(menuButton);
-	masterContainerWindow.add(webview);
+	//self.add(navbar);
+	var actionBar;
+	self.addEventListener("open", function() {
+    if (Ti.Platform.osname === "android") {
+        if (! self.activity) {
+            Ti.API.error("Can't access action bar on a lightweight window.");
+        } else {
+            actionBar = self.activity.actionBar;
+            if (actionBar) {
+                actionBar.backgroundImage = Ti.Filesystem.resourcesDirectory + 'back.png';
+                actionBar.title = windowtitle;
+                actionBar.logo = Ti.Filesystem.resourcesDirectory + "newmenubutton.png";
+                actionBar.onHomeIconItemSelected = function() {
+                    self.close();
+                };
+            }
+        }
+    }
+});
 
-	//menuButton event
-	menuButton.addEventListener('click', function(e){
-		self.close();
-		
-	});
-	
-	var navGroup = Ti.UI.iPhone.createNavigationGroup({
-		window:masterContainerWindow
-	});
-	self.add(navGroup);
-	
-	
+
 	return self;
 };
 module.exports = NavigateWindow;

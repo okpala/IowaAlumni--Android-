@@ -95,7 +95,7 @@ function MasterView(feed) {
 			var Counter = 0;
 			var headerCounter = 0;
 			var adIndex = 0;
-			var ads = new GetFeed(Feeds.adFeed() );
+			//var ads = new GetFeed(Feeds.adFeed() );
 			var tempDate = "";
 			for (var i = 0; i < data.length; i++) {
 				var post = new Post(data[i]);
@@ -114,14 +114,14 @@ function MasterView(feed) {
 				
 				//Add Feed's Ad
 				if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.iowaInsiderFeed()){
-					var row = new Ad(ads[adIndex + 3]);
-					rows.push(row);
+					//var row = new Ad(ads[adIndex + 3]);
+					//rows.push(row);
 					adIndex++;
 				}
 				
 				if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
-					var row = new Ad(ads[adIndex + 6]);
-					rows.push(row);
+					//var row = new Ad(ads[adIndex + 6]);
+					//rows.push(row);
 					adIndex++;
 				}
 				
@@ -140,7 +140,7 @@ function MasterView(feed) {
 				else if (feed == Feeds.eventsFeed()){
 					if ((Counter == 0) ||(tempDate != post.pubDate && Counter != 0)){
 						var header = new HeaderRow(post);
-						
+						/*
 						if (headerCounter != 0 && (headerCounter % 3) == 0 && adIndex < 3 ){
 							var row = new Ad(ads[adIndex]);
 							rows.push(row);
@@ -151,6 +151,7 @@ function MasterView(feed) {
 						}
 						rows.push(header);
 						headerCounter++;
+						*/
 					}
 					var row = new SingleRow(post);
 					
@@ -202,7 +203,7 @@ function MasterView(feed) {
 	table.bottom = 70;
 	self.add(table);
 	
-	
+	/*
 	if ( feed == Feeds.iowaInsiderFeed()){
 		var ad = new StaticAd(13,350);
 	}
@@ -215,7 +216,7 @@ function MasterView(feed) {
 	
 	self.add(ad);
 	
-	
+	*/
 
 	return self;
 }

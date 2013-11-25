@@ -6,7 +6,7 @@ function SocialMediaIcons(){
 
 SocialMediaIcons.prototype.facebook = function(iconTop, iconLeft) {
 	var facebookimage = Ti.UI.createImageView({
-	  image:    'facebook.png',
+	  image:    Ti.Filesystem.resourcesDirectory +'facebook.png',
 	  top:    iconTop,
 	  left: iconLeft
 	});
@@ -23,7 +23,7 @@ SocialMediaIcons.prototype.facebook = function(iconTop, iconLeft) {
 
 SocialMediaIcons.prototype.twitter = function(iconTop, iconLeft) {
 	var twitterimage = Ti.UI.createImageView({
-	  image:    'twitter.png',
+	  image:    Ti.Filesystem.resourcesDirectory +'twitter.png',
 	  top:    iconTop,
 	  left: iconLeft
 	});
@@ -40,7 +40,7 @@ SocialMediaIcons.prototype.twitter = function(iconTop, iconLeft) {
 
 SocialMediaIcons.prototype.foursquare = function(iconTop, iconLeft) {
 	var foursquareimage = Ti.UI.createImageView({
-	  image:    'fourquare.png',
+	  image:    Ti.Filesystem.resourcesDirectory +'fourquare.png',
 	  top:   iconTop,
 	  left: iconLeft
 	});
@@ -54,7 +54,7 @@ SocialMediaIcons.prototype.foursquare = function(iconTop, iconLeft) {
 
 SocialMediaIcons.prototype.linkedIn = function(iconTop, iconLeft) {
 	var linkedInimage = Ti.UI.createImageView({
-	  image:    'linkedin.png',
+	  image:    Ti.Filesystem.resourcesDirectory +'linkedin.png',
 	  top:    iconTop,
 	  left: iconLeft
 	});
@@ -73,7 +73,7 @@ SocialMediaIcons.prototype.linkedIn = function(iconTop, iconLeft) {
 
 SocialMediaIcons.prototype.pinterest = function(iconTop, iconLeft) {
 	var pinterestimage = Ti.UI.createImageView({
-	  image:    'pinterest.png',
+	  image:    Ti.Filesystem.resourcesDirectory +'pinterest.png',
 	   top:   iconTop,
 	  left: iconLeft
 	});
@@ -88,7 +88,7 @@ SocialMediaIcons.prototype.pinterest = function(iconTop, iconLeft) {
 
 SocialMediaIcons.prototype.instagram = function(iconTop, iconLeft) {
 	var instagramimage = Ti.UI.createImageView({
-	  image:    'instagram.png',
+	  image:    Ti.Filesystem.resourcesDirectory + 'instagram.png',
 	  top:    iconTop,
 	  left: iconLeft
 	});

@@ -10,12 +10,126 @@ var FormatDate = require('ui/common/FormatDate');
 var StaticAd = require('ui/common/StaticAd');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
-RSS = require('services/rss');
+var RSS = require('services/rss');
+var TodayEventsSection = require('ui/common/TodayEventsSection');
+var ArticleOfTheWeekSection = require('ui/common/ArticleOfTheWeekSection');
+
 /*
  * Home Window
  */
 function RootWindow(data) {
+	Ti.UI.backgroundColor = '#dddddd';
+var Feeds = new Feed(); 
+var url = Feeds.mobileAlertsFeed();
+var self = new ApplicationWindow("Home");
+var table = Ti.UI.createTableView();
+var rows = [];
+
+ 
+var xhr = Ti.Network.createHTTPClient({
+    onload: function() {
+    // Ti.API.debug(this.responseText);
+    
+    var row = new HomeImageSlider();
+	rows.push(row);
+ 	var introLabel = Ti.UI.createLabel({
+			text: "No matter how many years or miles may separate you from the campus, the UI Alumni Association can help you feel part of the life of the University of Iowa.",
+			width: screenWidth - 20,
+			top: 10,
+			left: 10,
+			font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+		});
+		
+		var row = Ti.UI.createTableViewRow();
+		
+		row.add(introLabel);
+		rows.push(row);
+		
+    var xml = this.responseXML;
+	   	var items = xml.documentElement.getElementsByTagName("item");
+	   	var item = items.item(0);
+	   	var data = [];
+	   		for (var i = 0; i < items.length; i++) {
+	   			data.push({
+					title:  item.getElementsByTagName('title').item(0).textContent,//getRssText(item, 'title'),
+					header:  item.getElementsByTagName('header').item(0).textContent,//getRssText(item, 'header'),
+					url:  item.getElementsByTagName('link').item(0).textContent,//getRssText(item, 'link'),
+					image: item.getElementsByTagName('image').item(0).textContent,//getRssText(item, 'image'),
+					description: item.getElementsByTagName('description').item(0).textContent,//getRssText(item, 'description'),
+					pubDate: item.getElementsByTagName('pubDate').item(0).textContent,//getRssText(item, 'pubDate')
+					
+					});
+				}
+				
+		if (data.length > 0){
+		for (var i = 0; i < data.length; i++){
+			var headerLabel = Ti.UI.createLabel({
+				text: data[i].header,
+				width: 300,
+				top: 10,
+				left: 10,
+				font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
+			});
+			
+			var row = Ti.UI.createTableViewRow();
+			
+			row.add(headerLabel);
+			rows.push(row);
+			
+			var row = new SinglePost(data[i]);
+			rows.push(row); 
+			}
+		}
+		
+ 	var events = new TodayEventsSection();
+ 	for (var i = 0; i < events.length; i++){
+ 		rows.push(events[i]);
+ 	}
+ 	
+ 	var magazineHeaderLabel = Ti.UI.createLabel({
+			text: "Article of the Week",
+			width: 300,
+			top: 10,
+			left: 10,
+			font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
+		});
+		
+		var row = Ti.UI.createTableViewRow();
+		row.add(magazineHeaderLabel);
+		
+		rows.push(row);
+		
+		//var article = new ArticleOfTheWeekSection();
+		
+		
+		
+		//rows.push(row);
+		
+		var row = new HomeSMSection();
+		
+		rows.push(row);
+		
+    table.setData(rows);
+    },
+    onerror: function(e) {
+    Ti.API.debug("STATUS: " + this.status);
+    Ti.API.debug("TEXT:   " + this.responseText);
+    Ti.API.debug("ERROR:  " + e.error);
+    alert('There was an error retrieving the remote data. Try again.');
+    },
+    timeout:5000
+});
+ 
+xhr.open("GET", url);
+xhr.send();
+ 
+self.add(table);
+return self;
 	
+	
+	
+	
+	/*
 	var masterView = Ti.UI.createView();
 	var Feeds = new Feed();
 	var tableView = new PostTable();
@@ -78,8 +192,8 @@ function RootWindow(data) {
 		
 	//---------------------------------------------------------------------------------------
 	
-		var row = new HomeImageSlider();
-		rows.push(row);
+		//var row = new HomeImageSlider();
+		//rows.push(row);
 	//----------------------------------------------------------------------------------------	
 		var introLabel = Ti.UI.createLabel({
 			text: "No matter how many years or miles may separate you from the campus, the UI Alumni Association can help you feel part of the life of the University of Iowa.",
@@ -97,8 +211,32 @@ function RootWindow(data) {
 		
 	//-----------------------------------------------------------------------------------------
 	
-	var alerts = new GetFeed (Feeds.mobileAlertsFeed());
-	
+	//var alerts = new GetFeed (Feeds.mobileAlertsFeed());
+	var rowData = [];
+	Ti.API.info(rows);
+	/*
+	loadXMLDoc(Feeds.mobileAlertsFeed(), function(data) {rowData.push(data);
+		if (data.length > 0){
+		for (var i = 0; i < data.length; i++){
+			var headerLabel = Ti.UI.createLabel({
+				text: data[i].header,
+				width: 300,
+				top: 10,
+				left: 10,
+				font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
+			});
+			
+			var row = Ti.UI.createTableViewRow();
+			
+			row.add(headerLabel);
+			rows.push(row);
+			
+			var row = new SinglePost(data[i]);
+			rows.push(row);
+			}
+		}
+		
+		});*/
 	/*
 	if (alerts.length > 0){
 		for (var i = 0; i < alerts.length; i++){
@@ -175,7 +313,7 @@ function RootWindow(data) {
 		var row = new HomeSMSection();
 		
 		rows.push(row);
-		*/
+		
 		tableView.setData(rows);
 		masterView.add(tableView);
 		
@@ -188,17 +326,49 @@ function RootWindow(data) {
 
 	// load initial rss feed
 	refreshRSS();
-/*
+
 	var ad = new StaticAd(9,392);
 	
 	
 	masterView.add(ad);
 	var self = new ApplicationWindow("Home", masterView);
-*/
+
 	var self = new ApplicationWindow("Home");
 	self.add(masterView);
 	return self;
+*/
+}
 
+function loadXMLDoc(dname, callback){
+	var xmlhttp = Titanium.Network.createHTTPClient();
+	xmlhttp.open("GET",dname);
+	xmlhttp.onload = function(){
+		var data = [];
+		var xml = this.responseXML;
+	   	var items = xml.documentElement.getElementsByTagName("item");
+	   	var item = items.item(0);
+	   		for (var i = 0; i < items.length; i++) {
+	   			data.push({
+					title:  item.getElementsByTagName('title').item(0).text,//getRssText(item, 'title'),
+					header:  item.getElementsByTagName('header').item(0).text,//getRssText(item, 'header'),
+					url:  item.getElementsByTagName('link').item(0).text,//getRssText(item, 'link'),
+					image: item.getElementsByTagName('image').item(0).text,//getRssText(item, 'image'),
+					description: item.getElementsByTagName('description').item(0).text,//getRssText(item, 'description'),
+					pubDate: item.getElementsByTagName('pubDate').item(0).text,//getRssText(item, 'pubDate')
+					
+					});
+				}
+		Ti.API.info("item in loadXML - " + data[0].title);
+	   	callback(data);
+
+	   	
+	};
+	xmlhttp.onerror = function(error){
+	    alert("feed doesn't works");
+	};
+	xmlhttp.send();
+	//
+	return xmlhttp;
 }
 
 

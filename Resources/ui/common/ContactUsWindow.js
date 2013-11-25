@@ -45,7 +45,7 @@ function ContactUsWindow(title) {
 	  showHorizontalScrollIndicator: false
 	});
 	
-	var ad = new StaticAd(14,392);
+	//var ad = new StaticAd(14,392);
 	
 	
 	
@@ -166,11 +166,12 @@ function ContactUsWindow(title) {
 		socialMediaView.add(socialMdeiaLabel);socialMediaView.add(facebookimage); socialMediaView.add(twitterimage);socialMediaView.add(foursquareimage);socialMediaView.add(linkedInimage);
 	socialMediaView.add(pinterestimage);socialMediaView.add(instagramimage); 
 	//------------------------------------------   Views    ---------------------------------------------------------------------------\\	
-	scrollMainView.add(socialMediaView);	scrollMainView.add(contactView);	scrollMainView.add(ad);
+	scrollMainView.add(socialMediaView);	scrollMainView.add(contactView);	//scrollMainView.add(ad);
 	
 	
 	
-	var self = new ApplicationWindow(title, scrollMainView);
+	var self = new ApplicationWindow(title);
+	self.add(scrollMainView);
 	return self;
 }
 

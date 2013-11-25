@@ -10,7 +10,7 @@ function GetFeed (feed){
 	//table=loadXMLDoc(feed, table);
 	
 	 
-	
+	loadXMLDoc(feed, function(data) {rowData.push(data);});
 	alert(rowData);
 	
 	var items = [];
@@ -32,7 +32,7 @@ function GetFeed (feed){
 	
 	return items;
 }
-loadXMLDoc(feed, function(data) {rowData.push(data);});
+
 var osname = Ti.Platform.osname;
 var RSS_URL = osname === 'mobileweb' ? '/feed.xml' : Feeds.magazineFeed();
 

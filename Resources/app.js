@@ -8,6 +8,7 @@
 		var NationalBenefitsWindow = require('ui/common/NationalBenefitsWindow');
 		var Feed = new Feed();
 		var GetFeed = require('ui/common/GetFeed');
+		var Window = require('ui/handheld/android/ApplicationWindow');
 
 
 var osname = Ti.Platform.osname,
@@ -84,6 +85,7 @@ var win = Titanium.UI.createWindow({
 			(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
 			(new MenuRow(memberCardTitle,'membercard','',false)),
 			(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
+			
 		    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
 		    (new MenuRow(contactUsTitle,'info','',false))
 		];
@@ -95,7 +97,7 @@ var win = Titanium.UI.createWindow({
 		    //footerTitle:'',
 		    //backgroundColor: "#000000",
 		    top: logorowHeight,
-		    height: screenHeight - (taglinerowHeight + logorowHeight),
+		    //height: screenHeight - (taglinerowHeight + logorowHeight),
 		   bottom: taglinerowHeight
 		});
 		tableView.setData(menuTitles); // Set the menu in the Home page
@@ -108,10 +110,151 @@ var win = Titanium.UI.createWindow({
 	
 	win.open();
 	//var win2 = new GetFeed (Feed.mobileAlertsFeed(), home);
-	var win2 = new RootWindow();
-	win2.open();
+	//var win2 = new MemberCardWindow(memberCardTitle);
+	//win2.open();
 	
-	
+	tableView.addEventListener('click', function(e) {
+		if(e.row.feedTitle==home) {
+				var win2 = new RootWindow();
+				win2.open();
+				menuTitles = [
+					(new MenuRow(home,'home','',true)),
+				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+					(new MenuRow(clubsTitle,'clubs','',false)),
+					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
+					(new MenuRow(memberCardTitle,'membercard','',false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+				    (new MenuRow(contactUsTitle,'info','',false))
+				];
+				tableView.setData(menuTitles); 
+				win.add(tableView);
+				win.navBarHidden = true;
+			
+			}
+		else if(e.row.feedTitle==contactUsTitle) {
+				var win2 = new ContactUsWindow(contactUsTitle);
+				win2.open();
+				menuTitles = [
+					(new MenuRow(home,'home','',false)),
+				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+					(new MenuRow(clubsTitle,'clubs','',false)),
+					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
+					(new MenuRow(memberCardTitle,'membercard','',false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+				    (new MenuRow(contactUsTitle,'info','',true))
+				];
+				tableView.setData(menuTitles); 
+				win.add(tableView);
+			}
+			
+		else if(e.row.feedTitle==memberCardTitle){
+				var win2 = new MemberCardWindow(memberCardTitle);
+				win2.open();
+				menuTitles = [
+					(new MenuRow(home,'home','',false)),
+				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+					(new MenuRow(clubsTitle,'clubs','',false)),
+					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
+					(new MenuRow(memberCardTitle,'membercard','',true)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+				    (new MenuRow(contactUsTitle,'info','',false))
+				];
+				tableView.setData(menuTitles);
+				win.add(tableView);
+			}
+			
+		else if(e.row.feedTitle==clubsTitle) {
+				var win2 = new ClubsWindow(clubsTitle);
+				win2.open();
+				menuTitles = [
+					(new MenuRow(home,'home','',false)),
+				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+					(new MenuRow(clubsTitle,'clubs','',true)),
+					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
+					(new MenuRow(memberCardTitle,'membercard','',false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+				    (new MenuRow(contactUsTitle,'info','',false))
+				];
+				tableView.setData(menuTitles); 
+				win.add(tableView);
+			}
+			
+			
+		else if(e.row.feedTitle==memberBenefitsTitle) {
+				var win2 = new NationalBenefitsWindow();
+				win2.open();
+				menuTitles = [
+					(new MenuRow(home,'home','',false)),
+				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+					(new MenuRow(clubsTitle,'clubs','',false)),
+					(new MenuRow(memberBenefitsTitle,'memberbenefits','',true)),
+					(new MenuRow(memberCardTitle,'membercard','',false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+				    (new MenuRow(contactUsTitle,'info','',false))
+				];
+				tableView.setData(menuTitles); 
+				win.add(tableView);
+			}
+			
+			else if(e.row.feedTitle==alumniMagazineTitle) {
+				var win2 = new Window(e.row.feed,e.row.feedTitle);
+				menuTitles = [
+					(new MenuRow(home,'home','',false)),
+				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+					(new MenuRow(clubsTitle,'clubs','',false)),
+					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
+					(new MenuRow(memberCardTitle,'membercard','',false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),true)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+				    (new MenuRow(contactUsTitle,'info','',false))
+				];
+				tableView.setData(menuTitles); 
+				win.add(tableView);
+				win.navBarHidden = true;
+			}
+			
+			else if(e.row.feedTitle==iowaInsiderTitle) {
+				var win2 = new Window(e.row.feed,e.row.feedTitle);
+				menuTitles = [
+					(new MenuRow(home,'home','',false)),
+				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),false)),
+					(new MenuRow(clubsTitle,'clubs','',false)),
+					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
+					(new MenuRow(memberCardTitle,'membercard','',false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),true)),
+				    (new MenuRow(contactUsTitle,'info','',false))
+				];
+				tableView.setData(menuTitles); 
+				win.add(tableView);
+				win.navBarHidden = true;
+				
+			}
+			
+			else if(e.row.feedTitle==eventsTitle) {
+				var win2 = new Window(e.row.feed,e.row.feedTitle);
+				//var win = new EventsHomeWindow(eventsTitle);
+				menuTitles = [
+					(new MenuRow(home,'home','',false)),
+				    (new MenuRow(eventsTitle,'events',Feed.eventsFeed(),true)),
+					(new MenuRow(clubsTitle,'clubs','',false)),
+					(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
+					(new MenuRow(memberCardTitle,'membercard','',false)),
+					(new MenuRow(alumniMagazineTitle,'magazine',Feed.magazineFeed(),false)),
+				    (new MenuRow( iowaInsiderTitle,'insider',Feed.iowaInsiderFeed(),false)),
+				    (new MenuRow(contactUsTitle,'info','',false))
+				];
+				tableView.setData(menuTitles); 
+				win.add(tableView);
+				win.navBarHidden = true;
+			}
+			
+		});
 	
 
 /*

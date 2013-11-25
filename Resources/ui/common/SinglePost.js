@@ -11,8 +11,8 @@ function SinglePost (post){
 	
 	
 	var table = Ti.UI.createTableView({
-		separatorColor: 	'd5d5d5',
-		backgroundColor: 	'ffffff',
+		separatorColor: 	'#d5d5d5',
+		backgroundColor: 	'#ffffff',
 		height:				'auto',
 		width: 				300,
 		left: 				10,
@@ -28,12 +28,14 @@ function SinglePost (post){
 	 var rowText = Ti.UI.createTableViewRow({
 	        height: 120
 	    });
-
+/*
 	 rowText.addEventListener('click', function(e) {
 			new WebView ( post.url);
 			
 	 });
 	 
+	 */
+	
 	 table.height = rowText.height;
 	var data = [];
 	 data.push(rowText);
@@ -48,20 +50,20 @@ function SinglePost (post){
 		//link: 				post.url,
 		layout: 'vertical',
 		selectionStyle: 'none',
-		backgroundColor: 'e2e2e2'
+		backgroundColor: '#e2e2e2'
 	});
-	row.rightImage = null;
-	row.backgroundSelectedImage = null;
-	row.backgroundFocusImage = null;
+	//row.rightImage = null;
+	//row.backgroundSelectedImage = null;
+	//row.backgroundFocusImage = null;
 
 	row.add(table);
-		
-		
+	
+	
 		
 		var titleLabel = getTitleLabel(post.title);
 		rowText.add(titleLabel);
 		
-		if (post.image != 'NA'){
+	 		if (post.image != 'NA'){
 			var imageContainer = Ti.UI.createView({
 				width: 			60,
 				height: 		60,
@@ -113,8 +115,9 @@ function SinglePost (post){
 		table.height = rowText.height;
 		row.height = rowText.height + 10;
 		
-		
+	/*		*/
 		return row;
+		
 } 
 
 function getTitleLabel(title) {
