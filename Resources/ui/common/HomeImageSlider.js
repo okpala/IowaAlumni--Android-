@@ -1,4 +1,4 @@
-var GetFeed = require('ui/common/GetFeed');
+//var GetFeed = require('ui/common/GetFeed');
 var FormatDate = require('ui/common/FormatDate');
 var Feed = require('ui/common/Feed');
 
@@ -74,12 +74,12 @@ var xhr = Ti.Network.createHTTPClient({
 			height: 100,
 			hires: true,
 			bottom: 65,
-			image: 'shadow.png'
+			image: Ti.Filesystem.resourcesDirectory +'shadow.png'
 		});
 		
 		var date = new Date();
 		
-		var date = Ti.UI.createLabel({
+		var dateLabel = Ti.UI.createLabel({
 			text: (new FormatDate()).getMonthString(date.getMonth()) +' '+date.getDate()+', '+date.getFullYear(),
 			top: 8,
 			left: 10,
@@ -93,7 +93,7 @@ var xhr = Ti.Network.createHTTPClient({
 	        shadowOffset:{x:0, y:1},
 			font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:12,fontWeight:'bold'}
 		});
-		overlay.add(date);
+		//overlay.add(dateLabel);
 		
 	   
 		
@@ -146,7 +146,8 @@ var xhr = Ti.Network.createHTTPClient({
 		container.add(imagebox);
 		container.add(overlay);
 		container.add(shadow);
-		container.add(view);	
+		container.add(view);
+		container.add(dateLabel);	
     },
     onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);

@@ -6,8 +6,8 @@
 function PostGroup(rows) {
 
 	var table = Ti.UI.createTableView({
-		separatorColor: 	'd5d5d5',
-		backgroundColor: 	'ffffff',
+		separatorColor: 	'#d5d5d5',
+		backgroundColor: 	'#ffffff',
 		height:				'auto',
 		width: 				300,
 		left: 				10,
@@ -35,11 +35,11 @@ function PostGroup(rows) {
 		bottom: 0,
 		layout: 'vertical',
 		selectionStyle: 'none',
-		backgroundColor: 'e2e2e2'
+		backgroundColor: '#e2e2e2'
 	});
-	row.rightImage = null;
-	row.backgroundSelectedImage = null;
-	row.backgroundFocusImage = null;
+	//row.rightImage = null;
+	//row.backgroundSelectedImage = null;
+	//row.backgroundFocusImage = null;
 
 	row.add(table);
 

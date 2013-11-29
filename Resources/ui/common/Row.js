@@ -17,14 +17,14 @@ function Row(post) {
 		top: 				0,
 		bottom: 			0,
 		layout: 			'vertical',
-		backgroundColor: 	'e2e2e2'
+		backgroundColor: 	'#e2e2e2'
 	});
-	row.rightImage = null;
-	row.backgroundSelectedImage = null;
-	row.backgroundFocusImage = null;
+	//row.rightImage = null;
+	//row.backgroundSelectedImage = null;
+	//row.backgroundFocusImage = null;
 
 	var container =  Titanium.UI.createView({
-		backgroundColor: 	'ffffff',
+		backgroundColor: 	'#ffffff',
 		height:				'auto',
 		width: 				300,
 		left: 				0,

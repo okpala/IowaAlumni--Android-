@@ -9,8 +9,8 @@ function ContactUsWindow(title) {
 
 	//The Different Views
 	var contactView = Ti.UI.createView({
-		separatorColor: 	'd5d5d5',
-		backgroundColor: 	'ffffff',
+		separatorColor: 	'#d5d5d5',
+		backgroundColor: 	'#ffffff',
 		height:				160,
 		width: 				300,
 		left: 				10,
@@ -23,8 +23,8 @@ function ContactUsWindow(title) {
 	});
 	
 	var socialMediaView = Ti.UI.createView({
-		separatorColor: 	'd5d5d5',
-		backgroundColor: 	'ffffff',
+		separatorColor: 	'#d5d5d5',
+		backgroundColor: 	'#ffffff',
 		height:				160,
 		width: 				300,
 		left: 				10,

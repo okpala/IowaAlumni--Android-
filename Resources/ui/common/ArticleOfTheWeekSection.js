@@ -1,12 +1,12 @@
 var Feed = require('ui/common/Feed');
-var SingleRow = require('ui/common/SingleRow');
+var SinglePost= require('ui/common/SinglePost');
 function ArticleOfTheWeekSection(){
 	var Feeds = new Feed();
 	var url = Feeds.articleOfTheWeekFeed();
 
 var table = Ti.UI.createTableView();
 var rows = [];
-var row;
+
 
   
 var xhr = Ti.Network.createHTTPClient({
@@ -27,10 +27,9 @@ var xhr = Ti.Network.createHTTPClient({
                    pubDate: item.getElementsByTagName( 'pubDate').item(0).textContent
 				});
 				
-			rows.push(data[0]);
-			row = new SinglePost(article[0]);
 			
-		
+			var row = new SinglePost(data[0]);
+			
     },
     onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);
@@ -44,6 +43,6 @@ var xhr = Ti.Network.createHTTPClient({
 xhr.open("GET", url);
 xhr.send();
 	
-		return row;
+		return table;
 } 
 module.exports = ArticleOfTheWeekSection;

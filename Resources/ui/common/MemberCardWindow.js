@@ -76,7 +76,7 @@ function  MemberCardWindow(title){
 	var activityIndicator = Ti.UI.createActivityIndicator({
 		  font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'},
 		  message: 'Checking Password...',
-		  style:Ti.UI.iPhone.ActivityIndicatorStyle.DARK,
+		  style: Ti.UI.ActivityIndicatorStyle.DARK,
 		  top:105,
 		  left:90,
 		  height:'auto',

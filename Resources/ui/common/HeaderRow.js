@@ -9,8 +9,8 @@ var WebView = require('ui/common/WebView');
 function HeaderRow(post) {
 
    var table = Ti.UI.createTableView({
-		separatorColor: 	'e2e2e2',
-		backgroundColor: 	'e2e2e2',
+		separatorColor: 	'#e2e2e2',
+		backgroundColor: 	'#e2e2e2',
 		height:				'auto',
 		width: 				300,
 		left: 				10,
@@ -21,21 +21,20 @@ function HeaderRow(post) {
 	});
 
 	 var rowText = Ti.UI.createTableViewRow({
-	 		backgroundImage: 'gold.png', 
-	    	text: "hello",
+	 		backgroundImage: Ti.Filesystem.resourcesDirectory + 'gold.png', 
 	        height: 50,
-	        selectedBackgroundImage: 'blue.png'
+	        //selectedBackgroundImage: 'blue.png'
 	        
 	    });
 	 rowText.addEventListener('click', function(e) {
 			new WebView (post.hlink);
 	 });
-	 
+	
 	table.height = rowText.height;
 	var data = [];
 	 data.push(rowText);
 	table.setData(data);
-
+ 
 	var row = Ti.UI.createTableViewRow({
 		hasChild: true,
 		height: table.height + 8,
@@ -45,11 +44,11 @@ function HeaderRow(post) {
 		link: 	post.hlink,
 		layout: 'vertical',
 		selectionStyle: 'none',
-		backgroundColor: 'e2e2e2'
+		backgroundColor: '#e2e2e2'
 	});
-	row.rightImage = null;
-	row.backgroundSelectedImage = null;
-	row.backgroundFocusImage = null;
+	//row.rightImage = null;
+	//row.backgroundSelectedImage = null;
+	//row.backgroundFocusImage = null;
 
 	row.add(table);
 	datebl  = getpubDateLabel(post.pubDate);
@@ -68,7 +67,8 @@ function HeaderRow(post) {
 function getpubDateLabel(pubDate) {
 
 	var text = Ti.UI.createLabel({
-		text: pubDate,		left: 15,
+		text: pubDate,		
+		left: 15,
 		bottom: 15,
 		textAlign:'left',
 		width: 200,

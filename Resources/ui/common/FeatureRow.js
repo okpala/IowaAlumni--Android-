@@ -17,12 +17,12 @@ function FeatureRow(post) {
 		top: 0,
 		bottom: 0,
 		layout: 'vertical',
-		backgroundColor: 'e2e2e2',
+		backgroundColor: '#e2e2e2',
 		borderRadius: 0.5
 	});
-	row.rightImage = null;
-	row.backgroundSelectedImage = null;
-	row.backgroundFocusImage = null;
+	//row.rightImage = null;
+	//row.backgroundSelectedImage = null;
+	//row.backgroundFocusImage = null;
 
 	var container =  Titanium.UI.createView({
 		backgroundColor: 'transparent',
@@ -52,14 +52,14 @@ function FeatureRow(post) {
 		height: 40,
 		hires: true,
 		top: 1,
-		image: 'gold.png'
+		image: Ti.Filesystem.resourcesDirectory +'gold.png'
 	});
 	var shadow = Ti.UI.createImageView({
 		width: 300,
 		height: 150,
 		hires: true,
 		top: this.containerheight-120,
-		image: 'shadow.png'
+		image: Ti.Filesystem.resourcesDirectory +'shadow.png'
 	});
 	container.add(imagebox);
 	container.add(shadow);
@@ -159,7 +159,7 @@ function getDescriptionLabel(description,postheight) {
 
 	var view = Ti.UI.createView({
 		backgroundColor: '#0c0c0c',
-		backgroundImage: 'dark.jpg',
+		backgroundImage: Ti.Filesystem.resourcesDirectory + 'dark.jpg',
 		width: 300,
 		height: 65,
 		top: postheight

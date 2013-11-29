@@ -22,9 +22,9 @@ function NavigateWindow(windowtitle, webview) {
         } else {
             actionBar = self.activity.actionBar;
             if (actionBar) {
-                actionBar.backgroundImage = Ti.Filesystem.resourcesDirectory + 'back.png';
+                actionBar.backgroundImage = Ti.Filesystem.resourcesDirectory + 'navbar.png';
                 actionBar.title = windowtitle;
-                actionBar.logo = Ti.Filesystem.resourcesDirectory + "newmenubutton.png";
+                actionBar.logo = Ti.Filesystem.resourcesDirectory + "back.png";
                 actionBar.onHomeIconItemSelected = function() {
                     self.close();
                 };
