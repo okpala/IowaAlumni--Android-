@@ -24,7 +24,8 @@ Feed.prototype.clubsFeed = function(){
 };
 
 Feed.prototype.gameWatchFeed = function(){
-	return "http://iowalum.com/clubs/feed_xml.cfm";
+	//return "http://iowalum.com/clubs/feed_xml.cfm";
+	return "http://iowalum.com/clubs/gameWatchFeed.cfm";
 };
 
 Feed.prototype.nationalDiscountFeed = function(){

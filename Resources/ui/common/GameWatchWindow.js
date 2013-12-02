@@ -1,5 +1,6 @@
 var WebView = require('ui/common/WebView');
 var EditText = require('ui/common/EditText');
+var NavigateWindow = require('ui/common/NavigateWindow');
 /*
  * Clubs and Game Watch Tabs 
  */
@@ -10,11 +11,8 @@ function GameWatchWindow(clubData, clubInfoData) {
 
 	var windowtitle = clubData[0].state;
 	
-	var self = Ti.UI.createWindow({
-	    backgroundColor:'#e2e2e2',
-		navBarHidden: true
-	});
-
+	//var self =  new NavigateWindow("", "" );
+/*
 	 var statusBar = Ti.UI.createView({
 	    backgroundColor:'#000',
 	    top: 0,
@@ -414,7 +412,8 @@ tabGroup.setActiveTab(0);
 tabGroup.open();
 
 return mainWinTab1;
-
+*/
+return self;
 }
 
 //Helper Functions
