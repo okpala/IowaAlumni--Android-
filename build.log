@@ -1,55 +1,62 @@
 Logfile initialized
-ers/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build.log
-[DEBUG] /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py emulator UIowa Alumni /Users/localadmin/Public /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android) com.iowalum.uiowaalumni 4 WVGA800 armeabi-v7a
-[INFO] logfile = /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build.log
-[DEBUG] /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py simulator UIowa Alumni /Users/localadmin/Public /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android) com.iowalum.uiowaalumni 4 WVGA800
 [INFO] Launching Android emulator...one moment
-[INFO] Building UIowa Alumni for Android ... one moment
+[INFO] logfile = /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build.log
 [DEBUG] From: /Users/localadmin/Public/tools/emulator
 [DEBUG] SDCard: /Users/localadmin/.titanium/android2.sdcard
-[DEBUG] AVD ID: 4
+[DEBUG] /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py simulator UIowa Alumni /Users/localadmin/Public /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android) com.iowalum.uiowaalumni 2 WVGA800
+[DEBUG] AVD ID: 2
 [DEBUG] AVD Skin: WVGA800
-[DEBUG] AVD ABI: armeabi-v7a
+[DEBUG] AVD ABI: armeabi
 [DEBUG] SDK: /Users/localadmin/Public
+[INFO] Building UIowa Alumni for Android ... one moment
+[INFO] Emulator is running.
 [INFO] Titanium SDK version: 3.1.3 (09/18/13 12:00 222f4d1)
 [DEBUG] Waiting for device to be ready ...
-[TRACE] adb devices returned 0 devices/emulators
-[DEBUG] /Users/localadmin/Public/tools/emulator -avd titanium_4_WVGA800 -port 5560 -sdcard /Users/localadmin/.titanium/titanium_4_WVGA800.sdcard -logcat *:d,*,TiAPI:V -no-boot-anim -partition-size 128
-[TRACE] adb devices returned 0 devices/emulators
-[TRACE] adb devices returned 0 devices/emulators
-[TRACE] adb devices returned 0 devices/emulators
-[TRACE] adb devices returned 0 devices/emulators
-[TRACE] adb devices returned 0 devices/emulators
-[TRACE] adb devices returned 0 devices/emulators
-[TRACE] adb devices returned 0 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 70 seconds)
-[DEBUG] waited 70.874225 seconds on emulator to get ready
-[INFO] Waiting for the Android Emulator to become available
-[ERROR] Timed out waiting for android.process.acore
-[DEBUG] com.iowalum.uiowaalumni installed? False
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.024853 seconds on emulator to get ready
+[DEBUG] com.iowalum.uiowaalumni installed? True
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
+[TRACE] COPYING MODIFIED FILE: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/ui/common/ClubsWindow.js => /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/ui/common/ClubsWindow.js
+[TRACE] COPYING MODIFIED FILE: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/ui/common/GameWatchWindow.js => /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/ui/common/GameWatchWindow.js
+[TRACE] COPYING MODIFIED FILE: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/ui/common/NavigateWindow.js => /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/ui/common/NavigateWindow.js
+[TRACE] COPYING MODIFIED FILE: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/ui/common/StaticAd.js => /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/ui/common/StaticAd.js
+[TRACE] COPYING MODIFIED FILE: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/ui/common/WebView.js => /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/ui/common/WebView.js
 [DEBUG] LiveView not enabled
-[INFO] Tiapp.xml unchanged, skipping class generation
+[TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
+[DEBUG] copying app icon: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/appicon.png
+[DEBUG] generating theme.xml
 [DEBUG] found drawable-long-land-hdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-land-hdpi/default.png
+[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-land-hdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-long-land-hdpi/background.png
 [DEBUG] found drawable-long-land-ldpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-land-ldpi/default.png
+[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-land-ldpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-long-land-ldpi/background.png
 [DEBUG] found drawable-long-port-hdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-port-hdpi/default.png
+[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-port-hdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-long-port-hdpi/background.png
 [DEBUG] found drawable-long-port-ldpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-port-ldpi/default.png
+[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-port-ldpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-long-port-ldpi/background.png
 [DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-hdpi/default.png
+[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-hdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-land-hdpi/background.png
 [DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-ldpi/default.png
+[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-ldpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-land-ldpi/background.png
 [DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-mdpi/default.png
+[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-mdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-land-mdpi/background.png
 [DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-hdpi/default.png
+[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-hdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-port-hdpi/background.png
 [DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-ldpi/default.png
+[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-ldpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-port-ldpi/background.png
 [DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-mdpi/default.png
-[INFO] Waiting for SDCard to become available..
+[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-mdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-port-mdpi/background.png
+[DEBUG] found splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/default.png
+[TRACE] Writing out AndroidManifest.xml
+[DEBUG] adding /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/R.java to javac build list
+[DEBUG] adding /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniActivity.java to javac build list
+[DEBUG] adding /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniAppInfo.java to javac build list
+[DEBUG] adding /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniApplication.java to javac build list
+[DEBUG] Building Java Sources: "/Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/R.java" "/Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniActivity.java" "/Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniAppInfo.java" "/Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniApplication.java"
+[INFO] Compiling Android Resources... This could take some time
+[DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/app-unsigned.apk
 [DEBUG] from resource zip => assets/Resources/images/homeselected.png
 [DEBUG] from resource zip => assets/Resources/images/refresh_icon.png
@@ -92,7 +99,9 @@ ers/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build.log
 [DEBUG] from resource zip => assets/Resources/ui/common/SinglePost.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SingleRow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SocialMediaIcons.js
+[DEBUG] from resource zip => assets/Resources/ui/common/StatesWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/StaticAd.js
+[DEBUG] from resource zip => assets/Resources/ui/common/TabNavWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/TextPost.js
 [DEBUG] from resource zip => assets/Resources/ui/common/TodayEventsSection.js
 [DEBUG] from resource zip => assets/Resources/ui/common/WebView.js
@@ -215,3 +224,12 @@ ers/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build.log
 [DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.js
 [DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.min.js
 [DEBUG] installing native SDK libs
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.025136 seconds on emulator to get ready
+[INFO] Installing application on emulator
+[INFO] Launching application ... UIowa Alumni
+[TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.iowalum.uiowaalumni/.UiowaAlumniActivity }
+
+[INFO] Deployed UIowa Alumni ... Application should be running.

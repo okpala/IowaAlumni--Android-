@@ -1,6 +1,6 @@
-function NavigateWindow(windowtitle) {
-	
-	var self = Ti.UI.createWindow({
+function TabNavWindow(tabGroup) {
+
+var self = Ti.UI.createWindow({
 	    backgroundColor:'#e2e2e2',
 		navBarHidden: false,
 		//barColor:'#99cc66',
@@ -27,13 +27,13 @@ function NavigateWindow(windowtitle) {
                 actionBar.logo = Ti.Filesystem.resourcesDirectory + "back.png";
                 actionBar.onHomeIconItemSelected = function() {
                     self.close();
+                    tabGroup.close();
                 };
             }
         }
     }
 });
 
-
 	return self;
 };
-module.exports = NavigateWindow;
+module.exports = TabNavWindow;

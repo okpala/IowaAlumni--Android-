@@ -46,7 +46,7 @@ if (Ti.version < 1.8 ) {
 	}
 	
 	var ContactUsWindow = require('ui/common/ContactUsWindow');
-	var ClubsWindow = require('ui/common/ClubsWindow');
+	var StatesWindow = require('ui/common/StatesWindow');
 	var MapWindow = require('ui/common/MapWindow');
 	var MemberCardWindow = require('ui/common/MemberCardWindow');
 	var RootWindow = require('ui/common/RootWindow');
@@ -213,7 +213,7 @@ if (Ti.version < 1.8 ) {
 			}
 			
 		else if(e.row.feedTitle==clubsTitle) {
-				var win2 = new ClubsWindow(clubsTitle);
+				var win2 = new StatesWindow(clubsTitle);
 				win2.open();
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),

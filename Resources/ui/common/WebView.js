@@ -5,11 +5,11 @@ function WebView (link){
 		top:0
 		
 		});
-	    var win2 = new NavigateWindow("", webview );
+	var win2 = new NavigateWindow();
+	win2.add(webview);
+	win2.open();
 	    
-	    win2.open();
-	    
-		return win2;
+	return win2;
 }
 
 module.exports = WebView;
