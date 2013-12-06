@@ -1,6 +1,6 @@
 var WebView = require('ui/common/WebView');
 var EditText = require('ui/common/EditText');
-var TabNavWindow = require('ui/common/TabNavWindow');
+//var TabNavWindow = require('ui/common/TabNavWindow');
 var ClubsWindow = require('ui/common/ClubsWindow');
 /*
  * Clubs and Game Watch Tabs 
@@ -14,7 +14,10 @@ function GameWatchWindow(clubData, clubInfoData) {
 	
 	var windowtitle = clubData[0].state;
 	
-	var self =  new TabNavWindow(tabGroup);
+	var self = Ti.UI.createWindow({
+	    backgroundColor:'#e2e2e2',
+		navBarHidden: false,	
+	});
 
 	var gameWatchInfo = [];
 	for (var i = 0; i <= clubData.length - 1; i++) {
@@ -157,7 +160,7 @@ function GameWatchWindow(clubData, clubInfoData) {
 	
 	
 	
-//--------------Club Window ----------------------//
+
 
 var mainWinTab1 = new ClubsWindow(clubData, clubInfoData, tabGroup);
 
@@ -178,6 +181,25 @@ var tab2 = Titanium.UI.createTab({
 tabGroup.addTab(tab2); 
 
 tabGroup.setActiveTab(0); 
+
+var actionBar;
+tabGroup.addEventListener("open", function() {
+    if (Ti.Platform.osname === "android") {
+        if (! tabGroup.activity) {
+            Ti.API.error("Can't access action bar on a lightweight window.");
+        } else {
+            actionBar = tabGroup.activity.actionBar;
+            if (actionBar) {
+                actionBar.backgroundImage = Ti.Filesystem.resourcesDirectory + 'navbar.png';
+                actionBar.title = windowtitle;
+                actionBar.logo = Ti.Filesystem.resourcesDirectory + "back.png";
+                actionBar.onHomeIconItemSelected = function() {
+                    tabGroup.close();
+                };
+            }
+        }
+    }
+});
 tabGroup.open();
 
 return self;

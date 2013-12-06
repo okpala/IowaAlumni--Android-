@@ -2,11 +2,27 @@ var ApplicationWindow = require('ui/common/ApplicationWindow');
 var WebView = require('ui/common/WebView');
 var SocialMediaIcons = require('ui/common/SocialMediaIcons');
 var StaticAd = require('ui/common/StaticAd');
-
+var Feed = require('ui/common/Feed');
 
 function ContactUsWindow(title) {
-	
-
+var Feeds = new Feed(); 
+var url = Feeds.adFeed();	
+var self = new ApplicationWindow(title);
+var xhr = Ti.Network.createHTTPClient({
+    onload: function() {
+    // Ti.API.debug(this.responseText);
+    
+    	var xml = this.responseXML;
+	   	var items = xml.documentElement.getElementsByTagName("item");
+	   	var item = items.item(14);
+	   	var adList = [];
+		adList.push({                 
+			ad: item.getElementsByTagName( 'ad').item(0).textContent,
+		    adUrl: item.getElementsByTagName( 'link').item(0).textContent,                  
+		});
+		var ad = new StaticAd(adList);
+		
+	  
 	//The Different Views
 	var contactView = Ti.UI.createView({
 		separatorColor: 	'#d5d5d5',
@@ -157,8 +173,8 @@ function ContactUsWindow(title) {
 	
 	
 	//------------------------------------------   Contact View's Objects  ---------------------------------------------------------\\
-	contactView.add(contactLabel);	contactView.add(levittLabel);	contactView.add(levittline);	contactView.add(addressLabel);
-	contactView.add(phoneLabel);	contactView.add(emailLabel);	contactView.add(emailline);
+	contactView.add(contactLabel);	contactView.add(levittLabel);		contactView.add(addressLabel);
+	contactView.add(phoneLabel);	contactView.add(emailLabel);	
 	
 	
 	//------------------------------------------   Social Media View's Objects  ---------------------------------------------------------\\
@@ -170,8 +186,23 @@ function ContactUsWindow(title) {
 	
 	
 	
-	var self = new ApplicationWindow(title);
+	
 	self.add(scrollMainView);
+	self.add(ad);
+	 },
+    onerror: function(e) {
+    Ti.API.debug("STATUS: " + this.status);
+    Ti.API.debug("TEXT:   " + this.responseText);
+    Ti.API.debug("ERROR:  " + e.error);
+    alert('There was an error retrieving the remote data. Try again.');
+    },
+    timeout:5000
+});
+ 
+xhr.open("GET", url);
+xhr.send();
+ 
+
 	return self;
 }
 

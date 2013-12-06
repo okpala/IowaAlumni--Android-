@@ -42,6 +42,17 @@ var xhr = Ti.Network.createHTTPClient({
 				});
 			}
 		
+		var items = xml.documentElement.getElementsByTagName("item3");
+	   	var item = items.item(0);
+	   	var adList = [];
+	   	adList.push({                 
+           ad: item.getElementsByTagName( 'ad').item(0).textContent,
+           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+                  
+		});
+		var ad = new StaticAd(adList);
+		
+		
 		var items = xml.documentElement.getElementsByTagName("item2");
 	   	var item = items.item(0);
 	   	var clubsInfo = [];
@@ -112,7 +123,7 @@ var xhr = Ti.Network.createHTTPClient({
 	};		
    	table.setData(data);
 	self.add(table);
-	
+	self.add(ad);
 	 table.addEventListener('click', function(e){
 			var stateClubs = getStateList(clubs, clubsInfo, e.row.text);
 			(new GameWatchWindow(stateClubs[0], stateClubs[1]));

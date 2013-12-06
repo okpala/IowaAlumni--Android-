@@ -9,12 +9,12 @@ var FeatureRow = require('ui/common/FeatureRow'),
 	//IAMIntroRow = require('ui/common/IAMIntroRow'),
 	//PostGroup = require('ui/common/PostGroup'),
 	//PostTable = require('ui/common/PostTable'),
-	//Ad = require('ui/common/Ad'),
+	Ad = require('ui/common/Ad'),
 	//GetFeed = require('ui/common/GetFeed'),
 	//FormatDate = require('ui/common/FormatDate'),
 	//RSS = require('services/rss'),
 	WebView = require('ui/common/WebView'),
-	//StaticAd = require('ui/common/StaticAd');
+	StaticAd = require('ui/common/StaticAd');
 	Feed = require('ui/common/Feed');
 
 function EventsWindow(title) {
@@ -22,7 +22,9 @@ function EventsWindow(title) {
 var Feeds = new Feed(); 
 var url = Feeds.eventsFeed();
 var self = new ApplicationWindow(title);
-var table = Ti.UI.createTableView();
+var table = Ti.UI.createTableView({
+	bottom:70
+});
 var rows = [];
 
  
@@ -52,7 +54,30 @@ var xhr = Ti.Network.createHTTPClient({
 					category:item.getElementsByTagName('category').item(0).textContent,//getRssText(item, 'category'),
 					image: image
 				});
-			}	
+			}
+			
+		var items = xml.documentElement.getElementsByTagName("item2");
+	   	var item = items.item(0);
+	   	var adList = [];
+	   	adList.push({                 
+           ad: item.getElementsByTagName( 'ad').item(0).textContent,
+           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+                  
+		});
+		var ad = new StaticAd(adList);
+		
+		
+		var items = xml.documentElement.getElementsByTagName("item3");
+	   	var innerAdList = [];
+	   	for (var i = 0; i < items.length; i++) {
+	   		var item = items.item(i);
+		   	innerAdList.push({                 
+	           ad: item.getElementsByTagName( 'ad').item(0).textContent,
+	           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+	                  
+			});
+		}
+			
 			var rows = [];
 			var group = [];
 			var featureSet = false;
@@ -67,29 +92,31 @@ var xhr = Ti.Network.createHTTPClient({
 				
 				if ((Counter == 0) ||(tempDate != post.pubDate && Counter != 0)){
 						var header = new HeaderRow(post);
-						/*
+						
 						if (headerCounter != 0 && (headerCounter % 3) == 0 && adIndex < 3 ){
-							var row = new Ad(ads[adIndex]);
+							var row = new Ad(innerAdList[adIndex]);
 							rows.push(row);
 							adIndex++;
 							if (adIndex == 3){
 								adIndex = 0;
 							} 
-						}*/
+						}
 						rows.push(header);
 						headerCounter++;
 						
 				}
 				var row = new SingleRow(post);
 				rows.push(row);
+				
 				Counter++;
 				tempDate = post.pubDate;
 				
 			}
 			
 
-			table.setData(rows);	
-			
+			table.setData(rows);
+			self.add(ad);	
+			self.add(table);
 				
    
     },
@@ -105,7 +132,7 @@ var xhr = Ti.Network.createHTTPClient({
 xhr.open("GET", url);
 xhr.send();
  
-self.add(table);
+
 return self;
 }
 

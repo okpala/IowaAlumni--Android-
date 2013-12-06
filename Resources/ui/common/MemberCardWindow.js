@@ -65,8 +65,8 @@ function  MemberCardWindow(title){
 	});
 	var loginButton = Ti.UI.createButton({
 		title:'Login',
-		width:50,
-		height:25,
+		//width:50,
+		//height:25,
 		top: 82,
   		left: 130,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}

@@ -5,16 +5,16 @@ var FeatureRow = require('ui/common/FeatureRow'),
 	Row = require('ui/common/Row'),
 	SingleRow = require('ui/common/SingleRow'),
 	HeaderRow = require('ui/common/HeaderRow'),
-	//IIBIntroRow = require('ui/common/IIBIntroRow'),
-	//IAMIntroRow = require('ui/common/IAMIntroRow'),
+	IIBIntroRow = require('ui/common/IIBIntroRow'),
+	IAMIntroRow = require('ui/common/IAMIntroRow'),
 	PostGroup = require('ui/common/PostGroup'),
 	//PostTable = require('ui/common/PostTable'),
-	//Ad = require('ui/common/Ad'),
+	Ad = require('ui/common/Ad'),
 	//GetFeed = require('ui/common/GetFeed'),
 	//FormatDate = require('ui/common/FormatDate'),
 	//RSS = require('services/rss'),
 	WebView = require('ui/common/WebView'),
-	//StaticAd = require('ui/common/StaticAd');
+	StaticAd = require('ui/common/StaticAd');
 	Feed = require('ui/common/Feed');
 
 function ArticlesWindow(title, feed) {
@@ -49,7 +49,29 @@ var xhr = Ti.Network.createHTTPClient({
 					image: image
 				});
 			}
+			if (feed == Feeds.magazineFeed()){
+				var items = xml.documentElement.getElementsByTagName("item2");
+			   	var item = items.item(0);
+			   	var adList = [];
+			   	adList.push({                 
+		           ad: item.getElementsByTagName( 'ad').item(0).textContent,
+		           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+		                  
+				});
+				var ad = new StaticAd(adList);
+				self.add(ad);	
+			}
 			
+		var items = xml.documentElement.getElementsByTagName("item3");
+	   	var innerAdList = [];
+	   	for (var i = 0; i < items.length; i++) {
+	   		var item = items.item(i);
+		   	innerAdList.push({                 
+	           ad: item.getElementsByTagName( 'ad').item(0).textContent,
+	           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+	                  
+			});
+		}
 			var rows = [];
 			var group = [];
 			var featureSet = false;
@@ -61,8 +83,30 @@ var xhr = Ti.Network.createHTTPClient({
 			var tempDate = "";
 			for (var i = 0; i < data.length; i++) {
 				var post = new Post(data[i]);
+				//Add Feed's Intro Text
+				if (i == 0 && feed == Feeds.iowaInsiderFeed()){
+						var row = new IIBIntroRow();
+						rows.push(row);
+					}
 				
-				if(post.imageheight != null && post.imageheight > 150 && post.imageheight < 300 && featureSet == false ) {
+				if (i == 0 && feed == Feeds.magazineFeed()){
+						var row = new IAMIntroRow();
+						rows.push(row);
+					}
+				/*
+				//Add Feed's Ad
+				if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.iowaInsiderFeed()){
+					//var row = new Ad(innerAdList[adIndex]);
+					//rows.push(row);
+					adIndex++;
+				}
+				*/
+				if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
+					var row = new Ad(innerAdList[adIndex]);
+					rows.push(row);
+					adIndex++;
+				}
+				if(/*post.imageheight != null && post.imageheight > 150 && post.imageheight < 300 && */featureSet == false ) {
 					
 					var row = new FeatureRow(post);
 					featureSet = true;

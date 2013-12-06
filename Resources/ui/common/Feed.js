@@ -7,11 +7,13 @@ function Feed (){
 }
 
 Feed.prototype.eventsFeed = function(){
-	return 'http://iowalum.com/calendar/feed_xml.cfm';
+	//return 'http://iowalum.com/calendar/feed_xml.cfm';
+	return 'http://iowalum.com/calendar/eventsFeed.cfm';
 };
 
 Feed.prototype.magazineFeed = function(){
-	return 'http://iowalum.com/magazine/feed_xml.cfm';
+	//return 'http://iowalum.com/magazine/feed_xml.cfm';
+	return 'http://iowalum.com/magazine/magazineFeed.cfm';
 };
 
 
@@ -36,12 +38,14 @@ Feed.prototype.iowaCityFeed = function(){
 	return 'http://iowalum.com/membership/feed_xml.cfm';
 };
 
-Feed.prototype.mobileAlertsFeed = function(){
-	return 'http://iowalum.com/mobile-app/root_alert_feed.cfm';
+Feed.prototype.homeFeed = function(){
+	//return 'http://iowalum.com/mobile-app/root_alert_feed.cfm';
+	return 'http://iowalum.com/mobile-app/homeFeed.cfm';
 };
 
 Feed.prototype.todayEventsFeed = function(){
 	return 'http://iowalum.com/mobile-app/root_events_feed.cfm';
+	
 };
 
 Feed.prototype.articleOfTheWeekFeed = function(){

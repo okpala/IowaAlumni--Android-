@@ -10,7 +10,7 @@ function FeatureRow(post) {
 	this.containerheight = 0;
 
     var row = Ti.UI.createTableViewRow({
-		hasChild:true,
+		//hasChild:true,
 		link: post.url,
 		height: 355,
 		padding: 0,

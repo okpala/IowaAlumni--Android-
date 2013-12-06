@@ -36,7 +36,7 @@ function SingleRow(post) {
 	table.setData(data);
 
 	var row = Ti.UI.createTableViewRow({
-		hasChild: true,
+		//hasChild: true,
 		height: table.height+15,
 		padding: 0,
 		top: 0,

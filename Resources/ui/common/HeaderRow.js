@@ -36,7 +36,7 @@ function HeaderRow(post) {
 	table.setData(data);
  
 	var row = Ti.UI.createTableViewRow({
-		hasChild: true,
+		//hasChild: true,
 		height: table.height + 8,
 		padding: 0,
 		top: 0,

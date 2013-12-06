@@ -10,7 +10,7 @@ function Row(post) {
     this.postheight		= 0;
 
     var row = Ti.UI.createTableViewRow({
-		hasChild: 			true,
+		//hasChild: 			true,
 		link: 				post.url,
 		height: 			'auto',
 		padding: 			0,

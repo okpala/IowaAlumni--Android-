@@ -7,19 +7,17 @@ var WebView = require('ui/common/WebView');
 function Ad(post) {
 
     var row = Ti.UI.createTableViewRow({
-		hasChild:true,
+		//hasChild:true,
 		height: 70,
 		padding: 0,
 		top: 0,
 		bottom: 0,
 		layout: 'vertical',
-		backgroundColor: 'e2e2e2',
+		backgroundColor: '#e2e2e2',
 		borderRadius: 0.5,
 		selectionStyle: 'none'
 	});
-	row.rightImage = null;
-	row.backgroundSelectedImage = null;
-	row.backgroundFocusImage = null;
+
 
 	var container =  Titanium.UI.createView({
 		backgroundColor: 'transparent',

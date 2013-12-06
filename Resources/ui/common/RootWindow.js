@@ -1,13 +1,13 @@
 //var GetFeed = require('ui/common/GetFeed');
 var ApplicationWindow = require('ui/common/ApplicationWindow');
-//var SingleRow = require('ui/common/SingleRow');
+var SingleRow = require('ui/common/SingleRow');
 //var PostTable = require('ui/common/PostTable');
 var HomeImageSlider = require('ui/common/HomeImageSlider');
 var SinglePost = require('ui/common/SinglePost');
 var HomeSMSection = require('ui/common/HomeSMSection');
 //var Row = require('ui/common/Row');
 //var FormatDate = require('ui/common/FormatDate');
-//var StaticAd = require('ui/common/StaticAd');
+var StaticAd = require('ui/common/StaticAd');
 //var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
 var TodayEventsSection = require('ui/common/TodayEventsSection');
@@ -18,11 +18,14 @@ var ArticleOfTheWeekSection = require('ui/common/ArticleOfTheWeekSection');
  */
 function RootWindow(data) {
 	Ti.UI.backgroundColor = '#dddddd';
-var Feeds = new Feed(); 
-var url = Feeds.mobileAlertsFeed();
-var self = new ApplicationWindow("Home");
-var table = Ti.UI.createTableView();
-var rows = [];
+	var Feeds = new Feed(); 
+	var url = Feeds.homeFeed();
+	var self = new ApplicationWindow("Home");
+	var table = Ti.UI.createTableView({
+		selectionStyle: 'none',
+		bottom: 70
+		});
+	var rows = [];
 
  
 var xhr = Ti.Network.createHTTPClient({
@@ -46,7 +49,7 @@ var xhr = Ti.Network.createHTTPClient({
 		
     	var xml = this.responseXML;
 	   	var items = xml.documentElement.getElementsByTagName("item");
-	   	var item = items.item(0);
+	   	//var item = items.item(0);
 	   	var data = [];
 	   		for (var i = 0; i < items.length; i++) {
 	   			var item = items.item(i);
@@ -60,6 +63,50 @@ var xhr = Ti.Network.createHTTPClient({
 					
 					});
 			}
+		
+		var items = xml.documentElement.getElementsByTagName("item3");
+	   	var item = items.item(0);
+	   	var adList = [];
+	   	adList.push({                 
+           ad: item.getElementsByTagName( 'ad').item(0).textContent,
+           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+                  
+		});
+		var ad = new StaticAd(adList);
+		
+		
+		
+		var items = xml.documentElement.getElementsByTagName("item2");
+	   	var item = items.item(0);
+	   
+	  	var  article = [];
+	   		
+		article.push({                 
+            title: item.getElementsByTagName( 'title').item(0).textContent,
+            image: item.getElementsByTagName( 'image').item(0).textContent,
+            url: item.getElementsByTagName( 'link').item(0).textContent,
+            description: item.getElementsByTagName( 'description').item(0).textContent,
+            pubDate: item.getElementsByTagName( 'pubDate').item(0).textContent
+		});
+				
+		
+		var items = xml.documentElement.getElementsByTagName("item4");
+	   	var item = items.item(0);
+	   
+		var events = [];
+		for (var i = 0; i < items.length; i++) {
+			var item = items.item(i);
+			events.push({
+				snl: item.getElementsByTagName( 'snl').item(0).textContent,
+			    place: item.getElementsByTagName( 'place').item(0).textContent,
+			    title: item.getElementsByTagName( 'title').item(0).textContent,
+			    url: item.getElementsByTagName( 'link').item(0).textContent,
+			    description: item.getElementsByTagName( 'description').item(0).textContent,
+			    pubDate: item.getElementsByTagName( 'pubDate').item(0).textContent
+			});
+		}
+		
+		
 				
 		if (data.length > 0){
 		for (var i = 0; i < data.length; i++){
@@ -81,6 +128,28 @@ var xhr = Ti.Network.createHTTPClient({
 			}
 		}
 		
+		if(events.length > 0){
+			var eventHeaderLabel = Ti.UI.createLabel({
+				text: "Today's Events",
+				width: 300,
+				top: 10,
+				left: 10,
+				font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
+			});
+			
+			var row = Ti.UI.createTableViewRow();
+			row.add(eventHeaderLabel);
+			
+			rows.push(row);
+			
+			
+			for (var i = 0; i < events.length; i++) {
+				var row = new SingleRow (events[i]);
+				
+				rows.push(row);
+			}
+		} 	
+		
  	var events = new TodayEventsSection();
  	for (var i = 0; i < events.length; i++){
  		rows.push(events[i]);
@@ -99,8 +168,8 @@ var xhr = Ti.Network.createHTTPClient({
 		
 		rows.push(row);
 		
-		var article = new ArticleOfTheWeekSection();
-		rows.push(article);
+		var articlePost =  new SinglePost(article[0]);
+		rows.push(articlePost);
 		
 		
 		//rows.push(row);
@@ -110,6 +179,7 @@ var xhr = Ti.Network.createHTTPClient({
 		rows.push(row);
 		
     table.setData(rows);
+    self.add(ad);
     },
     onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);

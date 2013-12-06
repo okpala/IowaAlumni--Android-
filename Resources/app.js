@@ -61,8 +61,7 @@ if (Ti.version < 1.8 ) {
 	
 	var win = Titanium.UI.createWindow({
 		    backgroundColor:'#000',
-		    left: 0
-		    
+		    zIndex: 2
 	});
 	
 	var logorowHeight = 125;
@@ -152,11 +151,10 @@ if (Ti.version < 1.8 ) {
 
 	
 	win.open();
-	//var win2 = new GetFeed (Feed.mobileAlertsFeed(), home);
+	
+	
 	var win2 = new RootWindow();
-	//var win2 = new MemberCardWindow(memberCardTitle);
-	//var win2 = new ContactUsWindow(contactUsTitle);
-	//var win2 = new NationalBenefitsWindow();
+	
 	win2.open();
 	
 	tableView.addEventListener('click', function(e) {

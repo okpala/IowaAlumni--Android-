@@ -28,7 +28,7 @@ function PostGroup(rows) {
 	table.setData(rows);
 
 	var row = Ti.UI.createTableViewRow({
-		hasChild: true,
+		//hasChild: true,
 		height: height+15,
 		padding: 0,
 		top: 0,
