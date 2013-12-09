@@ -1,10 +1,9 @@
 Logfile initialized
-[DEBUG] /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py emulator UIowa Alumni /Users/localadmin/Public /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android) com.iowalum.uiowaalumni 4 WVGA800 armeabi-v7a
 [INFO] logfile = /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build.log
-[DEBUG] /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py simulator UIowa Alumni /Users/localadmin/Public /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android) com.iowalum.uiowaalumni 4 WVGA800
+[DEBUG] /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py emulator UIowa Alumni /Users/localadmin/Public /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android) com.iowalum.uiowaalumni 4 WVGA800 armeabi-v7a
+[INFO] Building UIowa Alumni for Android ... one moment
 [INFO] Launching Android emulator...one moment
 [DEBUG] From: /Users/localadmin/Public/tools/emulator
-[INFO] Building UIowa Alumni for Android ... one moment
 [DEBUG] SDCard: /Users/localadmin/.titanium/android2.sdcard
 [DEBUG] AVD ID: 4
 [DEBUG] AVD Skin: WVGA800
@@ -15,11 +14,11 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.025617 seconds on emulator to get ready
+[DEBUG] waited 0.024459 seconds on emulator to get ready
 [DEBUG] com.iowalum.uiowaalumni installed? True
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/ui/common/FeatureRow.js => /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/ui/common/FeatureRow.js
+[TRACE] COPYING MODIFIED FILE: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/ui/common/MemberCardWindow.js => /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/ui/common/MemberCardWindow.js
 [DEBUG] LiveView not enabled
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
@@ -224,7 +223,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.025000 seconds on emulator to get ready
+[DEBUG] waited 0.025494 seconds on emulator to get ready
 [INFO] Installing application on emulator
 [INFO] Launching application ... UIowa Alumni
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.iowalum.uiowaalumni/.UiowaAlumniActivity }

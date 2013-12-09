@@ -5,7 +5,7 @@ function WebView (link){
 		top:0
 		
 		});
-	var win2 = new NavigateWindow();
+	var win2 = new NavigateWindow("");
 	win2.add(webview);
 	win2.open();
 	    

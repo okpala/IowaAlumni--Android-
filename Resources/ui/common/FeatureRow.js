@@ -170,7 +170,7 @@ function getDescriptionLabel(description,postheight) {
 		left: 10,
 		top: 0,
 		bottom: 10,
-		height: 55,
+		height: 50,
 		textAlign:'left',
 		width: 260,
 		color:'#ffffff',

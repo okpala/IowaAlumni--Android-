@@ -138,7 +138,7 @@ function GameWatchWindow(clubData, clubInfoData) {
 	
 
 	table.addEventListener('click', function(e){
-		
+		/*
 		map = Ti.Map.createView({
 			mapType: Titanium.Map.STANDARD_TYPE,
 			region: {latitude: e.row.latitude, longitude: e.row.longitude,
@@ -152,8 +152,8 @@ function GameWatchWindow(clubData, clubInfoData) {
 		});
 		
 		self.add(map);
-		
-		map.selectAnnotation(gameWatchInfo[e.index]);
+		*/
+		//map.selectAnnotation(gameWatchInfo[e.index]);
 	});
 	
 

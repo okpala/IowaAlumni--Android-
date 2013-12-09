@@ -29,7 +29,7 @@
         </plist>
     </ios>
     <statusbar-hidden>false</statusbar-hidden>
-    <fullscreen>false</fullscreen>
+    <fullscreen>true</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
     <guid>0d268600-4584-4b3f-9837-3546725ec1e6</guid>
@@ -49,6 +49,12 @@
         <manifest>
             <uses-sdk android:targetSdkVersion="11"/>
             <supports-screens android:anyDensity="false"/>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+            
         </manifest>
     </android>
     <mobileweb>

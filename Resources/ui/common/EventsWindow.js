@@ -23,6 +23,7 @@ var Feeds = new Feed();
 var url = Feeds.eventsFeed();
 var self = new ApplicationWindow(title);
 var table = Ti.UI.createTableView({
+	separatorColor :'#e2e2e2',
 	bottom:70
 });
 var rows = [];
@@ -33,9 +34,9 @@ var xhr = Ti.Network.createHTTPClient({
     // Ti.API.debug(this.responseText);
     	var xml = this.responseXML;
 	   	var items = xml.documentElement.getElementsByTagName("item");
-	   	var item = items.item(0);
+	   	//var item = items.item(0);
 	   	var data = [];
-	   		for (var i = 0; i < items.length; i++) {
+	   		for (var i = 0; i < 10 /*items.length*/; i++) {
 	   			var item = items.item(i);
 	   			var image;
 				try {

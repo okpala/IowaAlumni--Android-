@@ -1,13 +1,14 @@
 var DateObject = require('ui/common/DateObject');
 var EditText = require('ui/common/EditText');
 var WebView = require('ui/common/WebView');
+var subTextHieght = 15;
 /*
  * Return a Single Post Area for Events Window
  * that contains Tilte, Time, and Place
  */
 
 function SingleRow(post) {
-
+	
    var table = Ti.UI.createTableView({
 		separatorColor: 	'#d5d5d5',
 		backgroundColor: 	'#ffffff',
@@ -44,6 +45,7 @@ function SingleRow(post) {
 		link: 				post.url,
 		layout: 'vertical',
 		selectionStyle: 'none',
+		
 		backgroundColor: '#e2e2e2'
 	});
 	//row.rightImage = null;
@@ -127,7 +129,7 @@ function getTitleLabel(title) {
 	return label;
 }
 
-
+/*
 function getpubDateLabel(pubDate) {
 
 	var text = Ti.UI.createLabel({
@@ -147,7 +149,7 @@ function getpubDateLabel(pubDate) {
 	return text;
 
 }
-
+*/
 function timeLabel (){
 
 	var text = Ti.UI.createLabel({
@@ -156,7 +158,7 @@ function timeLabel (){
 		top: 0,
 		textAlign:'left',
 		width: 200,
-		height: 20,
+		height: subTextHieght,
 		color:'#000000',
 		font:{fontFamily:'HelveticaNeue-Bold',fontSize:12,fontWeight:'bold'}
 	});
@@ -174,7 +176,7 @@ function getTime (snl){
 		top: 0,
 		textAlign:'left',
 		width: 200,
-		height: 20,
+		height: subTextHieght,
 		color:'#000000',
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
@@ -190,7 +192,7 @@ function getPlace (place){
 		left: 55,
 		bottom: 10,
 		top:0,
-		height: 20,
+		height: subTextHieght,
 		textAlign:'left',
 		width: 200,
 		color:'#000000',
@@ -205,7 +207,7 @@ function placeLabel (){
 
 	var text = Ti.UI.createLabel({
 		text: 'Place: ',
-		left: 15,
+		left: subTextHieght,
 		top: 0,
 		textAlign:'left',
 		width: 200,

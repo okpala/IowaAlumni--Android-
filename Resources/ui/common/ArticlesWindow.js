@@ -59,6 +59,7 @@ var xhr = Ti.Network.createHTTPClient({
 		                  
 				});
 				var ad = new StaticAd(adList);
+				table.bottom = 70;
 				self.add(ad);	
 			}
 			
