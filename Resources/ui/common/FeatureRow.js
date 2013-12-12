@@ -1,5 +1,6 @@
 var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
+var WebView = require('ui/common/WebView');
 /*
  * Post Object
  * Essential attributes

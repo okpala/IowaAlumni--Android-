@@ -20,6 +20,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 	
 	var data = [];
 	var rowCounter = 0;
+	var emailCounter = 0;
 	for (var i = 0; i <= clubInfoData.length - 1; i++) {
 		if (rowCounter % 2 == 0){
 		    var row = Ti.UI.createTableViewRow({
@@ -71,25 +72,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 		    currentTop = currentTop + 15;
 	    }
 	    if (clubInfoData[i].email != 'NA'){
-		    var emailLabel = Ti.UI.createLabel({
-		        text: (clubInfoData[i].email),
-		        textAlign: 'left',
-		        color: 'blue',
-		        left: 10,
-		        top: currentTop,
-		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
-		    });
-		    
-		   
-	    	emailLabel.addEventListener('click', function(e) {
-	    		//data[e.index].emailLabel.color = 'purple'
-	    		//Ti.API.info(e.row);
-				var emailDialog = Ti.UI.createEmailDialog();
-				emailDialog.toRecipients = [clubInfoData[e.index].email];
-				var f = Ti.Filesystem.getFile('cricket.wav');
-				emailDialog.addAttachment(f);
-				emailDialog.open();
-	}); 
+		    var emailLabel = createEmail(clubInfoData, i);
 	
 		    row.add(emailLabel);
 	    	currentTop = currentTop + 15;
@@ -126,6 +109,37 @@ return self;
 }
 
 //Helper Functions
+
+function createEmail(clubInfoData, index){
+	var emailLabel = Ti.UI.createLabel({
+		        text: (clubInfoData[index].email),
+		        textAlign: 'left',
+		        color: 'blue',
+		        left: 10,
+		        top: currentTop,
+		        
+		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		    });
+		    
+		   
+	    	emailLabel.addEventListener('click', function(e) {
+	    		
+	    		
+	    		Ti.API.info(clubInfoData[index].email);
+	    		//Ti.API.info(clubInfoData[e.index].email);
+	    		
+				var emailDialog = Ti.UI.createEmailDialog();
+				emailDialog.toRecipients = clubInfoData[emailCounter].email;
+				Ti.API.info(clubInfoData[e.index].email);
+				var f = Ti.Filesystem.getFile('cricket.wav');
+				emailDialog.addAttachment(f);
+				emailDialog.open();
+				
+			}); 
+			
+		return emailLabel;	
+	
+}
 
 function addRows(i, data, flag){
 	if (i == 1 && flag == true){

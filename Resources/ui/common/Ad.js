@@ -47,7 +47,7 @@ function Ad(post) {
 	row.add(container);
 	
 	row.addEventListener('click', function(e) {
-		new WebView (post.link );
+		new WebView (post.adUrl );
 	});
 	
 	return row;

@@ -22,7 +22,7 @@ function ArticlesWindow(title, feed) {
 var Feeds = new Feed(); 
 var url = feed;
 var self = new ApplicationWindow(title);
-var table = Ti.UI.createTableView();
+var table = Ti.UI.createTableView({separatorColor :'#e2e2e2'});
 var rows = [];
 
  

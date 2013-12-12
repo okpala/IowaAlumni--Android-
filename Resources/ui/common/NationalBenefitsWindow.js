@@ -59,7 +59,7 @@ var xhr = Ti.Network.createHTTPClient({
 	
     var xml = this.responseXML;
 	var items = xml.documentElement.getElementsByTagName("item");
-	var item = items.item(0);
+	//var item = items.item(0);
 	var discount = [];
 	for (var i = 0; i < items.length; i++) {
 			var item = items.item(i);
@@ -69,6 +69,7 @@ var xhr = Ti.Network.createHTTPClient({
 			link:  item.getElementsByTagName('link').item(0).textContent,//getRssText(item, 'link'),
 			description: item.getElementsByTagName('description').item(0).textContent,//getRssText(item, 'description')
 		});
+	}
 	var data = [];
 	for (var i = 0; i <= discount.length - 1; i++) {
 		if (i % 2 == 0){
@@ -109,14 +110,13 @@ var xhr = Ti.Network.createHTTPClient({
 	});
 	
 
-	table.setData(data);
 	
+	
+	self.add(textView);  
 	textView.add(linkLabel);
-	
+	table.setData(data);
 	self.add(table);
-	}
-	
-	self.add(textView);  		
+			
     },
     onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);
