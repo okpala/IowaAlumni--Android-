@@ -72,7 +72,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 		    currentTop = currentTop + 15;
 	    }
 	    if (clubInfoData[i].email != 'NA'){
-		    var emailLabel = createEmail(clubInfoData, i);
+		    var emailLabel = createEmail(clubInfoData, i, currentTop);
 	
 		    row.add(emailLabel);
 	    	currentTop = currentTop + 15;
@@ -80,19 +80,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 	    }
 	    
 	    if (clubInfoData[i].web != 'NA'){
-		    var webLabel = Ti.UI.createLabel({
-		        text: (clubInfoData[i].web),
-		        textAlign: 'left',
-		        left: 10,
-		        top: currentTop,
-		        color: "blue",
-		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
-		    });
-		   
-		    
-		    webLabel.addEventListener('click', function(e) {
-				new WebView (clubInfoData[e.index].web);
-			}); 
+		    var webLabel =  createWeb(clubInfoData, i, currentTop);
 			row.add(webLabel);
 	    }
 	   rowCounter++;
@@ -110,7 +98,7 @@ return self;
 
 //Helper Functions
 
-function createEmail(clubInfoData, index){
+function createEmail(clubInfoData, index, currentTop){
 	var emailLabel = Ti.UI.createLabel({
 		        text: (clubInfoData[index].email),
 		        textAlign: 'left',
@@ -129,8 +117,8 @@ function createEmail(clubInfoData, index){
 	    		//Ti.API.info(clubInfoData[e.index].email);
 	    		
 				var emailDialog = Ti.UI.createEmailDialog();
-				emailDialog.toRecipients = clubInfoData[emailCounter].email;
-				Ti.API.info(clubInfoData[e.index].email);
+				emailDialog.toRecipients = [clubInfoData[index].email];
+				Ti.API.info(clubInfoData[index].email);
 				var f = Ti.Filesystem.getFile('cricket.wav');
 				emailDialog.addAttachment(f);
 				emailDialog.open();
@@ -138,6 +126,25 @@ function createEmail(clubInfoData, index){
 			}); 
 			
 		return emailLabel;	
+	
+}
+
+function createWeb(clubInfoData, index, currentTop){
+	var webLabel = Ti.UI.createLabel({
+		        text: (clubInfoData[index].web),
+		        textAlign: 'left',
+		        left: 10,
+		        top: currentTop,
+		        color: "blue",
+		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		    });
+		   
+		    
+		    webLabel.addEventListener('click', function(e) {
+				new WebView (clubInfoData[index].web);
+			}); 
+			
+		return webLabel;	
 	
 }
 

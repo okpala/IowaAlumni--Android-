@@ -4,7 +4,7 @@ function ApplicationWindow(windowtitle) {
 	    backgroundColor:'#e2e2e2',
 		navBarHidden: false,
 		//barColor:'#99cc66',
-		zIndex: 4
+		
 		
 	});
 

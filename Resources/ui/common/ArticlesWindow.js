@@ -28,10 +28,11 @@ var rows = [];
  
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
-    // Ti.API.debug(this.responseText);
+    	
     	var xml = this.responseXML;
 	   	var items = xml.documentElement.getElementsByTagName("item");
-	   	var item = items.item(0);
+	   	//var item = items.item(0);
+	   	
 	   	var data = [];
 	   		for (var i = 0; i < items.length; i++) {
 	   			var item = items.item(i);
@@ -42,13 +43,14 @@ var xhr = Ti.Network.createHTTPClient({
 					image = '';
 				}
 	   			data.push({
-					title: item.getElementsByTagName('title').item(0).textContent,//getRssText(item, 'title'),
-					link: item.getElementsByTagName('link').item(0).textContent,//getRssText(item, 'link'),
-					description: item.getElementsByTagName('description').item(0).textContent,//getRssText(item, 'description'),
-					pubDate: item.getElementsByTagName('pubDate').item(0).textContent,//getRssText(item, 'pubDate'),
+					title: item.getElementsByTagName('title').item(0).textContent,
+					link: item.getElementsByTagName('link').item(0).textContent,
+					description: item.getElementsByTagName('description').item(0).textContent,
+					pubDate: item.getElementsByTagName('pubDate').item(0).textContent,
 					image: image
 				});
 			}
+		
 			if (feed == Feeds.magazineFeed()){
 				var items = xml.documentElement.getElementsByTagName("item2");
 			   	var item = items.item(0);
@@ -61,18 +63,20 @@ var xhr = Ti.Network.createHTTPClient({
 				var ad = new StaticAd(adList);
 				table.bottom = 70;
 				self.add(ad);	
+				
+				var items = xml.documentElement.getElementsByTagName("item3");
+			   	var innerAdList = [];
+			   	for (var i = 0; i < items.length; i++) {
+			   		var item = items.item(i);
+				   	innerAdList.push({                 
+			           ad: item.getElementsByTagName( 'ad').item(0).textContent,
+			           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+			                  
+					});
+				}
 			}
 			
-		var items = xml.documentElement.getElementsByTagName("item3");
-	   	var innerAdList = [];
-	   	for (var i = 0; i < items.length; i++) {
-	   		var item = items.item(i);
-		   	innerAdList.push({                 
-	           ad: item.getElementsByTagName( 'ad').item(0).textContent,
-	           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
-	                  
-			});
-		}
+			
 			var rows = [];
 			var group = [];
 			var featureSet = false;
@@ -84,6 +88,8 @@ var xhr = Ti.Network.createHTTPClient({
 			var tempDate = "";
 			for (var i = 0; i < data.length; i++) {
 				var post = new Post(data[i]);
+				
+				
 				//Add Feed's Intro Text
 				if (i == 0 && feed == Feeds.iowaInsiderFeed()){
 						var row = new IIBIntroRow();
@@ -94,20 +100,21 @@ var xhr = Ti.Network.createHTTPClient({
 						var row = new IAMIntroRow();
 						rows.push(row);
 					}
-				/*
+				
 				//Add Feed's Ad
-				if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.iowaInsiderFeed()){
+				//if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.iowaInsiderFeed()){
 					//var row = new Ad(innerAdList[adIndex]);
 					//rows.push(row);
-					adIndex++;
-				}
-				*/
+					//adIndex++;
+				//}
+				
 				if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
 					var row = new Ad(innerAdList[adIndex]);
 					rows.push(row);
 					adIndex++;
 				}
-				if(/*post.imageheight != null && post.imageheight > 150 && post.imageheight < 300 && */featureSet == false ) {
+				
+				if(featureSet == false ) {
 					
 					var row = new FeatureRow(post);
 					featureSet = true;
@@ -134,12 +141,9 @@ var xhr = Ti.Network.createHTTPClient({
 						groupCount++;
 					}
 				}
-				
+				/* */
 				Counter++;
-				//tempDate = post.pubDate;
-				
-				
-				
+					
 			}
 			
 
@@ -163,5 +167,5 @@ xhr.send();
 self.add(table);
 return self;
 }
-
+/*post.imageheight != null && post.imageheight > 150 && post.imageheight < 300 && */
 module.exports = ArticlesWindow;

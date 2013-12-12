@@ -15,7 +15,7 @@ var xhr = Ti.Network.createHTTPClient({
     onload: function() {
     var textView = Ti.UI.createView({
 		//backgroundColor: 	'#ebc22f',//#ebc22f  e2e2e2
-		backgroundImage:	'gray-broder.png',
+		backgroundImage:	Ti.Filesystem.resourcesDirectory +'gray-broder.png',
 		height:				90,
 		width:				316,
 		top:				0,

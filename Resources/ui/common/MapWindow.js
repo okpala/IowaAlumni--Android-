@@ -1,12 +1,12 @@
-var GetFeed = require('ui/common/GetFeed');
-var ApplicationWindow = require('ui/common/ApplicationWindow');
+//var GetFeed = require('ui/common/GetFeed');
+//var ApplicationWindow = require('ui/common/ApplicationWindow');
 var NavigateWindow = require('ui/common/NavigateWindow');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
 function MapWindow() {
 	var Feeds = new Feed(); 
 var url = Feeds.iowaCityFeed();
-var self = new ApplicationWindow("Iowa City Benefits");
+var self = new NavigateWindow("Iowa City Benefits");
 var table = Ti.UI.createTableView();
 var rows = [];	
 
