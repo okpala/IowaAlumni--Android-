@@ -1,59 +1,173 @@
 Logfile initialized
-[INFO] logfile = /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build.log
-[DEBUG] /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py emulator UIowa Alumni /Users/localadmin/Public /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android) com.iowalum.uiowaalumni 4 WVGA800 armeabi-v7a
-[INFO] Building UIowa Alumni for Android ... one moment
-[INFO] Launching Android emulator...one moment
-[DEBUG] From: /Users/localadmin/Public/tools/emulator
-[DEBUG] SDCard: /Users/localadmin/.titanium/android2.sdcard
-[DEBUG] AVD ID: 4
-[DEBUG] AVD Skin: WVGA800
-[DEBUG] AVD ABI: armeabi-v7a
-[DEBUG] SDK: /Users/localadmin/Public
-[INFO] Emulator is running.
+[INFO] logfile = /Users/charlesokpala/IowaAlumni--Android-/build.log
+[DEBUG] /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py install UIowa Alumni /Users/charlesokpala /Users/charlesokpala/IowaAlumni--Android- com.iowalum.uiowaalumni 2
 [INFO] Titanium SDK version: 3.1.3 (09/18/13 12:00 222f4d1)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.024459 seconds on emulator to get ready
-[DEBUG] com.iowalum.uiowaalumni installed? True
+[DEBUG] waited 3.646757 seconds on emulator to get ready
+[INFO] Waiting for the Android Emulator to become available
+[DEBUG] com.iowalum.uiowaalumni installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/ui/common/MemberCardWindow.js => /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/ui/common/MemberCardWindow.js
+[INFO] Detected change in tiapp.xml, or assets deleted. Forcing full re-build...
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/0c0c0c.jpg => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/0c0c0c.jpg
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/android/appicon.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/appicon.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/android/default.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/default.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/app.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/app.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/back.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/back.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/back_old.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/back_old.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/backbutton.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/backbutton.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/black.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/black.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/blackarr.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/blackarr.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/blue.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/blue.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/clubs.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/clubs.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/clubsselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/clubsselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/dark.jpg => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/dark.jpg
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/events.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/events.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/eventsselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/eventsselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/facebook.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/facebook.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/feed.xml => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/feed.xml
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/fourquare.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/fourquare.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/gold-broder.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/gold-broder.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/gold.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/gold.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/goldover.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/goldover.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/gray-broder.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/gray-broder.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/herky.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/herky.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/home.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/home.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/homeselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/homeselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/images/homeselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/images/homeselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/images/refresh_icon.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/images/refresh_icon.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/info.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/info.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/infoselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/infoselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/insider.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/insider.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/insiderselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/insiderselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/instagram.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/instagram.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/IowaAlumniApp.sublime-project => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/IowaAlumniApp.sublime-project
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/IowaAlumniApp.sublime-workspace => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/IowaAlumniApp.sublime-workspace
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/KS_nav_ui.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/KS_nav_ui.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/KS_nav_views.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/KS_nav_views.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/linkedin.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/linkedin.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/loading.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/loading.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/logo.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/logo.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/magazine.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/magazine.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/magazineselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/magazineselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/memberbenefits.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/memberbenefits.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/memberbenefitsselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/memberbenefitsselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/membercard.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/membercard.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/membercardselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/membercardselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/menu.jpg => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/menu.jpg
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/menubg.jpg => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/menubg.jpg
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/menubutton.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/menubutton.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/menubuttonselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/menubuttonselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/navbar.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/navbar.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/navbar_old.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/navbar_old.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/newmenubutton.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/newmenubutton.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/newmenubutton.psd => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/newmenubutton.psd
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/newmenubutton_old.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/newmenubutton_old.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/newmenubuttonselected.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/newmenubuttonselected.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/newmenubuttonselected.psd => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/newmenubuttonselected.psd
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/newmenubuttonselected_old.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/newmenubuttonselected_old.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/overshadow.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/overshadow.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/overshadow2.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/overshadow2.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/overshadow3.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/overshadow3.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/overshadow4.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/overshadow4.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/people.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/people.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/pinterest.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/pinterest.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/pressed.jpg => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/pressed.jpg
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/services/JSON.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/services/JSON.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/services/rss.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/services/rss.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/shadow.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/shadow.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/tagline.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/tagline.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/tagline_1.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/tagline_1.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/thawk.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/thawk.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/tv.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/tv.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/twitter.png => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/twitter.png
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/Ad.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/Ad.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/ApplicationWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/ApplicationWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/ArticleOfTheWeekSection.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/ArticleOfTheWeekSection.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/ArticlesWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/ArticlesWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/CachedImageView.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/CachedImageView.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/ClubsWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/ClubsWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/ContactUsWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/ContactUsWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/DateObject.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/DateObject.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/Description.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/Description.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/DetailView.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/DetailView.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/EditText.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/EditText.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/EventsWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/EventsWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/FeatureRow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/FeatureRow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/Feed.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/Feed.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/FormatDate.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/FormatDate.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/GameWatchWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/GameWatchWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/GetFeed.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/GetFeed.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/HeaderRow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/HeaderRow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/HomeImageSlider.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/HomeImageSlider.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/HomeSMSection.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/HomeSMSection.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/IAMIntroRow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/IAMIntroRow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/IIBIntroRow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/IIBIntroRow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/ImageCaching.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/ImageCaching.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/MapWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/MapWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/MasterView.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/MasterView.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/MemberCardWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/MemberCardWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/MenuRow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/MenuRow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/NationalBenefitsWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/NationalBenefitsWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/NavigateWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/NavigateWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/Post.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/Post.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/PostGroup.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/PostGroup.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/PostTable.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/PostTable.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/RootWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/RootWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/Row.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/Row.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/SinglePost.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/SinglePost.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/SingleRow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/SingleRow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/SocialMediaIcons.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/SocialMediaIcons.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/StatesWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/StatesWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/StaticAd.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/StaticAd.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/TabNavWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/TabNavWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/TextPost.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/TextPost.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/TodayEventsSection.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/TodayEventsSection.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/common/WebView.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/WebView.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/handheld/android/ApplicationWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/handheld/android/ApplicationWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/handheld/ios/ApplicationWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/handheld/ios/ApplicationWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/handheld/mobileweb/ApplicationWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/handheld/mobileweb/ApplicationWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/ui/tablet/ApplicationWindow.js => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/tablet/ApplicationWindow.js
+[TRACE] COPYING CREATED FILE: /Users/charlesokpala/IowaAlumni--Android-/Resources/Untitled-5.jpg => /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/Untitled-5.jpg
 [DEBUG] LiveView not enabled
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
-[DEBUG] copying app icon: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/appicon.png
+[DEBUG] app stylesheet => /Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/ApplicationStylesheet.java
+[DEBUG] copying app icon: /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/appicon.png
 [DEBUG] generating theme.xml
-[DEBUG] found drawable-long-land-hdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-land-hdpi/default.png
-[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-land-hdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-long-land-hdpi/background.png
-[DEBUG] found drawable-long-land-ldpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-land-ldpi/default.png
-[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-land-ldpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-long-land-ldpi/background.png
-[DEBUG] found drawable-long-port-hdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-port-hdpi/default.png
-[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-port-hdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-long-port-hdpi/background.png
-[DEBUG] found drawable-long-port-ldpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-port-ldpi/default.png
-[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-long-port-ldpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-long-port-ldpi/background.png
-[DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-hdpi/default.png
-[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-hdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-land-hdpi/background.png
-[DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-ldpi/default.png
-[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-ldpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-land-ldpi/background.png
-[DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-mdpi/default.png
-[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-land-mdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-land-mdpi/background.png
-[DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-hdpi/default.png
-[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-hdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-port-hdpi/background.png
-[DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-ldpi/default.png
-[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-ldpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-port-ldpi/background.png
-[DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-mdpi/default.png
-[DEBUG] copying /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/Resources/android/images/res-notlong-port-mdpi/default.png splash screen to /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/res/drawable-notlong-port-mdpi/background.png
-[DEBUG] found splash screen at /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/assets/Resources/default.png
+[DEBUG] found drawable-long-land-hdpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-long-land-hdpi/default.png
+[DEBUG] copying /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-long-land-hdpi/default.png splash screen to /Users/charlesokpala/IowaAlumni--Android-/build/android/res/drawable-long-land-hdpi/background.png
+[DEBUG] found drawable-long-land-ldpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-long-land-ldpi/default.png
+[DEBUG] copying /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-long-land-ldpi/default.png splash screen to /Users/charlesokpala/IowaAlumni--Android-/build/android/res/drawable-long-land-ldpi/background.png
+[DEBUG] found drawable-long-port-hdpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-long-port-hdpi/default.png
+[DEBUG] copying /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-long-port-hdpi/default.png splash screen to /Users/charlesokpala/IowaAlumni--Android-/build/android/res/drawable-long-port-hdpi/background.png
+[DEBUG] found drawable-long-port-ldpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-long-port-ldpi/default.png
+[DEBUG] copying /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-long-port-ldpi/default.png splash screen to /Users/charlesokpala/IowaAlumni--Android-/build/android/res/drawable-long-port-ldpi/background.png
+[DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-land-hdpi/default.png
+[DEBUG] copying /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-land-hdpi/default.png splash screen to /Users/charlesokpala/IowaAlumni--Android-/build/android/res/drawable-notlong-land-hdpi/background.png
+[DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-land-ldpi/default.png
+[DEBUG] copying /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-land-ldpi/default.png splash screen to /Users/charlesokpala/IowaAlumni--Android-/build/android/res/drawable-notlong-land-ldpi/background.png
+[DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-land-mdpi/default.png
+[DEBUG] copying /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-land-mdpi/default.png splash screen to /Users/charlesokpala/IowaAlumni--Android-/build/android/res/drawable-notlong-land-mdpi/background.png
+[DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-port-hdpi/default.png
+[DEBUG] copying /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-port-hdpi/default.png splash screen to /Users/charlesokpala/IowaAlumni--Android-/build/android/res/drawable-notlong-port-hdpi/background.png
+[DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-port-ldpi/default.png
+[DEBUG] copying /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-port-ldpi/default.png splash screen to /Users/charlesokpala/IowaAlumni--Android-/build/android/res/drawable-notlong-port-ldpi/background.png
+[DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-port-mdpi/default.png
+[DEBUG] copying /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-port-mdpi/default.png splash screen to /Users/charlesokpala/IowaAlumni--Android-/build/android/res/drawable-notlong-port-mdpi/background.png
+[DEBUG] found splash screen at /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/assets/Resources/default.png
 [TRACE] Writing out AndroidManifest.xml
-[DEBUG] adding /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/R.java to javac build list
-[DEBUG] adding /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniActivity.java to javac build list
-[DEBUG] adding /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniAppInfo.java to javac build list
-[DEBUG] adding /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniApplication.java to javac build list
-[DEBUG] Building Java Sources: "/Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/R.java" "/Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniActivity.java" "/Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniAppInfo.java" "/Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniApplication.java"
+[DEBUG] adding /Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/ApplicationStylesheet.java to javac build list
+[DEBUG] adding /Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/R.java to javac build list
+[DEBUG] adding /Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniActivity.java to javac build list
+[DEBUG] adding /Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniAppInfo.java to javac build list
+[DEBUG] adding /Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniApplication.java to javac build list
+[DEBUG] Building Java Sources: "/Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/ApplicationStylesheet.java" "/Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/R.java" "/Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniActivity.java" "/Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniAppInfo.java" "/Users/charlesokpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniApplication.java"
 [INFO] Compiling Android Resources... This could take some time
 [DEBUG] Android classes.dex built
-[DEBUG] creating unsigned apk: /Users/localadmin/IowaAlumni (Android)/IowaAlumni (Android)/build/android/bin/app-unsigned.apk
+[DEBUG] creating unsigned apk: /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/app-unsigned.apk
 [DEBUG] from resource zip => assets/Resources/images/homeselected.png
 [DEBUG] from resource zip => assets/Resources/images/refresh_icon.png
 [DEBUG] from resource zip => assets/Resources/services/JSON.js
@@ -196,36 +310,33 @@ Logfile initialized
 [DEBUG] from resource zip => res/drawable-notlong-port-hdpi/background.png
 [DEBUG] from resource zip => res/drawable-notlong-port-ldpi/background.png
 [DEBUG] from resource zip => res/drawable-notlong-port-mdpi/background.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/thirdparty.jar => org/apache/Commons-NOTICE.txt
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/thirdparty.jar => org/apache/HttpComponents-NOTICE.txt
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/thirdparty.jar => org/apache/mime4j-NOTICE.txt
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/build.properties
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/background.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_18.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_48.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_64.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_18.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_48.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_64.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_normal.9.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_pressed.9.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_selected.9.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/default_icon.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/photoDefault.png
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/binding.js
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/binding.min.js
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/json2.js
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.js
-[DEBUG] from JAR /Users/localadmin/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.min.js
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/thirdparty.jar => org/apache/Commons-NOTICE.txt
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/thirdparty.jar => org/apache/HttpComponents-NOTICE.txt
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/thirdparty.jar => org/apache/mime4j-NOTICE.txt
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/binding.js
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/binding.min.js
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/json2.js
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.js
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.min.js
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/build.properties
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/background.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_18.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_48.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_check_buttonless_on_64.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_18.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_48.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_more_64.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_normal.9.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_pressed.9.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/btn_picker_selected.9.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/default_icon.png
+[DEBUG] from JAR /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/photoDefault.png
 [DEBUG] installing native SDK libs
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.025494 seconds on emulator to get ready
-[INFO] Installing application on emulator
-[INFO] Launching application ... UIowa Alumni
-[TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.iowalum.uiowaalumni/.UiowaAlumniActivity }
-
-[INFO] Deployed UIowa Alumni ... Application should be running.
+[DEBUG] waited 0.019597 seconds on emulator to get ready
+[INFO] Installing application on device
+[INFO] Application installed. Launch from drawer on Home Screen
