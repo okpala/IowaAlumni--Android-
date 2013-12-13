@@ -58,10 +58,41 @@ if (Ti.version < 1.8 ) {
 	var Feeds = new Feed();
 	var GetFeed = require('ui/common/GetFeed');
 	var Window = require('ui/handheld/android/ApplicationWindow');
+	var Analytics = require('Ti.Google.Analytics');
 	
 	var win = Titanium.UI.createWindow({
 		    backgroundColor:'#000',
 		    exitOnClose: true,
+	});
+	
+	var analytics = new Analytics('UA-46448216-1'); //replace it with your Google Analytics ID
+  
+	analytics.reset();
+	  
+	Titanium.App.addEventListener('analytics_trackEvent', function(e){
+	    analytics.trackEvent(e.category, e.action, e.label, e.value);
+	});
+	  
+	Titanium.App.addEventListener('analytics_trackPageview', function(e){
+	    var pagename = (e.pageUrl);
+	    analytics.trackPageview(pagename);
+	});
+	  
+	Titanium.App.Analytics = {
+	    trackPageview:function(pageUrl){
+	        Titanium.App.fireEvent('analytics_trackPageview', {pageUrl:pageUrl});
+	    },
+	    trackEvent:function(category, action, label, value){
+	        Titanium.App.fireEvent('analytics_trackEvent', {category:category, action:action, label:label, value:value});
+	    }
+	};
+  
+	// Function takes an integer which is the dispatch interval in seconds
+	analytics.start(10);
+	  
+	// You don't need to call stop on application close, but this is just to show you can call stop at any time (Basically sets enabled = false)
+	Titanium.App.addEventListener('close', function(e){
+	    analytics.stop();
 	});
 	
 	var logorowHeight = 125;

@@ -12,6 +12,7 @@ var StaticAd = require('ui/common/StaticAd');
 var Feed = require('ui/common/Feed');
 var TodayEventsSection = require('ui/common/TodayEventsSection');
 var ArticleOfTheWeekSection = require('ui/common/ArticleOfTheWeekSection');
+var Analytics = require('Ti.Google.Analytics');
 
 /*
  * Home Window

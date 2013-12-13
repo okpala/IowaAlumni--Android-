@@ -1,11 +1,16 @@
+var Analytics = require('Ti.Google.Analytics');
+
 function ApplicationWindow(windowtitle) {
-	
+	var analytics = new Analytics('UA-46448216-1');
 	var self = Ti.UI.createWindow({
 	    backgroundColor:'#e2e2e2',
-		navBarHidden: false,
-		//barColor:'#99cc66',
-		
-		
+		navBarHidden: false,		
+	});
+	
+	// track page view on focus
+	self.addEventListener('open', function(e){
+	    Titanium.App.Analytics.trackPageview('all-listings/list-view');
+	    analytics.trackPageview(windowtitle);
 	});
 
 	var navbar = Ti.UI.createImageView({
