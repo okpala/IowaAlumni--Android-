@@ -1,11 +1,15 @@
 var ApplicationWindow = require('ui/common/ApplicationWindow');
 var GetFeed = require('ui/common/GetFeed');
 var Feed = require('ui/common/Feed');
-
-function  MemberCardWindow(title){
+var LoadingScreen = require('ui/common/LoadingScreen');
+function  MemberCardWindow(title, tracker){
 	var Feeds = new Feed();
-	
+	tracker.trackScreen(title);
 	var self = new ApplicationWindow(title);
+	var loading = new LoadingScreen();
+
+	self.add(loading);
+	loading.show();
 	var xhr = Ti.Network.createHTTPClient({
     onload: function(e) {
     	var passwordWin = Ti.UI.createView({
@@ -28,6 +32,7 @@ function  MemberCardWindow(title){
 		
 		var passwordLabel = Ti.UI.createLabel({
 		text: "Please enter your UIAA members-only password below to access your member card.",
+		color: "#000000",
 		height:'auto',
 		width: 300,
 		textAlign: 'center',
@@ -38,6 +43,7 @@ function  MemberCardWindow(title){
 	
 	var passwordHeaderLabel = Ti.UI.createLabel({
 		text: "Forgot the Password?",
+		color: "#000000",
 		width: 300,
 		top: 120,
 		textAlign: 'left',
@@ -47,6 +53,7 @@ function  MemberCardWindow(title){
 	
 	var passwordInfoLabel = Ti.UI.createLabel({
 		text: "Let us know via email (alumni-member@uiowa.edu) and we will send it to you promptly during regular business hours. Type 'members-only password' in the subject line of your message and include your first and last name, city, and state.",
+		color: "#000000",
 		height:'auto',
 		width: 300,
 		top: 135,
@@ -55,10 +62,10 @@ function  MemberCardWindow(title){
 	});
 	
 	var passwordTextField = Ti.UI.createTextField({
-  		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-  		//color: '#336699',
+  		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+  		color: '#000000',
   		passwordMask: true,
-  		top: 60,
+  		top: 50,
   		left: 90,
   		width: 140, 
   		height: 20
@@ -66,8 +73,8 @@ function  MemberCardWindow(title){
 	var loginButton = Ti.UI.createButton({
 		title:'Login',
 		//width: 50,
-		height:25,
-		top: 82,
+		height:35,
+		top: 72,
   		left: 130,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 		
@@ -77,7 +84,7 @@ function  MemberCardWindow(title){
 		  font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'},
 		  message: 'Checking Password...',
 		  style: Ti.UI.ActivityIndicatorStyle.DARK,
-		  top:105,
+		  top:95,
 		  left:90,
 		  height:'auto',
 		  width:'auto'
@@ -93,7 +100,7 @@ function  MemberCardWindow(title){
 		height:'auto',
 		width: 310,
 		color:'#FF0000',
-		top: 105,
+		top: 95,
   		left: 10,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
@@ -184,11 +191,14 @@ function  MemberCardWindow(title){
 	
 	
 	self.add(passwordWin);
-		
+	self.remove(loading);	
     },
     onerror: function(e) {
-		Ti.API.info('error, HTTP status = '+this.status);
-		alert(e.error);
+    	self.remove(loading);
+		Ti.API.debug("STATUS: " + this.status);
+	    Ti.API.debug("TEXT:   " + this.responseText);
+	    Ti.API.debug("ERROR:  " + e.error);
+	    alert('There was an error retrieving the remote data. Try again.');
     },
     timeout:5000  /* in milliseconds */
 });

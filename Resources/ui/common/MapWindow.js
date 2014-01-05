@@ -1,14 +1,22 @@
-var GetFeed = require('ui/common/GetFeed');
-var ApplicationWindow = require('ui/common/ApplicationWindow');
+//var GetFeed = require('ui/common/GetFeed');
+//var ApplicationWindow = require('ui/common/ApplicationWindow');
 var NavigateWindow = require('ui/common/NavigateWindow');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
-function MapWindow() {
+var LoadingScreen = require('ui/common/LoadingScreen');
+
+function MapWindow(title, tracker) {
 	var Feeds = new Feed(); 
 var url = Feeds.iowaCityFeed();
-var self = new ApplicationWindow("Iowa City Benefits");
+var self = new NavigateWindow(title);
 var table = Ti.UI.createTableView();
 var rows = [];	
+tracker.trackScreen(title);
+
+tracker.trackScreen(title);
+var loading = new LoadingScreen();
+
+self.add(loading);
 
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
@@ -63,17 +71,7 @@ var xhr = Ti.Network.createHTTPClient({
 		top: 0
 	});
 	
-	
-	
-	map.addEventListener('loading', function(e){
-		map.setLocation({latitude: companyInfo[0].latitude , longitude: companyInfo[0].longitude,
-				latitudeDelta: 0.01, longitudeDelta: 0.01 });	
-	});
-	map.addEventListener('postlayout', function(e){
-		map.setLocation({latitude: companyInfo[0].latitude , longitude: companyInfo[0].longitude,
-				latitudeDelta: 0.01, longitudeDelta: 0.01 });	
-	});
-	
+
 
 	
 	var textView = Ti.UI.createView({
@@ -83,7 +81,8 @@ var xhr = Ti.Network.createHTTPClient({
 		
 	});
 	var introLabel = Ti.UI.createLabel({
-			 text: ('UI Alumni Association members have').concat('\nan array of available to them. Use your member benefit card at any of these locations.'),
+			 text: ('UI Alumni Association members have array of benfits available to them. Use your member benefit card at any of these locations.'),
+			 color: "#000000",
 			 textAlign: 'left',
 			 left: 10,
 			 width: 300,
@@ -94,10 +93,10 @@ var xhr = Ti.Network.createHTTPClient({
 	textView.add(introLabel);	
 	
 	var linkLabel = Ti.UI.createLabel({
-			 text: 'benefits',
+			 text: 'Benefits',
 			 textAlign: 'left',
-			 left: 236.5,
-			 top: 10,
+			 right: 10,
+			 bottom: 10,
 			 color: 'blue',
 			font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 			        
@@ -121,6 +120,7 @@ var xhr = Ti.Network.createHTTPClient({
 		    	company: businessesInfo[i].company,
 		    	latitude:  businessesInfo[i].latitude,
 				longitude: businessesInfo[i].longitude,
+				index: i,
 		        height: 'auto',
 		        bottom: 10,
 		    });
@@ -137,6 +137,7 @@ var xhr = Ti.Network.createHTTPClient({
 		}
 	    var companyLabel = Ti.UI.createLabel({
 	        text: (businessesInfo[i].company),
+	        color: "#000000",
 	        textAlign: 'left',
 	        height: 20,
 	        top: 10,
@@ -145,6 +146,7 @@ var xhr = Ti.Network.createHTTPClient({
 	    });
 	    var discountLabel = Ti.UI.createLabel({
 	        text: (businessesInfo[i].discount),
+	        color: "#000000",
 	        textAlign: 'left',
 	        left: 10,
 	        top: 31,
@@ -166,7 +168,7 @@ var xhr = Ti.Network.createHTTPClient({
 	
 
 	table.addEventListener('click', function(e){
-		/*
+		
 		
 		map = Ti.Map.createView({
 			mapType: Titanium.Map.STANDARD_TYPE,
@@ -180,14 +182,17 @@ var xhr = Ti.Network.createHTTPClient({
 			top: 0
 		});
 		
-		mapWin.add(map);
+		mapWin.remove(map);
 		
-		map.selectAnnotation(companyInfo[e.index]);
-		*/
+		//map.selectAnnotation(companyInfo[e.index]);
+		
+		
 	});
 	self.add(mapWin);
+	self.remove(loading);
     },
     onerror: function(e) {
+    self.remove(loading);
     Ti.API.debug("STATUS: " + this.status);
     Ti.API.debug("TEXT:   " + this.responseText);
     Ti.API.debug("ERROR:  " + e.error);

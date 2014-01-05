@@ -8,7 +8,7 @@ function PostTable() {
 
 	this.pulling = false;
 	this.reloading = false;
-
+	var screenWidth = Ti.Platform.displayCaps.platformWidth;
 	var self = Ti.UI.createTableView({
 		separatorColor: 'transparent',
 		backgroundColor: '#e2e2e2'
@@ -16,7 +16,7 @@ function PostTable() {
 
 	var tableHeader = Ti.UI.createView({
 		backgroundColor:"#e2e2e2",
-		width:320,
+		width:screenWidth,
 		height:60
 	});
 

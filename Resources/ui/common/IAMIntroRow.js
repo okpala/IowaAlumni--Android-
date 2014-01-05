@@ -29,7 +29,7 @@ var table = Ti.UI.createTableView({
 	 var image = Ti.UI.createImageView({
 	  image:    'http://www.iowalum.com/magazine/new/images/magfan.jpg',
 	  top:   10,
-	  left: 200,
+	  right: 10,
 	  width: 80,
 	  height: 55
 	});

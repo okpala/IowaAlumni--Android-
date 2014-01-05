@@ -58,11 +58,17 @@ if (Ti.version < 1.8 ) {
 	var Feeds = new Feed();
 	var GetFeed = require('ui/common/GetFeed');
 	var Window = require('ui/handheld/android/ApplicationWindow');
+	var Tracker = require('ui/common/Tracker');
+	
+	var tracker = new Tracker();
 	
 	var win = Titanium.UI.createWindow({
 		    backgroundColor:'#000',
-		    zIndex: 2
+		    navBarHidden : true,
+		    exitOnClose: true,
 	});
+	
+	
 	
 	var logorowHeight = 125;
 		var logosLeft = 10;
@@ -150,16 +156,16 @@ if (Ti.version < 1.8 ) {
 		
 
 	
+	var win2 = new RootWindow(home,tracker);
+	
+	
 	win.open();
-	
-	
-	var win2 = new RootWindow();
-	
 	win2.open();
+	
 	
 	tableView.addEventListener('click', function(e) {
 		if(e.row.feedTitle==home) {
-				var win2 = new RootWindow();
+				var win2 = new RootWindow(home, tracker);
 				win2.open();
 				menuTitles = [
 					(new MenuRow(home,'home','',true)),
@@ -177,7 +183,7 @@ if (Ti.version < 1.8 ) {
 			
 			}
 		else if(e.row.feedTitle==contactUsTitle) {
-				var win2 = new ContactUsWindow(contactUsTitle);
+				var win2 = new ContactUsWindow(contactUsTitle, tracker);
 				win2.open();
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
@@ -194,7 +200,7 @@ if (Ti.version < 1.8 ) {
 			}
 			
 		else if(e.row.feedTitle==memberCardTitle){
-				var win2 = new MemberCardWindow(memberCardTitle);
+				var win2 = new MemberCardWindow(memberCardTitle, tracker);
 				win2.open();
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
@@ -211,7 +217,7 @@ if (Ti.version < 1.8 ) {
 			}
 			
 		else if(e.row.feedTitle==clubsTitle) {
-				var win2 = new StatesWindow(clubsTitle);
+				var win2 = new StatesWindow(clubsTitle, tracker);
 				win2.open();
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
@@ -229,7 +235,7 @@ if (Ti.version < 1.8 ) {
 			
 			
 		else if(e.row.feedTitle==memberBenefitsTitle) {
-				var win2 = new NationalBenefitsWindow();
+				var win2 = new NationalBenefitsWindow(e.row.feedTitle, tracker);
 				win2.open();
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
@@ -246,7 +252,7 @@ if (Ti.version < 1.8 ) {
 			}
 			
 			else if(e.row.feedTitle==alumniMagazineTitle) {
-				var win2 = new ArticlesWindow(e.row.feedTitle, e.row.feed);
+				var win2 = new ArticlesWindow(e.row.feedTitle, e.row.feed, tracker);
 				win2.open();
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
@@ -264,7 +270,7 @@ if (Ti.version < 1.8 ) {
 			}
 			
 			else if(e.row.feedTitle==iowaInsiderTitle) {
-				var win2 = new ArticlesWindow(e.row.feedTitle, e.row.feed);
+				var win2 = new ArticlesWindow(e.row.feedTitle, e.row.feed, tracker);
 				win2.open();
 				menuTitles = [
 					(new MenuRow(home,'home','',false)),
@@ -283,7 +289,7 @@ if (Ti.version < 1.8 ) {
 			}
 			
 			else if(e.row.feedTitle==eventsTitle) {
-				var win2 = new  EventsWindow (e.row.feedTitle);
+				var win2 = new  EventsWindow (e.row.feedTitle, tracker);
 				win2.open();
 				//var win = new EventsHomeWindow(eventsTitle);
 				menuTitles = [

@@ -8,10 +8,10 @@ var Feed = require('ui/common/Feed');
  * from the database.
  */
 function StaticAd(adList){
-	
+	var screenWidth = Ti.Platform.displayCaps.platformWidth;
 	var ad = Ti.UI.createImageView({
 	  image:    adList[0].ad,
-	  width: 320,
+	  width: screenWidth,
 	  height: 70,
 	  bottom:0,
 	  left: 0

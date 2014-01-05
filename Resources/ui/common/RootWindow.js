@@ -13,30 +13,40 @@ var Feed = require('ui/common/Feed');
 var TodayEventsSection = require('ui/common/TodayEventsSection');
 var ArticleOfTheWeekSection = require('ui/common/ArticleOfTheWeekSection');
 
+
+var LoadingScreen = require('ui/common/LoadingScreen');
+
+
 /*
  * Home Window
  */
-function RootWindow(data) {
+function RootWindow(title, tracker) {
 	Ti.UI.backgroundColor = '#dddddd';
 	var Feeds = new Feed(); 
 	var url = Feeds.homeFeed();
 	var self = new ApplicationWindow("Home");
 	var table = Ti.UI.createTableView({
+		separatorColor :'#e2e2e2',
 		selectionStyle: 'none',
 		bottom: 70
 		});
 	var rows = [];
-
- 
+	tracker.trackScreen(title);
+	var loading = new LoadingScreen();
+	
+	self.add(loading);
+	loading.show();
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
     // Ti.API.debug(this.responseText);
+    
     
     var row = new HomeImageSlider();
 	rows.push(row);
  	var introLabel = Ti.UI.createLabel({
 			text: "No matter how many years or miles may separate you from the campus, the UI Alumni Association can help you feel part of the life of the University of Iowa.",
 			width: screenWidth - 20,
+			color: "#000000",
 			top: 10,
 			left: 10,
 			font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
@@ -112,6 +122,7 @@ var xhr = Ti.Network.createHTTPClient({
 		for (var i = 0; i < data.length; i++){
 			var headerLabel = Ti.UI.createLabel({
 				text: data[i].header,
+				color: "#000000",
 				width: 300,
 				top: 10,
 				left: 10,
@@ -131,6 +142,7 @@ var xhr = Ti.Network.createHTTPClient({
 		if(events.length > 0){
 			var eventHeaderLabel = Ti.UI.createLabel({
 				text: "Today's Events",
+				color: "#000000",
 				width: 300,
 				top: 10,
 				left: 10,
@@ -157,6 +169,7 @@ var xhr = Ti.Network.createHTTPClient({
  	
  	var magazineHeaderLabel = Ti.UI.createLabel({
 			text: "Article of the Week",
+			color: "#000000",
 			width: 300,
 			top: 10,
 			left: 10,
@@ -180,8 +193,10 @@ var xhr = Ti.Network.createHTTPClient({
 		
     table.setData(rows);
     self.add(ad);
+    self.remove(loading);
     },
     onerror: function(e) {
+    self.remove(loading);
     Ti.API.debug("STATUS: " + this.status);
     Ti.API.debug("TEXT:   " + this.responseText);
     Ti.API.debug("ERROR:  " + e.error);

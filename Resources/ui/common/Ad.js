@@ -5,7 +5,7 @@ var WebView = require('ui/common/WebView');
  */
 
 function Ad(post) {
-
+	var screenWidth = Ti.Platform.displayCaps.platformWidth;
     var row = Ti.UI.createTableViewRow({
 		//hasChild:true,
 		height: 70,
@@ -22,7 +22,7 @@ function Ad(post) {
 	var container =  Titanium.UI.createView({
 		backgroundColor: 'transparent',
 			height:			300,
-			width: 			300,
+			width: 			screenWidth - 20,
 			left: 			10,
 			top:			-5,
 			bottom:			0,
@@ -33,7 +33,7 @@ function Ad(post) {
 
 	var imagebox = Ti.UI.createImageView({
 		image: post.ad,
-		width: 300,
+		width: screenWidth - 20,
 		height: 70,
 		hires: true,
 		top: 10
@@ -47,7 +47,7 @@ function Ad(post) {
 	row.add(container);
 	
 	row.addEventListener('click', function(e) {
-		new WebView (post.link );
+		new WebView (post.adUrl );
 	});
 	
 	return row;

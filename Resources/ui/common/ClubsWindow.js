@@ -20,6 +20,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 	
 	var data = [];
 	var rowCounter = 0;
+	var emailCounter = 0;
 	for (var i = 0; i <= clubInfoData.length - 1; i++) {
 		if (rowCounter % 2 == 0){
 		    var row = Ti.UI.createTableViewRow({
@@ -40,6 +41,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 		}
 	    var cityLabel = Ti.UI.createLabel({
 	        text: (clubInfoData[i].city),
+	        color: "#000000",
 	        textAlign: 'left',
 	        height: 20,
 	        top: 10,
@@ -50,6 +52,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 	    
 	   var leaderLabel = Ti.UI.createLabel({
 	        text: (clubInfoData[i].leader),
+	        color: "#000000",
 	        textAlign: 'left',
 	        left: 10,
 	        top: 31,
@@ -62,6 +65,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 	    if (clubInfoData[i].phone != 'NA'){
 		    var phoneLabel = Ti.UI.createLabel({
 		        text: (clubInfoData[i].phone),
+		        color: "#000000",
 		        textAlign: 'left',
 		        left: 10,
 		        top: currentTop,
@@ -71,25 +75,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 		    currentTop = currentTop + 15;
 	    }
 	    if (clubInfoData[i].email != 'NA'){
-		    var emailLabel = Ti.UI.createLabel({
-		        text: (clubInfoData[i].email),
-		        textAlign: 'left',
-		        color: 'blue',
-		        left: 10,
-		        top: currentTop,
-		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
-		    });
-		    
-		   
-	    	emailLabel.addEventListener('click', function(e) {
-	    		//data[e.index].emailLabel.color = 'purple'
-	    		//Ti.API.info(e.row);
-				var emailDialog = Ti.UI.createEmailDialog();
-				emailDialog.toRecipients = [clubInfoData[e.index].email];
-				var f = Ti.Filesystem.getFile('cricket.wav');
-				emailDialog.addAttachment(f);
-				emailDialog.open();
-	}); 
+		    var emailLabel = createEmail(clubInfoData, i, currentTop);
 	
 		    row.add(emailLabel);
 	    	currentTop = currentTop + 15;
@@ -97,19 +83,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 	    }
 	    
 	    if (clubInfoData[i].web != 'NA'){
-		    var webLabel = Ti.UI.createLabel({
-		        text: (clubInfoData[i].web),
-		        textAlign: 'left',
-		        left: 10,
-		        top: currentTop,
-		        color: "blue",
-		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
-		    });
-		   
-		    
-		    webLabel.addEventListener('click', function(e) {
-				new WebView (clubInfoData[e.index].web);
-			}); 
+		    var webLabel =  createWeb(clubInfoData, i, currentTop);
 			row.add(webLabel);
 	    }
 	   rowCounter++;
@@ -126,6 +100,56 @@ return self;
 }
 
 //Helper Functions
+
+function createEmail(clubInfoData, index, currentTop){
+	var emailLabel = Ti.UI.createLabel({
+		        text: (clubInfoData[index].email),
+		        textAlign: 'left',
+		        color: 'blue',
+		        left: 10,
+		        top: currentTop,
+		        
+		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		    });
+		    
+		   
+	    	emailLabel.addEventListener('click', function(e) {
+	    		
+	    		
+	    		Ti.API.info(clubInfoData[index].email);
+	    		//Ti.API.info(clubInfoData[e.index].email);
+	    		
+				var emailDialog = Ti.UI.createEmailDialog();
+				emailDialog.toRecipients = [clubInfoData[index].email];
+				Ti.API.info(clubInfoData[index].email);
+				var f = Ti.Filesystem.getFile('cricket.wav');
+				emailDialog.addAttachment(f);
+				emailDialog.open();
+				
+			}); 
+			
+		return emailLabel;	
+	
+}
+
+function createWeb(clubInfoData, index, currentTop){
+	var webLabel = Ti.UI.createLabel({
+		        text: (clubInfoData[index].web),
+		        textAlign: 'left',
+		        left: 10,
+		        top: currentTop,
+		        color: "blue",
+		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		    });
+		   
+		    
+		    webLabel.addEventListener('click', function(e) {
+				new WebView (clubInfoData[index].web);
+			}); 
+			
+		return webLabel;	
+	
+}
 
 function addRows(i, data, flag){
 	if (i == 1 && flag == true){

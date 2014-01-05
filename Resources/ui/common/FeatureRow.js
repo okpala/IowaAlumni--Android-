@@ -1,5 +1,6 @@
 var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
+var WebView = require('ui/common/WebView');
 /*
  * Post Object
  * Essential attributes
@@ -8,7 +9,7 @@ var CachedImageView = require('ui/common/CachedImageView');
 function FeatureRow(post) {
 
 	this.containerheight = 0;
-
+	var screenWidth = Ti.Platform.displayCaps.platformWidth;
     var row = Ti.UI.createTableViewRow({
 		//hasChild:true,
 		link: post.url,
@@ -27,7 +28,7 @@ function FeatureRow(post) {
 	var container =  Titanium.UI.createView({
 		backgroundColor: 'transparent',
 			height:			300,
-			width: 			300,
+			width: 			screenWidth - 20,
 			left: 			10,
 			top:			10,
 			bottom:			0,
@@ -41,21 +42,21 @@ function FeatureRow(post) {
 
 	var imagebox = Ti.UI.createImageView({
 		image: post.image,
-		width: 300,
+		width: screenWidth - 20,
 		height: this.containerheight,
 		hires: true,
 		top: 30
 	});
 	//new CachedImageView('imageDirectoryName', post.image, imagebox);
 	var overlay = Ti.UI.createImageView({
-		width: 300,
+		width: screenWidth - 20,
 		height: 40,
 		hires: true,
 		top: 1,
 		image: Ti.Filesystem.resourcesDirectory +'gold.png'
 	});
 	var shadow = Ti.UI.createImageView({
-		width: 300,
+		width: screenWidth - 20,
 		height: 150,
 		hires: true,
 		top: this.containerheight-120,
@@ -160,7 +161,7 @@ function getDescriptionLabel(description,postheight) {
 	var view = Ti.UI.createView({
 		backgroundColor: '#0c0c0c',
 		backgroundImage: Ti.Filesystem.resourcesDirectory + 'dark.jpg',
-		width: 300,
+		width: screenWidth - 20,
 		height: 65,
 		top: postheight
 	});

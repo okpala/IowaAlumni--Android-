@@ -3,11 +3,20 @@ var WebView = require('ui/common/WebView');
 var SocialMediaIcons = require('ui/common/SocialMediaIcons');
 var StaticAd = require('ui/common/StaticAd');
 var Feed = require('ui/common/Feed');
+var LoadingScreen = require('ui/common/LoadingScreen');
 
-function ContactUsWindow(title) {
+function ContactUsWindow(title, tracker) {
 var Feeds = new Feed(); 
 var url = Feeds.adFeed();	
 var self = new ApplicationWindow(title);
+var screenHeight = Ti.Platform.displayCaps.platformHeight;
+var loading = new LoadingScreen();
+
+self.add(loading);
+loading.show();
+
+tracker.trackScreen(title);
+
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
     // Ti.API.debug(this.responseText);
@@ -53,7 +62,7 @@ var xhr = Ti.Network.createHTTPClient({
 		
 	});
 		
-	var scrollMainView = Ti.UI.createView({
+	var scrollMainView = Ti.UI.createScrollView({
 	  top: 0,
 	  contentWidth: 320,
 	  contentHeight: 420,
@@ -62,7 +71,10 @@ var xhr = Ti.Network.createHTTPClient({
 	});
 	
 	//var ad = new StaticAd(14,392);
-	
+	if (screenHeight < 350){
+		scrollMainView.showVerticalScrollIndicator = true;
+		scrollMainView.bottom = 70;
+	}
 	
 	
 	// The Contact View 
@@ -154,6 +166,10 @@ var xhr = Ti.Network.createHTTPClient({
 	 emailLabel.textAlign = phoneLabel.textAlign = addressLabel.textAlign =  levittLabel.textAlign = 
 	socialMdeiaLabel.textAlign =   contactLabel.textAlign = 'left' ;
 	
+	//Text Color
+	  phoneLabel.color = addressLabel.color =
+	socialMdeiaLabel.color =   contactLabel.color = '#000000' ;
+	
 	
 	//Width (Images)
 	instagramimage.width = pinterestimage.width = linkedInimage.width = foursquareimage.width = twitterimage.width = facebookimage.width = 48;
@@ -189,8 +205,10 @@ var xhr = Ti.Network.createHTTPClient({
 	
 	self.add(scrollMainView);
 	self.add(ad);
+	self.remove(loading);
 	 },
     onerror: function(e) {
+    self.remove(loading);
     Ti.API.debug("STATUS: " + this.status);
     Ti.API.debug("TEXT:   " + this.responseText);
     Ti.API.debug("ERROR:  " + e.error);

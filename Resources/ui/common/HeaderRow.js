@@ -7,17 +7,16 @@ var WebView = require('ui/common/WebView');
  */
 
 function HeaderRow(post) {
-
+	var screenWidth = Ti.Platform.displayCaps.platformWidth;
    var table = Ti.UI.createTableView({
 		separatorColor: 	'#e2e2e2',
 		backgroundColor: 	'#e2e2e2',
 		height:				'auto',
-		width: 				300,
+		width: 				screenWidth - 20,
 		left: 				10,
 		top:				10,
 		bottom:				0,
 		padding:			0,
-		scrollable: 		false
 	});
 
 	 var rowText = Ti.UI.createTableViewRow({
@@ -30,7 +29,7 @@ function HeaderRow(post) {
 			new WebView (post.hlink);
 	 });
 	
-	table.height = rowText.height;
+	table.height = rowText.height + 5;
 	var data = [];
 	 data.push(rowText);
 	table.setData(data);
@@ -44,7 +43,7 @@ function HeaderRow(post) {
 		link: 	post.hlink,
 		layout: 'vertical',
 		selectionStyle: 'none',
-		backgroundColor: '#e2e2e2'
+		backgroundColor: '#e2e2e2',
 	});
 	//row.rightImage = null;
 	//row.backgroundSelectedImage = null;

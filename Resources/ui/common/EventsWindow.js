@@ -14,10 +14,12 @@ var FeatureRow = require('ui/common/FeatureRow'),
 	//FormatDate = require('ui/common/FormatDate'),
 	//RSS = require('services/rss'),
 	WebView = require('ui/common/WebView'),
-	StaticAd = require('ui/common/StaticAd');
+	StaticAd = require('ui/common/StaticAd'),
+	LoadingScreen = require('ui/common/LoadingScreen'),
 	Feed = require('ui/common/Feed');
 
-function EventsWindow(title) {
+
+function EventsWindow(title, tracker) {
 
 var Feeds = new Feed(); 
 var url = Feeds.eventsFeed();
@@ -28,15 +30,20 @@ var table = Ti.UI.createTableView({
 });
 var rows = [];
 
- 
+tracker.trackScreen(title);
+var loading = new LoadingScreen();
+
+self.add(loading);
+loading.show();
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
     // Ti.API.debug(this.responseText);
+    	
     	var xml = this.responseXML;
 	   	var items = xml.documentElement.getElementsByTagName("item");
 	   	//var item = items.item(0);
 	   	var data = [];
-	   		for (var i = 0; i < 10 /*items.length*/; i++) {
+	   		for (var i = 0; i < items.length; i++) {
 	   			var item = items.item(i);
 	   			var image;
 				try {
@@ -118,10 +125,11 @@ var xhr = Ti.Network.createHTTPClient({
 			table.setData(rows);
 			self.add(ad);	
 			self.add(table);
-				
+			self.remove(loading);	
    
     },
     onerror: function(e) {
+    self.remove(loading);
     Ti.API.debug("STATUS: " + this.status);
     Ti.API.debug("TEXT:   " + this.responseText);
     Ti.API.debug("ERROR:  " + e.error);

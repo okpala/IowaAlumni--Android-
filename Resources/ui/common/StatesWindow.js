@@ -4,11 +4,12 @@ var WebView = require('ui/common/WebView');
 var ApplicationWindow = require('ui/common/ApplicationWindow');
 var StaticAd = require('ui/common/StaticAd');
 var Feed = require('ui/common/Feed');
+var LoadingScreen = require('ui/common/LoadingScreen');
 /*
  * Root Window for Clubs and Gamewatches
  */
 
-function ClubsWindow(title){
+function ClubsWindow(title, tracker){
 	
 	var Feeds = new Feed(); 
 var url = Feeds.gameWatchFeed();
@@ -19,8 +20,11 @@ var table = Ti.UI.createTableView({
 		top: 145
 	});
 var rows = [];
+tracker.trackScreen(title);
+var loading = new LoadingScreen();
 
- 
+self.add(loading);
+loading.show(); 
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
     // Ti.API.debug(this.responseText);
@@ -73,6 +77,7 @@ var xhr = Ti.Network.createHTTPClient({
 		var introLabel = Ti.UI.createLabel({
 			 text: 'Want to connect with fellow UI grads, need a place to watch the next game with fellow Hawkeye fans? IOWA clubs have you covered—find a location near you!',
 			 textAlign: 'left',
+			 color: "#000000",
 			 left: 10,
 			 width: 300,
 			 top: 10,
@@ -85,6 +90,7 @@ var xhr = Ti.Network.createHTTPClient({
 	
 	var people = Ti.UI.createImageView({
 	  image:    'https://www.iowalum.com/mobile/clubs.png',
+	  height: 70,
 	  top:   85
 	});
 	
@@ -110,6 +116,7 @@ var xhr = Ti.Network.createHTTPClient({
 		var label = Ti.UI.createLabel({
 			 text: clubs[i].state,
 			 textAlign: 'center',
+			 color: "#000000",
 			 font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
 			        
 		});
@@ -122,14 +129,17 @@ var xhr = Ti.Network.createHTTPClient({
 	   
 	};		
    	table.setData(data);
+   	table.top = people.top + people.height;
 	self.add(table);
 	self.add(ad);
 	 table.addEventListener('click', function(e){
 			var stateClubs = getStateList(clubs, clubsInfo, e.row.text);
 			(new GameWatchWindow(stateClubs[0], stateClubs[1]));
 		});
+	self.remove(loading);
     },
     onerror: function(e) {
+    self.remove(loading);
     Ti.API.debug("STATUS: " + this.status);
     Ti.API.debug("TEXT:   " + this.responseText);
     Ti.API.debug("ERROR:  " + e.error);

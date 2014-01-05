@@ -48,15 +48,7 @@ function GameWatchWindow(clubData, clubInfoData) {
 		top: 0
 	});
 	
-	map.addEventListener('loading', function(e){
-		map.setLocation({latitude: clubData[0].latitude , longitude: clubData[0].longitude,
-				latitudeDelta: 0.01, longitudeDelta: 0.01 });	
-	});
-	map.addEventListener('postlayout', function(e){
-		map.setLocation({latitude: clubData[0].latitude , longitude: clubData[0].longitude,
-				latitudeDelta: 0.01, longitudeDelta: 0.01 });	
-	});
-
+	
 	var table = Ti.UI.createTableView({
 		height: 'auto',
 		top: 200
@@ -72,6 +64,7 @@ function GameWatchWindow(clubData, clubInfoData) {
 		    	latitude:  clubData[i].latitude,
 				longitude: clubData[i].longitude,
 		        height: 'auto',
+		        index: i,
 		        bottom: 10
 		    });
 		}
@@ -87,6 +80,7 @@ function GameWatchWindow(clubData, clubInfoData) {
 		}
 	    var clubLabel = Ti.UI.createLabel({
 	        text: (clubData[i].club),
+	        color: "#000000",
 	        textAlign: 'left',
 	        height: 20,
 	        top: 10,
@@ -95,6 +89,7 @@ function GameWatchWindow(clubData, clubInfoData) {
 	    });
 	    var placeLabel = Ti.UI.createLabel({
 	        text: (clubData[i].place),
+	        color: "#000000",
 	        textAlign: 'left',
 	        left: 10,
 	        top: 31,
@@ -102,7 +97,8 @@ function GameWatchWindow(clubData, clubInfoData) {
 	        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	    });
 	    var streetLabel = Ti.UI.createLabel({
-	        text: clubData[i].street,//new EditText(clubData[i].street).adjustedText(),
+	        text: clubData[i].street,
+	        color: "#000000",
 	        textAlign: 'left',
 	        left: 10,
 	        top: 46,
@@ -112,6 +108,7 @@ function GameWatchWindow(clubData, clubInfoData) {
 	    if (clubData[i].phone != 'NA'){
 	    	var phoneLabel = Ti.UI.createLabel({
 	        	text: (clubData[i].phone),
+	        	color: "#000000",
 		        textAlign: 'left',
 		        left: 10,
 		        top: 61,
@@ -133,12 +130,11 @@ function GameWatchWindow(clubData, clubInfoData) {
 	self.add(map);
 	self.add(table);
 	
-	//masterContainerWindow.add(mapWin);
-	//self.add(mapWin);
+	
 	
 
 	table.addEventListener('click', function(e){
-		/*
+		
 		map = Ti.Map.createView({
 			mapType: Titanium.Map.STANDARD_TYPE,
 			region: {latitude: e.row.latitude, longitude: e.row.longitude,
@@ -152,8 +148,8 @@ function GameWatchWindow(clubData, clubInfoData) {
 		});
 		
 		self.add(map);
-		*/
-		//map.selectAnnotation(gameWatchInfo[e.index]);
+		
+		map.selectAnnotation(gameWatchInfo[e.index]);
 	});
 	
 

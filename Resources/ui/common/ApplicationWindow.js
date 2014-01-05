@@ -1,13 +1,12 @@
+
+
 function ApplicationWindow(windowtitle) {
 	
 	var self = Ti.UI.createWindow({
 	    backgroundColor:'#e2e2e2',
-		navBarHidden: false,
-		//barColor:'#99cc66',
-		zIndex: 4
-		
+		navBarHidden: false,		
 	});
-
+	
 	var navbar = Ti.UI.createImageView({
 			image:  Ti.Filesystem.resourcesDirectory + 'navbar.png',
 			height: 60

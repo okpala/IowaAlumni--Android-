@@ -1,5 +1,6 @@
 var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
+var WebView = require('ui/common/WebView');
 /*
  * Post Object
  * Essential attributes
@@ -8,7 +9,7 @@ var CachedImageView = require('ui/common/CachedImageView');
 function Row(post) {
 
     this.postheight		= 0;
-
+	var screenWidth = Ti.Platform.displayCaps.platformWidth;
     var row = Ti.UI.createTableViewRow({
 		//hasChild: 			true,
 		link: 				post.url,
@@ -26,7 +27,7 @@ function Row(post) {
 	var container =  Titanium.UI.createView({
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
-		width: 				300,
+		width: 				screenWidth - 20,
 		left: 				0,
 		top:				0,
 		bottom:				0,
