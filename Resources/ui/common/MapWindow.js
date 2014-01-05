@@ -8,7 +8,11 @@ var LoadingScreen = require('ui/common/LoadingScreen');
 function MapWindow(title, tracker) {
 	var Feeds = new Feed(); 
 var url = Feeds.iowaCityFeed();
+<<<<<<< HEAD
 var self = new NavigateWindow(title);
+=======
+var self = new NavigateWindow("Iowa City Benefits");
+>>>>>>> 97e3419d31df4871d6cfe68da897d95e128c5d3e
 var table = Ti.UI.createTableView();
 var rows = [];	
 tracker.trackScreen(title);

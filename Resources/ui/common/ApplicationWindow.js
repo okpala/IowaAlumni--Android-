@@ -1,10 +1,23 @@
+<<<<<<< HEAD
 
+=======
+var Analytics = require('Ti.Google.Analytics');
+>>>>>>> 97e3419d31df4871d6cfe68da897d95e128c5d3e
 
 function ApplicationWindow(windowtitle) {
-	
+	var analytics = new Analytics('UA-46448216-1');
 	var self = Ti.UI.createWindow({
 	    backgroundColor:'#e2e2e2',
 		navBarHidden: false,		
+<<<<<<< HEAD
+=======
+	});
+	
+	// track page view on focus
+	self.addEventListener('open', function(e){
+	    Titanium.App.Analytics.trackPageview('all-listings/list-view');
+	    analytics.trackPageview(windowtitle);
+>>>>>>> 97e3419d31df4871d6cfe68da897d95e128c5d3e
 	});
 	
 	var navbar = Ti.UI.createImageView({

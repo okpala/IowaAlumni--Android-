@@ -126,11 +126,15 @@ var xhr = Ti.Network.createHTTPClient({
 	textView.add(linkLabel);
 	table.setData(data);
 	self.add(table);
+<<<<<<< HEAD
 
 	self.remove(loading);		
 
 			
 
+=======
+			
+>>>>>>> 97e3419d31df4871d6cfe68da897d95e128c5d3e
     },
     onerror: function(e) {
     self.remove(loading);

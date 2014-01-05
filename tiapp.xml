@@ -20,8 +20,19 @@
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>
     <statusbar-style>default</statusbar-style>
+<<<<<<< HEAD
 
 
+=======
+    <ios>
+        <plist>
+            <dict>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleLightContent</string>
+            </dict>
+        </plist>
+    </ios>
+>>>>>>> 97e3419d31df4871d6cfe68da897d95e128c5d3e
     <statusbar-hidden>true</statusbar-hidden>
     <fullscreen>true</fullscreen>
     <navbar-hidden>false</navbar-hidden>
