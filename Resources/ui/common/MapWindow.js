@@ -4,8 +4,10 @@ var NavigateWindow = require('ui/common/NavigateWindow');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
 var LoadingScreen = require('ui/common/LoadingScreen');
+var Map = require('ti.map');
 
 function MapWindow(title, tracker) {
+	
 	var Feeds = new Feed(); 
 var url = Feeds.iowaCityFeed();
 
@@ -15,11 +17,13 @@ var table = Ti.UI.createTableView();
 var rows = [];	
 
 
+
+
 tracker.trackScreen(title);
 var loading = new LoadingScreen();
 
 self.add(loading);
-
+loading.show();
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
     var xml = this.responseXML;
@@ -48,19 +52,19 @@ var xhr = Ti.Network.createHTTPClient({
 	var companyInfo = [];
 	for (var i = 0; i <= businessesInfo.length - 1; i++) {
 		companyInfo.push(
-			Titanium.Map.createAnnotation(
+			Map.createAnnotation(
 			{
 			    latitude:  businessesInfo[i].latitude,
 			    longitude: businessesInfo[i].longitude,
 			    title: businessesInfo[i].company,
 			    subtitle: businessesInfo[i].street,
-			    pincolor: Titanium.Map.ANNOTATION_RED,
+			    pincolor: Map.ANNOTATION_RED,
 			    animate:true
 			})
 		);
 	}
  
-	
+	/*
 	var map = Ti.Map.createView({
 		mapType: Titanium.Map.STANDARD_TYPE,
 		region: {latitude: companyInfo[0].latitude, longitude: companyInfo[0].longitude,
@@ -73,9 +77,21 @@ var xhr = Ti.Network.createHTTPClient({
 		top: 0
 	});
 	
+*/
+	var map = Map.createView({
+		mapType:Map.NORMAL_TYPE,
+		region: {latitude: companyInfo[0].latitude, longitude: companyInfo[0].longitude,
+				latitudeDelta:0.01, longitudeDelta:0.01 },
+		animate: true,
+		userLocation:true,
+		regionFit:true,
+		height: 200,
+	    annotations: companyInfo,
+		top: 0
+		});
 
 
-	
+
 	var textView = Ti.UI.createView({
 		backgroundColor: 	'#e2e2e2',
 		height:				70,
@@ -172,13 +188,13 @@ var xhr = Ti.Network.createHTTPClient({
 	table.addEventListener('click', function(e){
 		
 		
-		map = Ti.Map.createView({
-			mapType: Titanium.Map.STANDARD_TYPE,
-			region: {latitude: e.row.latitude, longitude: e.row.longitude,
-				latitudeDelta:0.01, longitudeDelta:0.01 },
+		var map = Map.createView({
+			mapType:Map.NORMAL_TYPE,
+			region: {latitude: companyInfo[e.index].latitude, longitude: companyInfo[e.index].longitude,
+					latitudeDelta:0.01, longitudeDelta:0.01 },
 			animate: true,
-			regionFit: true,
-			userLocation: true,
+			userLocation:true,
+			regionFit:true,
 			height: 200,
 		    annotations: companyInfo,
 			top: 0
@@ -186,7 +202,6 @@ var xhr = Ti.Network.createHTTPClient({
 		
 		mapWin.remove(map);
 		
-		//map.selectAnnotation(companyInfo[e.index]);
 		
 		
 	});

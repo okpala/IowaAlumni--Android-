@@ -8,7 +8,7 @@ function HomeImageSlider(){
 	var screenWidth = Ti.Platform.displayCaps.platformWidth;
 var table = Ti.UI.createTableView();
 var rows = [];
-var row = Ti.UI.createTableViewRow();
+var row = Ti.UI.createTableViewRow({});
  
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
@@ -50,17 +50,18 @@ var xhr = Ti.Network.createHTTPClient({
 			top: 30
 		});
 		
-		
-		 
+	
+		/* 
 		var counter = 0;
-		function imageSlider(n){
-			 return data[(n + 1) % data.length].url;
-		}
-		setInterval(imageCounter,3000);
 		
 		function imageCounter (){
-			imagebox.image = imageSlider(counter++);
-			}
+			counter = (counter + 1) % data.length;
+			imagebox.image = data[counter].url;
+		}
+		
+		setInterval(imageCounter,3000);
+		*/
+		
 		
 		var overlay = Ti.UI.createImageView({
 			width: 300,
@@ -163,4 +164,6 @@ xhr.send();
 	
 		return row;
 } 
+
+
 module.exports = HomeImageSlider;

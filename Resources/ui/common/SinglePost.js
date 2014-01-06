@@ -41,19 +41,14 @@ function SinglePost (post){
 	table.setData(data);
 
 	var row = Ti.UI.createTableViewRow({
-		//hasChild: true,
 		height: table.height+15,
 		padding: 0,
 		top: 0,
 		bottom: 0,
-		//link: 				post.url,
-		//layout: 'vertical',
-		//selectionStyle: 'none',
-		backgroundColor: '#e2e2e2'
+		backgroundColor: '#e2e2e2',
+		//selectedBackgroundColor: "blue"
 	});
-	//row.rightImage = null;
-	//row.backgroundSelectedImage = null;
-	//row.backgroundFocusImage = null;
+	
 
 	row.add(table);
 	

@@ -28,7 +28,7 @@ function RootWindow(title, tracker) {
 	var self = new ApplicationWindow("Home");
 	var table = Ti.UI.createTableView({
 		separatorColor :'#e2e2e2',
-		selectionStyle: 'none',
+		//selectionStyle: 'none',
 		bottom: 70
 		});
 	var rows = [];

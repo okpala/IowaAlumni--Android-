@@ -2,6 +2,7 @@ var WebView = require('ui/common/WebView');
 var EditText = require('ui/common/EditText');
 //var TabNavWindow = require('ui/common/TabNavWindow');
 var ClubsWindow = require('ui/common/ClubsWindow');
+var Map = require('ti.map');
 /*
  * Clubs and Game Watch Tabs 
  */
@@ -22,13 +23,13 @@ function GameWatchWindow(clubData, clubInfoData) {
 	var gameWatchInfo = [];
 	for (var i = 0; i <= clubData.length - 1; i++) {
 		gameWatchInfo.push(
-			Titanium.Map.createAnnotation(
+			Map.createAnnotation(
 			{
 			    latitude:  clubData[i].latitude,
 			    longitude: clubData[i].longitude,
 			    title: clubData[i].place,
 			    subtitle: clubData[i].street,
-			    pincolor: Titanium.Map.ANNOTATION_RED,
+			    pincolor: Map.ANNOTATION_RED,
 			    animate:true,
 			})
 		);
@@ -36,8 +37,8 @@ function GameWatchWindow(clubData, clubInfoData) {
 	}
  		
 	
-	var map = Ti.Map.createView({
-		mapType: Titanium.Map.STANDARD_TYPE,
+	var map = Map.createView({
+		mapType:Map.NORMAL_TYPE,
 		region: {latitude: clubData[0].latitude, longitude: clubData[0].longitude,
 			latitudeDelta:0.01, longitudeDelta:0.01 },
 		animate: true,
@@ -48,7 +49,8 @@ function GameWatchWindow(clubData, clubInfoData) {
 		top: 0
 	});
 	
-	
+
+
 	var table = Ti.UI.createTableView({
 		height: 'auto',
 		top: 200
@@ -127,7 +129,7 @@ function GameWatchWindow(clubData, clubInfoData) {
 	data = addRows(i, data, false);
 	table.setData(data);
 	
-	self.add(map);
+	//self.add(map);
 	self.add(table);
 	
 	
@@ -135,9 +137,9 @@ function GameWatchWindow(clubData, clubInfoData) {
 
 	table.addEventListener('click', function(e){
 		
-		map = Ti.Map.createView({
-			mapType: Titanium.Map.STANDARD_TYPE,
-			region: {latitude: e.row.latitude, longitude: e.row.longitude,
+		var map = Map.createView({
+			mapType:Map.NORMAL_TYPE,
+			region: {latitude: clubData[e.index].latitude, longitude: clubData[e.index].longitude,
 				latitudeDelta:0.01, longitudeDelta:0.01 },
 			animate: true,
 			regionFit: true,
@@ -148,8 +150,6 @@ function GameWatchWindow(clubData, clubInfoData) {
 		});
 		
 		self.add(map);
-		
-		map.selectAnnotation(gameWatchInfo[e.index]);
 	});
 	
 
