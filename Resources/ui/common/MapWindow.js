@@ -48,7 +48,11 @@ var xhr = Ti.Network.createHTTPClient({
 			street: item.getElementsByTagName('street').item(0).textContent,//getRssText(item, 'street')
 		});
 	}
+	var code = Map.isGooglePlayServicesAvailable();
 	
+	if (code != Map.SUCCESS) {
+		alert ("Google Play Services is not installed/updated/available");
+	} else {
 	var companyInfo = [];
 	for (var i = 0; i <= businessesInfo.length - 1; i++) {
 		companyInfo.push(
@@ -82,15 +86,15 @@ var xhr = Ti.Network.createHTTPClient({
 		mapType:Map.NORMAL_TYPE,
 		region: {latitude: companyInfo[0].latitude, longitude: companyInfo[0].longitude,
 				latitudeDelta:0.01, longitudeDelta:0.01 },
-		animate: true,
-		userLocation:true,
-		regionFit:true,
+		//animate: true,
+		//userLocation:true,
+		//regionFit:true,
 		height: 200,
-	    annotations: companyInfo,
+	    //annotations: companyInfo,
 		top: 0
 		});
-
-
+	mapWin.add(map);
+}
 
 	var textView = Ti.UI.createView({
 		backgroundColor: 	'#e2e2e2',
@@ -177,7 +181,7 @@ var xhr = Ti.Network.createHTTPClient({
 
 	table.setData(data);
 	
-	mapWin.add(map);
+	//mapWin.add(map);
 	mapWin.add(textView);
 	mapWin.add(table);
 	
