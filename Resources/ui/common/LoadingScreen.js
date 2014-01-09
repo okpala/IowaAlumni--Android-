@@ -3,7 +3,6 @@ function LoadingScreen(){
 		  font: {fontFamily:'HelveticaNeue-Light',fontSize:25,fontWeight:'bold'},
 		  message: 'Loading...',
 		  style: Ti.UI.ActivityIndicatorStyle.DARK,
-		  
 	});
 	
 	return activityIndicator;

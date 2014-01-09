@@ -29,7 +29,7 @@ var xhr = Ti.Network.createHTTPClient({
 			ad: item.getElementsByTagName( 'ad').item(0).textContent,
 		    adUrl: item.getElementsByTagName( 'link').item(0).textContent,                  
 		});
-		var ad = new StaticAd(adList);
+		var ad = new StaticAd(adList, tracker, title);
 		
 	  
 	//The Different Views
@@ -98,6 +98,12 @@ var xhr = Ti.Network.createHTTPClient({
 	});
 	
 	levittLabel.addEventListener('click', function(e) {
+		tracker.trackEvent({
+				category: "General Information",
+				action: "click",
+				label: "UIAA About Us Site",
+				value: 1
+		});
 		new WebView ('http://www.iowalum.com/about/levitt.cfm');
 	}); 
 	
@@ -125,6 +131,12 @@ var xhr = Ti.Network.createHTTPClient({
 	});
 	
 	emailLabel.addEventListener('click', function(e) {
+		tracker.trackEvent({
+				category: "General Information",
+				action: "click",
+				label: "UIAA Email Address",
+				value: 1
+		});
 		var emailDialog = Ti.UI.createEmailDialog();
 		emailDialog.toRecipients = ['alumni@uiowa.edu'];
 		var f = Ti.Filesystem.getFile('cricket.wav');
@@ -143,12 +155,12 @@ var xhr = Ti.Network.createHTTPClient({
 	
 	var icon = new SocialMediaIcons();
 	
-	var facebookimage = icon.facebook(37,55);
-	var twitterimage = icon.twitter(37,115);
-	var foursquareimage = icon.foursquare(37,175);
-	var linkedInimage = icon.linkedIn(97,55);
-	var pinterestimage = icon.pinterest(97,115);
-	var instagramimage = icon.instagram(97,175);
+	var facebookimage = icon.facebook(37,55,tracker);
+	var twitterimage = icon.twitter(37,115,tracker);
+	var foursquareimage = icon.foursquare(37,175,tracker);
+	var linkedInimage = icon.linkedIn(97,55,tracker);
+	var pinterestimage = icon.pinterest(97,115,tracker);
+	var instagramimage = icon.instagram(97,175,tracker);
 	
 	
 	

@@ -6,7 +6,7 @@ var Map = require('ti.map');
 /*
  * Clubs and Game Watch Tabs 
  */
-function GameWatchWindow(clubData, clubInfoData) {
+function GameWatchWindow(clubData, clubInfoData, tracker) {
 	
 //-----------	Game Watch Window -----------//
 
@@ -42,14 +42,11 @@ function GameWatchWindow(clubData, clubInfoData) {
 		region: {latitude: clubData[0].latitude, longitude: clubData[0].longitude,
 			latitudeDelta:0.01, longitudeDelta:0.01 },
 		animate: true,
-		regionFit: true,
-		userLocation: true,
+		userLocation: false,
 		height: 200,
 	    annotations: gameWatchInfo,
 		top: 0
 	});
-	
-
 
 	var table = Ti.UI.createTableView({
 		height: 'auto',
@@ -129,36 +126,33 @@ function GameWatchWindow(clubData, clubInfoData) {
 	data = addRows(i, data, false);
 	table.setData(data);
 	
-	//self.add(map);
+	
 	self.add(table);
 	
 	
-	
-
-	table.addEventListener('click', function(e){
-		
-		var map = Map.createView({
-			mapType:Map.NORMAL_TYPE,
-			region: {latitude: clubData[e.index].latitude, longitude: clubData[e.index].longitude,
-				latitudeDelta:0.01, longitudeDelta:0.01 },
-			animate: true,
-			regionFit: true,
-			userLocation: true,
-			height: 200,
-		    annotations: gameWatchInfo,
-			top: 0
-		});
-		
+	self.addEventListener('focus', function(e){
 		self.add(map);
 	});
 	
 
-	
-	
+	table.addEventListener('click', function(e){
+		tracker.trackEvent({
+				category: "Game Watches",
+				action: "click",
+				label: clubData[e.index].club,
+				value: 1
+		});
+		self.add(map);
+		map.region = {latitude: gameWatchInfo[e.index].latitude, longitude: gameWatchInfo[e.index].longitude,
+				latitudeDelta:0.01, longitudeDelta:0.01 };
+		
+		map.selectAnnotation(gameWatchInfo[e.index]);
+		
+
+	});
 	
 
-
-var mainWinTab1 = new ClubsWindow(clubData, clubInfoData, tabGroup);
+var mainWinTab1 = new ClubsWindow(clubData, clubInfoData, tabGroup, tracker);
 
 
 var tab1 = Titanium.UI.createTab({  
@@ -176,7 +170,7 @@ var tab2 = Titanium.UI.createTab({
 });
 tabGroup.addTab(tab2); 
 
-tabGroup.setActiveTab(0); 
+tabGroup.setActiveTab(1); 
 
 var actionBar;
 tabGroup.addEventListener("open", function() {
@@ -207,7 +201,7 @@ function addRows(i, data, flag){
 	if (i == 1 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		     selectedBackgroundColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -215,13 +209,13 @@ function addRows(i, data, flag){
 		
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		     selectedBackgroundColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		    selectedBackgroundColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -231,7 +225,7 @@ function addRows(i, data, flag){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
 		    selectionStyle: 'none',
-		    backgroundColor:'#cccccc',
+		     selectedBackgroundColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
@@ -240,14 +234,14 @@ function addRows(i, data, flag){
 	else if (i == 2 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		     selectedBackgroundColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
 		
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		     selectedBackgroundColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -257,7 +251,7 @@ function addRows(i, data, flag){
 	else if (i == 3 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		    selectedBackgroundColor : "transparent",
 		     backgroundColor:'#cccccc',
 		    bottom: 10
 		});

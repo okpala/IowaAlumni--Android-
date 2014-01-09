@@ -22,12 +22,8 @@
     <statusbar-style>default</statusbar-style>
     <statusbar-hidden>true</statusbar-hidden>
     <fullscreen>true</fullscreen>
-    <navbar-hidden>false</navbar-hidden>
+    <navbar-hidden>true</navbar-hidden>
     <analytics>true</analytics>
-    <modules>
-        <module platform="android" version="1.0">analytics.google</module>
-        <module platform="android" version="2.1.3">ti.map</module>
-    </modules>
     <guid>1144d51e-3459-4b51-a005-39937c8900ca</guid>
     <property name="ti.android.fastdev" type="bool">false</property>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
@@ -44,18 +40,18 @@
             <uses-permission android:name="com.iowalum.uiowaalumni.permission.MAPS_RECEIVE"/>
             <permission
                 android:name="com.iowalum.uiowaalumni.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+                
             <application>
-                <!--
-           		 <meta-data
-				    android:name="com.google.android.gms.version"
-				    android:value="4030500" />
-				   -->
                 <meta-data
-                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBhf0Vkw2WXmbaazH84-uLytWHEbHURAVA"/>
+                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBBDvVmf2uzpvo5TGPLTG8TJZcuYqSFuBY"/>
             </application>
         </manifest>
     </android>
     <mobileweb>
         <theme>default</theme>
     </mobileweb>
+    <modules>
+        <module platform="android" version="1.0">analytics.google</module>
+        <module platform="android" version="2.1.3">ti.map</module>
+    </modules>
 </ti:app>

@@ -7,7 +7,7 @@ var subTextHieght = 15;
  * that contains Tilte, Time, and Place
  */
 
-function SingleRow(post) {
+function SingleRow(post, tracker, title) {
 	var screenWidth = Ti.Platform.displayCaps.platformWidth;
    var table = Ti.UI.createTableView({
 		separatorColor: 	'#d5d5d5',
@@ -29,7 +29,14 @@ function SingleRow(post) {
 	    });
 
 	 rowText.addEventListener('click', function(e) {
+	 		tracker.trackEvent({
+				category: "Events",
+				action: "click",
+				label: "An Event in the " + title + "'s Window - " + post.url,
+				value: 1
+			});
 			new WebView (post.url);
+			
 	 });
 	table.height = rowText.height;
 	var data = [];

@@ -6,7 +6,7 @@ var WebView = require('ui/common/WebView');
  * Essential attributes
  */
 
-function Row(post) {
+function Row(post, tracker, title) {
 
     this.postheight		= 0;
 	var screenWidth = Ti.Platform.displayCaps.platformWidth;
@@ -20,10 +20,7 @@ function Row(post) {
 		layout: 			'vertical',
 		backgroundColor: 	'#e2e2e2'
 	});
-	//row.rightImage = null;
-	//row.backgroundSelectedImage = null;
-	//row.backgroundFocusImage = null;
-
+	
 	var container =  Titanium.UI.createView({
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
@@ -85,6 +82,13 @@ function Row(post) {
 	row.add(container);
 	
 	row.addEventListener('click', function(e) {
+		tracker.trackEvent({
+				category: "Articles",
+				action: "click",
+				label: "An Event in the " + title + "'s Window - " + e.row.link,
+				value: 1
+			});
+		
 		new WebView (e.row.link);
 	});
 	

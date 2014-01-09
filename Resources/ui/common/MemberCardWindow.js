@@ -84,7 +84,7 @@ function  MemberCardWindow(title, tracker){
 		  font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'},
 		  message: 'Checking Password...',
 		  style: Ti.UI.ActivityIndicatorStyle.DARK,
-		  top:95,
+		  top:105,
 		  left:90,
 		  height:'auto',
 		  width:'auto'
@@ -100,7 +100,7 @@ function  MemberCardWindow(title, tracker){
 		height:'auto',
 		width: 310,
 		color:'#FF0000',
-		top: 95,
+		top: 105,
   		left: 10,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});

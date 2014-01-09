@@ -36,13 +36,13 @@ var xhr = Ti.Network.createHTTPClient({
 	   			var item = items.item(i);
 	   			
 	   			clubs.push({
-					state: item.getElementsByTagName('state').item(0).textContent,// getRssText(item, 'state'),
-					club:  item.getElementsByTagName('club').item(0).textContent,//getRssText(item, 'club'),
-					place: item.getElementsByTagName('place').item(0).textContent,//getRssText(item, 'place'),
-					phone: item.getElementsByTagName('phone').item(0).textContent,//getRssText(item, 'phone'),
-					latitude: item.getElementsByTagName('latitude').item(0).textContent,//getRssText(item, 'latitude'),
-					longitude: item.getElementsByTagName('longitude').item(0).textContent,//getRssText(item, 'longitude'),
-					street: item.getElementsByTagName('street').item(0).textContent//getRssText(item, 'street')
+					state: item.getElementsByTagName('state').item(0).textContent,	
+					club:  item.getElementsByTagName('club').item(0).textContent,	
+					place: item.getElementsByTagName('place').item(0).textContent,	
+					phone: item.getElementsByTagName('phone').item(0).textContent,	
+					latitude: item.getElementsByTagName('latitude').item(0).textContent,	
+					longitude: item.getElementsByTagName('longitude').item(0).textContent,	
+					street: item.getElementsByTagName('street').item(0).textContent	
 				});
 			}
 		
@@ -54,7 +54,7 @@ var xhr = Ti.Network.createHTTPClient({
            adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
                   
 		});
-		var ad = new StaticAd(adList);
+		var ad = new StaticAd(adList, tracker, title);
 		
 		
 		var items = xml.documentElement.getElementsByTagName("item2");
@@ -133,8 +133,14 @@ var xhr = Ti.Network.createHTTPClient({
 	self.add(table);
 	self.add(ad);
 	 table.addEventListener('click', function(e){
+	 	tracker.trackEvent({
+				category: title,
+				action: "click",
+				label: e.row.text,
+				value: 1
+		});
 			var stateClubs = getStateList(clubs, clubsInfo, e.row.text);
-			(new GameWatchWindow(stateClubs[0], stateClubs[1]));
+			(new GameWatchWindow(stateClubs[0], stateClubs[1], tracker));
 		});
 	self.remove(loading);
     },

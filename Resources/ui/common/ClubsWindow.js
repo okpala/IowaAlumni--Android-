@@ -4,7 +4,7 @@ var EditText = require('ui/common/EditText');
 /*
  * Clubs and Game Watch Tabs 
  */
-function ClubsWindow(clubData, clubInfoData, tabGroup) {
+function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 
 	var self = Ti.UI.createWindow({
 	    backgroundColor:'#e2e2e2',
@@ -26,7 +26,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 		    var row = Ti.UI.createTableViewRow({
 		    	city: clubInfoData[i].city,
 		        height: 'auto',
-		        selectionStyle: 'none',
+		        selectedBackgroundColor : "transparent",
 		        bottom: 10
 		    });
 		}
@@ -34,7 +34,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 			 var row = Ti.UI.createTableViewRow({
 		    	city: clubInfoData[i].city,
 		        height: 'auto',
-		        selectionStyle: 'none',
+		         selectedBackgroundColor : "transparent",
 		        backgroundColor:'#cccccc',
 		        bottom: 10
 		    });
@@ -75,7 +75,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 		    currentTop = currentTop + 15;
 	    }
 	    if (clubInfoData[i].email != 'NA'){
-		    var emailLabel = createEmail(clubInfoData, i, currentTop);
+		    var emailLabel = createEmail(clubInfoData, i, currentTop, tracker);
 	
 		    row.add(emailLabel);
 	    	currentTop = currentTop + 15;
@@ -83,7 +83,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup) {
 	    }
 	    
 	    if (clubInfoData[i].web != 'NA'){
-		    var webLabel =  createWeb(clubInfoData, i, currentTop);
+		    var webLabel =  createWeb(clubInfoData, i, currentTop, tracker);
 			row.add(webLabel);
 	    }
 	   rowCounter++;
@@ -101,7 +101,7 @@ return self;
 
 //Helper Functions
 
-function createEmail(clubInfoData, index, currentTop){
+function createEmail(clubInfoData, index, currentTop, tracker){
 	var emailLabel = Ti.UI.createLabel({
 		        text: (clubInfoData[index].email),
 		        textAlign: 'left',
@@ -114,11 +114,14 @@ function createEmail(clubInfoData, index, currentTop){
 		    
 		   
 	    	emailLabel.addEventListener('click', function(e) {
-	    		
+	    		tracker.trackEvent({
+					category: "Clubs",
+					action: "click",
+					label: clubInfoData[index].city + " " + clubInfoData[index].email,
+					value: 1
+				});
 	    		
 	    		Ti.API.info(clubInfoData[index].email);
-	    		//Ti.API.info(clubInfoData[e.index].email);
-	    		
 				var emailDialog = Ti.UI.createEmailDialog();
 				emailDialog.toRecipients = [clubInfoData[index].email];
 				Ti.API.info(clubInfoData[index].email);
@@ -132,7 +135,7 @@ function createEmail(clubInfoData, index, currentTop){
 	
 }
 
-function createWeb(clubInfoData, index, currentTop){
+function createWeb(clubInfoData, index, currentTop, tracker){
 	var webLabel = Ti.UI.createLabel({
 		        text: (clubInfoData[index].web),
 		        textAlign: 'left',
@@ -144,6 +147,12 @@ function createWeb(clubInfoData, index, currentTop){
 		   
 		    
 		    webLabel.addEventListener('click', function(e) {
+		    	tracker.trackEvent({
+					category: "Clubs",
+					action: "click",
+					label: clubInfoData[index].city + " " + clubInfoData[index].web,
+					value: 1
+				});
 				new WebView (clubInfoData[index].web);
 			}); 
 			
@@ -155,7 +164,7 @@ function addRows(i, data, flag){
 	if (i == 1 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		     selectedBackgroundColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -169,7 +178,7 @@ function addRows(i, data, flag){
 		data.push(row);
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		     selectedBackgroundColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -178,7 +187,7 @@ function addRows(i, data, flag){
 	else if (i == 1 && flag == false){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		     selectedBackgroundColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -188,7 +197,7 @@ function addRows(i, data, flag){
 	else if (i == 2 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		    selectedBackgroundColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
@@ -196,7 +205,7 @@ function addRows(i, data, flag){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
 		    selectionStyle: 'none',
-		    backgroundColor:'#cccccc',
+		     selectedBackgroundColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
@@ -205,7 +214,7 @@ function addRows(i, data, flag){
 	else if (i == 3 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		     selectedBackgroundColor : "transparent",
 		     backgroundColor:'#cccccc',
 		    bottom: 10
 		});

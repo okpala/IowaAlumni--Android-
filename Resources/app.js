@@ -127,7 +127,7 @@ if (Ti.version < 1.8 ) {
 		var home = 'Home';
 		
 		var menuTitles = [
-			(new MenuRow(home,'home','',true)),
+			(new MenuRow(home,'home','',false)),
 			(new MenuRow(eventsTitle,'events',Feeds.eventsFeed(),false)),
 			(new MenuRow(clubsTitle,'clubs','',false)),
 			(new MenuRow(memberBenefitsTitle,'memberbenefits','',false)),
@@ -152,15 +152,9 @@ if (Ti.version < 1.8 ) {
 		win.add(tableView);
 		win.add(taglinerow);
 		win.add(tagline);
-		
-		
-
-	
-	var win2 = new RootWindow(home,tracker);
-	
 	
 	win.open();
-	win2.open();
+	
 	
 	
 	tableView.addEventListener('click', function(e) {

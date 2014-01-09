@@ -6,7 +6,7 @@ var WebView = require('ui/common/WebView');
  * Essential attributes
  */
 
-function FeatureRow(post) {
+function FeatureRow(post, tracker, title) {
 
 	this.containerheight = 0;
 	var screenWidth = Ti.Platform.displayCaps.platformWidth;
@@ -92,6 +92,12 @@ function FeatureRow(post) {
 	row.add(container);
 	
 	row.addEventListener('click', function(e) {
+		tracker.trackEvent({
+				category: "Featured Articles",
+				action: "click",
+				label: "An Event in the " + title + "'s Window - " + post.url,
+				value: 1
+			});
 		new WebView (post.url);
 	});
 					

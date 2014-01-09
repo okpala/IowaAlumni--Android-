@@ -42,7 +42,8 @@ var xhr = Ti.Network.createHTTPClient({
 	var table = Ti.UI.createTableView({
 		height: 'auto',
 		//top: 134
-		top: 70
+		top: 70,
+		
 	});
 	
 	var linkLabel = Ti.UI.createLabel({
@@ -111,8 +112,17 @@ var xhr = Ti.Network.createHTTPClient({
 	};
 	
 	table.addEventListener('click', function(e){
+		tracker.trackEvent({
+				category: "Benefits",
+				action: "click",
+				label: discount[e.index].title,
+				value: 1
+			});
 		new WebView (discount[e.index].link);
+		
+		
 	});
+	
 	
 
 	

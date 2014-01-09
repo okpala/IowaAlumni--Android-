@@ -6,7 +6,7 @@ var WebView = require('ui/common/WebView');
  * Essential attributes
  */
 
-function HeaderRow(post) {
+function HeaderRow(post, tracker, title) {
 	var screenWidth = Ti.Platform.displayCaps.platformWidth;
    var table = Ti.UI.createTableView({
 		separatorColor: 	'#e2e2e2',
@@ -26,6 +26,12 @@ function HeaderRow(post) {
 	        
 	    });
 	 rowText.addEventListener('click', function(e) {
+	 		tracker.trackEvent({
+				category: "Events",
+				action: "click",
+				label: "An Event in the " + title + "'s Window - " + post.hlink,
+				value: 1
+			});
 			new WebView (post.hlink);
 	 });
 	

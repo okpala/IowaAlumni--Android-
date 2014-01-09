@@ -2,7 +2,7 @@ var WebView = require('ui/common/WebView');
 var GetFeed = require('ui/common/GetFeed');
 var SocialMediaIcons = require('ui/common/SocialMediaIcons');
 
-function HomeSMSection(){
+function HomeSMSection(tracker){
 	var socialMediaView = Ti.UI.createView({
 			
 			backgroundColor: 	'#e2e2e2',
@@ -17,12 +17,12 @@ function HomeSMSection(){
 		
 		var icon = new SocialMediaIcons();
 	
-	var facebookimage = icon.facebook(0,0);
-	var twitterimage = icon.twitter(0,53.6);
-	var instagramimage = icon.instagram(0,107.2);
-	var linkedInimage = icon.linkedIn(0,160.8);
-	var foursquareimage = icon.foursquare(0,214.4);
-	var pinterestimage = icon.pinterest(0,268);
+	var facebookimage = icon.facebook(0,0,tracker);
+	var twitterimage = icon.twitter(0,53.6,tracker);
+	var instagramimage = icon.instagram(0,107.2,tracker);
+	var linkedInimage = icon.linkedIn(0,160.8,tracker);
+	var foursquareimage = icon.foursquare(0,214.4,tracker);
+	var pinterestimage = icon.pinterest(0,268,tracker);
 	
 		
 	

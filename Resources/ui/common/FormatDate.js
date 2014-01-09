@@ -4,7 +4,7 @@ function FormatDate(){
 
 FormatDate.prototype.getDate = function() {
 	var date = new Date();
-	var datestr = date.getMonth()+'/'+date.getDate()+'/'+date.getFullYear();
+	var datestr = (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();
 	if (date.getHours()>=12)
 	{
 		datestr+=' '+(date.getHours()==12 ? date.getHours() : date.getHours()-12)+':'+minute(date.getMinutes())+' PM';

@@ -7,7 +7,7 @@ var Feed = require('ui/common/Feed');
  * Parameter "index" determine what ad is selected 
  * from the database.
  */
-function StaticAd(adList){
+function StaticAd(adList, tracker, title){
 	var screenWidth = Ti.Platform.displayCaps.platformWidth;
 	var ad = Ti.UI.createImageView({
 	  image:    adList[0].ad,
@@ -18,7 +18,14 @@ function StaticAd(adList){
 	  
 	});
 	ad.addEventListener('click', function(e) {
+		tracker.trackEvent({
+				category: "Ad",
+				action: "click",
+				label: "An Ad in the " + title + "'s Window - " + adList[0].ad,
+				value: 1
+		});
 		new WebView (adList[0].adUrl);
+		
 	}); 	
 	
 	return ad;

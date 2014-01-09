@@ -4,7 +4,7 @@ var WebView = require('ui/common/WebView');
  * Essential attributes
  */
 
-function Ad(post) {
+function Ad(post, tracker, title) {
 	var screenWidth = Ti.Platform.displayCaps.platformWidth;
     var row = Ti.UI.createTableViewRow({
 		//hasChild:true,
@@ -47,6 +47,12 @@ function Ad(post) {
 	row.add(container);
 	
 	row.addEventListener('click', function(e) {
+		tracker.trackEvent({
+				category: "Ads",
+				action: "click",
+				label: "An Ad in the " + title + "'s Window - " + post.ad,
+				value: 1
+		});
 		new WebView (post.adUrl );
 	});
 	

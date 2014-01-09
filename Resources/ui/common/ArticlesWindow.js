@@ -64,7 +64,7 @@ var xhr = Ti.Network.createHTTPClient({
 		           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
 		                  
 				});
-				var ad = new StaticAd(adList);
+				var ad = new StaticAd(adList, tracker, title);
 				table.bottom = 70;
 				self.add(ad);	
 				
@@ -113,14 +113,14 @@ var xhr = Ti.Network.createHTTPClient({
 				//}
 				
 				if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
-					var row = new Ad(innerAdList[adIndex]);
+					var row = new Ad(innerAdList[adIndex], tracker, title);
 					rows.push(row);
 					adIndex++;
 				}
 				
 				if(featureSet == false ) {
 					
-					var row = new FeatureRow(post);
+					var row = new FeatureRow(post, tracker, title);
 					featureSet = true;
 					
 					row.addEventListener('swipe', function(e){
@@ -130,7 +130,7 @@ var xhr = Ti.Network.createHTTPClient({
 				}
 				
 				else {
-					var row =  new Row(post);
+					var row =  new Row(post, tracker, title);
 
 					if(groupCount >= 1) {
 						group.push(row);

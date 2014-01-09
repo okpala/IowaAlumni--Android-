@@ -5,7 +5,7 @@ var WebView = require('ui/common/WebView');
  * Return a Single Post Area that contains
  * tilte, description, and picture(Not Required)
  */
-function SinglePost (post){
+function SinglePost (post, tracker, title){
 	
 	
 	var screenWidth = Ti.Platform.displayCaps.platformWidth;
@@ -29,6 +29,12 @@ function SinglePost (post){
 	    });
 
 	 rowText.addEventListener('click', function(e) {
+	 		tracker.trackEvent({
+				category: "Articles",
+				action: "click",
+				label: "An Article in the " + title + "'s Window - " + post.url,
+				value: 1
+			});
 			new WebView ( post.url);
 			
 	 });
