@@ -165,6 +165,7 @@ function getDescriptionLabel(description) {
 		height: 70,
 		textAlign:'left',
 		width: 200,
+		ellipsize: true,
 		color:'#000000',
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});

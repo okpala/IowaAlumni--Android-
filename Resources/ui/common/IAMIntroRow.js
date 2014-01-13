@@ -4,7 +4,8 @@ var WebView = require('ui/common/WebView');
  */
 
 function IAMIntroRow(post) {
-var table = Ti.UI.createTableView({
+	
+	var table = Ti.UI.createTableView({
 		separatorColor: 	'#d5d5d5',
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
@@ -18,14 +19,7 @@ var table = Ti.UI.createTableView({
 		borderWidth: 		1,
 		scrollable: 		false
 	});
-
-	 var rowText = Ti.UI.createTableViewRow({
-	 	selectionStyle: 'none',
-	        height: 65
-	       
-	    });
-	    
-	    
+	
 	 var image = Ti.UI.createImageView({
 	  image:    Ti.Filesystem.resourcesDirectory + 'magfan.jpg',
 	  top:   10,
@@ -33,6 +27,15 @@ var table = Ti.UI.createTableView({
 	  width: 80,
 	  height: 55
 	});
+
+	 var rowText = Ti.UI.createTableViewRow({
+	 	selectionStyle: 'none',
+	    height: getTableHeight(image.height)
+	       
+	 });
+	    
+	 var screenWidth = Ti.Platform.displayCaps.platformWidth;  
+	
 	
 	    
 	 
@@ -56,7 +59,7 @@ var table = Ti.UI.createTableView({
 	
 	
 
-	introLabel  = getText();
+	introLabel  = getText(image.width);
 	rowText.add(introLabel);
 	rowText.add(image);
 
@@ -71,17 +74,40 @@ var table = Ti.UI.createTableView({
  * Helper Functions
  */
 
+function getTableHeight(imageHeight){
+	var temp = Ti.UI.createLabel({
+		text: 'Our award winning bimonthly magazine published by the University of Iowa Alumni Association. ',
+		height:'auto',
+		width: 250,
+		color:'#efc006',
+		font:{fontFamily:'Helvetica',fontSize:16,fontWeight:'bold'}
+	});
+	var view = Ti.UI.createView({
+		width: 250,
+		height:'auto'
+	});
+	view.add(temp);
+	var height;
+	if (view.toImage().height > imageHeight){
+		height = view.toImage().height;
+	}
+	else{
+		height = imageHeight;
+	}
+	
+	return height;
+}
 
-
-function getText (){
+function getText (imageWidth){
 
 	var text = Ti.UI.createLabel({
 		text: 'Our award winning bimonthly magazine published by the University of Iowa Alumni Association. ',
 		left: 10,
 		top: 10,
 		textAlign:'left',
-		width: 200,
-		//height: 20,
+		width: screenWidth - (imageWidth + 20),
+		
+		//height: view.toImage().height,
 		color:'#000000',
 		font: {fontFamily:'HelveticaNeueBold',fontSize:12,fontWeight:'bold'}
 	});

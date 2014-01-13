@@ -179,6 +179,7 @@ function getDescriptionLabel(description,postheight) {
 		bottom: 10,
 		height: 50,
 		textAlign:'left',
+		ellipsize: true,
 		width: 260,
 		color:'#ffffff',
 		shadowColor:'#000000',
