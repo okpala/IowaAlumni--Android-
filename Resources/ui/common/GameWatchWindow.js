@@ -109,6 +109,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	        	text: (clubData[i].phone),
 	        	color: "#000000",
 		        textAlign: 'left',
+		        autoLink: Titanium.UI.AUTOLINK_PHONE_NUMBERS,
 		        left: 10,
 		        top: 61,
 		        height: 14,

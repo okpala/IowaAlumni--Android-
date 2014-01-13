@@ -74,9 +74,14 @@ function SinglePost (post, tracker, title){
 				borderWidth: 	1
 		
 			});
+			
+			
 			var postImage = getPostImage(post.image);
+			new CachedImageView('imageDirectoryName', post.image, postImage);
+			postImage = getPostImage(post.image);
 			
 			imageContainer.add(postImage);
+			
 			rowText.add(imageContainer);
 			
 			var desclbl = getDescriptionLabel(post.description, 200);
@@ -184,6 +189,7 @@ function getPostImage(image) {
 		hires: true,
 		
 	});
+    
     new CachedImageView('imageDirectoryName', image, tempimagebox);
 	
 	var height = tempimagebox.toImage().height;

@@ -21,13 +21,13 @@ var table = Ti.UI.createTableView({
 
 	 var rowText = Ti.UI.createTableViewRow({
 	 	selectionStyle: 'none',
-	        height: 80
+	        height: 65
 	       
 	    });
 	    
 	    
 	 var image = Ti.UI.createImageView({
-	  image:    'http://www.iowalum.com/magazine/new/images/magfan.jpg',
+	  image:    Ti.Filesystem.resourcesDirectory + 'magfan.jpg',
 	  top:   10,
 	  right: 10,
 	  width: 80,

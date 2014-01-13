@@ -1,22 +1,36 @@
 Logfile initialized
 [INFO] logfile = /Users/charlesokpala/IowaAlumni--Android-/build.log
 [INFO] logfile = /Users/charlesokpala/IowaAlumni--Android-/build.log
-[DEBUG] /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py simulator UIowa Alumni /Users/charlesokpala /Users/charlesokpala/IowaAlumni--Android- com.iowalum.uiowaalumni 2 WVGA854
 [DEBUG] /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py emulator UIowa Alumni /Users/charlesokpala /Users/charlesokpala/IowaAlumni--Android- com.iowalum.uiowaalumni 2 WVGA854 armeabi
-[INFO] Launching Android emulator...one moment
+[DEBUG] /Users/charlesokpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py simulator UIowa Alumni /Users/charlesokpala /Users/charlesokpala/IowaAlumni--Android- com.iowalum.uiowaalumni 2 WVGA854
 [INFO] Building UIowa Alumni for Android ... one moment
+[INFO] Launching Android emulator...one moment
 [DEBUG] From: /Users/charlesokpala/tools/emulator
 [DEBUG] SDCard: /Users/charlesokpala/.titanium/android2.sdcard
 [DEBUG] AVD ID: 2
 [DEBUG] AVD Skin: WVGA854
 [DEBUG] AVD ABI: armeabi
 [DEBUG] SDK: /Users/charlesokpala
-[INFO] Emulator is running.
 [INFO] Titanium SDK version: 3.1.3 (09/18/13 12:00 222f4d1)
 [DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 0 devices/emulators
+[DEBUG] /Users/charlesokpala/tools/emulator -avd titanium_2_WVGA854 -port 5560 -sdcard /Users/charlesokpala/.titanium/titanium_2_WVGA854.sdcard -logcat *:d,*,TiAPI:V -no-boot-anim -partition-size 128
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.042412 seconds on emulator to get ready
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 65 seconds)
+[DEBUG] waited 65.667818 seconds on emulator to get ready
+[INFO] Waiting for the Android Emulator to become available
 [DEBUG] com.iowalum.uiowaalumni installed? True
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
@@ -35,6 +49,7 @@ Logfile initialized
 [DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-port-ldpi/default.png
 [DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/charlesokpala/IowaAlumni--Android-/Resources/android/images/res-notlong-port-mdpi/default.png
 [INFO] Detected custom ApplicationManifest.xml -- no Titanium version migration supported
+[INFO] Waiting for SDCard to become available..
 [DEBUG] creating unsigned apk: /Users/charlesokpala/IowaAlumni--Android-/build/android/bin/app-unsigned.apk
 [DEBUG] from resource zip => assets/Resources/images/homeselected.png
 [DEBUG] from resource zip => assets/Resources/images/refresh_icon.png
@@ -116,7 +131,6 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/services/rss.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Ad.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ApplicationWindow.js
-[DEBUG] from resource zip => assets/Resources/ui/common/ArticleOfTheWeekSection.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ArticlesWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/CachedImageView.js
 [DEBUG] from resource zip => assets/Resources/ui/common/ClubsWindow.js
@@ -125,6 +139,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/Description.js
 [DEBUG] from resource zip => assets/Resources/ui/common/DetailView.js
 [DEBUG] from resource zip => assets/Resources/ui/common/EditText.js
+[DEBUG] from resource zip => assets/Resources/ui/common/ErrorWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/EventsWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/FeatureRow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Feed.js
@@ -147,6 +162,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/Post.js
 [DEBUG] from resource zip => assets/Resources/ui/common/PostGroup.js
 [DEBUG] from resource zip => assets/Resources/ui/common/PostTable.js
+[DEBUG] from resource zip => assets/Resources/ui/common/RefreshSection.js
 [DEBUG] from resource zip => assets/Resources/ui/common/RootWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Row.js
 [DEBUG] from resource zip => assets/Resources/ui/common/SinglePost.js
@@ -156,7 +172,6 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/ui/common/StaticAd.js
 [DEBUG] from resource zip => assets/Resources/ui/common/TabNavWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/common/TextPost.js
-[DEBUG] from resource zip => assets/Resources/ui/common/TodayEventsSection.js
 [DEBUG] from resource zip => assets/Resources/ui/common/Tracker.js
 [DEBUG] from resource zip => assets/Resources/ui/common/WebView.js
 [DEBUG] from resource zip => assets/Resources/ui/handheld/android/ApplicationWindow.js
@@ -207,6 +222,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/logo.png
 [DEBUG] from resource zip => assets/Resources/magazine.png
 [DEBUG] from resource zip => assets/Resources/magazineselected.png
+[DEBUG] from resource zip => assets/Resources/magfan.jpg
 [DEBUG] from resource zip => assets/Resources/memberbenefits.png
 [DEBUG] from resource zip => assets/Resources/memberbenefitsselected.png
 [DEBUG] from resource zip => assets/Resources/membercard.png
@@ -291,7 +307,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.017375 seconds on emulator to get ready
+[DEBUG] waited 0.017161 seconds on emulator to get ready
 [INFO] Installing application on emulator
 [INFO] Launching application ... UIowa Alumni
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.iowalum.uiowaalumni/.UiowaAlumniActivity }

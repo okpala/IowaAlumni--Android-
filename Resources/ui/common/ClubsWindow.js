@@ -69,6 +69,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 		        textAlign: 'left',
 		        left: 10,
 		        top: currentTop,
+		        autoLink: Titanium.UI.AUTOLINK_PHONE_NUMBERS,
 		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 		    });
 		    row.add(phoneLabel);
@@ -76,7 +77,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 	    }
 	    if (clubInfoData[i].email != 'NA'){
 		    var emailLabel = createEmail(clubInfoData, i, currentTop, tracker);
-	
+		
 		    row.add(emailLabel);
 	    	currentTop = currentTop + 15;
 	    	
@@ -105,10 +106,10 @@ function createEmail(clubInfoData, index, currentTop, tracker){
 	var emailLabel = Ti.UI.createLabel({
 		        text: (clubInfoData[index].email),
 		        textAlign: 'left',
-		        color: 'blue',
+		        //color: 'blue',
 		        left: 10,
 		        top: currentTop,
-		        
+		        autoLink: Titanium.UI.AUTOLINK_EMAIL_ADDRESSES,
 		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 		    });
 		    
@@ -120,7 +121,7 @@ function createEmail(clubInfoData, index, currentTop, tracker){
 					label: clubInfoData[index].city + " " + clubInfoData[index].email,
 					value: 1
 				});
-	    		
+	    		/*
 	    		Ti.API.info(clubInfoData[index].email);
 				var emailDialog = Ti.UI.createEmailDialog();
 				emailDialog.toRecipients = [clubInfoData[index].email];
@@ -128,7 +129,7 @@ function createEmail(clubInfoData, index, currentTop, tracker){
 				var f = Ti.Filesystem.getFile('cricket.wav');
 				emailDialog.addAttachment(f);
 				emailDialog.open();
-				
+				*/
 			}); 
 			
 		return emailLabel;	
@@ -151,6 +152,7 @@ function createWeb(clubInfoData, index, currentTop, tracker){
 					category: "Clubs",
 					action: "click",
 					label: clubInfoData[index].city + " " + clubInfoData[index].web,
+					autoLink: Titanium.UI.AUTOLINK_URLS,
 					value: 1
 				});
 				new WebView (clubInfoData[index].web);

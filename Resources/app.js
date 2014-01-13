@@ -21,7 +21,7 @@ if (Ti.version < 1.8 ) {
 // This is a single context application with mutliple windows in a stack
 (function() {
 	//determine platform and form factor and render approproate components
-	
+	/*
 	
 	//considering tablet to have one dimension over 900px - this is imperfect, so you should feel free to decide
 	//yourself what you consider a tablet form factor for android
@@ -44,10 +44,10 @@ if (Ti.version < 1.8 ) {
 			Window = require('ui/handheld/android/ApplicationWindow');
 		}
 	}
+	*/
 	
 	var ContactUsWindow = require('ui/common/ContactUsWindow');
 	var StatesWindow = require('ui/common/StatesWindow');
-	var MapWindow = require('ui/common/MapWindow');
 	var MemberCardWindow = require('ui/common/MemberCardWindow');
 	var RootWindow = require('ui/common/RootWindow');
 	var EventsWindow = require('ui/common/EventsWindow');
@@ -55,12 +55,12 @@ if (Ti.version < 1.8 ) {
 	var Feed = require('ui/common/Feed');
 	var MenuRow = require('ui/common/MenuRow');
 	var NationalBenefitsWindow = require('ui/common/NationalBenefitsWindow');
-	var Feeds = new Feed();
 	var GetFeed = require('ui/common/GetFeed');
 	var Window = require('ui/handheld/android/ApplicationWindow');
 	var Tracker = require('ui/common/Tracker');
 	
 	var tracker = new Tracker();
+	var Feeds = new Feed();
 	
 	var win = Titanium.UI.createWindow({
 		    backgroundColor:'#000',

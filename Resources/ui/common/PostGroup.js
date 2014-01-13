@@ -28,7 +28,6 @@ function PostGroup(rows) {
 	table.setData(rows);
 
 	var row = Ti.UI.createTableViewRow({
-		//hasChild: true,
 		height: height+15,
 		padding: 0,
 		top: 0,
@@ -37,9 +36,6 @@ function PostGroup(rows) {
 		selectionStyle: 'none',
 		backgroundColor: '#e2e2e2'
 	});
-	//row.rightImage = null;
-	//row.backgroundSelectedImage = null;
-	//row.backgroundFocusImage = null;
 
 	row.add(table);
 

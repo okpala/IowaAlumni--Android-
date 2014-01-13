@@ -70,7 +70,9 @@ function Row(post, tracker, title) {
 
 	});
 	var postImage = getPostImage(post.image);
+	postImage = getPostImage(post.image);
 	//new CachedImageView('imageDirectoryName', post.image, postImage);
+	
 	imageContainer.add(postImage);
 	container.add(imageContainer);
 
@@ -107,7 +109,7 @@ function getContainerHeight(img) {
 		hires: true,
 		//top: -10, // this works for some reason
 	});
-    //new CachedImageView('imageDirectoryName', img, tempimagebox);
+   new CachedImageView('imageDirectoryName', img, tempimagebox);
 	
 	var height = tempimagebox.toImage().height;
 	var width = tempimagebox.toImage().width;
@@ -180,7 +182,7 @@ function getPostImage(image) {
 		hires: true,
 		//top: -10, // this works for some reason
 	});
-    //new CachedImageView('imageDirectoryName', image, tempimagebox);
+    new CachedImageView('imageDirectoryName', image, tempimagebox);
 	
 	var height = tempimagebox.toImage().height;
 	var width = tempimagebox.toImage().width;

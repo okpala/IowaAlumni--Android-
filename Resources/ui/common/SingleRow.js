@@ -78,7 +78,7 @@ function SingleRow(post, tracker, title) {
 	rowText.add(placebl);
 
 
-	timebl.top =   titlelbl.height + 15 ;
+	timebl.top =   titlelbl.height + 10 ;
 	inputtimebl.top  = timebl.top;
 	placebl.top =  inputplacebl.top = timebl.height  + titlelbl.height + 15 ;
 

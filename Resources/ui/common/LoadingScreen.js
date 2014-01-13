@@ -5,6 +5,9 @@ function LoadingScreen(){
 		  style: Ti.UI.ActivityIndicatorStyle.DARK,
 	});
 	
+	
+	
+	
 	return activityIndicator;
 }
 module.exports = LoadingScreen;
