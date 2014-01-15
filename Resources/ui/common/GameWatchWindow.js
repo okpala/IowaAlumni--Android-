@@ -12,53 +12,86 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 
 	
 	var tabGroup = Titanium.UI.createTabGroup();
-	
+	var screenHeight = Ti.Platform.displayCaps.platformHeight;
 	var windowtitle = clubData[0].state;
-	
+	var mapAvailable = true;
 	var self = Ti.UI.createWindow({
 	    backgroundColor:'#e2e2e2',
 		navBarHidden: false,	
 	});
-
-	var gameWatchInfo = [];
-	for (var i = 0; i <= clubData.length - 1; i++) {
-		gameWatchInfo.push(
-			Map.createAnnotation(
-			{
-			    latitude:  clubData[i].latitude,
-			    longitude: clubData[i].longitude,
-			    title: clubData[i].place,
-			    subtitle: clubData[i].street,
-			    pincolor: Map.ANNOTATION_RED,
-			    animate:true,
-			})
-		);
-		
-	}
- 		
 	
-	var map = Map.createView({
-		mapType:Map.NORMAL_TYPE,
-		region: {latitude: clubData[0].latitude, longitude: clubData[0].longitude,
-			latitudeDelta:0.01, longitudeDelta:0.01 },
-		animate: true,
-		userLocation: false,
-		height: 200,
-	    annotations: gameWatchInfo,
-		top: 0
-	});
-
 	var table = Ti.UI.createTableView({
 		height: 'auto',
 		top: 200
 	});
+	
+	var code = Map.isGooglePlayServicesAvailable();
+
+	if (code == Map.SUCCESS) {
+		var gameWatchInfo = [];
+		for (var i = 0; i <= clubData.length - 1; i++) {
+			gameWatchInfo.push(
+				Map.createAnnotation(
+				{
+				    latitude:  clubData[i].latitude,
+				    longitude: clubData[i].longitude,
+				    title: clubData[i].place,
+				    subtitle: clubData[i].street,
+				    pincolor: Map.ANNOTATION_RED,
+				    animate:true,
+				})
+			);
+			
+		}
+	 		
+		
+		var map = Map.createView({
+			mapType:Map.NORMAL_TYPE,
+			region: {latitude: clubData[0].latitude, longitude: clubData[0].longitude,
+				latitudeDelta:0.01, longitudeDelta:0.01 },
+			animate: true,
+			userLocation: false,
+			height: screenHeight/2,
+		    annotations: gameWatchInfo,
+			top: 0
+		});
+		table.top = map.height;
+		
+		table.addEventListener('click', function(e){
+			tracker.trackEvent({
+					category: "Game Watches",
+					action: "click",
+					label: clubData[e.index].club,
+					value: 1
+			});
+			self.add(map);
+			map.region = {latitude: gameWatchInfo[e.index].latitude, longitude: gameWatchInfo[e.index].longitude,
+					latitudeDelta:0.01, longitudeDelta:0.01 };
+			
+			map.selectAnnotation(gameWatchInfo[e.index]);
+		});
+		
+		self.addEventListener('focus', function(e){
+			self.add(map);
+		});
+			
+		
+	}
+	else{
+		
+		table.top = 0;
+		mapAvailable = false;
+	}
+
+	
 
 	
 	var data = [];
 	var rowCounter = 0;
-	for (var i = 0; i <= gameWatchInfo.length - 1; i++) {
+	for (var i = 0; i <= clubData.length - 1; i++) {
+		var row;
 		if (rowCounter % 2 == 0){
-		    var row = Ti.UI.createTableViewRow({
+		    row = Ti.UI.createTableViewRow({
 		    	club: clubData[i].club,
 		    	latitude:  clubData[i].latitude,
 				longitude: clubData[i].longitude,
@@ -68,7 +101,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 		    });
 		}
 		else{
-			var row = Ti.UI.createTableViewRow({
+			row = Ti.UI.createTableViewRow({
 		    	club: clubData[i].club,
 		    	latitude:  clubData[i].latitude,
 				longitude: clubData[i].longitude,
@@ -76,6 +109,9 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 		        backgroundColor:'#cccccc',
 		        bottom: 10
 		    });
+		}
+		if(mapAvailable == false){
+			row.backgroundSelectedColor = "transparent";
 		}
 	    var clubLabel = Ti.UI.createLabel({
 	        text: (clubData[i].club),
@@ -131,26 +167,10 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	self.add(table);
 	
 	
-	self.addEventListener('focus', function(e){
-		self.add(map);
-	});
+	
 	
 
-	table.addEventListener('click', function(e){
-		tracker.trackEvent({
-				category: "Game Watches",
-				action: "click",
-				label: clubData[e.index].club,
-				value: 1
-		});
-		self.add(map);
-		map.region = {latitude: gameWatchInfo[e.index].latitude, longitude: gameWatchInfo[e.index].longitude,
-				latitudeDelta:0.01, longitudeDelta:0.01 };
-		
-		map.selectAnnotation(gameWatchInfo[e.index]);
-		
-
-	});
+	
 	
 
 var mainWinTab1 = new ClubsWindow(clubData, clubInfoData, tabGroup, tracker);
@@ -171,7 +191,7 @@ var tab2 = Titanium.UI.createTab({
 });
 tabGroup.addTab(tab2); 
 
-tabGroup.setActiveTab(1); 
+tabGroup.setActiveTab(0); 
 
 var actionBar;
 tabGroup.addEventListener("open", function() {
@@ -202,7 +222,7 @@ function addRows(i, data, flag){
 	if (i == 1 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		     selectedBackgroundColor : "transparent",
+		    backgroundSelectedColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -210,13 +230,13 @@ function addRows(i, data, flag){
 		
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		     selectedBackgroundColor : "transparent",
+		    backgroundSelectedColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectedBackgroundColor : "transparent",
+		    backgroundSelectedColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -225,8 +245,8 @@ function addRows(i, data, flag){
 	else if (i == 1 && flag == false){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
-		     selectedBackgroundColor : "transparent",
+		    backgroundSelectedColor : "transparent",
+		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
 		data.push(row);
@@ -235,15 +255,14 @@ function addRows(i, data, flag){
 	else if (i == 2 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		     selectedBackgroundColor : "transparent",
+		    backgroundSelectedColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
 		
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		     selectedBackgroundColor : "transparent",
-		    backgroundColor:'#cccccc',
+		    backgroundSelectedColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
@@ -252,8 +271,8 @@ function addRows(i, data, flag){
 	else if (i == 3 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectedBackgroundColor : "transparent",
-		     backgroundColor:'#cccccc',
+		    backgroundSelectedColor : "transparent",
+		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
 		data.push(row);

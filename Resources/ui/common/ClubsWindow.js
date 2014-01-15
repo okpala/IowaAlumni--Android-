@@ -26,7 +26,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 		    var row = Ti.UI.createTableViewRow({
 		    	city: clubInfoData[i].city,
 		        height: 'auto',
-		        selectedBackgroundColor : "transparent",
+		        backgroundSelectedColor : "transparent",
 		        bottom: 10
 		    });
 		}
@@ -34,7 +34,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 			 var row = Ti.UI.createTableViewRow({
 		    	city: clubInfoData[i].city,
 		        height: 'auto',
-		         selectedBackgroundColor : "transparent",
+		        backgroundSelectedColor : "transparent",
 		        backgroundColor:'#cccccc',
 		        bottom: 10
 		    });
@@ -166,7 +166,7 @@ function addRows(i, data, flag){
 	if (i == 1 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		     selectedBackgroundColor : "transparent",
+		    backgroundSelectedColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -174,13 +174,13 @@ function addRows(i, data, flag){
 		
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
+		    backgroundSelectedColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		     selectedBackgroundColor : "transparent",
+		    backgroundSelectedColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -189,7 +189,7 @@ function addRows(i, data, flag){
 	else if (i == 1 && flag == false){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		     selectedBackgroundColor : "transparent",
+		    backgroundSelectedColor : "transparent",
 		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
@@ -199,15 +199,14 @@ function addRows(i, data, flag){
 	else if (i == 2 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectedBackgroundColor : "transparent",
+		    backgroundSelectedColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
 		
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		    selectionStyle: 'none',
-		     selectedBackgroundColor : "transparent",
+		    backgroundSelectedColor : "transparent",
 		    bottom: 10
 		});
 		data.push(row);
@@ -216,8 +215,8 @@ function addRows(i, data, flag){
 	else if (i == 3 && flag == true){
 		var row = Ti.UI.createTableViewRow({
 		    height: 100,
-		     selectedBackgroundColor : "transparent",
-		     backgroundColor:'#cccccc',
+		    backgroundSelectedColor : "transparent",
+		    backgroundColor:'#cccccc',
 		    bottom: 10
 		});
 		data.push(row);

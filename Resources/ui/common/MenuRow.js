@@ -12,7 +12,7 @@ function MenuRow(t,i,f,s) {
 	
 	
 	if(this.s) {
-		self.backgroundImage = Ti.Filesystem.resourcesDirectory + 'pressed.jpg';
+		
 		var text = Ti.UI.createLabel({
 			text: t,
 			left: 60,
@@ -32,6 +32,7 @@ function MenuRow(t,i,f,s) {
 			height: 30,
 			left: 10,
 		});
+		self.backgroundImage = Ti.Filesystem.resourcesDirectory + 'pressed.jpg';
 	}
 	else {
 		var text = Ti.UI.createLabel({

@@ -11,22 +11,32 @@ var ErrorWindow = require('ui/common/ErrorWindow');
  */
 
 function ClubsWindow(title, tracker){
-	
+	var screenWidth = Ti.Platform.displayCaps.platformWidth;
+	var screenHeight = Ti.Platform.displayCaps.platformHeight;
 	var Feeds = new Feed(); 
 	var url = Feeds.gameWatchFeed();
 	var self = new ApplicationWindow(title);
-	var table = Ti.UI.createTableView({
-			height: 'auto',
+	/*
+	var mainContainer = Ti.UI.createTableView({
+			height: 200,
+			top: 0,
 			bottom: 70,
-			top: 145
+		
 	});
+	*/
+	var tableHeader = Ti.UI.createTableView({
+			height: 'auto',
+			top: 0,
+		
+	});
+	
 	
 	var introLabel = Ti.UI.createLabel({
 			text: 'Want to connect with fellow UI grads, need a place to watch the next game with fellow Hawkeye fans? IOWA clubs have you covered—find a location near you!',
 			textAlign: 'left',
 			color: "#000000",
 			left: 10,
-			width: 300,
+			width: screenWidth - 20,
 			top: 10,
 			font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 				        
@@ -37,14 +47,52 @@ function ClubsWindow(title, tracker){
 		
 	var people = Ti.UI.createImageView({
 			image:    'https://www.iowalum.com/mobile/clubs.png',
-		  	height: 70,
-		 	 top:   85
+		  	left: 10,
+			width: screenWidth - 20,
+		  	height: 70
+		  
 	});
-	var rows = [];
+
+	
+	var table = Ti.UI.createTableView({
+			height: 'auto',
+			bottom: 70,
+		
+	});
+	
 	tracker.trackScreen(title);
 	var loading = new LoadingScreen();
 	
 	function refreshRssTable() {
+		var rows = [];
+
+		/* Table Header */
+		var row = Ti.UI.createTableViewRow({backgroundSelectedColor: "transparent"});
+		row.add(introLabel);
+	
+		
+		var row1 = Ti.UI.createTableViewRow({backgroundSelectedColor: "transparent"});
+		row1.add(people);
+		
+		
+		tableHeader.setData([row, row1]);
+		var textView = Ti.UI.createView({
+			left: 10,
+			width: screenWidth - 20,
+			height:'auto'
+		});
+		textView.add(introLabel);
+		
+	
+		
+		
+		
+		table.top = textView.toImage().height + people.height;
+		Ti.API.info( textView.toImage().height +  " " + people.getHeight() +  " " +people.size.height + " " + people.toImage().height);
+		
+		
+	
+		
 		
 		self.add(loading);
 		loading.show(); 
@@ -130,12 +178,23 @@ function ClubsWindow(title, tracker){
 			    }
 			    
 			   
-			};		
+			};	
+			//tableHeader.setData(rows2);	
 		   	table.setData(data);
-		   	table.top = people.top + people.height;
+		   
+		   	//var row = Ti.UI.createTableViewRow();
+			//row.add(tableHeader);
+			//rows3.push(row);
+			
+			//var row = Ti.UI.createTableViewRow();
+			//row.add(table);
+			//rows3.push(row);
+			
+			//mainContainer.setData([tableHeader, table]);
 		   	
-		   	self.add(introLabel);
-			self.add(people);
+		   	//self.add(introLabel);
+			//self.add(people);
+			self.add(tableHeader);
 			self.add(table);
 			self.add(ad);
 			 table.addEventListener('click', function(e){

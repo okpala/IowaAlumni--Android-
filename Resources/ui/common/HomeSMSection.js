@@ -8,7 +8,6 @@ function HomeSMSection(tracker){
 			backgroundColor: 	'#e2e2e2',
 			height:				36,
 			width: 				300,
-			left: 				10,
 			top:				10,
 		});
 		

@@ -7,35 +7,45 @@ var LoadingScreen = require('ui/common/LoadingScreen');
 var ErrorWindow = require('ui/common/ErrorWindow');
 
 function NationalBenefitsWindow(title, tracker){
-var Feeds = new Feed(); 
-var url = Feeds.nationalDiscountFeed();
-var self = new ApplicationWindow("National Member Benefits");
-var table = Ti.UI.createTableView();
-var rows = [];        
-var screenWidth = Ti.Platform.displayCaps.platformWidth;
-tracker.trackScreen(title);
-var loading = new LoadingScreen();
-
+	var Feeds = new Feed(); 
+	var url = Feeds.nationalDiscountFeed();
+	var self = new ApplicationWindow("National Member Benefits");
+	var rows = [];        
+	var screenWidth = Ti.Platform.displayCaps.platformWidth;
+	tracker.trackScreen(title);
+	var loading = new LoadingScreen();
+	var screenWidth = Ti.Platform.displayCaps.platformWidth; 
+	
+	 var textView = Ti.UI.createView({
+		backgroundImage:        Ti.Filesystem.resourcesDirectory +'gray-broder.png',
+		height: 100,
+		width: screenWidth - 2,
+		top: 0,
+		left: 2,   
+		zIndex: 2     
+	});
+	
 	var introLabel = Ti.UI.createLabel({
         text: ('As a UIAA member, you gain access to a variety of exclusive benefits that show our appreciation for your support of the UIAA.'),
         color: "#000000",
         textAlign: 'left',
         left: 10,
-        width: 300,
+        width:  textView.width - 10,
         top: 10,
         font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
                                 
      });
 
- var table = Ti.UI.createTableView({
+ 	var table = Ti.UI.createTableView({
         height: 'auto',
         top: 70,
+        zIndex: 1 
     });
         
     var linkLabel = Ti.UI.createLabel({
         text: 'IC benefits',
         right: 10,
-        top: 50,
+        top: 56,
         color: 'blue',
         font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
     });
@@ -43,6 +53,9 @@ var loading = new LoadingScreen();
    linkLabel.addEventListener('click', function(e){
          (new MapWindow("Iowa City Benefits", tracker)).open();
     });
+    
+   
+		        
     function refreshRssTable() {
 		self.add(loading);
 		loading.show();
@@ -50,14 +63,7 @@ var loading = new LoadingScreen();
 		    onload: function() {
 		    	
 		    	
-		    var textView = Ti.UI.createView({
-		    	backgroundImage:        Ti.Filesystem.resourcesDirectory +'gray-broder.png',
-		        height:                                90,
-		        width:                                screenWidth - 2,
-		        top:                                0,
-		        left:                                2,        
-		    });
-		        
+		    
 		    
 		     textView.add(introLabel);        
 		        
@@ -84,6 +90,7 @@ var loading = new LoadingScreen();
 		                    bottom: 10,
 		                });
 		         	}
+		         	
 		         	else{
 		                var row = Ti.UI.createTableViewRow({
 		                     height: 'auto',

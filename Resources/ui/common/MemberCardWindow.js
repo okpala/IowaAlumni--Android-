@@ -20,7 +20,7 @@ function  MemberCardWindow(title, tracker){
 		text: "Please enter your UIAA members-only password below to access your member card.",
 		color: "#000000",
 		height:'auto',
-		width: screenWidth - 10,
+		width: screenWidth - 20,
 		textAlign: 'center',
 		top: 10,
   		left: 10,
@@ -83,7 +83,7 @@ function  MemberCardWindow(title, tracker){
 		text: "Let us know via email (alumni-member@uiowa.edu) and we will send it to you promptly during regular business hours. Type 'members-only password' in the subject line of your message and include your first and last name, city, and state.",
 		color: "#000000",
 		height:'auto',
-		width: screenWidth - 10,
+		width: screenWidth - 20,
 		top: 145,
   		left: 10,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
@@ -91,8 +91,7 @@ function  MemberCardWindow(title, tracker){
 
 	var image = Ti.UI.createImageView({
 	  image:    'http://iowalum.com/membership/images/MemberCard.png',
-	  top:    0,
-	  left:   0,
+	  //top:    0,
 	  height: 420,
 	  width:  320
 	});

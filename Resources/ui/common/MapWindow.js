@@ -7,7 +7,7 @@ var LoadingScreen = require('ui/common/LoadingScreen');
 var Map = require('ti.map');
 var ErrorWindow = require('ui/common/ErrorWindow');
 function MapWindow(title, tracker) {
-	
+	var screenHeight = Ti.Platform.displayCaps.platformHeight;
 	var Feeds = new Feed(); 
 	var url = Feeds.iowaCityFeed();
 	var self = new NavigateWindow(title);
@@ -18,6 +18,7 @@ function MapWindow(title, tracker) {
 			navBarHidden: true
 	});
 	var map;
+	var mapAvailable = true;
 	
 	var textView = Ti.UI.createView({
 				backgroundColor: 	'#e2e2e2',
@@ -91,44 +92,70 @@ function MapWindow(title, tracker) {
 				}
 				
 				
+				var code = Map.isGooglePlayServicesAvailable();
+
+				if (code == Map.SUCCESS) {
+					var companyInfo = [];
+					for (var i = 0; i <= businessesInfo.length - 1; i++) {
+						companyInfo.push(
+							Map.createAnnotation(
+							{
+							    latitude:  businessesInfo[i].latitude,
+							    longitude: businessesInfo[i].longitude,
+							    title: businessesInfo[i].company,
+							    subtitle: businessesInfo[i].street,
+							    pincolor: Map.ANNOTATION_RED,
+							    animate:true
+							})
+						);
+					}
+					
+					map = Map.createView({
+						mapType:Map.NORMAL_TYPE,
+						region: {latitude: companyInfo[0].latitude, longitude: companyInfo[0].longitude,
+								latitudeDelta:0.01, longitudeDelta:0.01 },
+						animate: true,
+						userLocation:false,
+						height: screenHeight/2,
+					    annotations: companyInfo,
+						top: 0
+					});
+					textView.top = map.height;
+					table.top = textView.top + textView.height;
+					
+					table.addEventListener('click', function(e){
+					
+						map.region = {latitude: companyInfo[e.index].latitude, longitude: companyInfo[e.index].longitude,
+									latitudeDelta:0.01, longitudeDelta:0.01 };
+						map.selectAnnotation(companyInfo[e.index]);
+						
+						tracker.trackEvent({
+								category: "Benefits",
+								action: "click",
+								label: companyInfo[e.index].title,
+								value: 1
+						});
+						
+					});
+					mapWin.add(map);
+					
+				}
 			
-				var companyInfo = [];
-				for (var i = 0; i <= businessesInfo.length - 1; i++) {
-					companyInfo.push(
-						Map.createAnnotation(
-						{
-						    latitude:  businessesInfo[i].latitude,
-						    longitude: businessesInfo[i].longitude,
-						    title: businessesInfo[i].company,
-						    subtitle: businessesInfo[i].street,
-						    pincolor: Map.ANNOTATION_RED,
-						    animate:true
-						})
-					);
+				else{
+					textView.top = 0;
+					table.top = 75;
+					mapAvailable = false;
+					
 				}
 				
-				map = Map.createView({
-					mapType:Map.NORMAL_TYPE,
-					region: {latitude: companyInfo[0].latitude, longitude: companyInfo[0].longitude,
-							latitudeDelta:0.01, longitudeDelta:0.01 },
-					animate: true,
-					userLocation:false,
-					height: 195,
-				    annotations: companyInfo,
-					top: 0
-				});
-				
-				
-			
-				
-				textView.add(linkLabel);	
 			
 				
 				
 				var data = [];
 				for (var i = 0; i <= businessesInfo.length - 1; i++) {
+					var row;
 					if (i % 2 == 0){
-					    var row = Ti.UI.createTableViewRow({
+					    row = Ti.UI.createTableViewRow({
 					    	company: businessesInfo[i].company,
 					    	latitude:  businessesInfo[i].latitude,
 							longitude: businessesInfo[i].longitude,
@@ -137,8 +164,9 @@ function MapWindow(title, tracker) {
 					        bottom: 10,
 					    });
 					}
+					
 					else{
-						var row = Ti.UI.createTableViewRow({
+						row = Ti.UI.createTableViewRow({
 					    	company: businessesInfo[i].company,
 					    	latitude:  businessesInfo[i].latitude,
 							longitude: businessesInfo[i].longitude,
@@ -146,6 +174,9 @@ function MapWindow(title, tracker) {
 					        backgroundColor:'#cccccc',
 					        bottom: 10,
 					    });
+					}
+					if(mapAvailable == false){
+						row.backgroundSelectedColor = "transparent";
 					}
 				    var companyLabel = Ti.UI.createLabel({
 				        text: (businessesInfo[i].company),
@@ -170,27 +201,15 @@ function MapWindow(title, tracker) {
 				};
 			
 				table.setData(data);
+				textView.add(linkLabel);	
 				
-				mapWin.add(map);
 				mapWin.add(textView);
 				mapWin.add(table);
 				self.add(mapWin);
 				self.remove(loading);
 				
-				table.addEventListener('click', function(e){
-					
-					map.region = {latitude: companyInfo[e.index].latitude, longitude: companyInfo[e.index].longitude,
-								latitudeDelta:0.01, longitudeDelta:0.01 };
-					map.selectAnnotation(companyInfo[e.index]);
-					
-					tracker.trackEvent({
-							category: "Benefits",
-							action: "click",
-							label: companyInfo[e.index].title,
-							value: 1
-					});
-					
-				});
+				
+				
 				
 		    },
 		    onerror: function(e) {

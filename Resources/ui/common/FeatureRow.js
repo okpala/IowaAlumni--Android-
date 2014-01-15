@@ -21,9 +21,7 @@ function FeatureRow(post, tracker, title) {
 		backgroundColor: '#e2e2e2',
 		borderRadius: 0.5
 	});
-	//row.rightImage = null;
-	//row.backgroundSelectedImage = null;
-	//row.backgroundFocusImage = null;
+	
 
 	var container =  Titanium.UI.createView({
 		backgroundColor: 'transparent',

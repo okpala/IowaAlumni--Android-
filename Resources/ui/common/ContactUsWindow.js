@@ -12,7 +12,7 @@ function ContactUsWindow(title, tracker) {
 	var self = new ApplicationWindow(title);
 	var screenHeight = Ti.Platform.displayCaps.platformHeight;
 	var loading = new LoadingScreen();
-	
+	var screenWidth = Ti.Platform.displayCaps.platformWidth;
 	
 	
 	tracker.trackScreen(title);
@@ -39,7 +39,7 @@ function ContactUsWindow(title, tracker) {
 				separatorColor: 	'#d5d5d5',
 				backgroundColor: 	'#ffffff',
 				height:				160,
-				width: 				300,
+				width: 				screenWidth - 20,
 				left: 				10,
 				top:				10,
 				bottom:				0,
@@ -53,7 +53,7 @@ function ContactUsWindow(title, tracker) {
 				separatorColor: 	'#d5d5d5',
 				backgroundColor: 	'#ffffff',
 				height:				160,
-				width: 				300,
+				width: 				screenWidth - 20,
 				left: 				10,
 				top:				180,
 				bottom:				0,
@@ -63,10 +63,18 @@ function ContactUsWindow(title, tracker) {
 				borderWidth: 		1
 				
 			});
+			
+			var socialMediaContainer = Ti.UI.createView({
+				backgroundColor: 	'#ffffff',
+				height:				160,
+				width: 				180,
+				top:				37,
+				
+			});
 				
 			var scrollMainView = Ti.UI.createScrollView({
 			  top: 0,
-			  contentWidth: 320,
+			  contentWidth: screenWidth - 20,
 			  contentHeight: 420,
 			  showVerticalScrollIndicator: false,
 			  showHorizontalScrollIndicator: false
@@ -156,12 +164,12 @@ function ContactUsWindow(title, tracker) {
 			
 			var icon = new SocialMediaIcons();
 			
-			var facebookimage = icon.facebook(37,55,tracker);
-			var twitterimage = icon.twitter(37,115,tracker);
-			var foursquareimage = icon.foursquare(37,175,tracker);
-			var linkedInimage = icon.linkedIn(97,55,tracker);
-			var pinterestimage = icon.pinterest(97,115,tracker);
-			var instagramimage = icon.instagram(97,175,tracker);
+			var facebookimage = icon.facebook(0,0,tracker);
+			var twitterimage = icon.twitter(0,60,tracker);
+			var foursquareimage = icon.foursquare(0,120,tracker);
+			var linkedInimage = icon.linkedIn(60,0,tracker);
+			var pinterestimage = icon.pinterest(60,60,tracker);
+			var instagramimage = icon.instagram(60,120,tracker);
 			
 			
 			
@@ -208,8 +216,8 @@ function ContactUsWindow(title, tracker) {
 			
 			//------------------------------------------   Social Media View's Objects  ---------------------------------------------------------\\
 			
-				socialMediaView.add(socialMdeiaLabel);socialMediaView.add(facebookimage); socialMediaView.add(twitterimage);socialMediaView.add(foursquareimage);socialMediaView.add(linkedInimage);
-			socialMediaView.add(pinterestimage);socialMediaView.add(instagramimage); 
+				 socialMediaView.add(socialMdeiaLabel);socialMediaContainer.add(facebookimage); socialMediaContainer.add(twitterimage);socialMediaContainer.add(foursquareimage);socialMediaContainer.add(linkedInimage);
+			socialMediaContainer.add(pinterestimage);socialMediaContainer.add(instagramimage); socialMediaView.add(socialMediaContainer);
 			//------------------------------------------   Views    ---------------------------------------------------------------------------\\	
 			scrollMainView.add(socialMediaView);	scrollMainView.add(contactView);	//scrollMainView.add(ad);
 			

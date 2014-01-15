@@ -44,6 +44,16 @@ function ErrorWindow(refreshRssTable, title, tracker){
 	});
 	rows.push(row);
 	
+	var thawk = Ti.UI.createImageView({
+	  image:    Ti.Filesystem.resourcesDirectory + 'thawk.png',
+	  top:   260,
+	  width: 200,
+	  height: 127
+	});
+	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
+	row,add(thawk);
+	rows.push(row);
+	
 	var errorLabel = Ti.UI.createLabel({
 		text:"There was an error retrieving the remote data. Try again.",
 		top:15,

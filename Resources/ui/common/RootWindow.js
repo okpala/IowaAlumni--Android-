@@ -1,6 +1,5 @@
 var ApplicationWindow = require('ui/common/ApplicationWindow');
 var SingleRow = require('ui/common/SingleRow');
-var PostTable = require('ui/common/PostTable');
 var HomeImageSlider = require('ui/common/HomeImageSlider');
 var SinglePost = require('ui/common/SinglePost');
 var HomeSMSection = require('ui/common/HomeSMSection');
@@ -9,6 +8,7 @@ var StaticAd = require('ui/common/StaticAd');
 var Feed = require('ui/common/Feed');
 var LoadingScreen = require('ui/common/LoadingScreen');
 var ErrorWindow = require('ui/common/ErrorWindow');
+
 /*
  * Home Window
  */

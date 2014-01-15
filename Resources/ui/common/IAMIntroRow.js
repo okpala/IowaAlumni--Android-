@@ -4,12 +4,12 @@ var WebView = require('ui/common/WebView');
  */
 
 function IAMIntroRow(post) {
-	
+	var screenWidth = Ti.Platform.displayCaps.platformWidth;  
 	var table = Ti.UI.createTableView({
 		separatorColor: 	'#d5d5d5',
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
-		width: 				300,
+		width: 				screenWidth - 20,
 		left: 				10,
 		top:				10,
 		bottom:				0,
@@ -23,7 +23,7 @@ function IAMIntroRow(post) {
 	 var image = Ti.UI.createImageView({
 	  image:    Ti.Filesystem.resourcesDirectory + 'magfan.jpg',
 	  top:   10,
-	  right: 10,
+	  right: 5,
 	  width: 80,
 	  height: 55
 	});
@@ -34,7 +34,7 @@ function IAMIntroRow(post) {
 	       
 	 });
 	    
-	 var screenWidth = Ti.Platform.displayCaps.platformWidth;  
+	 
 	
 	
 	    
@@ -58,15 +58,10 @@ function IAMIntroRow(post) {
 	row.add(table);
 	
 	
-
-	introLabel  = getText(image.width);
-	rowText.add(introLabel);
 	rowText.add(image);
-
 	
-	
-	
-
+	var introLabel  = getText(image.width, table.width);
+	rowText.add(introLabel);
 	return row;
 }
 
@@ -98,14 +93,14 @@ function getTableHeight(imageHeight){
 	return height;
 }
 
-function getText (imageWidth){
+function getText (imageWidth, tableWidth){
 
 	var text = Ti.UI.createLabel({
 		text: 'Our award winning bimonthly magazine published by the University of Iowa Alumni Association. ',
 		left: 10,
 		top: 10,
 		textAlign:'left',
-		width: screenWidth - (imageWidth + 20),
+		width: tableWidth - (imageWidth + 15),
 		
 		//height: view.toImage().height,
 		color:'#000000',
