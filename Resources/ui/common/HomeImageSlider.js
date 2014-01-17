@@ -82,7 +82,7 @@ function HomeImageSlider(images){
 		var view = Ti.UI.createView({
 			backgroundColor: '#0c0c0c',
 			backgroundImage: Ti.Filesystem.resourcesDirectory + 'dark.jpg',
-			width: 300,
+			width: screenWidth - 20,
 			height: 75,
 			bottom: 0
 		});
@@ -109,7 +109,7 @@ function HomeImageSlider(images){
 			bottom: 10,
 			height: 55,
 			textAlign:'left',
-			width: 280,
+			width: view.width - 30,
 			color:'#ffffff',
 			shadowColor:'#000000',
 	        shadowOpacity:0.5,

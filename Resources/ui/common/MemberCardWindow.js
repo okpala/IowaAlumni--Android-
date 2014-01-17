@@ -23,7 +23,6 @@ function  MemberCardWindow(title, tracker){
 		width: screenWidth - 20,
 		textAlign: 'center',
 		top: 10,
-  		left: 10,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 	});
 	
@@ -31,7 +30,6 @@ function  MemberCardWindow(title, tracker){
   		color: '#000000',
   		passwordMask: true,
   		top: 50,
-  		left: 90,
   		width: 140, 
   		height: 30,
   		backgroundColor :"#fff",
@@ -42,7 +40,6 @@ function  MemberCardWindow(title, tracker){
 		//width: 50,
 		height:35,
 		top: 82,
-  		left: 130,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 		
 	});
@@ -52,7 +49,6 @@ function  MemberCardWindow(title, tracker){
 		  message: 'Checking Password...',
 		  style: Ti.UI.ActivityIndicatorStyle.DARK,
 		  top:115,
-		  left:90,
 		  height:'auto',
 		  width:'auto'
 	});
@@ -64,7 +60,6 @@ function  MemberCardWindow(title, tracker){
 		width: 310,
 		color:'#FF0000',
 		top: 115,
-  		left: 10,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
 	

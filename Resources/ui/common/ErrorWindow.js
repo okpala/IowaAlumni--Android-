@@ -46,12 +46,12 @@ function ErrorWindow(refreshRssTable, title, tracker){
 	
 	var thawk = Ti.UI.createImageView({
 	  image:    Ti.Filesystem.resourcesDirectory + 'thawk.png',
-	  top:   260,
+	  top:   10,
 	  width: 200,
 	  height: 127
 	});
 	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
-	row,add(thawk);
+	row.add(thawk);
 	rows.push(row);
 	
 	var errorLabel = Ti.UI.createLabel({

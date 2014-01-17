@@ -70,11 +70,11 @@ if (Ti.version < 1.8 ) {
 	
 	
 	
-	var logorowHeight = 125;
-		var logosLeft = 10;
+	var logorowHeight = "125dp";
+		var logosLeft = "10dp";
 		//UIAA logo 
 		var logorow = Ti.UI.createImageView({
-			height: 125,
+			height: "125dp",
 			width: screenWidth,
 			top: 0,
 			backgroundImage: 'menubg.jpg'
@@ -83,9 +83,9 @@ if (Ti.version < 1.8 ) {
 		
 		var logo = Ti.UI.createImageView({
 			image: 'logo.png',
-			width: 210,
-			height: 75,
-			top: 25,
+			width: "210dp",
+			height: "75dp",
+			top: "25dp",
 			left: logosLeft,
 			hires: true
 			
@@ -96,7 +96,7 @@ if (Ti.version < 1.8 ) {
 		win.add(logorow);
 		win.add(logo);
 //"Once a Hawkeye" Image
-		var taglinerowHeight = 120;
+		var taglinerowHeight = "120dp";
 		var taglinerow = Ti.UI.createImageView({
 			height: taglinerowHeight,
 			width: screenWidth,
@@ -106,9 +106,9 @@ if (Ti.version < 1.8 ) {
 		});
 		var tagline = Ti.UI.createImageView({
 			image: 'tagline.png',
-			width: 200,
-			height: 40,
-			bottom: 50,
+			width: "200dp",
+			height: "40dp",
+			bottom: "50dp",
 			left: logosLeft,
 			
 		

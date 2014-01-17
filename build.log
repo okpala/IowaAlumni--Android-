@@ -1,39 +1,24 @@
 Logfile initialized
 [INFO] logfile = /Users/okpala/IowaAlumni--Android-/build.log
+[DEBUG] /Users/okpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py simulator UIowa Alumni /Users/okpala /Users/okpala/IowaAlumni--Android- com.iowalum.uiowaalumni 4 WQVGA432
 [INFO] Launching Android emulator...one moment
-[DEBUG] /Users/okpala/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/android/builder.py simulator UIowa Alumni /Users/okpala /Users/okpala/IowaAlumni--Android- com.iowalum.uiowaalumni 9 WQVGA432
 [DEBUG] From: /Users/okpala/tools/emulator
+[INFO] Building UIowa Alumni for Android ... one moment
 [DEBUG] SDCard: /Users/okpala/.titanium/android2.sdcard
-[DEBUG] AVD ID: 9
+[DEBUG] AVD ID: 4
 [DEBUG] AVD Skin: WQVGA432
 [DEBUG] AVD ABI: armeabi-v7a
 [DEBUG] SDK: /Users/okpala
-[INFO] Building UIowa Alumni for Android ... one moment
+[INFO] Emulator is running.
 [INFO] Titanium SDK version: 3.1.3 (09/18/13 12:00 222f4d1)
 [DEBUG] Waiting for device to be ready ...
-[TRACE] adb devices returned 0 devices/emulators
-[DEBUG] /Users/okpala/tools/emulator -avd titanium_9_WQVGA432 -port 5560 -sdcard /Users/okpala/.titanium/titanium_9_WQVGA432.sdcard -logcat *:d,*,TiAPI:V -no-boot-anim -partition-size 128
-[TRACE] adb devices returned 0 devices/emulators
-[TRACE] adb devices returned 0 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 55 seconds)
-[DEBUG] waited 55.369246 seconds on emulator to get ready
-[INFO] Waiting for the Android Emulator to become available
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.036286 seconds on emulator to get ready
 [DEBUG] com.iowalum.uiowaalumni installed? True
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/okpala/IowaAlumni--Android-/Resources/ui/common/ErrorWindow.js => /Users/okpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/ErrorWindow.js
-[TRACE] COPYING MODIFIED FILE: /Users/okpala/IowaAlumni--Android-/Resources/ui/common/HomeSMSection.js => /Users/okpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/HomeSMSection.js
-[TRACE] COPYING MODIFIED FILE: /Users/okpala/IowaAlumni--Android-/Resources/ui/common/IIBIntroRow.js => /Users/okpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/IIBIntroRow.js
-[TRACE] COPYING MODIFIED FILE: /Users/okpala/IowaAlumni--Android-/Resources/ui/common/MemberCardWindow.js => /Users/okpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/MemberCardWindow.js
+[TRACE] COPYING MODIFIED FILE: /Users/okpala/IowaAlumni--Android-/Resources/ui/common/RootWindow.js => /Users/okpala/IowaAlumni--Android-/build/android/bin/assets/Resources/ui/common/RootWindow.js
 [DEBUG] LiveView not enabled
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
@@ -70,7 +55,6 @@ Logfile initialized
 [DEBUG] adding /Users/okpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniAppInfo.java to javac build list
 [DEBUG] adding /Users/okpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniApplication.java to javac build list
 [DEBUG] Building Java Sources: "/Users/okpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/Manifest.java" "/Users/okpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/R.java" "/Users/okpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniActivity.java" "/Users/okpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniAppInfo.java" "/Users/okpala/IowaAlumni--Android-/build/android/gen/com/iowalum/uiowaalumni/UiowaAlumniApplication.java"
-[INFO] Waiting for SDCard to become available..
 [INFO] Compiling Android Resources... This could take some time
 [DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: /Users/okpala/IowaAlumni--Android-/build/android/bin/app-unsigned.apk
@@ -327,9 +311,10 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.028206 seconds on emulator to get ready
+[DEBUG] waited 0.032134 seconds on emulator to get ready
 [INFO] Installing application on emulator
-[ERROR] Failed installing com.iowalum.uiowaalumni: 	pkg: /data/local/tmp/app.apk
-Failure [INSTALL_FAILED_INSUFFICIENT_STORAGE]
+[INFO] Launching application ... UIowa Alumni
+[TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.iowalum.uiowaalumni/.UiowaAlumniActivity }
 
+[INFO] Deployed UIowa Alumni ... Application should be running.
 [INFO] Android Emulator has exited

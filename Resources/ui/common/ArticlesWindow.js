@@ -67,12 +67,14 @@ function ArticlesWindow(title, feed, tracker) {
 			   	var data = [];
 			   	for (var i = 0; i < items.length; i++) {
 			   		var item = items.item(i);
-			   		var image;
+			   		
+			   		var image = "";/*
 					try {
 						var image = item.getElementsByTagNameNS('http://mashable.com/', 'thumbnail').item(0).getElementsByTagName('img').item(0).getAttribute('src');
 					} catch (e) {
 						image = '';
 					}
+					*/
 			   		data.push({
 						title: item.getElementsByTagName('title').item(0).textContent,
 						link: item.getElementsByTagName('link').item(0).textContent,

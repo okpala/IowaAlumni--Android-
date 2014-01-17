@@ -6,13 +6,15 @@ function ApplicationWindow(windowtitle) {
 	    backgroundColor:'#e2e2e2',
 		navBarHidden: false,		
 	});
-	
+	/*
 	var navbar = Ti.UI.createImageView({
 			image:  Ti.Filesystem.resourcesDirectory + 'navbar.png',
 			height: 60
 	});
 	
 	//self.add(navbar);
+	*/
+	
 	var actionBar;
 	self.addEventListener("open", function() {
     if (Ti.Platform.osname === "android") {
@@ -21,18 +23,20 @@ function ApplicationWindow(windowtitle) {
         } else {
             actionBar = self.activity.actionBar;
             if (actionBar) {
+            	
                 actionBar.backgroundImage = Ti.Filesystem.resourcesDirectory + 'navbar.png';
                 actionBar.title = windowtitle;
                 actionBar.logo = Ti.Filesystem.resourcesDirectory + "newmenubutton.png";
                 actionBar.onHomeIconItemSelected = function() {
                     self.close();
                 };
+                
             }
         }
     }
 });
 
-	
+
 	return self;
 	
 

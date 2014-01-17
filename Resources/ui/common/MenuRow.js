@@ -2,7 +2,7 @@ function MenuRow(t,i,f,s) {
 
 	this.s = s;
 	var self = Ti.UI.createTableViewRow({
-		height: 45,
+		height: "45dp",
 		backgroundImage: Ti.Filesystem.resourcesDirectory + 'menu.jpg',
 		backgroundFocusedImage: Ti.Filesystem.resourcesDirectory +'pressed.jpg',
 		backgroundSelectedImage: Ti.Filesystem.resourcesDirectory + 'pressed.jpg',
@@ -15,43 +15,43 @@ function MenuRow(t,i,f,s) {
 		
 		var text = Ti.UI.createLabel({
 			text: t,
-			left: 60,
-			height: 45,
+			left: "60dp",
+			height: "45dp",
 			textAlign:'left',
-			width: 270,
+			width: "270dp",
 			color:'#ebc22f',
 			shadowColor:'#000000',
 	        shadowOpacity:0.5,
 	        shadowOffset:{x:0, y:1},
 	        
-			font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:17,fontWeight:'bold'}
+			font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:"17dp",fontWeight:'bold'}
 		});
 		var imageView = Ti.UI.createImageView({
 			image:  Ti.Filesystem.resourcesDirectory + i+'selected.png',
-			width: 30,
-			height: 30,
-			left: 10,
+			width: "30dp",
+			height: "30dp",
+			left: "10dp",
 		});
 		self.backgroundImage = Ti.Filesystem.resourcesDirectory + 'pressed.jpg';
 	}
 	else {
 		var text = Ti.UI.createLabel({
 			text: t,
-			left: 60,
-			height: 45,
+			left: "60dp",
+			height: "45dp",
 			textAlign:'left',
-			width: 270,
+			width: "270dp",
 			color:'#cccccc',
 			shadowColor:'#000000',
 	        shadowOpacity:0.5,
 	        shadowOffset:{x:0, y:1},
-			font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:17,fontWeight:'bold'}
+			font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:"17dp",fontWeight:'bold'}
 		});
 		var imageView = Ti.UI.createImageView({
 			image: Ti.Filesystem.resourcesDirectory + i+'.png',
-			width: 30,
-			height: 30,
-			left: 10,
+			width: "30dp",
+			height: "30dp",
+			left: "10dp",
 		});
 	}
 	
