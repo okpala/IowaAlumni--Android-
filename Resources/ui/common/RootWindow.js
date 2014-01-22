@@ -32,8 +32,8 @@ function RootWindow(title, tracker) {
 	var transparentView = Titanium.UI.createView({ 
 		backgroundColor: '#ccc',
 		opacity:0.9,
-		height: Ti.Platform.displayCaps.platformHeight - 60,
-		width: Ti.Platform.displayCaps.platformWidth,
+		height: Ti.UI.FILL,
+		width: Ti.UI.FILL,
 		top: 0,
 		zIndex:5,
 	});	
@@ -44,37 +44,38 @@ function RootWindow(title, tracker) {
 			color:"#576c89",
 			textAlign:"center",
 			top: 0,
-			font:{fontSize:"13dp",fontWeight:"bold"},
+			font:{fontSize:13,fontWeight:"bold"},
 			shadowColor:"#fff",
 			shadowOffset:{x:0,y:1}
 	});
 		
 	var lastUpdatedLabel = Ti.UI.createLabel({
 		text:"Last Updated: "+ (new FormatDate()).getDate(),
-		top:"15dp",
+		top: 15,
 		height:"auto",
 		color:"#576c89",
 		textAlign:"center",
-		font:{fontSize:"12dp"},
+		font:{fontSize:12},
 		shadowColor:"#fff",
 		shadowOffset:{x:0,y:1}
 	});
 	
 	var introLabel = Ti.UI.createLabel({
 		text: "No matter how many years or miles may separate you from the campus, the UI Alumni Association can help you feel part of the life of the University of Iowa.",
-		width: screenWidth - 20,
+		width: Ti.UI.FILL,
 		color: "#000000",
-		top: "10dp",
-		left: "10dp",
+		top: 10,
+		right: 10,
+		left: 10,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 	});
 	
 	var eventHeaderLabel = Ti.UI.createLabel({
 		text: "Today's Events",
 		color: "#000000",
-		width: "300dp",
-		top: "10dp",
-		left: "10dp",
+		width: 300,
+		top: 10,
+		left: 10,
 		font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
 	});
 	
@@ -82,9 +83,9 @@ function RootWindow(title, tracker) {
 	var magazineHeaderLabel = Ti.UI.createLabel({
 		text: "Article of the Week",
 		color: "#000000",
-		width: "300dp",
-		top: "10dp",
-		left: "10dp",
+		width: 300,
+		top: 10,
+		left: 10,
 		font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
 	});
 
@@ -196,8 +197,8 @@ function RootWindow(title, tracker) {
 							text: alerts[i].header,
 							color: "#000000",
 							width: screenWidth - 10,
-							top: "10dp",
-							left: "10dp",
+							top: 10,
+							left: 10,
 							font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
 						});
 	

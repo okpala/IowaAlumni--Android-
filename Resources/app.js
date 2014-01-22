@@ -63,52 +63,55 @@ if (Ti.version < 1.8 ) {
 	var Feeds = new Feed();
 	
 	var win = Titanium.UI.createWindow({
-		    backgroundColor:'#000',
+		    
+		    backgroundImage:'menubg.jpg',
 		    navBarHidden : true,
 		    exitOnClose: true,
 	});
 	
 	
 	
-	var logorowHeight = "125dp";
-		var logosLeft = "10dp";
+	var logorowHeight = 125;
+		var logosLeft = 10;
 		//UIAA logo 
-		var logorow = Ti.UI.createImageView({
-			height: "125dp",
+		var logorow = Ti.UI.createView({
+			height: 125,
 			width: screenWidth,
 			top: 0,
-			backgroundImage: 'menubg.jpg'
-			
+			backgroundColor: 'transparent',
+			//backgroundImage: 'menubg.jpg'
+		
 		});
 		
 		var logo = Ti.UI.createImageView({
-			image: 'logo.png',
-			width: "210dp",
-			height: "75dp",
-			top: "25dp",
+			image: Ti.Filesystem.resourcesDirectory + 'logo.png',
+			width: 210,
+			height: 75,
+			top: 25,
 			left: logosLeft,
-			hires: true
+			//hires: true
 			
 		});
 		
 		
 		
-		win.add(logorow);
+		//win.add(logorow);
 		win.add(logo);
 //"Once a Hawkeye" Image
-		var taglinerowHeight = "120dp";
+		var taglinerowHeight = 120;
 		var taglinerow = Ti.UI.createImageView({
 			height: taglinerowHeight,
 			width: screenWidth,
 			bottom: 0,
-			backgroundImage: 'menubg.jpg'
+			zIndex: 2,
+			backgroundColor: 'transparent'
 			
 		});
 		var tagline = Ti.UI.createImageView({
-			image: 'tagline.png',
-			width: "200dp",
-			height: "40dp",
-			bottom: "50dp",
+			image: Ti.Filesystem.resourcesDirectory + 'tagline.png',
+			width: 200,
+			height: 40,
+			bottom: 50,
 			left: logosLeft,
 			
 		
@@ -150,7 +153,7 @@ if (Ti.version < 1.8 ) {
 		});
 		tableView.setData(menuTitles); // Set the menu in the Home page
 		win.add(tableView);
-		win.add(taglinerow);
+		//win.add(taglinerow);
 		win.add(tagline);
 	
 	win.open();

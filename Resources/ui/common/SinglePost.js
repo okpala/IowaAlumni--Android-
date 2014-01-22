@@ -13,8 +13,9 @@ function SinglePost (post, tracker, title){
 		//separatorColor: 	'#d5d5d5',
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
-		width: 				screenWidth - 20,
+		width: 				Ti.UI.FILL,
 		left: 				10,
+		right:				10,
 		top:				10,
 		bottom:				0,
 		padding:			0,
@@ -60,20 +61,20 @@ function SinglePost (post, tracker, title){
 	
 	
 		
-		var titleLabel = getTitleLabel(post.title);
-		rowText.add(titleLabel);
+	var titleLabel = getTitleLabel(post.title);
+	rowText.add(titleLabel);
 		
-	 		if (post.image != 'NA'){
-			var imageContainer = Ti.UI.createView({
-				width: 			60,
-				height: 		60,
-				right: 			15,
-				top: 			titleLabel.height+20,
-				borderRadius:	4,
-				borderColor: 	'#d5d5d5',
-				borderWidth: 	1
+	if (post.image != 'NA'){
+		var imageContainer = Ti.UI.createView({
+			width: 			60,
+			height: 		60,
+			right: 			15,
+			top: 			titleLabel.height+20,
+			borderRadius:	4,
+			borderColor: 	'#d5d5d5',
+			borderWidth: 	1
 		
-			});
+		});
 			
 			
 			var postImage = getPostImage(post.image);
@@ -84,12 +85,12 @@ function SinglePost (post, tracker, title){
 			
 			rowText.add(imageContainer);
 			
-			var desclbl = getDescriptionLabel(post.description, 200);
+			var desclbl = getDescriptionLabel(post.description, postImage.width + 20);
 			rowText.add(desclbl);
 		}
 		
 		else{
-			var desclbl = getDescriptionLabel(post.description, 280);
+			var desclbl = getDescriptionLabel(post.description, 10);
 			rowText.add(desclbl);
 		}
 		
@@ -149,7 +150,7 @@ function getTitleLabel(title) {
 		left: 10,
 		top: 10,
 		bottom:10,
-		height: view.toImage().height,
+		height: view.toImage().height + 20,
 		textAlign:'left',
 		width: 270,
 		color:'#303030',
@@ -167,11 +168,12 @@ function getDescriptionLabel(description, descWidth) {
 	var text = Ti.UI.createLabel({
 		text: description,
 		left: 10,
+		right: 10,
+		right: descWidth,
 		bottom: 10,
 		top: 0,
 		height: 70,
-		textAlign:'left',
-		width: descWidth,
+		width: Ti.UI.FILL,
 		color:'#000000',
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});

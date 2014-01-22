@@ -26,6 +26,7 @@
     <analytics>true</analytics>
     <guid>1144d51e-3459-4b51-a005-39937c8900ca</guid>
     <property name="ti.android.fastdev" type="bool">false</property>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
     
         <manifest>

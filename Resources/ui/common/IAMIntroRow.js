@@ -9,8 +9,9 @@ function IAMIntroRow(post) {
 		separatorColor: 	'#d5d5d5',
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
-		width: 				screenWidth - 20,
+		width: 				Ti.UI.FILL,
 		left: 				10,
+		right:				10,
 		top:				10,
 		bottom:				0,
 		padding:			0,
@@ -30,7 +31,7 @@ function IAMIntroRow(post) {
 
 	 var rowText = Ti.UI.createTableViewRow({
 	 	selectionStyle: 'none',
-	    height: getTableHeight(image.height)
+	    height: 'auto'//getTableHeight(image.height)
 	       
 	 });
 	    
@@ -39,17 +40,19 @@ function IAMIntroRow(post) {
 	
 	    
 	 
-	table.height = rowText.height;
+	//table.height = rowText.height;
 	var data = [];
 	 data.push(rowText);
 	table.setData(data);
 
 	var row = Ti.UI.createTableViewRow({
 		//hasChild: true,
-		height: table.height+10,
+		
+		
+		//height: table.height+10,
 		padding: 0,
 		top: 0,
-		bottom: 0,
+		bottom: 10,
 		layout: 'vertical',
 		selectionStyle: 'none',
 		backgroundColor: '#e2e2e2'
@@ -100,7 +103,8 @@ function getText (imageWidth, tableWidth){
 		left: 10,
 		top: 10,
 		textAlign:'left',
-		width: tableWidth - (imageWidth + 15),
+		right: (imageWidth + 15),
+		width: Ti.UI.FILL,
 		
 		//height: view.toImage().height,
 		color:'#000000',

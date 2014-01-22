@@ -5,46 +5,39 @@ var WebView = require('ui/common/WebView');
  */
 
 function Ad(post, tracker, title) {
-	var screenWidth = Ti.Platform.displayCaps.platformWidth;
+	
     var row = Ti.UI.createTableViewRow({
 		//hasChild:true,
-		height: 70,
+		height: 'auto',
 		padding: 0,
 		top: 0,
 		bottom: 0,
 		layout: 'vertical',
 		backgroundColor: '#e2e2e2',
 		borderRadius: 0.5,
-		selectionStyle: 'none'
+		selectionStyle: 'none',
+		backgroundSelectedImage: "transparent"
 	});
 
 
-	var container =  Titanium.UI.createView({
-		backgroundColor: 'transparent',
-			height:			300,
-			width: 			screenWidth - 20,
-			left: 			10,
-			top:			-5,
-			bottom:			0,
-			padding:		0,
-			borderRadius:	5
-	});
 
 
 	var imagebox = Ti.UI.createImageView({
 		image: post.ad,
-		width: screenWidth - 20,
-		height: 70,
-		hires: true,
+		width: Ti.UI.FILL,
+		height: Ti.UI.FILL,
+		left: 10,
+		right: 10,
+		//hires: true,
 		top: 10
 		
 	});
 	
 	
-	container.add(imagebox);
+	
 	
 
-	row.add(container);
+	row.add(imagebox);
 	
 	row.addEventListener('click', function(e) {
 		tracker.trackEvent({

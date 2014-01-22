@@ -22,7 +22,7 @@ function MapWindow(title, tracker) {
 	
 	var textView = Ti.UI.createView({
 				backgroundColor: 	'#e2e2e2',
-				height:				75,
+				height:				85,
 				top:				195,
 				
 			});
@@ -60,7 +60,7 @@ function MapWindow(title, tracker) {
 			
 			var table = Ti.UI.createTableView({
 				height: 'auto',
-				top: 270
+				top: textView.top + textView.height
 			});
 		
 	
@@ -143,7 +143,7 @@ function MapWindow(title, tracker) {
 			
 				else{
 					textView.top = 0;
-					table.top = 75;
+					table.top = textView.top + textView.height;
 					mapAvailable = false;
 					
 				}

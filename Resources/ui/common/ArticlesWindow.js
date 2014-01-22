@@ -15,7 +15,7 @@ var LoadingScreen = require('ui/common/LoadingScreen');
 var ErrorWindow = require('ui/common/ErrorWindow');
 
 function ArticlesWindow(title, feed, tracker) {
-	
+	var isAndroid = Ti.Platform.osname === 'android';
 	var Feeds = new Feed(); 
 	var url = feed;
 	var self = new ApplicationWindow(title);
@@ -26,11 +26,11 @@ function ArticlesWindow(title, feed, tracker) {
 	var transparentView = Titanium.UI.createView({ 
 		backgroundColor: '#ccc',
 		opacity:0.9,
-		height: Ti.Platform.displayCaps.platformHeight - 60,
-		width: Ti.Platform.displayCaps.platformWidth,
-		top: 0,
+		height: Ti.UI.FILL,
+		width: Ti.UI.FILL,
 		zIndex:5,
 	});	
+	
 	var refresh = new RefreshSection();
 	refresh.addEventListener('click', function() {
 		refreshRssTable();
@@ -47,15 +47,165 @@ function ArticlesWindow(title, feed, tracker) {
 	var loading = new LoadingScreen();
 	function refreshRssTable() {
 		var rows = [];
+		self.add(table);
 		var group = [];
 		var featureSet = false;
 		var groupCount = 0;
 		var Counter = 0;
 		var adIndex = 0;
-		rows.push(refresh);	
+		rows.push(refresh);
+		var data = [];
+		var firstpass = true;	var lastRow = 0, loadData = true;
 		transparentView.add(loading);
 		loading.show();
 		self.add(transparentView);
+		setTimeout(function checkSync() {
+		    // has someone asked us to load data?
+		    
+		    if (loadData == false) {
+		        // no, return and we'll check again later
+		        setTimeout(checkSync, 200);
+		        return;
+		    }
+		    Ti.API.warn('LOAD DATA TRIGGERED!');
+		    var xhr = Ti.Network.createHTTPClient({
+			    onload: function() {
+			    	
+			    	
+			    	var xml = this.responseXML;
+			   		
+			    	// simulate an asynchronous HTTP request loading data after 500 ms
+				    setTimeout(function() {
+				    	var xml = this.responseXML;
+				    	if (firstpass == true){
+				    		firstpass = false;
+				    		if (feed == Feeds.magazineFeed()){
+								var items = xml.documentElement.getElementsByTagName("item2");
+								var item = items.item(0);
+								var adList = [];
+								adList.push({                 
+							    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
+							        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,         
+								});
+								
+								var ad = new StaticAd(adList, tracker, title);
+								table.bottom = 70;
+										
+									
+								var items = xml.documentElement.getElementsByTagName("item3");
+								var innerAdList = [];
+								for (var i = 0; i < items.length; i++) {
+								   	var item = items.item(i);
+									innerAdList.push({                 
+								    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
+								        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+								                  
+									});
+								}
+								self.add(ad);
+							}
+							
+				    		transparentView.remove(loading);
+			    			self.remove(transparentView);
+				    	}
+				    	
+				        // we got our data; push some new rows
+				       
+				        var items = xml.documentElement.getElementsByTagName("item");
+				        //if ( lastRow + 10 < items.length){
+				        	
+					        for (var i = lastRow, c = lastRow + 20; i < c; i++) {
+					      		var item = items.item(i);
+						   		data.push({
+									title: item.getElementsByTagName('title').item(0).textContent,
+									link: item.getElementsByTagName('link').item(0).textContent,
+									description: item.getElementsByTagName('description').item(0).textContent,
+									pubDate: item.getElementsByTagName('pubDate').item(0).textContent,
+									//image: image
+								});
+								/*
+								if (i == 0 && feed == Feeds.iowaInsiderFeed()){
+									var row = new IIBIntroRow();
+									rows.push(row);
+								}
+									
+								if (i == 0 && feed == Feeds.magazineFeed()){
+									var row = new IAMIntroRow();
+									rows.push(row);
+								}
+									
+								if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
+									var row = new Ad(innerAdList[adIndex], tracker, title);
+									rows.push(row);
+									adIndex++;
+								}
+									
+								if(featureSet == false ) {
+									var row = new FeatureRow(post, tracker, title);
+									featureSet = true;
+									rows.push(row);
+								}
+									
+								else {
+									var row =  new Row(post, tracker, title);
+									if(groupCount >= 1) {
+										group.push(row);
+										rows.push(new PostGroup(group));
+										group = [];
+										groupCount = 0;
+										featureSet = false;
+									}
+									else {
+										group.push(row);
+										groupCount++;
+									}
+								}
+								Counter++;
+							*/
+					            rows.push({ title: 'Row ' + i });
+					        }
+				        //}
+				        lastRow = c;
+				        // and push this into our table.
+				        table.setData(rows);
+				        // now we're done; reset the loadData flag and start the interval up again
+				        loadData = false;
+				        setTimeout(checkSync, 200);
+				        Ti.API.warn('DATA LOADED!');
+				    }, 500);
+				   
+			 },
+		    onerror: function(e) {
+			    transparentView.remove(loading);
+			    self.remove(transparentView);
+			    Ti.API.debug("STATUS: " + this.status);
+			    Ti.API.debug("TEXT:   " + this.responseText);
+			    Ti.API.debug("ERROR:  " + e.error);
+			    var errorView = new ErrorWindow(refreshRssTable, title, tracker);
+			    self.add(errorView);
+			    },
+			    timeout:5000
+			});
+		 
+			xhr.open("GET", url);
+			xhr.send();
+		}, 200);
+		 
+		table.addEventListener('scroll', function(evt) {
+		    // If we're on android: our total number of rows is less than the first visible row plus the total number of visible
+		    // rows plus 3 buffer rows, we need to load more rows!
+		    // ---OR---
+		    // If we're on ios: how far we're scrolled down + the size of our visible area + 100 pixels of buffer space
+		    // is greater than the total height of our table, we need to load more rows!
+		    if (isAndroid && (evt.totalItemCount < evt.firstVisibleItem + evt.visibleItemCount + 3)
+		            || (!isAndroid && (evt.contentOffset.y + evt.size.height + 100 > evt.contentSize.height))) {
+		        // tell our interval (above) to load more rows
+		        loadData = true;
+		    }
+		 
+		});
+		
+		/*
 		var xhr = Ti.Network.createHTTPClient({
 		    onload: function() {
 		    	
@@ -68,19 +218,13 @@ function ArticlesWindow(title, feed, tracker) {
 			   	for (var i = 0; i < items.length; i++) {
 			   		var item = items.item(i);
 			   		
-			   		var image = "";/*
-					try {
-						var image = item.getElementsByTagNameNS('http://mashable.com/', 'thumbnail').item(0).getElementsByTagName('img').item(0).getAttribute('src');
-					} catch (e) {
-						image = '';
-					}
-					*/
+			   		
 			   		data.push({
 						title: item.getElementsByTagName('title').item(0).textContent,
 						link: item.getElementsByTagName('link').item(0).textContent,
 						description: item.getElementsByTagName('description').item(0).textContent,
 						pubDate: item.getElementsByTagName('pubDate').item(0).textContent,
-						image: image
+						//image: image
 					});
 				}
 				
@@ -180,6 +324,7 @@ function ArticlesWindow(title, feed, tracker) {
 		 
 		xhr.open("GET", url);
 		xhr.send();	
+		*/
 	}
 	
 	refreshRssTable();

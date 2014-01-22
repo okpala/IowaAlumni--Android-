@@ -12,11 +12,12 @@ function HeaderRow(post, tracker, title) {
 		separatorColor: 	'#e2e2e2',
 		backgroundColor: 	'#e2e2e2',
 		height:				'auto',
-		width: 				screenWidth - 20,
-		left: 				10,
-		top:				10,
-		bottom:				0,
-		padding:			0,
+		width: Ti.UI.FILL,
+		left: 10,
+		right: 10,
+		top: 10,
+		bottom:	0,
+		padding: 0,
 	});
 
 	 var rowText = Ti.UI.createTableViewRow({

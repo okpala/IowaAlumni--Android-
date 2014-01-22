@@ -21,8 +21,9 @@ function HomeImageSlider(images){
 			backgroundColor: 'transparent',
 			height:			300,
 				height:			250,
-				width: 			screenWidth - 20,
+				width: 			Ti.UI.FILL,
 				left: 			10,
+				right:			10,
 				top:			10,
 				bottom:			0,
 				padding:		0,
@@ -40,24 +41,23 @@ function HomeImageSlider(images){
 		
 		var imagebox = Ti.UI.createImageView({
 			image: images[0].image,
-			width: screenWidth - 20,
-			height: 250,
-			hires: true,
+			width: Ti.UI.FILL,
+			height: Ti.UI.FILL,
+			//hires: true,
 			top: 30
 		});
 		
 		
 		var overlay = Ti.UI.createImageView({
-			width: screenWidth - 20,
+			width: Ti.UI.FILL,
 			height: 40,
-			hires: true,
+			//hires: true,
 			top: 1,
 			image: Ti.Filesystem.resourcesDirectory + 'gold.png'
 		});
 		var shadow = Ti.UI.createImageView({
-			width: screenWidth - 20,
-			height: 100,
-			hires: true,
+			width: Ti.UI.FILL,
+			height: 100,		
 			bottom: 65,
 			image: Ti.Filesystem.resourcesDirectory +'shadow.png'
 		});
@@ -82,8 +82,8 @@ function HomeImageSlider(images){
 		var view = Ti.UI.createView({
 			backgroundColor: '#0c0c0c',
 			backgroundImage: Ti.Filesystem.resourcesDirectory + 'dark.jpg',
-			width: screenWidth - 20,
-			height: 75,
+			width: Ti.UI.FILL,
+			height: 80,
 			bottom: 0
 		});
 		
@@ -105,11 +105,10 @@ function HomeImageSlider(images){
 		var text = Ti.UI.createLabel({
 			text: "The Official App of the University of Iowa Alumni Association",
 			left: 15,
+			right: 15,
 			top: 22,
 			bottom: 10,
-			height: 55,
-			textAlign:'left',
-			width: view.width - 30,
+			width: Ti.UI.FILL,
 			color:'#ffffff',
 			shadowColor:'#000000',
 	        shadowOpacity:0.5,

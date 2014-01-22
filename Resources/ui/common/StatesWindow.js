@@ -36,7 +36,8 @@ function ClubsWindow(title, tracker){
 			textAlign: 'left',
 			color: "#000000",
 			left: 10,
-			width: screenWidth - 20,
+			right: 10,
+			width: Ti.UI.FILL,
 			top: 10,
 			font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 				        
@@ -48,7 +49,8 @@ function ClubsWindow(title, tracker){
 	var people = Ti.UI.createImageView({
 			image:    'https://www.iowalum.com/mobile/clubs.png',
 		  	left: 10,
-			width: screenWidth - 20,
+			right: 10,
+			width: Ti.UI.FILL,
 		  	height: 70
 		  
 	});
@@ -88,7 +90,7 @@ function ClubsWindow(title, tracker){
 		
 		
 		table.top = textView.toImage().height + people.height;
-		Ti.API.info( textView.toImage().height +  " " + people.getHeight() +  " " +people.size.height + " " + people.toImage().height);
+		
 		
 		
 	
@@ -207,6 +209,11 @@ function ClubsWindow(title, tracker){
 				var stateClubs = getStateList(clubs, clubsInfo, e.row.text);
 				(new GameWatchWindow(stateClubs[0], stateClubs[1], tracker));
 			});
+			/*
+			table.addEventListener('postlayout', function(e){
+			 	table.top = textView.toImage().height;
+			});
+			*/
 			self.remove(loading);
 			
 		    },

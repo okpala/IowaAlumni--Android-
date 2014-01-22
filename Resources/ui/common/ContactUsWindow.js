@@ -15,6 +15,8 @@ function ContactUsWindow(title, tracker) {
 	var screenWidth = Ti.Platform.displayCaps.platformWidth;
 	
 	
+	
+	Ti.API.info(Ti.Platform.displayCaps.density);
 	tracker.trackScreen(title);
 	function refreshRssTable() {
 		self.add(loading);
@@ -39,8 +41,9 @@ function ContactUsWindow(title, tracker) {
 				separatorColor: 	'#d5d5d5',
 				backgroundColor: 	'#ffffff',
 				height:				160,
-				width: 				screenWidth - 20,
+				width: 				Ti.UI.FILL,
 				left: 				10,
+				right:				10,
 				top:				10,
 				bottom:				0,
 				padding:			0,
@@ -53,8 +56,9 @@ function ContactUsWindow(title, tracker) {
 				separatorColor: 	'#d5d5d5',
 				backgroundColor: 	'#ffffff',
 				height:				160,
-				width: 				screenWidth - 20,
+				width: 				Ti.UI.FILL,
 				left: 				10,
+				right:				10,
 				top:				180,
 				bottom:				0,
 				padding:			0,

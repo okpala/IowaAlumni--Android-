@@ -9,7 +9,7 @@ var WebView = require('ui/common/WebView');
 function FeatureRow(post, tracker, title) {
 
 	this.containerheight = 0;
-	var screenWidth = Ti.Platform.displayCaps.platformWidth;
+	
     var row = Ti.UI.createTableViewRow({
 		//hasChild:true,
 		link: post.url,
@@ -26,8 +26,9 @@ function FeatureRow(post, tracker, title) {
 	var container =  Titanium.UI.createView({
 		backgroundColor: 'transparent',
 			height:			300,
-			width: 			screenWidth - 20,
+			width: 			Ti.UI.FILL,
 			left: 			10,
+			right:			10,
 			top:			10,
 			bottom:			0,
 			padding:		0,
@@ -40,21 +41,21 @@ function FeatureRow(post, tracker, title) {
 
 	var imagebox = Ti.UI.createImageView({
 		image: post.image,
-		width: screenWidth - 20,
+		width: Ti.UI.FILL,
 		height: this.containerheight,
 		hires: true,
 		top: 30
 	});
 	//new CachedImageView('imageDirectoryName', post.image, imagebox);
 	var overlay = Ti.UI.createImageView({
-		width: screenWidth - 20,
+		width: Ti.UI.FILL,
 		height: 40,
 		hires: true,
 		top: 1,
 		image: Ti.Filesystem.resourcesDirectory +'gold.png'
 	});
 	var shadow = Ti.UI.createImageView({
-		width: screenWidth - 20,
+		width: Ti.UI.FILL,
 		height: 150,
 		hires: true,
 		top: this.containerheight-120,
@@ -138,7 +139,7 @@ function getTitleLabel(title,postheight) {
 		height:'auto'
 	});
 	view.add(temp);
-	theheight = view.toImage().height;
+	theheight = view.toImage().height + 20;
 	
 	var titlelbl = Ti.UI.createLabel({
 		text: title,
@@ -165,7 +166,7 @@ function getDescriptionLabel(description,postheight) {
 	var view = Ti.UI.createView({
 		backgroundColor: '#0c0c0c',
 		backgroundImage: Ti.Filesystem.resourcesDirectory + 'dark.jpg',
-		width: screenWidth - 20,
+		width: Ti.UI.FILL,
 		height: 65,
 		top: postheight
 	});

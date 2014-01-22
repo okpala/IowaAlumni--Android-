@@ -24,23 +24,26 @@ function EventsWindow(title, tracker) {
 	var transparentView = Titanium.UI.createView({ 
 		backgroundColor: '#ccc',
 		opacity:0.9,
-		height: Ti.Platform.displayCaps.platformHeight - 60,
-		width: Ti.Platform.displayCaps.platformWidth,
+		height: Ti.UI.FILL,
+		width: Ti.UI.FILL,
 		top: 0,
 		zIndex:5,
 	});	
-	tracker.trackScreen(title);
-	function refreshRssTable() {
-		/**
-		 * Create our UI elements.
-		 */
-		var table = Ti.UI.createTableView({ 
+	
+	var table = Ti.UI.createTableView({ 
 			top: 0,
 			right: 0, 
 			bottom: 70, 
 			backgroundColor:'#e2e2e2',
 			separatorColor: '#e2e2e2',
-		});
+	});
+	
+	tracker.trackScreen(title);
+	function refreshRssTable() {
+		/**
+		 * Create our UI elements.
+		 */
+		
 		var rows = [];
 		self.add(table);
 		var firstpass = true;
@@ -123,12 +126,14 @@ function EventsWindow(title, tracker) {
 				        	
 					        for (var i = lastRow, c = lastRow + 10; i < c; i++) {
 					        	var item = items.item(i);
+					        	/*
 					   			var image;
 								try {
 								var image = item.getElementsByTagNameNS('http://mashable.com/', 'thumbnail').item(0).getElementsByTagName('img').item(0).getAttribute('src');
 								} catch (e) {
 									image = '';
 								}
+								*/
 					   			data.push({
 									snl: item.getElementsByTagName('snl').item(0).textContent,	
 									place: item.getElementsByTagName('place').item(0).textContent,
@@ -138,7 +143,7 @@ function EventsWindow(title, tracker) {
 									pubDate: item.getElementsByTagName('pubDate').item(0).textContent,
 									hlink: item.getElementsByTagName('hlink').item(0).textContent,
 									category:item.getElementsByTagName('category').item(0).textContent,
-									image: image
+									//image: image
 								});
 								Ti.API.info(data[i].title);
 								Ti.API.info(data[i].title);

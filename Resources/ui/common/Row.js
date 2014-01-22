@@ -9,7 +9,7 @@ var WebView = require('ui/common/WebView');
 function Row(post, tracker, title) {
 
     this.postheight		= 0;
-	var screenWidth = Ti.Platform.displayCaps.platformWidth;
+	
     var row = Ti.UI.createTableViewRow({
 		//hasChild: 			true,
 		link: 				post.url,
@@ -24,7 +24,7 @@ function Row(post, tracker, title) {
 	var container =  Titanium.UI.createView({
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
-		width: 				screenWidth - 20,
+		width: 				Ti.UI.FILL,
 		left: 				0,
 		top:				0,
 		bottom:				0,
@@ -141,7 +141,7 @@ function getTitleLabel(title) {
 		left: 15,
 		top: 15,
 		bottom:10,
-		height: view.toImage().height,
+		height: view.toImage().height + 10,
 		textAlign:'left',
 		width: 270,
 		color:'#303030',

@@ -13,8 +13,9 @@ function SingleRow(post, tracker, title) {
 		separatorColor: 	'#d5d5d5',
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
-		width: 				screenWidth - 20,
+		width: 				Ti.UI.FILL,
 		left: 				10,
+		right:				10,
 		top:				10,
 		bottom:				0,
 		padding:			0,
@@ -104,29 +105,30 @@ function getTitleLabel(title) {
 	// Temp label to get height
 	// At this font-size/font-face the height per line is 32
 
-	var temp = Ti.UI.createLabel({
-		text: title,
-		height:'auto',
-		width: 250,
-		color:'#efc006',
-		font:{fontFamily:'Helvetica',fontSize:16,fontWeight:'bold'}
-	});
-	var view = Ti.UI.createView({
-		width: 250,
-		height:'auto'
-	});
-	view.add(temp);
+	 var temp = Ti.UI.createLabel({
+                text: title,
+                height:'auto',
+                width: 250,
+                color:'#efc006',
+                font:{fontFamily:'Helvetica',fontSize:16,fontWeight:'bold'}
+        });
+        var view = Ti.UI.createView({
+                width: 250,
+                height:'auto'
+        });
+        view.add(temp);
 
-
+	
 
 	var label = Ti.UI.createLabel({
 		text: title,
 		left: 15,
+		right: 15,
 		top: 10,
 		bottom:10,
-		height: view.toImage().height,
+		height: view.toImage().height + 20,
 		textAlign:'left',
-		width: 270,
+		width: Ti.UI.FILL,
 		color:'#303030',
         shadowOpacity:0.5,
         shadowOffset:{x:0, y:1},

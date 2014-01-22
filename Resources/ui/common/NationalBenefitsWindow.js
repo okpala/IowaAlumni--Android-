@@ -18,8 +18,9 @@ function NationalBenefitsWindow(title, tracker){
 	
 	 var textView = Ti.UI.createView({
 		backgroundImage:        Ti.Filesystem.resourcesDirectory +'gray-broder.png',
-		height: 100,
-		width: screenWidth - 2,
+		height: 105,
+		width: Ti.UI.FILL,
+		right: 2,
 		top: 0,
 		left: 2,   
 		zIndex: 2     
@@ -30,7 +31,8 @@ function NationalBenefitsWindow(title, tracker){
         color: "#000000",
         textAlign: 'left',
         left: 10,
-        width:  textView.width - 10,
+        right: 10,
+        width:  Ti.UI.FILL,
         top: 10,
         font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
                                 
@@ -45,7 +47,7 @@ function NationalBenefitsWindow(title, tracker){
     var linkLabel = Ti.UI.createLabel({
         text: 'IC benefits',
         right: 10,
-        top: 56,
+        top: 60,
         color: 'blue',
         font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
     });
