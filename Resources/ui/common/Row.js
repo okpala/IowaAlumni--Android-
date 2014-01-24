@@ -8,11 +8,10 @@ var WebView = require('ui/common/WebView');
 
 function Row(post, tracker, title) {
 
-    this.postheight		= 0;
+    //this.postheight		= 0;
 	
     var row = Ti.UI.createTableViewRow({
-		//hasChild: 			true,
-		link: 				post.url,
+    	link:               post.url,
 		height: 			'auto',
 		padding: 			0,
 		top: 				0,
@@ -31,7 +30,7 @@ function Row(post, tracker, title) {
 		padding:			0
 	});
 
-
+	
 
 
 	titlelbl = getTitleLabel(post.title);
@@ -56,8 +55,9 @@ function Row(post, tracker, title) {
         shadowOffset: 	{x:0, y:1},
 		font: 			{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
-	posted.top = titlelbl.height + desclbl.height + 20; // <-- posted.top = titlelbl.height + timelbl.height + desclbl.height + 20;
+	posted.top = titlelbl.height + desclbl.height + 20; 
 	container.add(posted);
+	
 
 	var imageContainer = Ti.UI.createView({
 		width: 			60,
@@ -70,7 +70,7 @@ function Row(post, tracker, title) {
 
 	});
 	var postImage = getPostImage(post.image);
-	postImage = getPostImage(post.image);
+	//postImage = getPostImage(post.image);
 	//new CachedImageView('imageDirectoryName', post.image, postImage);
 	
 	imageContainer.add(postImage);
@@ -78,9 +78,9 @@ function Row(post, tracker, title) {
 
 	container.height = titlelbl.height + desclbl.height + posted.height + 35;//<--- container.height = titlelbl.height + timelbl.height + desclbl.height + posted.height + 35;
 	row.height = container.height;
+/*
 
-
-
+*/
 	row.add(container);
 	
 	row.addEventListener('click', function(e) {
@@ -101,6 +101,7 @@ function Row(post, tracker, title) {
  * Helper Functions
  */
 
+/*
 function getContainerHeight(img) {
 	var tempimagebox = Ti.UI.createImageView({
 		image: img,
@@ -117,7 +118,7 @@ function getContainerHeight(img) {
 
 	return Math.floor( 300 * ratio );
 }
-
+*/
 function getTitleLabel(title) {
 
 	// Temp label to get height
@@ -163,13 +164,13 @@ function getDescriptionLabel(description) {
 		bottom: 10,
 		top: 0,
 		height: 70,
-		textAlign:'left',
+		//textAlign:'left',
 		width: 200,
 		ellipsize: true,
 		color:'#000000',
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
-	this.postheight += text.toImage().height;
+	//this.postheight += text.toImage().height;
 
 	return text;
 
@@ -197,6 +198,13 @@ function getPostImage(image) {
 		width: adjustedWidth,
 		top: 0
 	});
+	
+	tempimagebox = null;
+	var height = null;
+	var width = null;
+	var ratio = null;
+
+	var adjustedWidth = null;
 
 	return imagebox;
 }

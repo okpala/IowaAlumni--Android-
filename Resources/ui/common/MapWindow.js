@@ -116,7 +116,7 @@ function MapWindow(title, tracker) {
 								latitudeDelta:0.01, longitudeDelta:0.01 },
 						animate: true,
 						userLocation:false,
-						height: screenHeight/2,
+						height: 250,
 					    annotations: companyInfo,
 						top: 0
 					});

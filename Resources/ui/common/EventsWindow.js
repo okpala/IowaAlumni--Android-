@@ -145,8 +145,7 @@ function EventsWindow(title, tracker) {
 									category:item.getElementsByTagName('category').item(0).textContent,
 									//image: image
 								});
-								Ti.API.info(data[i].title);
-								Ti.API.info(data[i].title);
+								
 								var post = new Post(data[i]);
 						
 								if ((Counter == 0) ||(tempDate != post.pubDate && Counter != 0)){

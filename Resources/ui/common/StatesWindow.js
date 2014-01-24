@@ -11,22 +11,14 @@ var ErrorWindow = require('ui/common/ErrorWindow');
  */
 
 function ClubsWindow(title, tracker){
-	var screenWidth = Ti.Platform.displayCaps.platformWidth;
-	var screenHeight = Ti.Platform.displayCaps.platformHeight;
 	var Feeds = new Feed(); 
 	var url = Feeds.gameWatchFeed();
 	var self = new ApplicationWindow(title);
-	/*
-	var mainContainer = Ti.UI.createTableView({
-			height: 200,
-			top: 0,
-			bottom: 70,
-		
-	});
-	*/
+	
 	var tableHeader = Ti.UI.createTableView({
 			height: 'auto',
 			top: 0,
+			backgroundColor:'#e2e2e2'
 		
 	});
 	
@@ -59,6 +51,7 @@ function ClubsWindow(title, tracker){
 	var table = Ti.UI.createTableView({
 			height: 'auto',
 			bottom: 70,
+			backgroundColor:'#e2e2e2'
 		
 	});
 	
@@ -75,35 +68,38 @@ function ClubsWindow(title, tracker){
 		
 		var row1 = Ti.UI.createTableViewRow({backgroundSelectedColor: "transparent"});
 		row1.add(people);
-		
+		var clubs = [];
 		
 		tableHeader.setData([row, row1]);
+		
+		
+	
+		
+		var adList = [];
+		var clubsInfo = [];
+		var data = [];	
 		var textView = Ti.UI.createView({
-			left: 10,
-			width: screenWidth - 20,
-			height:'auto'
-		});
-		textView.add(introLabel);
+        	left: 10,
+            width: Ti.UI.FILL,
+            left: 10,
+            right: 10,
+            height:'auto'
+         });
+         textView.add(introLabel);
+                
+        
+                
+                
+                
+                table.top = textView.toImage().height + people.height;
 		
-	
-		
-		
-		
-		table.top = textView.toImage().height + people.height;
-		
-		
-		
-	
-		
-		
+
 		self.add(loading);
 		loading.show(); 
 		var xhr = Ti.Network.createHTTPClient({
 		    onload: function() {
 		    	var xml = this.responseXML;
 			   	var items = xml.documentElement.getElementsByTagName("item");
-			   	//var item = items.item(0);
-			   	var clubs = [];
 			   		for (var i = 0; i < items.length; i++) {
 			   			var item = items.item(i);
 			   			
@@ -120,7 +116,7 @@ function ClubsWindow(title, tracker){
 				
 				var items = xml.documentElement.getElementsByTagName("item3");
 			   	var item = items.item(0);
-			   	var adList = [];
+			   	
 			   	adList.push({                 
 		           ad: item.getElementsByTagName( 'ad').item(0).textContent,
 		           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
@@ -130,8 +126,8 @@ function ClubsWindow(title, tracker){
 					
 				
 				var items = xml.documentElement.getElementsByTagName("item2");
-			   	//var item = items.item(0);
-			   	var clubsInfo = [];
+
+			   	
 			   		for (var i = 0; i < items.length; i++) {
 			   			var item = items.item(i);
 			   			
@@ -148,7 +144,7 @@ function ClubsWindow(title, tracker){
 					
 			
 			
-			var data = [];	
+			
 			var rowCounter = 0;	
 			for (var i = 0; i <= clubs.length - 1; i++) {
 				if ((i == 0) || ((clubs[i - 1].state != clubs[i].state) && i != 0) ){ 
@@ -181,21 +177,9 @@ function ClubsWindow(title, tracker){
 			    
 			   
 			};	
-			//tableHeader.setData(rows2);	
+
 		   	table.setData(data);
-		   
-		   	//var row = Ti.UI.createTableViewRow();
-			//row.add(tableHeader);
-			//rows3.push(row);
-			
-			//var row = Ti.UI.createTableViewRow();
-			//row.add(table);
-			//rows3.push(row);
-			
-			//mainContainer.setData([tableHeader, table]);
-		   	
-		   	//self.add(introLabel);
-			//self.add(people);
+
 			self.add(tableHeader);
 			self.add(table);
 			self.add(ad);
@@ -209,21 +193,16 @@ function ClubsWindow(title, tracker){
 				var stateClubs = getStateList(clubs, clubsInfo, e.row.text);
 				(new GameWatchWindow(stateClubs[0], stateClubs[1], tracker));
 			});
-			/*
-			table.addEventListener('postlayout', function(e){
-			 	table.top = textView.toImage().height;
-			});
-			*/
 			self.remove(loading);
 			
 		    },
 		    onerror: function(e) {
-		    self.remove(loading);
-		    Ti.API.debug("STATUS: " + this.status);
-		    Ti.API.debug("TEXT:   " + this.responseText);
-		    Ti.API.debug("ERROR:  " + e.error);
-		    var errorView = new ErrorWindow(refreshRssTable, title, tracker);
-			self.add(errorView);
+			    self.remove(loading);
+			    Ti.API.debug("STATUS: " + this.status);
+			    Ti.API.debug("TEXT:   " + this.responseText);
+			    Ti.API.debug("ERROR:  " + e.error);
+			    var errorView = new ErrorWindow(refreshRssTable, title, tracker);
+				self.add(errorView);
 		    },
 		    timeout:5000
 		});

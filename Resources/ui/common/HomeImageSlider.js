@@ -40,7 +40,7 @@ function HomeImageSlider(images){
 		row.add(container);
 		
 		var imagebox = Ti.UI.createImageView({
-			image: images[0].image,
+			image: Ti.Filesystem.resourcesDirectory + images[0].image,
 			width: Ti.UI.FILL,
 			height: Ti.UI.FILL,
 			//hires: true,

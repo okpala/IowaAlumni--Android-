@@ -18,6 +18,7 @@ function ArticlesWindow(title, feed, tracker) {
 	var isAndroid = Ti.Platform.osname === 'android';
 	var Feeds = new Feed(); 
 	var url = feed;
+	var itemsLoad = 4;
 	var self = new ApplicationWindow(title);
 	var table = Ti.UI.createTableView({
 		backgroundColor:'#e2e2e2',
@@ -76,10 +77,12 @@ function ArticlesWindow(title, feed, tracker) {
 			   		
 			    	// simulate an asynchronous HTTP request loading data after 500 ms
 				    setTimeout(function() {
-				    	var xml = this.responseXML;
+				    	//var xml = this.responseXML;
 				    	if (firstpass == true){
+				    		
 				    		firstpass = false;
 				    		if (feed == Feeds.magazineFeed()){
+				
 								var items = xml.documentElement.getElementsByTagName("item2");
 								var item = items.item(0);
 								var adList = [];
@@ -91,7 +94,7 @@ function ArticlesWindow(title, feed, tracker) {
 								var ad = new StaticAd(adList, tracker, title);
 								table.bottom = 70;
 										
-									
+								
 								var items = xml.documentElement.getElementsByTagName("item3");
 								var innerAdList = [];
 								for (var i = 0; i < items.length; i++) {
@@ -102,28 +105,35 @@ function ArticlesWindow(title, feed, tracker) {
 								                  
 									});
 								}
-								self.add(ad);
+								self.add(ad);/*	
+							*/
 							}
 							
 				    		transparentView.remove(loading);
 			    			self.remove(transparentView);
+			    			
 				    	}
 				    	
 				        // we got our data; push some new rows
 				       
 				        var items = xml.documentElement.getElementsByTagName("item");
-				        //if ( lastRow + 10 < items.length){
+				        if ( lastRow + itemsLoad < items.length){
 				        	
-					        for (var i = lastRow, c = lastRow + 20; i < c; i++) {
-					      		var item = items.item(i);
+					        for (var i = lastRow, c = lastRow + itemsLoad; i < c; i++) {
+					        	var item = items.item(i);
+					      		Ti.API.info(item.getElementsByTagName('title'));
+					      		Ti.API.info(item.getElementsByTagName('title').item(0));
+					      		Ti.API.info(item.getElementsByTagName('title').item(0).textContent);
 						   		data.push({
 									title: item.getElementsByTagName('title').item(0).textContent,
 									link: item.getElementsByTagName('link').item(0).textContent,
 									description: item.getElementsByTagName('description').item(0).textContent,
-									pubDate: item.getElementsByTagName('pubDate').item(0).textContent,
-									//image: image
+									pubDate: item.getElementsByTagName('pubDate').item(0).textContent
+									
 								});
-								/*
+								
+								var post = new Post(data[i]);
+								
 								if (i == 0 && feed == Feeds.iowaInsiderFeed()){
 									var row = new IIBIntroRow();
 									rows.push(row);
@@ -135,22 +145,24 @@ function ArticlesWindow(title, feed, tracker) {
 								}
 									
 								if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
-									var row = new Ad(innerAdList[adIndex], tracker, title);
-									rows.push(row);
+									//var row = new Ad(innerAdList[adIndex], tracker, title);
+									//rows.push(row);
 									adIndex++;
 								}
-									
+								
 								if(featureSet == false ) {
 									var row = new FeatureRow(post, tracker, title);
 									featureSet = true;
 									rows.push(row);
 								}
-									
+										
 								else {
 									var row =  new Row(post, tracker, title);
 									if(groupCount >= 1) {
 										group.push(row);
 										rows.push(new PostGroup(group));
+										Ti.API.info(new PostGroup(group));
+										Ti.API.info(rows.length);
 										group = [];
 										groupCount = 0;
 										featureSet = false;
@@ -159,12 +171,13 @@ function ArticlesWindow(title, feed, tracker) {
 										group.push(row);
 										groupCount++;
 									}
+									
 								}
 								Counter++;
-							*/
-					            rows.push({ title: 'Row ' + i });
+							
+					            //rows.push({ title: 'Row ' + i });
 					        }
-				        //}
+				        }
 				        lastRow = c;
 				        // and push this into our table.
 				        table.setData(rows);
