@@ -158,11 +158,22 @@ function  MemberCardWindow(title, tracker){
 				
 		   		if (passwordTextField.value == password.pass) {
 					 getMemberCard(false);
-					
+					tracker.trackEvent({
+						category: "Members Card",
+						action: "using card",
+						label: "Password: onceahawkeye",
+						value: 1
+					});
 				}
 				
 				else if (passwordTextField.value == password.pass2) {
 					 getMemberCard(true);
+					 tracker.trackEvent({
+						category: "Members Card",
+						action: "using card",
+						label: "Password: hawkeyes",
+						value: 1
+					});
 				}
 				else {
 					wrongPasswordLabel.setVisible(true);
