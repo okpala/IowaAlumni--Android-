@@ -118,6 +118,7 @@ function RootWindow(title, tracker) {
 		    	
 				var items = xml.documentElement.getElementsByTagName("item5");
 				var item = items.item(0);
+				
 				images.push({                 
 			    	image: item.getElementsByTagName( 'url').item(0).textContent,         
 				});

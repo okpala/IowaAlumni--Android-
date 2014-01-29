@@ -30,6 +30,7 @@ function ClubsWindow(title, tracker){
 			left: 10,
 			right: 10,
 			width: Ti.UI.FILL,
+			height: 'auto',
 			top: 10,
 			font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 				        
@@ -80,7 +81,7 @@ function ClubsWindow(title, tracker){
 		var data = [];	
 		var textView = Ti.UI.createView({
         	left: 10,
-            width: Ti.UI.FILL,
+            width: 300,
             left: 10,
             right: 10,
             height:'auto'
@@ -91,9 +92,10 @@ function ClubsWindow(title, tracker){
                 
                 
                 
-                table.top = textView.toImage().height + people.height;
+      table.top = textView.toImage().height + people.height;
 		
-
+	Ti.API.info(textView.toImage().height);
+	Ti.API.info(people.height);
 		self.add(loading);
 		loading.show(); 
 		var xhr = Ti.Network.createHTTPClient({
@@ -179,6 +181,10 @@ function ClubsWindow(title, tracker){
 			};	
 
 		   	table.setData(data);
+		   	//table.top = textView.toImage().height + people.height;
+			Ti.API.info(table.top);
+			Ti.API.info(textView.toImage().height);
+			Ti.API.info(people.height);
 
 			self.add(tableHeader);
 			self.add(table);

@@ -188,8 +188,10 @@ function EventsWindow(title, tracker) {
 			    Ti.API.debug("STATUS: " + this.status);
 			    Ti.API.debug("TEXT:   " + this.responseText);
 			    Ti.API.debug("ERROR:  " + e.error);
-			    var errorView = new ErrorWindow(refreshRssTable, title, tracker);
-			    self.add(errorView);
+			    if (firstpass == true){
+				    var errorView = new ErrorWindow(refreshRssTable, title, tracker);
+				    self.add(errorView);
+			    }
 			    },
 			    timeout:5000
 			});

@@ -75,17 +75,24 @@ function SinglePost (post, tracker, title){
 			borderWidth: 	1
 		
 		});
+		
+		var imagebox = Ti.UI.createImageView({
+			image: post.image,
+			width: 			60,
+			height: 		60,
+			top: 0
+		});
 			
+		imageContainer.add(imagebox);	
+			//var postImage = getPostImage(post.image);
+			//new CachedImageView('imageDirectoryName', post.image, postImage);
+			//postImage = getPostImage(post.image);
 			
-			var postImage = getPostImage(post.image);
-			new CachedImageView('imageDirectoryName', post.image, postImage);
-			postImage = getPostImage(post.image);
-			
-			imageContainer.add(postImage);
+			//imageContainer.add(postImage);
 			
 			rowText.add(imageContainer);
 			
-			var desclbl = getDescriptionLabel(post.description, postImage.width + 20);
+			var desclbl = getDescriptionLabel(post.description, 80);//postImage.width + 20);
 			rowText.add(desclbl);
 		}
 		

@@ -11,6 +11,7 @@ function MapWindow(title, tracker) {
 	var Feeds = new Feed(); 
 	var url = Feeds.iowaCityFeed();
 	var self = new NavigateWindow(title);
+
 	var table = Ti.UI.createTableView();
 	var rows = [];	
 	var mapWin = Ti.UI.createView({		    
@@ -20,6 +21,7 @@ function MapWindow(title, tracker) {
 	var map;
 	var mapAvailable = true;
 	
+
 	var textView = Ti.UI.createView({
 				backgroundColor: 	'#e2e2e2',
 				height:				85,

@@ -10,6 +10,8 @@ function NationalBenefitsWindow(title, tracker){
 	var Feeds = new Feed(); 
 	var url = Feeds.nationalDiscountFeed();
 	var self = new ApplicationWindow("National Member Benefits");
+	var MapModule = require('ti.map');
+	
 	var rows = [];        
 	var screenWidth = Ti.Platform.displayCaps.platformWidth;
 	tracker.trackScreen(title);

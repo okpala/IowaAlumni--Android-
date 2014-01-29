@@ -5,7 +5,7 @@ var CachedImageView = require('ui/common/CachedImageView');
 
 function HomeImageSlider(images){
 	this.containerheight = 0;
-	var screenWidth = Ti.Platform.displayCaps.platformWidth;
+	
 	
 	var row = Ti.UI.createTableViewRow({
 		height: 355,
@@ -40,7 +40,7 @@ function HomeImageSlider(images){
 		row.add(container);
 		
 		var imagebox = Ti.UI.createImageView({
-			image: Ti.Filesystem.resourcesDirectory + images[0].image,
+			image: images[0].image,
 			width: Ti.UI.FILL,
 			height: Ti.UI.FILL,
 			//hires: true,
