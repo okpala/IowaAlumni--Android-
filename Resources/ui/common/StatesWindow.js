@@ -18,7 +18,8 @@ function ClubsWindow(title, tracker){
 	var tableHeader = Ti.UI.createTableView({
 			height: 'auto',
 			top: 0,
-			backgroundColor:'#e2e2e2'
+			backgroundColor:'#e2e2e2',
+			separatorColor: "transparent"
 		
 	});
 	
@@ -36,8 +37,7 @@ function ClubsWindow(title, tracker){
 				        
 	});
 		
-		
-		
+	
 		
 	var people = Ti.UI.createImageView({
 			image:    'https://www.iowalum.com/mobile/clubs.png',
@@ -92,7 +92,7 @@ function ClubsWindow(title, tracker){
                 
                 
                 
-      table.top = textView.toImage().height + people.height;
+      table.top = 120;//textView.toImage().height + people.height;
 		
 	Ti.API.info(textView.toImage().height);
 	Ti.API.info(people.height);

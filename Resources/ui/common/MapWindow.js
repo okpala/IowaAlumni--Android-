@@ -33,7 +33,8 @@ function MapWindow(title, tracker) {
 					 color: "#000000",
 					 textAlign: 'left',
 					 left: 10,
-					 width: 300,
+					 right: 10,
+					 width: Ti.UI.FILL,
 					 top: 10,
 					font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 					        
@@ -107,7 +108,7 @@ function MapWindow(title, tracker) {
 							    title: businessesInfo[i].company,
 							    subtitle: businessesInfo[i].street,
 							    pincolor: Map.ANNOTATION_RED,
-							    animate:true
+    							draggable: true
 							})
 						);
 					}
@@ -116,8 +117,8 @@ function MapWindow(title, tracker) {
 						mapType:Map.NORMAL_TYPE,
 						region: {latitude: companyInfo[0].latitude, longitude: companyInfo[0].longitude,
 								latitudeDelta:0.01, longitudeDelta:0.01 },
-						animate: true,
-						userLocation:false,
+						//animate: true,
+						//userLocation:false,
 						height: 250,
 					    annotations: companyInfo,
 						top: 0

@@ -4,7 +4,7 @@ var WebView = require('ui/common/WebView');
  */
 
 function IAMIntroRow(post) {
-	var screenWidth = Ti.Platform.displayCaps.platformWidth;  
+	
 	var table = Ti.UI.createTableView({
 		separatorColor: 	'#d5d5d5',
 		backgroundColor: 	'#ffffff',
@@ -46,10 +46,6 @@ function IAMIntroRow(post) {
 	table.setData(data);
 
 	var row = Ti.UI.createTableViewRow({
-		//hasChild: true,
-		
-		
-		//height: table.height+10,
 		padding: 0,
 		top: 0,
 		bottom: 10,

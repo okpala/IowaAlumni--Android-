@@ -1,6 +1,5 @@
 var MapWindow = require('ui/common/MapWindow');
 var ApplicationWindow = require('ui/common/ApplicationWindow');
-var GetFeed = require('ui/common/GetFeed');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');
 var LoadingScreen = require('ui/common/LoadingScreen');
@@ -9,14 +8,10 @@ var ErrorWindow = require('ui/common/ErrorWindow');
 function NationalBenefitsWindow(title, tracker){
 	var Feeds = new Feed(); 
 	var url = Feeds.nationalDiscountFeed();
-	var self = new ApplicationWindow("National Member Benefits");
-	var MapModule = require('ti.map');
-	
+	var self = new ApplicationWindow(title);
 	var rows = [];        
-	var screenWidth = Ti.Platform.displayCaps.platformWidth;
 	tracker.trackScreen(title);
 	var loading = new LoadingScreen();
-	var screenWidth = Ti.Platform.displayCaps.platformWidth; 
 	
 	 var textView = Ti.UI.createView({
 		backgroundImage:        Ti.Filesystem.resourcesDirectory +'gray-broder.png',

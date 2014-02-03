@@ -8,7 +8,7 @@ var WebView = require('ui/common/WebView');
 function SinglePost (post, tracker, title){
 	
 	
-	var screenWidth = Ti.Platform.displayCaps.platformWidth;
+	
 	var table = Ti.UI.createTableView({
 		//separatorColor: 	'#d5d5d5',
 		backgroundColor: 	'#ffffff',

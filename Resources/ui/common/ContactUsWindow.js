@@ -235,9 +235,9 @@ function ContactUsWindow(title, tracker) {
 			 },
 		    onerror: function(e) {
 			    self.remove(loading);
-			    Ti.API.debug("STATUS: " + this.status);
-			    Ti.API.debug("TEXT:   " + this.responseText);
-			    Ti.API.debug("ERROR:  " + e.error);
+			    alert("STATUS: " + this.status);
+			    alert("TEXT:   " + this.responseText);
+			    alert("ERROR:  " + e.error);
 			    var errorView = new ErrorWindow(refreshRssTable, title, tracker);
 				self.add(errorView);
 		    },

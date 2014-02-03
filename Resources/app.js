@@ -9,6 +9,7 @@
 * - Require and open our top-level UI component
 *  
 */
+
 var osname = Ti.Platform.osname,
 		version = Ti.Platform.version,
 		screenHeight = Ti.Platform.displayCaps.platformHeight,
@@ -44,8 +45,8 @@ if (Ti.version < 1.8 ) {
 			Window = require('ui/handheld/android/ApplicationWindow');
 		}
 	}
-	*/
 	
+	*/
 	var ContactUsWindow = require('ui/common/ContactUsWindow');
 	var StatesWindow = require('ui/common/StatesWindow');
 	var MemberCardWindow = require('ui/common/MemberCardWindow');
@@ -306,3 +307,24 @@ if (Ti.version < 1.8 ) {
 	});
 			
 })();
+
+/*
+var MapModule = require('ti.map');
+var win = Ti.UI.createWindow({backgroundColor: 'white'});
+var appc = MapModule.createAnnotation({
+    latitude: 37.389569,
+    longitude: -122.050212,
+    title: 'Appcelerator HQ',
+    subtitle: 'Mountain View, CA',
+    pincolor: MapModule.ANNOTATION_GREEN,
+    draggable: true
+});
+var mapview = MapModule.createView({
+    mapType: MapModule.NORMAL_TYPE,
+    region: {latitude: 37.389569, longitude: -122.050212, latitudeDelta: 0.2, longitudeDelta: 0.2},
+    annotations: [appc]
+});
+
+win.add(mapview);
+win.open();
+*/

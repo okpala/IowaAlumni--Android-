@@ -8,7 +8,14 @@ function  MemberCardWindow(title, tracker){
 	tracker.trackScreen(title);
 	var self = new ApplicationWindow(title);
 	var loading = new LoadingScreen();
-	
+	var rows = [];
+	var table = Ti.UI.createTableView({
+			height: 'auto',
+			top: 0,
+			backgroundColor:'#e2e2e2',
+			separatorColor: "transparent"
+		
+	});
 	
 	var passwordWin = Ti.UI.createView({
 	    top: 0,
@@ -28,32 +35,49 @@ function  MemberCardWindow(title, tracker){
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 	});
 	
+	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
+	row.add(passwordLabel);
+	rows.push(row);
+	
 	var passwordTextField = Ti.UI.createTextField({
   		color: '#000000',
   		passwordMask: true,
-  		top: 50,
+  		top: 10,
   		width: 140, 
   		height: 30,
   		backgroundColor :"#fff",
   		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
+	
+	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
+	row.add(passwordTextField);
+	rows.push(row);
+	
 	var loginButton = Ti.UI.createButton({
 		title:'Login',
 		//width: 50,
 		height:35,
-		top: 82,
+		top: 10,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 		
 	});
+	
+	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
+	row.add(loginButton);
+	rows.push(row);
 	
 	var activityIndicator = Ti.UI.createActivityIndicator({
 		  font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'},
 		  message: 'Checking Password...',
 		  style: Ti.UI.ActivityIndicatorStyle.DARK,
-		  top:115,
+		  top:10,
 		  height:'auto',
 		  width:'auto'
 	});
+	
+	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
+	row.add(activityIndicator);
+	
 	
 	var wrongPasswordLabel = Ti.UI.createLabel({
 		text: "You may have typed the password incorrectly, try again.",
@@ -61,31 +85,43 @@ function  MemberCardWindow(title, tracker){
 		height:'auto',
 		width: 310,
 		color:'#FF0000',
-		top: 115,
+		top: 10,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
+	
+	
+	wrongPasswordLabel.setVisible(false);
+	row.add(wrongPasswordLabel);
+	rows.push(row);
 	
 	
 	var passwordHeaderLabel = Ti.UI.createLabel({
 		text: "Forgot the Password?",
 		color: "#000000",
 		width: 300,
-		top: 130,
+		top: 10,
 		textAlign: 'left',
   		left: 10,
 		font: {fontFamily:'Helvetica-Bold',fontSize:12,fontWeight:'normal'}
 	});
+	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
+	row.add(passwordHeaderLabel);
+	rows.push(row);
 	
 	var passwordInfoLabel = Ti.UI.createLabel({
 		text: "Let us know via email (alumni-member@uiowa.edu) and we will send it to you promptly during regular business hours. Type 'members-only password' in the subject line of your message and include your first and last name, city, and state.",
 		color: "#000000",
 		height:'auto',
 		width: Ti.UI.FILL,
-		top: 145,
+		top: 10,
   		left: 10,
   		right: 10,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
+	
+	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
+	row.add(passwordInfoLabel);
+	rows.push(row);
 
 	var image = Ti.UI.createImageView({
 	  image:    'http://iowalum.com/membership/images/MemberCard.png',
@@ -96,10 +132,14 @@ function  MemberCardWindow(title, tracker){
 	
 	var thawk = Ti.UI.createImageView({
 	  image:    Ti.Filesystem.resourcesDirectory + 'thawk.png',
-	  top:   260,
+	  top:   10,
 	  width: 200,
 	  height: 127
 	});
+	
+	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
+	row.add(thawk);
+	rows.push(row);
 	function refreshRssTable() {
 		self.add(loading);
 		loading.show();
@@ -192,8 +232,8 @@ function  MemberCardWindow(title, tracker){
 				
 				
 				
-				
-				self.add(passwordWin);
+				table.setData(rows);
+				self.add(table);
 				self.remove(loading);	
 				
 		    },
@@ -210,7 +250,11 @@ function  MemberCardWindow(title, tracker){
 		xhr.open("GET", Feeds.passwordFeed());
 		xhr.send();  // request is actually sent with this statement
 	}
-	refreshRssTable();
+	//refreshRssTable();
+	table.setData(rows);
+	self.add(table);
+	self.remove(loading);	
+				
 	return self;
 }
 

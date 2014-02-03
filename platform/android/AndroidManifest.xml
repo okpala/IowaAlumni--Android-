@@ -1,5 +1,5 @@
 <?xml version="1.0" ?><manifest android:versionCode="1" android:versionName="1" package="com.iowalum.uiowaalumni"  xmlns:android="http://schemas.android.com/apk/res/android">
-        <supports-screens android:anyDensity="true"/><uses-sdk android:minSdkVersion="9" android:targetSdkVersion="14" />
+        <supports-screens android:anyDensity="true"/><uses-sdk android:minSdkVersion="14" android:targetSdkVersion="14" />
 
         
         <application android:debuggable="true" android:icon="@drawable/appicon" android:label="UIowa Alumni" android:name="UiowaAlumniApplication">
@@ -21,7 +21,7 @@
                 <activity android:name="ti.modules.titanium.ui.android.TiPreferencesActivity"/>
 
                 <service android:exported="false" android:name="org.appcelerator.titanium.analytics.TiAnalyticsService"/>
-                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyA-rNA-4HYWjjrzZWTl-geY5xUluF_7NDA"/>
+                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDfXVCw5minmJHw2152uqSSgdp5X-YjqUY"/>
         </application>
 
         

@@ -8,7 +8,6 @@ var subTextHieght = 15;
  */
 
 function SingleRow(post, tracker, title) {
-	var screenWidth = Ti.Platform.displayCaps.platformWidth;
    var table = Ti.UI.createTableView({
 		separatorColor: 	'#d5d5d5',
 		backgroundColor: 	'#ffffff',
@@ -126,7 +125,7 @@ function getTitleLabel(title) {
 		right: 15,
 		top: 10,
 		bottom:10,
-		height: view.toImage().height + 20,
+		height: view.toImage().height,
 		textAlign:'left',
 		width: Ti.UI.FILL,
 		color:'#303030',
