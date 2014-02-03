@@ -76,6 +76,7 @@ function Row(post, tracker, title) {
 		height: Ti.UI.FILL,
 		//hires: true,
 	});
+	Ti.API.info(post.image);
 	//postImage = getPostImage(post.image);
 	//new CachedImageView('imageDirectoryName', post.image, postImage);
 	
@@ -132,12 +133,14 @@ function getTitleLabel(title) {
 	var temp = Ti.UI.createLabel({
 		text: title,
 		height:'auto',
-		width: 250,
+		width:  "auto" ,
+		left: 10,
+		right: 10,
 		color:'#efc006',
 		font:{fontFamily:'Helvetica',fontSize:16,fontWeight:'bold'}
 	});
 	var view = Ti.UI.createView({
-		width: 250,
+		width:  Ti.Platform.displayCaps.platformWidth - 20,
 		height:'auto'
 	});
 	view.add(temp);

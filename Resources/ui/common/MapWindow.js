@@ -97,7 +97,7 @@ function MapWindow(title, tracker) {
 				
 				var code = Map.isGooglePlayServicesAvailable();
 
-				if (code == Map.SUCCESS) {
+				if (code == Map.SUCCESS && Ti.Platform.version >= 4) {
 					var companyInfo = [];
 					for (var i = 0; i <= businessesInfo.length - 1; i++) {
 						companyInfo.push(

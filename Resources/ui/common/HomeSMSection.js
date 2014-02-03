@@ -11,7 +11,7 @@ function HomeSMSection(tracker){
 			top:				10,
 		});
 		
-		var row = Ti.UI.createTableViewRow();
+		var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
 		row.add(socialMediaView);
 		
 		var icon = new SocialMediaIcons();

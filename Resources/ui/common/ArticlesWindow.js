@@ -121,9 +121,9 @@ function ArticlesWindow(title, feed, tracker) {
 				        	
 					        for (var i = lastRow, c = lastRow + itemsLoad; i < c; i++) {
 					        	var item = items.item(i);
-					      		Ti.API.info(item.getElementsByTagName('title'));
-					      		Ti.API.info(item.getElementsByTagName('title').item(0));
-					      		Ti.API.info(item.getElementsByTagName('title').item(0).textContent);
+					      		//Ti.API.info(item.getElementsByTagName('title'));
+					      		//Ti.API.info(item.getElementsByTagName('title').item(0));
+					      		//Ti.API.info(item.getElementsByTagName('title').item(0).textContent);
 						   		data.push({
 									title: item.getElementsByTagName('title').item(0).textContent,
 									link: item.getElementsByTagName('link').item(0).textContent,
@@ -161,8 +161,8 @@ function ArticlesWindow(title, feed, tracker) {
 									if(groupCount >= 1) {
 										group.push(row);
 										rows.push(new PostGroup(group));
-										Ti.API.info(new PostGroup(group));
-										Ti.API.info(rows.length);
+										//Ti.API.info(new PostGroup(group));
+										//Ti.API.info(rows.length);
 										group = [];
 										groupCount = 0;
 										featureSet = false;

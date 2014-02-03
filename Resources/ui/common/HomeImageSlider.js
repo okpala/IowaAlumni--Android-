@@ -14,6 +14,7 @@ function HomeImageSlider(images){
 		bottom: 0,
 		layout: 'vertical',
 		backgroundColor: '#e2e2e2',
+		backgroundSelectedColor : "transparent",
 		borderRadius: 0.5
 	});
 	
@@ -37,17 +38,17 @@ function HomeImageSlider(images){
 	
 		
 		
-		row.add(container);
-		
-		var imagebox = Ti.UI.createImageView({
-			image: images[0].image,
-			width: Ti.UI.FILL,
-			height: Ti.UI.FILL,
-			//hires: true,
-			top: 30
-		});
 		
 		
+	var imagebox = Ti.UI.createImageView({
+		image: 'http://www.iowalum.com/images/mobileslider/photo2.jpg',
+		width: Ti.UI.FILL,
+		height: this.containerheight,
+		//hires: true,
+		top: 30
+	});
+		
+
 		var overlay = Ti.UI.createImageView({
 			width: Ti.UI.FILL,
 			height: 40,
@@ -123,7 +124,7 @@ function HomeImageSlider(images){
 		container.add(view);
 		container.add(dateLabel);	
 		
-	
+		row.add(container);
 		return row;
 } 
 
@@ -134,13 +135,13 @@ function getContainerHeight(img) {
 		height: 'auto',
 		hires: true,
 	});
-    new CachedImageView('imageDirectoryName', img, tempimagebox);
+   // new CachedImageView('imageDirectoryName', img, tempimagebox);
 	
 	var height = tempimagebox.toImage().height;
 	var width = tempimagebox.toImage().width;
 	var ratio = height / width;
 
-	return Math.floor( 300 * ratio );
+	return Math.floor(Titanium.Platform.displayCaps.dpi * ratio );
 }
 
 

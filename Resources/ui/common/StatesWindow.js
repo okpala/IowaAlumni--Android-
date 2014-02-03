@@ -75,27 +75,27 @@ function ClubsWindow(title, tracker){
 		
 		
 	
-		
+		var screenWidth = Ti.Platform.displayCaps.platformWidth;//Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160);
 		var adList = [];
 		var clubsInfo = [];
 		var data = [];	
 		var textView = Ti.UI.createView({
         	left: 10,
-            width: 300,
-            left: 10,
-            right: 10,
+            width: screenWidth,
+            visible: false,
             height:'auto'
          });
          textView.add(introLabel);
+         self.add(textView) ; 
+              
+       table.top = textView.toImage().height + people.height; 
+       self.remove(textView) ;
+       //Ti.API.info(textView.toImage().height);
+       // Ti.API.info(textView.height);
+        //Ti.API.info(Ti.Platform.displayCaps.platformWidth);
+         //Ti.API.info(Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160));
                 
-        
-                
-                
-                
-      table.top = 120;//textView.toImage().height + people.height;
-		
-	Ti.API.info(textView.toImage().height);
-	Ti.API.info(people.height);
+           
 		self.add(loading);
 		loading.show(); 
 		var xhr = Ti.Network.createHTTPClient({
@@ -181,10 +181,10 @@ function ClubsWindow(title, tracker){
 			};	
 
 		   	table.setData(data);
-		   	//table.top = textView.toImage().height + people.height;
-			Ti.API.info(table.top);
-			Ti.API.info(textView.toImage().height);
-			Ti.API.info(people.height);
+		   
+			//Ti.API.info(table.top);
+			//Ti.API.info(textView.toImage().height);
+			//Ti.API.info(people.height);
 
 			self.add(tableHeader);
 			self.add(table);

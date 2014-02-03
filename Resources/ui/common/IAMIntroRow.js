@@ -6,7 +6,7 @@ var WebView = require('ui/common/WebView');
 function IAMIntroRow(post) {
 	
 	var table = Ti.UI.createTableView({
-		separatorColor: 	'#d5d5d5',
+		separatorColor: 	'#fff',
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
 		width: 				Ti.UI.FILL,
@@ -30,7 +30,8 @@ function IAMIntroRow(post) {
 	});
 
 	 var rowText = Ti.UI.createTableViewRow({
-	 	selectionStyle: 'none',
+	 	backgroundSelectedColor : "transparent",
+	 	//backgroundColor: '#e2e2e2',
 	    height: 'auto'//getTableHeight(image.height)
 	       
 	 });
@@ -41,16 +42,16 @@ function IAMIntroRow(post) {
 	    
 	 
 	//table.height = rowText.height;
-	var data = [];
-	 data.push(rowText);
-	table.setData(data);
+	
+	
+	table.setData([rowText]);
 
 	var row = Ti.UI.createTableViewRow({
 		padding: 0,
 		top: 0,
 		bottom: 10,
 		layout: 'vertical',
-		selectionStyle: 'none',
+		backgroundSelectedColor : "transparent",
 		backgroundColor: '#e2e2e2'
 	});
 
@@ -61,6 +62,7 @@ function IAMIntroRow(post) {
 	
 	var introLabel  = getText(image.width, table.width);
 	rowText.add(introLabel);
+	
 	return row;
 }
 

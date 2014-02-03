@@ -127,7 +127,7 @@ function RootWindow(title, tracker) {
 				rows.push(row);
 			 	
 				
-				var row = Ti.UI.createTableViewRow();	
+				var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
 				row.add(introLabel);
 				rows.push(row);
 					
@@ -204,7 +204,7 @@ function RootWindow(title, tracker) {
 						});
 	
 						
-						var row = Ti.UI.createTableViewRow();
+						var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
 						
 						row.add(headerLabel);
 						rows.push(row);
@@ -217,7 +217,7 @@ function RootWindow(title, tracker) {
 				if(events.length > 0){
 					
 						
-					var row = Ti.UI.createTableViewRow();
+					var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
 					row.add(eventHeaderLabel);
 						
 					rows.push(row);
@@ -232,7 +232,7 @@ function RootWindow(title, tracker) {
 				
 			 	
 					
-				var row = Ti.UI.createTableViewRow();
+				var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
 				row.add(magazineHeaderLabel);
 					
 				rows.push(row);

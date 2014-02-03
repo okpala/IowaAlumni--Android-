@@ -57,7 +57,7 @@ function  MemberCardWindow(title, tracker){
 		title:'Login',
 		//width: 50,
 		height:35,
-		top: 10,
+		top: 5,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 		
 	});
@@ -70,7 +70,7 @@ function  MemberCardWindow(title, tracker){
 		  font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'},
 		  message: 'Checking Password...',
 		  style: Ti.UI.ActivityIndicatorStyle.DARK,
-		  top:10,
+		  top:5,
 		  height:'auto',
 		  width:'auto'
 	});
@@ -85,7 +85,7 @@ function  MemberCardWindow(title, tracker){
 		height:'auto',
 		width: 310,
 		color:'#FF0000',
-		top: 10,
+		top: 5,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
 	
@@ -99,7 +99,7 @@ function  MemberCardWindow(title, tracker){
 		text: "Forgot the Password?",
 		color: "#000000",
 		width: 300,
-		top: 10,
+		top: 5,
 		textAlign: 'left',
   		left: 10,
 		font: {fontFamily:'Helvetica-Bold',fontSize:12,fontWeight:'normal'}
@@ -113,7 +113,7 @@ function  MemberCardWindow(title, tracker){
 		color: "#000000",
 		height:'auto',
 		width: Ti.UI.FILL,
-		top: 10,
+		top: 3,
   		left: 10,
   		right: 10,
 		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
@@ -161,25 +161,27 @@ function  MemberCardWindow(title, tracker){
 			var password = password[0];
 			
 		
-			passwordWin.add(activityIndicator);
-			passwordWin.add(thawk);
-			passwordWin.add(wrongPasswordLabel);
-			wrongPasswordLabel.setVisible(false);
+			//passwordWin.add(activityIndicator);
+			//passwordWin.add(thawk);
+			//passwordWin.add(wrongPasswordLabel);
+			//wrongPasswordLabel.setVisible(false);
 			
 			function getMemberCard(isCard2){
-					passwordWin.remove(passwordLabel);
-					passwordWin.remove(passwordInfoLabel);
-					passwordWin.remove(passwordHeaderLabel);
-					passwordWin.remove(passwordTextField);
-					passwordWin.remove(loginButton);
-					passwordWin.remove(thawk);
-					passwordWin.backgroundColor = '#202020';
+					//passwordWin.remove(passwordLabel);
+					//passwordWin.remove(passwordInfoLabel);
+					//passwordWin.remove(passwordHeaderLabel);
+					//passwordWin.remove(passwordTextField);
+					//passwordWin.remove(loginButton);
+					//passwordWin.remove(thawk);
+					
+					self.remove(table);
+					self.backgroundColor = '#202020';
 					wrongPasswordLabel.setVisible(false);
 					
 					if (isCard2 == true){
 						image.image =  'http://iowalum.com/membership/images/MemberCard2.png';
 					}
-					passwordWin.add(image);		
+					self.add(image);		
 			}
 			
 			
@@ -224,11 +226,11 @@ function  MemberCardWindow(title, tracker){
 					
 				});
 			
-				passwordWin.add(passwordLabel);
-				passwordWin.add(passwordInfoLabel);
-				passwordWin.add(passwordHeaderLabel);
-				passwordWin.add(passwordTextField);
-				passwordWin.add(loginButton);
+				//passwordWin.add(passwordLabel);
+				//passwordWin.add(passwordInfoLabel);
+				//passwordWin.add(passwordHeaderLabel);
+				//passwordWin.add(passwordTextField);
+				//passwordWin.add(loginButton);
 				
 				
 				
@@ -250,10 +252,10 @@ function  MemberCardWindow(title, tracker){
 		xhr.open("GET", Feeds.passwordFeed());
 		xhr.send();  // request is actually sent with this statement
 	}
-	//refreshRssTable();
-	table.setData(rows);
-	self.add(table);
-	self.remove(loading);	
+	refreshRssTable();
+	//table.setData(rows);
+	//self.add(table);
+	//self.remove(loading);	
 				
 	return self;
 }

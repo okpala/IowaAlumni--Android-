@@ -141,12 +141,14 @@ function getTitleLabel(title) {
 	var temp = Ti.UI.createLabel({
 		text: title,
 		height:'auto',
-		width: 250,
+		width:  "auto" ,
+		left: 10,
+		right: 10,
 		color:'#efc006',
 		font:{fontFamily:'Helvetica',fontSize:16,fontWeight:'bold'}
 	});
 	var view = Ti.UI.createView({
-		width: 250,
+		width: Ti.Platform.displayCaps.platformWidth - 20,
 		height:'auto'
 	});
 	view.add(temp);
@@ -157,7 +159,7 @@ function getTitleLabel(title) {
 		left: 10,
 		top: 10,
 		bottom:10,
-		height: view.toImage().height + 20,
+		height: view.toImage().height,
 		textAlign:'left',
 		width: 270,
 		color:'#303030',
@@ -175,12 +177,12 @@ function getDescriptionLabel(description, descWidth) {
 	var text = Ti.UI.createLabel({
 		text: description,
 		left: 10,
-		right: 10,
 		right: descWidth,
 		bottom: 10,
 		top: 0,
 		height: 70,
 		width: Ti.UI.FILL,
+		ellipsize: true,
 		color:'#000000',
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
@@ -209,7 +211,7 @@ function getPostImage(image) {
 
 	var imagebox = Ti.UI.createImageView({
 		image: image,
-		hires: true,
+		//hires: true,
 		width: adjustedWidth,
 		top: 0
 	});

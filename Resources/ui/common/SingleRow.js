@@ -104,17 +104,20 @@ function getTitleLabel(title) {
 	// Temp label to get height
 	// At this font-size/font-face the height per line is 32
 
-	 var temp = Ti.UI.createLabel({
-                text: title,
-                height:'auto',
-                width: 250,
-                color:'#efc006',
-                font:{fontFamily:'Helvetica',fontSize:16,fontWeight:'bold'}
-        });
-        var view = Ti.UI.createView({
-                width: 250,
-                height:'auto'
-        });
+	var temp = Ti.UI.createLabel({
+		text: title,
+		height:'auto',
+		width:  "auto" ,
+		left: 25,
+		right: 25,
+		bottom: 5,
+		color:'#efc006',
+		font:{fontFamily:'Helvetica',fontSize:16,fontWeight:'bold'}
+	});
+	var view = Ti.UI.createView({
+		width: Ti.Platform.displayCaps.platformWidth - 20,
+		height:'auto'
+	});
         view.add(temp);
 
 	

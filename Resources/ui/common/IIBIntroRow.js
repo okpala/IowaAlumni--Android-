@@ -6,7 +6,7 @@ var WebView = require('ui/common/WebView');
 function IIBIntroRow(post) {
 
 var table = Ti.UI.createTableView({
-		separatorColor: 	'#d5d5d5',
+		separatorColor: 	'#ffffff',
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
 		width: 				Ti.UI.FILL,
@@ -24,7 +24,7 @@ var table = Ti.UI.createTableView({
 
 	 var rowText = Ti.UI.createTableViewRow({
 	 	selectionStyle: 'none',
-	        height: 50
+	        height: 52
 	    });
 	    
 	 
@@ -40,7 +40,8 @@ var table = Ti.UI.createTableView({
 		top: 0,
 		bottom: 0,
 		layout: 'vertical',
-		backgroundColor: '#e2e2e2'
+		backgroundColor: '#e2e2e2',
+		backgroundSelectedColor : "transparent"
 	});
 	
 	row.add(table);

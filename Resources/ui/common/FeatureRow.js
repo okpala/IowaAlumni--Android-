@@ -9,7 +9,7 @@ var WebView = require('ui/common/WebView');
 function FeatureRow(post, tracker, title) {
 
 	this.containerheight = 0;
-	
+
     var row = Ti.UI.createTableViewRow({
 		//hasChild:true,
 		link: post.url,
@@ -21,7 +21,7 @@ function FeatureRow(post, tracker, title) {
 		backgroundColor: '#e2e2e2',
 		borderRadius: 0.5
 	});
-	
+
 
 	var container =  Titanium.UI.createView({
 		backgroundColor: 'transparent',
@@ -43,7 +43,7 @@ function FeatureRow(post, tracker, title) {
 		image: post.image,
 		width: Ti.UI.FILL,
 		height: this.containerheight,
-		hires: true,
+		//hires: true,
 		top: 30
 	});
 	//new CachedImageView('imageDirectoryName', post.image, imagebox);
@@ -64,11 +64,11 @@ function FeatureRow(post, tracker, title) {
 	container.add(imagebox);
 	container.add(shadow);
 	container.add(overlay);
-	
+
 	titlelbl = getTitleLabel(post.title,this.containerheight+30);
 	container.add(titlelbl);
 
-	desclbl  = getDescriptionLabel(post.description,this.containerheight+30);
+	desclbl  = getDescriptionLabel(post.description, titlelbl.top + titlelbl.height);
 	container.add(desclbl);
 
 
@@ -89,7 +89,7 @@ function FeatureRow(post, tracker, title) {
 	container.add(posted);
 
 	row.add(container);
-	
+
 	row.addEventListener('click', function(e) {
 		tracker.trackEvent({
 				category: "Featured Articles",
@@ -99,8 +99,8 @@ function FeatureRow(post, tracker, title) {
 			});
 		new WebView (post.url);
 	});
-					
-	
+
+
 	return row;
 
 }
@@ -115,7 +115,7 @@ function getContainerHeight(img) {
 		hires: true,
 	});
     new CachedImageView('imageDirectoryName', img, tempimagebox);
-	
+
 	var height = tempimagebox.toImage().height;
 	var width = tempimagebox.toImage().width;
 	var ratio = height / width;
@@ -131,32 +131,35 @@ function getTitleLabel(title,postheight) {
 		text: title,
 		height:'auto',
 		width: 250,
+		left: 10,
+		right: 10,
+		bottom: 10,
 		color:'#efc006',
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:25,fontWeight:'bold'}
 	});
 	var view = Ti.UI.createView({
-		width: 250,
+		width: Ti.Platform.displayCaps.platformWidth - 20,
 		height:'auto'
 	});
 	view.add(temp);
-	theheight = view.toImage().height + 20;
-	
+	theheight = view.toImage().height;
+
 	var titlelbl = Ti.UI.createLabel({
 		text: title,
 		left: 10,
 		bottom:10,
 		height:theheight,
 		textAlign:'left',
-		width: 250,
+		width: Ti.UI.FILL,
 		color:'#efc006',
 		shadowColor:'#000000',
         shadowOpacity:0.5,
         shadowOffset:{x:0, y:1},
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:25,fontWeight:'bold'}
 	});
-	
-	titlelbl.top = postheight - theheight - 5;
-	
+
+	titlelbl.top = postheight - (theheight + 5);
+
 	return titlelbl;
 
 }

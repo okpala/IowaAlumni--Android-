@@ -28,7 +28,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	
 	var code = Map.isGooglePlayServicesAvailable();
 
-	if (code == Map.SUCCESS) {
+	if (code == Map.SUCCESS && Ti.Platform.version >= 4) {
 		var gameWatchInfo = [];
 		for (var i = 0; i <= clubData.length - 1; i++) {
 			gameWatchInfo.push(
@@ -192,7 +192,7 @@ var tab2 = Titanium.UI.createTab({
 });
 tabGroup.addTab(tab2); 
 
-tabGroup.setActiveTab(0); 
+//tabGroup.setActiveTab(0); 
 
 var actionBar;
 tabGroup.addEventListener("open", function() {

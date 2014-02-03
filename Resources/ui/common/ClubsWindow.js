@@ -50,17 +50,20 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 	    });
 	    row.add(cityLabel);
 	    
-	   var leaderLabel = Ti.UI.createLabel({
-	        text: (clubInfoData[i].leader),
-	        color: "#000000",
-	        textAlign: 'left',
-	        left: 10,
-	        top: 31,
-	        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
-	    }); 
+	   var currentTop = 31;
+	   if (clubInfoData[i].phone != 'NA'){
+		   var leaderLabel = Ti.UI.createLabel({
+		        text: (clubInfoData[i].leader),
+		        color: "#000000",
+		        textAlign: 'left',
+		        left: 10,
+		        top: currentTop,
+		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		    }); 
 	    row.add(leaderLabel);
+	    currentTop = currentTop + 15;
+	   }
 	    
-	    var currentTop = 46;
 	    
 	    if (clubInfoData[i].phone != 'NA'){
 		    var phoneLabel = Ti.UI.createLabel({
