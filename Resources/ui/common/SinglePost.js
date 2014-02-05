@@ -1,6 +1,7 @@
 var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
 var WebView = require('ui/common/WebView');
+var Utils = require('ui/common/Utils');
 /*
  * Return a Single Post Area that contains
  * tilte, description, and picture(Not Required)
@@ -76,7 +77,7 @@ function SinglePost (post, tracker, title){
 		
 		});
 		
-		var imagebox = Ti.UI.createImageView({
+		var imagebox = Utils.RemoteImage({
 			image: post.image,
 			width: 			60,
 			height: 		60,
@@ -201,7 +202,7 @@ function getPostImage(image) {
 		
 	});
     
-    new CachedImageView('imageDirectoryName', image, tempimagebox);
+    //new CachedImageView('imageDirectoryName', image, tempimagebox);
 	
 	var height = tempimagebox.toImage().height;
 	var width = tempimagebox.toImage().width;

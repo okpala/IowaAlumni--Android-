@@ -2,6 +2,7 @@
 var FormatDate = require('ui/common/FormatDate');
 var Feed = require('ui/common/Feed');
 var CachedImageView = require('ui/common/CachedImageView');
+var Utils = require('ui/common/Utils');
 
 function HomeImageSlider(images){
 	this.containerheight = 0;
@@ -40,8 +41,8 @@ function HomeImageSlider(images){
 		
 		
 		
-	var imagebox = Ti.UI.createImageView({
-		image: 'http://www.iowalum.com/images/mobileslider/photo2.jpg',
+	var imagebox = Utils.RemoteImage({
+		image: images[1].image,//.'http://www.iowalum.com/images/mobileslider/photo2.jpg',
 		width: Ti.UI.FILL,
 		height: this.containerheight,
 		//hires: true,
@@ -141,7 +142,7 @@ function getContainerHeight(img) {
 	var width = tempimagebox.toImage().width;
 	var ratio = height / width;
 
-	return Math.floor(Titanium.Platform.displayCaps.dpi * ratio );
+	return Math.floor(300 * ratio );
 }
 
 

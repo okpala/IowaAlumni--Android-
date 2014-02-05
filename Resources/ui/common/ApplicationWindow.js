@@ -6,6 +6,7 @@ function ApplicationWindow(windowtitle) {
 	    backgroundColor:'#e2e2e2',
 		navBarHidden: false,		
 	});
+	self.orientationModes = [Ti.UI.PORTRAIT];
 	/*
 	var navbar = Ti.UI.createImageView({
 			image:  Ti.Filesystem.resourcesDirectory + 'navbar.png',

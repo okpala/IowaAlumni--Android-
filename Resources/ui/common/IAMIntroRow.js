@@ -1,4 +1,3 @@
-var WebView = require('ui/common/WebView');
 /*
  * Return Iowa Magazine's Window Header
  */

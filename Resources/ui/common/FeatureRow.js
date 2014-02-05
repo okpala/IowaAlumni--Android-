@@ -1,6 +1,10 @@
 var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
 var WebView = require('ui/common/WebView');
+var Utils = require('ui/common/Utils');
+//Ti.include('createRemoteImageView');
+//var ImageView  = require('ui/common/createRemoteImageView');
+//var remoteImage = require('ui/common/RemoteImageView');
 /*
  * Post Object
  * Essential attributes
@@ -39,7 +43,7 @@ function FeatureRow(post, tracker, title) {
 	container.height 	 = this.containerheight + 65 + 30;
 	row.height 			 = this.containerheight + 100 + 8;
 
-	var imagebox = Ti.UI.createImageView({
+	var imagebox = Utils.RemoteImage({
 		image: post.image,
 		width: Ti.UI.FILL,
 		height: this.containerheight,

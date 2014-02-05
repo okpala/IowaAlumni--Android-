@@ -27,8 +27,10 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	});
 	
 	var code = Map.isGooglePlayServicesAvailable();
-
-	if (code == Map.SUCCESS ) {
+	Ti.API.info(Ti.Platform.version);
+	Ti.API.info();
+	
+	if (code == Map.SUCCESS && Ti.Platform.version >= "4.0" ) {
 		var gameWatchInfo = [];
 		for (var i = 0; i <= clubData.length - 1; i++) {
 			gameWatchInfo.push(

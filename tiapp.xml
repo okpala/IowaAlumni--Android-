@@ -29,7 +29,9 @@
    	<property name="ti.android.fastdev" type="bool">false</property>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <property name="ti.android.threadstacksize" type="int">131072</property>
-	<property name="ti.android.httpclient.maxbuffersize" type="int">131072</property><!--
+	<property name="ti.android.httpclient.maxbuffersize" type="int">131072</property>
+	<property name="ti.android.largeHeap" type="bool">true</property>
+	<!--
     <android xmlns:android="http://schemas.android.com/apk/res/android">
     	
         <manifest>
@@ -67,7 +69,7 @@
     -->
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest>
-        	<!--
+        	
            <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="14" />
            
              <supports-screens 
@@ -78,7 +80,7 @@
                   android:anyDensity= "true"
                   android:requiresSmallestWidthDp="320"
                   />
-               -->   
+                 
             <uses-permission android:name="android.permission.INTERNET"/>
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
             <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>

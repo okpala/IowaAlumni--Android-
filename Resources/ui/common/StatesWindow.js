@@ -6,6 +6,7 @@ var StaticAd = require('ui/common/StaticAd');
 var Feed = require('ui/common/Feed');
 var LoadingScreen = require('ui/common/LoadingScreen');
 var ErrorWindow = require('ui/common/ErrorWindow');
+var Utils = require('ui/common/Utils');
 /*
  * Root Window for Clubs and Gamewatches
  */
@@ -39,7 +40,7 @@ function ClubsWindow(title, tracker){
 		
 	
 		
-	var people = Ti.UI.createImageView({
+	var people = Utils.RemoteImage({
 			image:    'https://www.iowalum.com/mobile/clubs.png',
 		  	left: 10,
 			right: 10,

@@ -117,11 +117,13 @@ function RootWindow(title, tracker) {
 		    	var images = [];
 		    	
 				var items = xml.documentElement.getElementsByTagName("item5");
-				var item = items.item(0);
-				
-				images.push({                 
-			    	image: item.getElementsByTagName( 'url').item(0).textContent,         
-				});
+				//var item = items.item(0);
+				for (var i = 0; i < items.length; i++) {
+					var item = items.item(i);
+					images.push({                 
+				    	image: item.getElementsByTagName( 'url').item(0).textContent,         
+					});
+				}
 				
 			    var row = new HomeImageSlider(images);
 				rows.push(row);
