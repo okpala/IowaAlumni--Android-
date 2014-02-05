@@ -28,7 +28,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	
 	var code = Map.isGooglePlayServicesAvailable();
 
-	if (code == Map.SUCCESS && Ti.Platform.version >= 4) {
+	if (code == Map.SUCCESS ) {
 		var gameWatchInfo = [];
 		for (var i = 0; i <= clubData.length - 1; i++) {
 			gameWatchInfo.push(
