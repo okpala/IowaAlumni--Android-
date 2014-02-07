@@ -3,6 +3,8 @@ var FormatDate = require('ui/common/FormatDate');
 var Feed = require('ui/common/Feed');
 var CachedImageView = require('ui/common/CachedImageView');
 var Utils = require('ui/common/Utils');
+var createCachingImageView = require('ui/common/createRemoteImageView2');
+//Ti.include('createRemoteImageView.js');
 
 function HomeImageSlider(images){
 	this.containerheight = 0;
@@ -41,7 +43,7 @@ function HomeImageSlider(images){
 		
 		
 		
-	var imagebox = Utils.RemoteImage({
+	var imagebox = createCachingImageView.createCachingImageView({
 		image: images[1].image,//.'http://www.iowalum.com/images/mobileslider/photo2.jpg',
 		width: Ti.UI.FILL,
 		height: this.containerheight,
@@ -118,6 +120,26 @@ function HomeImageSlider(images){
 			font:{fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 		});
 		
+		var remoteImage = createCachingImageView.createCachingImageView({
+    image: 'http://www.google.de/logos/classicplus.png',
+    // defaultImage: 'images/default.png', // default images are also handled
+    hires: true,
+    width: 275,
+    height: 95,
+    top: 0,
+    left: 0
+});
+
+		var remoteImage2 = Ti.UI.createImageView({
+    image: 'http://www.google.de/logos/classicplus.png',
+    // defaultImage: 'images/default.png', // default images are also handled
+    hires: true,
+    width: 275,
+    height: 95,
+    top: 0,
+    left: 0
+});
+		//row.add(remoteImage);
 		view.add(text);
 		container.add(imagebox);
 		container.add(overlay);
@@ -144,6 +166,9 @@ function getContainerHeight(img) {
 
 	return Math.floor(300 * ratio );
 }
+
+
+
 
 
 module.exports = HomeImageSlider;

@@ -80,7 +80,7 @@ function ArticlesWindow(title, feed, tracker) {
 				    	//var xml = this.responseXML;
 				    	if (firstpass == true){
 				    		
-				    		firstpass = false;
+				    		
 				    		if (feed == Feeds.magazineFeed()){
 				
 								var items = xml.documentElement.getElementsByTagName("item2");
@@ -109,8 +109,7 @@ function ArticlesWindow(title, feed, tracker) {
 							*/
 							}
 							
-				    		transparentView.remove(loading);
-			    			self.remove(transparentView);
+				    		
 			    			
 				    	}
 				    	
@@ -180,6 +179,9 @@ function ArticlesWindow(title, feed, tracker) {
 				        }
 				        lastRow = c;
 				        // and push this into our table.
+				        transparentView.remove(loading);
+			    		self.remove(transparentView);
+				        firstpass = false;
 				        table.setData(rows);
 				        // now we're done; reset the loadData flag and start the interval up again
 				        loadData = false;

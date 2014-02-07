@@ -1,5 +1,5 @@
 <?xml version="1.0" ?><manifest android:versionCode="1" android:versionName="1" package="com.iowalum.uiowaalumni" xmlns:android="http://schemas.android.com/apk/res/android">
-	<supports-screens android:anyDensity="true" android:largeScreens="false" android:normalScreens="true" android:requiresSmallestWidthDp="320" android:smallScreens="true" android:xlargeScreens="false"/><uses-sdk android:minSdkVersion="9" android:targetSdkVersion="14"/>
+	<supports-screens android:anyDensity="true" android:largeScreens="false" android:normalScreens="true" android:requiresSmallestWidthDp="320" android:smallScreens="true" android:xlargeScreens="false"/><uses-sdk android:minSdkVersion="14" android:targetSdkVersion="14"/>
 
 	<uses-feature android:glEsVersion="0x00020000" android:required="true"/>
 <permission android:name="com.iowalum.uiowaalumni.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
@@ -9,7 +9,7 @@
 
 	<application android:debuggable="false" android:icon="@drawable/appicon" android:label="UIowa Alumni" android:name="UiowaAlumniApplication">
 
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDfXVCw5minmJHw2152uqSSgdp5X-YjqUY"/>
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyA-rNA-4HYWjjrzZWTl-geY5xUluF_7NDA"/>
 
 		<activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="UIowa Alumni" android:name=".UiowaAlumniActivity" android:theme="@style/Theme.Titanium">
 			<intent-filter>

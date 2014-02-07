@@ -89,7 +89,7 @@ function ClubsWindow(title, tracker){
          textView.add(introLabel);
          self.add(textView) ; 
               
-       table.top = textView.toImage().height + people.height; 
+       table.top = textView.toImage().height + people.height - 10; 
        self.remove(textView) ;
        //Ti.API.info(textView.toImage().height);
        // Ti.API.info(textView.height);

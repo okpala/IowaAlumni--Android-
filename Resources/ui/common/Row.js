@@ -2,7 +2,7 @@ var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
 var WebView = require('ui/common/WebView');
 var Utils = require('ui/common/Utils');
-
+var createCachingImageView = require('ui/common/createRemoteImageView2');
 /*
  * Post Object
  * Essential attributes
@@ -72,13 +72,13 @@ function Row(post, tracker, title) {
 
 	});
 	//var postImage = getPostImage(post.image);
-	var imagebox = Utils.RemoteImage({
+	var imagebox = createCachingImageView.createCachingImageView({
 		image: post.image,
 		width: Ti.UI.FILL,
 		height: Ti.UI.FILL,
 		//hires: true,
 	});
-	//Ti.API.info(post.image);
+	Ti.API.info(post.image);
 	//postImage = getPostImage(post.image);
 	//new CachedImageView('imageDirectoryName', post.image, postImage);
 	

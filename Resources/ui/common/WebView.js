@@ -6,7 +6,7 @@ function WebView (link){
 		loading : false
 		
 		});
-	var actInd = Titanium.UI.createActivityIndicator({zIndex:2});
+	var actInd = Titanium.UI.createActivityIndicator({zIndex:2, height:150,});
 	
 	actInd.show();
 	webview.addEventListener("load", function(e) {

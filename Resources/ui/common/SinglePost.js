@@ -2,6 +2,7 @@ var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
 var WebView = require('ui/common/WebView');
 var Utils = require('ui/common/Utils');
+var createCachingImageView = require('ui/common/createRemoteImageView2');
 /*
  * Return a Single Post Area that contains
  * tilte, description, and picture(Not Required)
@@ -77,13 +78,13 @@ function SinglePost (post, tracker, title){
 		
 		});
 		
-		var imagebox = Utils.RemoteImage({
-			image: post.image,
+		var imagebox = createCachingImageView.createCachingImageView({
+			image: post.image, //'http://www.iowalum.com/giveaway/images/facebookPost.png',
 			width: 			60,
 			height: 		60,
 			top: 0
 		});
-			
+		
 		imageContainer.add(imagebox);	
 			//var postImage = getPostImage(post.image);
 			//new CachedImageView('imageDirectoryName', post.image, postImage);
