@@ -116,8 +116,7 @@ function EventsWindow(title, tracker) {
 							}
 							
 							self.add(ad);
-				    		transparentView.remove(loading);
-			    			self.remove(transparentView);
+				    		
 				    	}
 				    	
 				        // we got our data; push some new rows
@@ -174,6 +173,8 @@ function EventsWindow(title, tracker) {
 				        }
 				        lastRow = c;
 				        // and push this into our table.
+				        transparentView.remove(loading);
+			    		self.remove(transparentView);
 				        table.setData(rows);
 				        // now we're done; reset the loadData flag and start the interval up again
 				        loadData = false;

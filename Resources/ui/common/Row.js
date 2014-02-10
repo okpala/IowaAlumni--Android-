@@ -1,7 +1,6 @@
 var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
 var WebView = require('ui/common/WebView');
-var Utils = require('ui/common/Utils');
 var createCachingImageView = require('ui/common/createRemoteImageView2');
 /*
  * Post Object

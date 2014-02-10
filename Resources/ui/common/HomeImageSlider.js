@@ -2,7 +2,6 @@
 var FormatDate = require('ui/common/FormatDate');
 var Feed = require('ui/common/Feed');
 var CachedImageView = require('ui/common/CachedImageView');
-var Utils = require('ui/common/Utils');
 var createCachingImageView = require('ui/common/createRemoteImageView2');
 //Ti.include('createRemoteImageView.js');
 
