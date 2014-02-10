@@ -1,5 +1,4 @@
 var ApplicationWindow = require('ui/common/ApplicationWindow');
-var GetFeed = require('ui/common/GetFeed');
 var Feed = require('ui/common/Feed');
 var LoadingScreen = require('ui/common/LoadingScreen');
 var ErrorWindow = require('ui/common/ErrorWindow');

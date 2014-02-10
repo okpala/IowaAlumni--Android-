@@ -6,7 +6,7 @@ function WebView (link){
 		loading : false
 		
 		});
-	var actInd = Titanium.UI.createActivityIndicator({zIndex:2, height:150,});
+	var actInd = Titanium.UI.createActivityIndicator({zIndex:2});
 	
 	actInd.show();
 	webview.addEventListener("load", function(e) {
@@ -15,6 +15,7 @@ function WebView (link){
 	var win2 = new NavigateWindow("");
 	win2.add(webview);
 	win2.add(actInd);
+	webview = null;
 	win2.open();
 	    
 	return win2;

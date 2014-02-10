@@ -39,7 +39,6 @@ Feed.prototype.iowaCityFeed = function(){
 };
 
 Feed.prototype.homeFeed = function(){
-	//return 'http://iowalum.com/mobile-app/root_alert_feed.cfm';
 	return 'http://iowalum.com/mobile-app/homeFeed.cfm';
 };
 

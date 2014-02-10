@@ -1,4 +1,5 @@
 var WebView = require('ui/common/WebView');
+var createCachingImageView = require('ui/common/createRemoteImageView2');
 /*
  * Ad Object
  * Essential attributes
@@ -7,7 +8,6 @@ var WebView = require('ui/common/WebView');
 function Ad(post, tracker, title) {
 	
     var row = Ti.UI.createTableViewRow({
-		//hasChild:true,
 		height: 'auto',
 		padding: 0,
 		top: 0,
@@ -19,25 +19,18 @@ function Ad(post, tracker, title) {
 		backgroundSelectedImage: "transparent"
 	});
 
-
-
-
-	var imagebox = Ti.UI.createImageView({
+	var imagebox = createCachingImageView.createCachingImageView({
 		image: post.ad,
 		width: Ti.UI.FILL,
 		height: Ti.UI.FILL,
 		left: 10,
 		right: 10,
-		//hires: true,
 		top: 10
 		
 	});
-	
-	
-	
-	
 
 	row.add(imagebox);
+	imagebox = null;
 	
 	row.addEventListener('click', function(e) {
 		tracker.trackEvent({

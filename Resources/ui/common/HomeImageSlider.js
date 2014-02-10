@@ -119,26 +119,7 @@ function HomeImageSlider(images){
 			font:{fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 		});
 		
-		var remoteImage = createCachingImageView.createCachingImageView({
-    image: 'http://www.google.de/logos/classicplus.png',
-    // defaultImage: 'images/default.png', // default images are also handled
-    hires: true,
-    width: 275,
-    height: 95,
-    top: 0,
-    left: 0
-});
 
-		var remoteImage2 = Ti.UI.createImageView({
-    image: 'http://www.google.de/logos/classicplus.png',
-    // defaultImage: 'images/default.png', // default images are also handled
-    hires: true,
-    width: 275,
-    height: 95,
-    top: 0,
-    left: 0
-});
-		//row.add(remoteImage);
 		view.add(text);
 		container.add(imagebox);
 		container.add(overlay);
@@ -147,6 +128,15 @@ function HomeImageSlider(images){
 		container.add(dateLabel);	
 		
 		row.add(container);
+		
+		view = null;
+		imagebox = null;
+		overlay = null;
+		shadow = null;
+		container = null;
+		dateLabel = null;
+		text = null;
+		dateLabel = null;
 		return row;
 } 
 

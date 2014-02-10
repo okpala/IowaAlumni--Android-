@@ -10,7 +10,7 @@ var createCachingImageView = require('ui/common/createRemoteImageView2');
 function Row(post, tracker, title) {
 
     //this.postheight		= 0;
-	
+
     var row = Ti.UI.createTableViewRow({
     	link:               post.url,
 		height: 			'auto',
@@ -20,7 +20,7 @@ function Row(post, tracker, title) {
 		layout: 			'vertical',
 		backgroundColor: 	'#e2e2e2'
 	});
-	
+
 	var container =  Titanium.UI.createView({
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
@@ -31,14 +31,14 @@ function Row(post, tracker, title) {
 		padding:			0
 	});
 
-	
+
 
 
 	titlelbl = getTitleLabel(post.title);
 	container.add(titlelbl);
-	
-	
-	
+
+
+
 	desclbl  = getDescriptionLabel(post.description);
 	container.add(desclbl);
 	desclbl.top = titlelbl.height + 15;
@@ -58,7 +58,7 @@ function Row(post, tracker, title) {
 	});
 	posted.top = titlelbl.height + desclbl.height + 20; 
 	container.add(posted);
-	
+
 
 	var imageContainer = Ti.UI.createView({
 		width: 			60,
@@ -72,25 +72,20 @@ function Row(post, tracker, title) {
 	});
 	//var postImage = getPostImage(post.image);
 	var imagebox = createCachingImageView.createCachingImageView({
-		image: post.image,
+		image: post.image, //"http://www.iowalum.com/blog/wp-content/uploads/2014/02/UIAA_Network1-150x150.png",
 		width: Ti.UI.FILL,
 		height: Ti.UI.FILL,
-		//hires: true,
 	});
-	Ti.API.info(post.image);
-	//postImage = getPostImage(post.image);
-	//new CachedImageView('imageDirectoryName', post.image, postImage);
-	
+
+	//alert(post.image);
 	imageContainer.add(imagebox);
 	container.add(imageContainer);
 
-	container.height = titlelbl.height + desclbl.height + posted.height + 35;//<--- container.height = titlelbl.height + timelbl.height + desclbl.height + posted.height + 35;
+	container.height = titlelbl.height + desclbl.height + posted.height + 35;
 	row.height = container.height;
-/*
 
-*/
 	row.add(container);
-	
+
 	row.addEventListener('click', function(e) {
 		tracker.trackEvent({
 				category: "Articles",
@@ -98,10 +93,19 @@ function Row(post, tracker, title) {
 				label: "An Event in the " + title + "'s Window - " + e.row.link,
 				value: 1
 			});
-		
+
 		new WebView (e.row.link);
 	});
 	
+
+	 posted = null;
+	 titlelbl = null;
+	 desclbl = null;
+	 container = null;
+	 imagebox = null;
+	imageContainer = null;
+
+
 	return row;
 }
 
@@ -145,7 +149,7 @@ function getTitleLabel(title) {
 		height:'auto'
 	});
 	view.add(temp);
-	
+
 
 	var label = Ti.UI.createLabel({
 		text: title,
@@ -160,7 +164,7 @@ function getTitleLabel(title) {
         shadowOffset:{x:0, y:1},
 		font:{fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
 	});
-	
+
 	return label;
 
 }
@@ -195,7 +199,7 @@ function getPostImage(image) {
 		//top: -10, // this works for some reason
 	});
     //new CachedImageView('imageDirectoryName', image, tempimagebox);
-	
+
 	var height = tempimagebox.toImage().height;
 	var width = tempimagebox.toImage().width;
 	var ratio = width / height;
@@ -208,7 +212,7 @@ function getPostImage(image) {
 		width: adjustedWidth,
 		top: 0
 	});
-	
+
 
 	return imagebox;
 }

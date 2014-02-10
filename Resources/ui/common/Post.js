@@ -24,8 +24,9 @@ function getImageHeight(img) {
 		height: 'auto',
 		hires: true,
 	});
-    new CachedImageView('imageDirectoryName', img, tempimagebox);
+    //new CachedImageView('imageDirectoryName', img, tempimagebox);
 	var ratio = tempimagebox.toImage().height / tempimagebox.toImage().width;
+	tempimagebox = null;
 	return Math.floor( 300 * ratio );
 }
 

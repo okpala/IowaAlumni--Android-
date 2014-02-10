@@ -1,4 +1,3 @@
-//var GetFeed = require('ui/common/GetFeed');
 var GameWatchWindow = require('ui/common/GameWatchWindow');
 var WebView = require('ui/common/WebView');
 var ApplicationWindow = require('ui/common/ApplicationWindow');
@@ -6,7 +5,7 @@ var StaticAd = require('ui/common/StaticAd');
 var Feed = require('ui/common/Feed');
 var LoadingScreen = require('ui/common/LoadingScreen');
 var ErrorWindow = require('ui/common/ErrorWindow');
-var Utils = require('ui/common/Utils');
+
 /*
  * Root Window for Clubs and Gamewatches
  */
@@ -40,8 +39,8 @@ function ClubsWindow(title, tracker){
 		
 	
 		
-	var people = Utils.RemoteImage({
-			image:    'https://www.iowalum.com/mobile/clubs.png',
+	var people = Ti.UI.createImageView({
+			image:    Ti.Filesystem.resourcesDirectory + 'iowaPeople.png',
 		  	left: 10,
 			right: 10,
 			width: Ti.UI.FILL,
@@ -91,10 +90,7 @@ function ClubsWindow(title, tracker){
               
        table.top = textView.toImage().height + people.height - 10; 
        self.remove(textView) ;
-       //Ti.API.info(textView.toImage().height);
-       // Ti.API.info(textView.height);
-        //Ti.API.info(Ti.Platform.displayCaps.platformWidth);
-         //Ti.API.info(Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160));
+  
                 
            
 		self.add(loading);

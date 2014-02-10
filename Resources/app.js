@@ -21,32 +21,7 @@ if (Ti.version < 1.8 ) {
 
 // This is a single context application with mutliple windows in a stack
 (function() {
-	//determine platform and form factor and render approproate components
-	/*
 	
-	//considering tablet to have one dimension over 900px - this is imperfect, so you should feel free to decide
-	//yourself what you consider a tablet form factor for android
-	var isTablet = osname === 'ipad' || (osname === 'android' && (screenWidth > 899 || screenHeight > 899));
-	
-	var Window;
-	if (isTablet) {
-		Window = require('ui/tablet/ApplicationWindow');
-	}
-	else {
-		// iPhone and Mobile Web make use of the platform-specific navigation controller,
-		// all other platforms follow a similar UI pattern
-		if (osname === 'iphone') {
-			Window = require('ui/handheld/ios/ApplicationWindow');
-		}
-		else if (osname == 'mobileweb') {
-			Window = require('ui/handheld/mobileweb/ApplicationWindow');
-		}
-		else {
-			Window = require('ui/handheld/android/ApplicationWindow');
-		}
-	}
-	
-	*/
 	var ContactUsWindow = require('ui/common/ContactUsWindow');
 	var StatesWindow = require('ui/common/StatesWindow');
 	var MemberCardWindow = require('ui/common/MemberCardWindow');
@@ -56,8 +31,6 @@ if (Ti.version < 1.8 ) {
 	var Feed = require('ui/common/Feed');
 	var MenuRow = require('ui/common/MenuRow');
 	var NationalBenefitsWindow = require('ui/common/NationalBenefitsWindow');
-	var GetFeed = require('ui/common/GetFeed');
-	var Window = require('ui/handheld/android/ApplicationWindow');
 	var Tracker = require('ui/common/Tracker');
 	
 	var tracker = new Tracker();
@@ -74,6 +47,8 @@ if (Ti.version < 1.8 ) {
 	
 	var logorowHeight = 125;
 		var logosLeft = 10;
+		
+		/*
 		//UIAA logo 
 		var logorow = Ti.UI.createView({
 			height: 125,
@@ -83,7 +58,7 @@ if (Ti.version < 1.8 ) {
 			//backgroundImage: 'menubg.jpg'
 		
 		});
-		
+		*/
 		var logo = Ti.UI.createImageView({
 			image: Ti.Filesystem.resourcesDirectory + 'logo.png',
 			width: 210,
@@ -95,11 +70,12 @@ if (Ti.version < 1.8 ) {
 		});
 		
 		
-		
-		//win.add(logorow);
+	
 		win.add(logo);
-//"Once a Hawkeye" Image
+		logo = null;
+		//"Once a Hawkeye" Image
 		var taglinerowHeight = 120;
+		/*
 		var taglinerow = Ti.UI.createImageView({
 			height: taglinerowHeight,
 			width: screenWidth,
@@ -108,6 +84,7 @@ if (Ti.version < 1.8 ) {
 			backgroundColor: 'transparent'
 			
 		});
+		*/
 		var tagline = Ti.UI.createImageView({
 			image: Ti.Filesystem.resourcesDirectory + 'tagline.png',
 			width: 200,
@@ -145,18 +122,13 @@ if (Ti.version < 1.8 ) {
 		// Tableview
 		var tableView = Ti.UI.createTableView({
 			separatorColor: '#000000',
-			//backgroundImage: 'menubg.jpg',
-		    //footerTitle:'',
-		    //backgroundColor: "#000000",
 		    top: logorowHeight,
-		    //height: screenHeight - (taglinerowHeight + logorowHeight),
-		   bottom: taglinerowHeight
+		   	bottom: taglinerowHeight
 		});
 		tableView.setData(menuTitles); // Set the menu in the Home page
 		win.add(tableView);
-		//win.add(taglinerow);
 		win.add(tagline);
-	
+		tagline = null;
 	win.open();
 	
 	

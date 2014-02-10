@@ -21,7 +21,7 @@ function IAMIntroRow(post) {
 	});
 	
 	 var image = Ti.UI.createImageView({
-	  image:    Ti.Filesystem.resourcesDirectory + 'magfan.jpg',
+	  image:    Ti.Filesystem.resourcesDirectory + 'magfan.png',
 	  top:   10,
 	  right: 5,
 	  width: 80,
@@ -30,18 +30,11 @@ function IAMIntroRow(post) {
 
 	 var rowText = Ti.UI.createTableViewRow({
 	 	backgroundSelectedColor : "transparent",
-	 	//backgroundColor: '#e2e2e2',
-	    height: 'auto'//getTableHeight(image.height)
+	    height: 'auto'
 	       
 	 });
 	    
-	 
-	
-	
-	    
-	 
-	//table.height = rowText.height;
-	
+
 	
 	table.setData([rowText]);
 
@@ -54,13 +47,19 @@ function IAMIntroRow(post) {
 		backgroundColor: '#e2e2e2'
 	});
 
-	row.add(table);
+	
 	
 	
 	rowText.add(image);
 	
 	var introLabel  = getText(image.width, table.width);
 	rowText.add(introLabel);
+	row.add(table);
+	
+	rowText = null;
+	table = null;
+	image = null;
+	introLabel = null;
 	
 	return row;
 }

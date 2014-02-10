@@ -3,7 +3,6 @@ var ApplicationWindow = require('ui/common/ApplicationWindow');
 var FeatureRow = require('ui/common/FeatureRow');
 var	Post = require('ui/common/Post');
 var	Row = require('ui/common/Row');
-var	HeaderRow = require('ui/common/HeaderRow');
 var	IIBIntroRow = require('ui/common/IIBIntroRow');
 var	IAMIntroRow = require('ui/common/IAMIntroRow');
 var	PostGroup = require('ui/common/PostGroup');
@@ -20,10 +19,7 @@ function ArticlesWindow(title, feed, tracker) {
 	var url = feed;
 	var itemsLoad = 4;
 	var self = new ApplicationWindow(title);
-	var table = Ti.UI.createTableView({
-		backgroundColor:'#e2e2e2',
-		separatorColor: '#e2e2e2',
-	});
+	
 	var transparentView = Titanium.UI.createView({ 
 		backgroundColor: '#ccc',
 		opacity:0.9,
@@ -47,6 +43,11 @@ function ArticlesWindow(title, feed, tracker) {
 	tracker.trackScreen(title);
 	var loading = new LoadingScreen();
 	function refreshRssTable() {
+		
+		var table = Ti.UI.createTableView({
+			backgroundColor:'#e2e2e2',
+			separatorColor: '#e2e2e2',
+		});
 		var rows = [];
 		self.add(table);
 		var group = [];
@@ -60,152 +61,163 @@ function ArticlesWindow(title, feed, tracker) {
 		transparentView.add(loading);
 		loading.show();
 		self.add(transparentView);
+		var isListFinished = false;
 		setTimeout(function checkSync() {
-		    // has someone asked us to load data?
-		    
-		    if (loadData == false) {
-		        // no, return and we'll check again later
-		        setTimeout(checkSync, 200);
-		        return;
-		    }
-		    Ti.API.warn('LOAD DATA TRIGGERED!');
-		    var xhr = Ti.Network.createHTTPClient({
-			    onload: function() {
-			    	
-			    	
-			    	var xml = this.responseXML;
-			   		
-			    	// simulate an asynchronous HTTP request loading data after 500 ms
-				    setTimeout(function() {
-				    	//var xml = this.responseXML;
-				    	if (firstpass == true){
-				    		
-				    		
-				    		if (feed == Feeds.magazineFeed()){
-				
-								var items = xml.documentElement.getElementsByTagName("item2");
-								var item = items.item(0);
-								var adList = [];
-								adList.push({                 
-							    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
-							        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,         
-								});
-								
-								var ad = new StaticAd(adList, tracker, title);
-								table.bottom = 70;
-										
-								
-								var items = xml.documentElement.getElementsByTagName("item3");
-								var innerAdList = [];
-								for (var i = 0; i < items.length; i++) {
-								   	var item = items.item(i);
-									innerAdList.push({                 
-								    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
-								        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
-								                  
-									});
-								}
-								self.add(ad);/*	
-							*/
-							}
-							
-				    		
-			    			
-				    	}
-				    	
-				        // we got our data; push some new rows
-				       
-				        var items = xml.documentElement.getElementsByTagName("item");
-				        if ( lastRow + itemsLoad < items.length){
-				        	
-					        for (var i = lastRow, c = lastRow + itemsLoad; i < c; i++) {
-					        	var item = items.item(i);
-					      		//Ti.API.info(item.getElementsByTagName('title'));
-					      		//Ti.API.info(item.getElementsByTagName('title').item(0));
-					      		//Ti.API.info(item.getElementsByTagName('title').item(0).textContent);
-						   		data.push({
-									title: item.getElementsByTagName('title').item(0).textContent,
-									link: item.getElementsByTagName('link').item(0).textContent,
-									description: item.getElementsByTagName('description').item(0).textContent,
-									pubDate: item.getElementsByTagName('pubDate').item(0).textContent
-									
-								});
-								
-								var post = new Post(data[i]);
-								
-								if (i == 0 && feed == Feeds.iowaInsiderFeed()){
-									var row = new IIBIntroRow();
-									rows.push(row);
-								}
-									
-								if (i == 0 && feed == Feeds.magazineFeed()){
-									var row = new IAMIntroRow();
-									rows.push(row);
-								}
-									
-								if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
-									//var row = new Ad(innerAdList[adIndex], tracker, title);
-									//rows.push(row);
-									adIndex++;
-								}
-								
-								if(featureSet == false ) {
-									var row = new FeatureRow(post, tracker, title);
-									featureSet = true;
-									rows.push(row);
-								}
-										
-								else {
-									var row =  new Row(post, tracker, title);
-									if(groupCount >= 1) {
-										group.push(row);
-										rows.push(new PostGroup(group));
-										//Ti.API.info(new PostGroup(group));
-										//Ti.API.info(rows.length);
-										group = [];
-										groupCount = 0;
-										featureSet = false;
-									}
-									else {
-										group.push(row);
-										groupCount++;
-									}
-									
-								}
-								Counter++;
-							
-					            //rows.push({ title: 'Row ' + i });
-					        }
-				        }
-				        lastRow = c;
-				        // and push this into our table.
-				        transparentView.remove(loading);
-			    		self.remove(transparentView);
-				        firstpass = false;
-				        table.setData(rows);
-				        // now we're done; reset the loadData flag and start the interval up again
-				        loadData = false;
-				        setTimeout(checkSync, 200);
-				        Ti.API.warn('DATA LOADED!');
-				    }, 500);
-				   
-			 },
-		    onerror: function(e) {
-			    transparentView.remove(loading);
-			    self.remove(transparentView);
-			    Ti.API.debug("STATUS: " + this.status);
-			    Ti.API.debug("TEXT:   " + this.responseText);
-			    Ti.API.debug("ERROR:  " + e.error);
-			    if (firstpass == true){
-				    var errorView = new ErrorWindow(refreshRssTable, title, tracker);
-				    self.add(errorView);
+			if 	( isListFinished == false){
+			    // has someone asked us to load data?
+			    
+			    if (loadData == false) {
+			        // no, return and we'll check again later
+			        setTimeout(checkSync, 200);
+			        return;
 			    }
-			    },
-			    timeout:5000
-			});
-		 
-			xhr.open("GET", url);
-			xhr.send();
+			    Ti.API.warn('LOAD DATA TRIGGERED!');
+			    var xhr = Ti.Network.createHTTPClient({
+				    onload: function() {
+				    	
+				    	
+				    	var xml = this.responseXML;
+				   		
+				    	// simulate an asynchronous HTTP request loading data after 500 ms
+					    setTimeout(function() {
+					    	//var xml = this.responseXML;
+					    	if (firstpass == true){
+					    		
+					    		
+					    		if (feed == Feeds.magazineFeed()){
+					
+									var items = xml.documentElement.getElementsByTagName("item2");
+									var item = items.item(0);
+									var adList = [];
+									adList.push({                 
+								    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
+								        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,         
+									});
+									
+									var ad = new StaticAd(adList, tracker, title);
+									table.bottom = 70;
+											
+									
+									var items = xml.documentElement.getElementsByTagName("item3");
+									var innerAdList = [];
+									for (var i = 0; i < items.length; i++) {
+									   	var item = items.item(i);
+										innerAdList.push({                 
+									    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
+									        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+									                  
+										});
+									}
+									self.add(ad);/*	
+								*/
+								}
+								
+					    		
+				    			
+					    	}
+					    	
+					        // we got our data; push some new rows
+					       
+					        var items = xml.documentElement.getElementsByTagName("item");
+					        if ( lastRow + itemsLoad < items.length){
+					        	
+						        for (var i = lastRow, c = lastRow + itemsLoad; i < c; i++) {
+						        	var item = items.item(i);
+						      		//Ti.API.info(item.getElementsByTagName('title'));
+						      		//Ti.API.info(item.getElementsByTagName('title').item(0));
+						      		//Ti.API.info(item.getElementsByTagName('title').item(0).textContent);
+							   		data.push({
+										title: item.getElementsByTagName('title').item(0).textContent,
+										link: item.getElementsByTagName('link').item(0).textContent,
+										description: item.getElementsByTagName('description').item(0).textContent,
+										pubDate: item.getElementsByTagName('pubDate').item(0).textContent
+										
+									});
+									
+									var post = new Post(data[i]);
+									
+									if (i == 0 && feed == Feeds.iowaInsiderFeed()){
+										var row = new IIBIntroRow();
+										rows.push(row);
+									}
+										
+									if (i == 0 && feed == Feeds.magazineFeed()){
+										var row = new IAMIntroRow();
+										rows.push(row);
+									}
+									
+									/*	
+									if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
+										var row = new Ad(innerAdList[adIndex], tracker, title);
+										rows.push(row);
+										adIndex++;
+									}
+									*/
+									if(featureSet == false ) {
+										var row = new FeatureRow(post, tracker, title);
+										featureSet = true;
+										rows.push(row);
+									}
+											
+									else {
+										var row =  new Row(post, tracker, title);
+										if(groupCount >= 1) {
+											group.push(row);
+											rows.push(new PostGroup(group));
+											group = [];
+											groupCount = 0;
+											featureSet = false;
+										}
+										else {
+											group.push(row);
+											groupCount++;
+										}
+										
+									}
+									Counter++;
+								
+						            //rows.push({ title: 'Row ' + i });
+						        }
+						        lastRow = c;
+					        }
+					        else{
+					        	isListFinished = true;
+					        }
+					        
+					        // and push this into our table.
+					        transparentView.remove(loading);
+				    		self.remove(transparentView);
+				    		
+					        firstpass = false;
+					        table.setData(rows);
+					        // now we're done; reset the loadData flag and start the interval up again
+					        loadData = false;
+					        setTimeout(checkSync, 200);
+					        Ti.API.warn('DATA LOADED!');
+					    }, 500);
+					   
+				 },
+			    onerror: function(e) {
+				    transparentView.remove(loading);
+				    self.remove(transparentView);
+				    Ti.API.debug("STATUS: " + this.status);
+				    Ti.API.debug("TEXT:   " + this.responseText);
+				    Ti.API.debug("ERROR:  " + e.error);
+				    if (firstpass == true){
+					    var errorView = new ErrorWindow(refreshRssTable, title, tracker);
+					    self.add(errorView);
+				    }
+				    },
+				    timeout:5000
+				});
+			 
+				xhr.open("GET", url);
+				xhr.send();
+			}
+			else{
+				table = null;
+				return;
+			}
 		}, 200);
 		 
 		table.addEventListener('scroll', function(evt) {
@@ -221,130 +233,11 @@ function ArticlesWindow(title, feed, tracker) {
 		    }
 		 
 		});
-		
-		/*
-		var xhr = Ti.Network.createHTTPClient({
-		    onload: function() {
-		    	
-		    	
-		    	var xml = this.responseXML;
-			   	var items = xml.documentElement.getElementsByTagName("item");
-			   	//var item = items.item(0);
-			   	
-			   	var data = [];
-			   	for (var i = 0; i < items.length; i++) {
-			   		var item = items.item(i);
-			   		
-			   		
-			   		data.push({
-						title: item.getElementsByTagName('title').item(0).textContent,
-						link: item.getElementsByTagName('link').item(0).textContent,
-						description: item.getElementsByTagName('description').item(0).textContent,
-						pubDate: item.getElementsByTagName('pubDate').item(0).textContent,
-						//image: image
-					});
-				}
-				
-				if (feed == Feeds.magazineFeed()){
-					var items = xml.documentElement.getElementsByTagName("item2");
-					var item = items.item(0);
-					var adList = [];
-					adList.push({                 
-				    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
-				        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,         
-					});
-					
-					var ad = new StaticAd(adList, tracker, title);
-					table.bottom = 70;
-							
-						
-					var items = xml.documentElement.getElementsByTagName("item3");
-					var innerAdList = [];
-					for (var i = 0; i < items.length; i++) {
-					   	var item = items.item(i);
-						innerAdList.push({                 
-					    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
-					        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
-					                  
-						});
-					}
-				}
-					
-					
-					
-					
-					
-				for (var i = 0; i < data.length; i++) {
-					var post = new Post(data[i]);
-	
-					//Add Feed's Intro Text
-					if (i == 0 && feed == Feeds.iowaInsiderFeed()){
-						var row = new IIBIntroRow();
-						rows.push(row);
-					}
-						
-					if (i == 0 && feed == Feeds.magazineFeed()){
-						var row = new IAMIntroRow();
-						rows.push(row);
-					}
-						
-					if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
-						var row = new Ad(innerAdList[adIndex], tracker, title);
-						rows.push(row);
-						adIndex++;
-					}
-						
-					if(featureSet == false ) {
-						var row = new FeatureRow(post, tracker, title);
-						featureSet = true;
-						rows.push(row);
-					}
-						
-					else {
-						var row =  new Row(post, tracker, title);
-						if(groupCount >= 1) {
-							group.push(row);
-							rows.push(new PostGroup(group));
-							group = [];
-							groupCount = 0;
-							featureSet = false;
-						}
-						else {
-							group.push(row);
-							groupCount++;
-						}
-					}
-					Counter++;
-							
-				}
-					
-				transparentView.remove(loading);
-			    self.remove(transparentView);
-				table.setData(rows);
-				self.add(table);
-				if (feed == Feeds.magazineFeed()){ 
-					self.add(ad);
-				}
 
-		    },
-		    onerror: function(e) {
-			    transparentView.remove(loading);
-			    self.remove(transparentView);
-			    Ti.API.debug("STATUS: " + this.status);
-			    Ti.API.debug("TEXT:   " + this.responseText);
-			    Ti.API.debug("ERROR:  " + e.error);
-			    var errorView = new ErrorWindow(refreshRssTable, title, tracker);
-			    self.add(errorView);
-		    },
-		    timeout:5000
-		});
-		 
-		xhr.open("GET", url);
-		xhr.send();	
-		*/
 	}
 	
 	refreshRssTable();
+	
 	
 	return self;
 }

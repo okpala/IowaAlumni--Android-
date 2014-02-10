@@ -1,6 +1,6 @@
 var WebView = require('ui/common/WebView');
 var EditText = require('ui/common/EditText');
-//var TabNavWindow = require('ui/common/TabNavWindow');
+
 /*
  * Clubs and Game Watch Tabs 
  */
@@ -14,7 +14,6 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 
 	var table = Ti.UI.createTableView({
 		height: 'auto',
-		//top: top
 	});
 
 	

@@ -1,5 +1,3 @@
-//var GetFeed = require('ui/common/GetFeed');
-//var ApplicationWindow = require('ui/common/ApplicationWindow');
 var NavigateWindow = require('ui/common/NavigateWindow');
 var WebView = require('ui/common/WebView');
 var Feed = require('ui/common/Feed');

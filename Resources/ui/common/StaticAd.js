@@ -1,7 +1,6 @@
-var GetFeed = require('ui/common/GetFeed');
-var FormatDate = require('ui/common/FormatDate');
 var WebView = require('ui/common/WebView');
-var Feed = require('ui/common/Feed');
+var createCachingImageView = require('ui/common/createRemoteImageView2');
+
 /*
  * Add an Ad at the bottom of a window.
  * Parameter "index" determine what ad is selected 
@@ -9,7 +8,7 @@ var Feed = require('ui/common/Feed');
  */
 function StaticAd(adList, tracker, title){
 	
-	var ad = Ti.UI.createImageView({
+	var ad = createCachingImageView.createCachingImageView({
 	  image:    adList[0].ad,
 	  width: Ti.UI.FILL,
 	  height: 70,

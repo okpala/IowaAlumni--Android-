@@ -1,6 +1,4 @@
 var WebView = require('ui/common/WebView');
-var EditText = require('ui/common/EditText');
-//var TabNavWindow = require('ui/common/TabNavWindow');
 var ClubsWindow = require('ui/common/ClubsWindow');
 var Map = require('ti.map');
 /*

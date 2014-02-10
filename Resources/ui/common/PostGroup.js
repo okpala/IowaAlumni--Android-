@@ -4,7 +4,7 @@
  */
 
 function PostGroup(rows) {
-        var screenWidth = Ti.Platform.displayCaps.platformWidth;
+        
         var table = Ti.UI.createTableView({
                 separatorColor: '#d5d5d5',
                 backgroundColor: '#ffffff',
@@ -39,7 +39,8 @@ function PostGroup(rows) {
         });
 
         row.add(table);
-
+		
+		table = null;
         return row;
 
 }

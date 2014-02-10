@@ -27,6 +27,8 @@ function RefreshSection(){
 	row.add(lastUpdatedLabel);	
 	row.add(refreshLabel);
 	
+	refreshLabel = null;
+	lastUpdatedLabel  = null;
 	return row;
 }
 module.exports = RefreshSection;

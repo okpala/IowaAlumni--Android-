@@ -1,11 +1,8 @@
 var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
 var WebView = require('ui/common/WebView');
-var Utils = require('ui/common/Utils');
 var createCachingImageView = require('ui/common/createRemoteImageView2');
-//Ti.include('createRemoteImageView');
-//var ImageView  = require('ui/common/createRemoteImageView');
-//var remoteImage = require('ui/common/RemoteImageView');
+
 /*
  * Post Object
  * Essential attributes
@@ -45,13 +42,12 @@ function FeatureRow(post, tracker, title) {
 	row.height 			 = this.containerheight + 100 + 8;
 
 	var imagebox = createCachingImageView.createCachingImageView({
-		image: post.image,
+		image: post.image,//Ti.Filesystem.resourcesDirectory +'test.png', 
 		width: Ti.UI.FILL,
 		height: this.containerheight,
-		//hires: true,
 		top: 30
 	});
-	//new CachedImageView('imageDirectoryName', post.image, imagebox);
+	
 	var overlay = Ti.UI.createImageView({
 		width: Ti.UI.FILL,
 		height: 40,
@@ -69,14 +65,19 @@ function FeatureRow(post, tracker, title) {
 	container.add(imagebox);
 	container.add(shadow);
 	container.add(overlay);
-
-	titlelbl = getTitleLabel(post.title,this.containerheight+30);
+	//alert(post.image);
+	imagebox = null;
+	shadow = null;
+	overlay = null;
+	
+	var titlelbl = getTitleLabel(post.title,this.containerheight+30);
 	container.add(titlelbl);
 
-	desclbl  = getDescriptionLabel(post.description, titlelbl.top + titlelbl.height);
+	var desclbl  = getDescriptionLabel(post.description, titlelbl.top + titlelbl.height);
 	container.add(desclbl);
-
-
+	desclbl = null;
+	titlelbl = null;
+	
 	var posted = Ti.UI.createLabel({
 		text: 'Posted ' + (new DateObject(post.pubDate)).prettyDate() + ' in Kudos to Iowa People',
 		top: 8,
@@ -92,9 +93,11 @@ function FeatureRow(post, tracker, title) {
 		font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:12,fontWeight:'bold'}
 	});
 	container.add(posted);
-
+	posted = null;
+	
 	row.add(container);
-
+	container = null;
+	
 	row.addEventListener('click', function(e) {
 		tracker.trackEvent({
 				category: "Featured Articles",
@@ -114,12 +117,12 @@ function FeatureRow(post, tracker, title) {
 
 function getContainerHeight(img) {
 	var tempimagebox = Ti.UI.createImageView({
-		image: img,
+		image: Ti.Filesystem.resourcesDirectory +'test.png', //img,
 		width: 'auto',
 		height: 'auto',
 		hires: true,
 	});
-    new CachedImageView('imageDirectoryName', img, tempimagebox);
+    //new CachedImageView('imageDirectoryName', img, tempimagebox);
 
 	var height = tempimagebox.toImage().height;
 	var width = tempimagebox.toImage().width;
