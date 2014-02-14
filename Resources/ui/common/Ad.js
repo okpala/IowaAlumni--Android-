@@ -22,7 +22,7 @@ function Ad(post, tracker, title) {
 	var imagebox = createCachingImageView.createCachingImageView({
 		image: post.ad,
 		width: Ti.UI.FILL,
-		height: Ti.UI.FILL,
+		height: 70,
 		left: 10,
 		right: 10,
 		top: 10

@@ -1,5 +1,4 @@
 var WebView = require('ui/common/WebView');
-var GetFeed = require('ui/common/GetFeed');
 var SocialMediaIcons = require('ui/common/SocialMediaIcons');
 
 function HomeSMSection(tracker){

@@ -62,19 +62,19 @@ function SingleRow(post, tracker, title) {
 	row.add(table);
 
 
-	titlelbl = getTitleLabel(post.title);
+	var titlelbl = getTitleLabel(post.title);
 	rowText.add(titlelbl);
 
-	timebl  = timeLabel();
+	var timebl  = timeLabel();
 	rowText.add(timebl);
 
-	inputtimebl  = getTime(post.snl);
+	var inputtimebl  = getTime(post.snl);
 	rowText.add(inputtimebl);
 
-	inputplacebl  = getPlace(post.place);
+	var inputplacebl  = getPlace(post.place);
 	rowText.add(inputplacebl);
 
-	placebl  = placeLabel();
+	var placebl  = placeLabel();
 	rowText.add(placebl);
 
 
@@ -88,7 +88,13 @@ function SingleRow(post, tracker, title) {
 	rowText.height = titlelbl.height + inputtimebl.height + inputplacebl.height +  25;
 	table.height = rowText.height;
 	row.height = table.height + 15;
-
+	
+	titlelbl = null;
+	timebl  = null;
+	inputtimebl = null;
+	inputplacebl  = null;
+	placebl = null;
+	table = null;
 
 
 

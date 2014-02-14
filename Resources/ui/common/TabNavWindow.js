@@ -8,12 +8,7 @@ var self = Ti.UI.createWindow({
 		
 	});
 
-	var navbar = Ti.UI.createImageView({
-			image:  Ti.Filesystem.resourcesDirectory + 'navbar.png',
-			height: 60
-	});
-	
-	//self.add(navbar);
+
 	var actionBar;
 	self.addEventListener("open", function() {
     if (Ti.Platform.osname === "android") {

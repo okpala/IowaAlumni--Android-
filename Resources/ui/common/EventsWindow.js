@@ -43,7 +43,6 @@ function EventsWindow(title, tracker) {
 		/**
 		 * Create our UI elements.
 		 */
-		
 		var rows = [];
 		self.add(table);
 		var firstpass = true;
@@ -125,14 +124,7 @@ function EventsWindow(title, tracker) {
 				        	
 					        for (var i = lastRow, c = lastRow + 10; i < c; i++) {
 					        	var item = items.item(i);
-					        	/*
-					   			var image;
-								try {
-								var image = item.getElementsByTagNameNS('http://mashable.com/', 'thumbnail').item(0).getElementsByTagName('img').item(0).getAttribute('src');
-								} catch (e) {
-									image = '';
-								}
-								*/
+					     
 					   			data.push({
 									snl: item.getElementsByTagName('snl').item(0).textContent,	
 									place: item.getElementsByTagName('place').item(0).textContent,
@@ -141,8 +133,6 @@ function EventsWindow(title, tracker) {
 									description: item.getElementsByTagName('description').item(0).textContent,
 									pubDate: item.getElementsByTagName('pubDate').item(0).textContent,
 									hlink: item.getElementsByTagName('hlink').item(0).textContent,
-									category:item.getElementsByTagName('category').item(0).textContent,
-									//image: image
 								});
 								
 								var post = new Post(data[i]);

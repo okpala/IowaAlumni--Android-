@@ -75,7 +75,7 @@ function ClubsWindow(title, tracker){
 		
 		
 	
-		var screenWidth = Ti.Platform.displayCaps.platformWidth;//Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160);
+		var screenWidth = Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160);
 		var adList = [];
 		var clubsInfo = [];
 		var data = [];	
@@ -88,7 +88,7 @@ function ClubsWindow(title, tracker){
          textView.add(introLabel);
          self.add(textView) ; 
               
-       table.top = textView.toImage().height + people.height - 10; 
+       table.top = textView.toImage().height + people.height; 
        self.remove(textView) ;
   
                 

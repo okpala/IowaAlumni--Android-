@@ -45,38 +45,29 @@ function FeatureRow(post, tracker, title) {
 		image: post.image,//Ti.Filesystem.resourcesDirectory +'test.png', 
 		width: Ti.UI.FILL,
 		height: this.containerheight,
-		top: 30
+		top: 30,
 	});
 	
 	var overlay = Ti.UI.createImageView({
 		width: Ti.UI.FILL,
 		height: 40,
-		hires: true,
 		top: 1,
 		image: Ti.Filesystem.resourcesDirectory +'gold.png'
 	});
 	var shadow = Ti.UI.createImageView({
 		width: Ti.UI.FILL,
 		height: 150,
-		hires: true,
 		top: this.containerheight-120,
 		image: Ti.Filesystem.resourcesDirectory +'shadow.png'
 	});
-	container.add(imagebox);
-	container.add(shadow);
-	container.add(overlay);
-	//alert(post.image);
-	imagebox = null;
-	shadow = null;
-	overlay = null;
 	
-	var titlelbl = getTitleLabel(post.title,this.containerheight+30);
+	
+	var titlelbl = getTitleLabel(post.title, imagebox.height + imagebox.top);
 	container.add(titlelbl);
 
-	var desclbl  = getDescriptionLabel(post.description, titlelbl.top + titlelbl.height);
+	var desclbl  = getDescriptionLabel(post.description, this.containerheight + 30);
 	container.add(desclbl);
-	desclbl = null;
-	titlelbl = null;
+	
 	
 	var posted = Ti.UI.createLabel({
 		text: 'Posted ' + (new DateObject(post.pubDate)).prettyDate() + ' in Kudos to Iowa People',
@@ -90,13 +81,14 @@ function FeatureRow(post, tracker, title) {
 		shadowColor:'#f0d87f',
         shadowOpacity:0.5,
         shadowOffset:{x:0, y:1},
+        zIndex: 3,
 		font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:12,fontWeight:'bold'}
 	});
 	container.add(posted);
-	posted = null;
+	
 	
 	row.add(container);
-	container = null;
+	
 	
 	row.addEventListener('click', function(e) {
 		tracker.trackEvent({
@@ -107,8 +99,18 @@ function FeatureRow(post, tracker, title) {
 			});
 		new WebView (post.url);
 	});
-
-
+	
+	container.add(imagebox);
+	container.add(shadow);
+	container.add(overlay);
+	//alert(post.image);
+	desclbl = null; 
+	titlelbl = null;
+	posted = null;
+	container = null;
+	shadow = null;
+	overlay = null;
+	imagebox = null;
 	return row;
 
 }
@@ -155,7 +157,6 @@ function getTitleLabel(title,postheight) {
 	var titlelbl = Ti.UI.createLabel({
 		text: title,
 		left: 10,
-		bottom:10,
 		height:theheight,
 		textAlign:'left',
 		width: Ti.UI.FILL,
@@ -163,11 +164,13 @@ function getTitleLabel(title,postheight) {
 		shadowColor:'#000000',
         shadowOpacity:0.5,
         shadowOffset:{x:0, y:1},
+        zIndex: 3,
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:25,fontWeight:'bold'}
 	});
 
-	titlelbl.top = postheight - (theheight + 5);
-
+	titlelbl.top = postheight - (theheight);
+	temp = null;
+	view = null;
 	return titlelbl;
 
 }

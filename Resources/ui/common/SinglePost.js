@@ -129,6 +129,12 @@ function SinglePost (post, tracker, title){
 		table.height = rowText.height;
 		row.height = rowText.height + 10;
 		
+		imageContainer = null;
+		posted = null;
+		desclbl = null;
+		imagebox = null;
+		titleLabel = null;
+		table = null;
 			
 		
 		return row;

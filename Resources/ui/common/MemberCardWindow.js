@@ -158,21 +158,11 @@ function  MemberCardWindow(title, tracker){
 				pass2: item.getElementsByTagName('pass2').item(0).textContent,
 			});
 			var password = password[0];
-			
-		
-			//passwordWin.add(activityIndicator);
-			//passwordWin.add(thawk);
-			//passwordWin.add(wrongPasswordLabel);
-			//wrongPasswordLabel.setVisible(false);
+
 			
 			function getMemberCard(isCard2){
-					//passwordWin.remove(passwordLabel);
-					//passwordWin.remove(passwordInfoLabel);
-					//passwordWin.remove(passwordHeaderLabel);
-					//passwordWin.remove(passwordTextField);
-					//passwordWin.remove(loginButton);
-					//passwordWin.remove(thawk);
-					
+
+					//passwordTextField.blur();
 					self.remove(table);
 					self.backgroundColor = '#202020';
 					wrongPasswordLabel.setVisible(false);
@@ -180,6 +170,7 @@ function  MemberCardWindow(title, tracker){
 					if (isCard2 == true){
 						image.image =  'http://iowalum.com/membership/images/MemberCard2.png';
 					}
+					
 					self.add(image);		
 			}
 			
@@ -224,14 +215,6 @@ function  MemberCardWindow(title, tracker){
 					
 					
 				});
-			
-				//passwordWin.add(passwordLabel);
-				//passwordWin.add(passwordInfoLabel);
-				//passwordWin.add(passwordHeaderLabel);
-				//passwordWin.add(passwordTextField);
-				//passwordWin.add(loginButton);
-				
-				
 				
 				table.setData(rows);
 				self.add(table);
@@ -252,9 +235,7 @@ function  MemberCardWindow(title, tracker){
 		xhr.send();  // request is actually sent with this statement
 	}
 	refreshRssTable();
-	//table.setData(rows);
-	//self.add(table);
-	//self.remove(loading);	
+
 				
 	return self;
 }
