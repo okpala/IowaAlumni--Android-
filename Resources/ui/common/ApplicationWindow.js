@@ -19,7 +19,7 @@ function ApplicationWindow(windowtitle) {
             	
                 actionBar.backgroundImage = Ti.Filesystem.resourcesDirectory + 'navbar.png';
                 actionBar.title = windowtitle;
-                actionBar.logo = Ti.Filesystem.resourcesDirectory + "newmenubutton.png";
+                actionBar.logo =  "newmenubutton.png";
                 actionBar.onHomeIconItemSelected = function() {
                     self.close();
                 };

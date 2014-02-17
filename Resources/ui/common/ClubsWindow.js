@@ -98,7 +98,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 	
 	self.add(table);
  
-
+	table = null;
 return self;
 }
 
@@ -123,15 +123,6 @@ function createEmail(clubInfoData, index, currentTop, tracker){
 					label: clubInfoData[index].city + " " + clubInfoData[index].email,
 					value: 1
 				});
-	    		/*
-	    		Ti.API.info(clubInfoData[index].email);
-				var emailDialog = Ti.UI.createEmailDialog();
-				emailDialog.toRecipients = [clubInfoData[index].email];
-				Ti.API.info(clubInfoData[index].email);
-				var f = Ti.Filesystem.getFile('cricket.wav');
-				emailDialog.addAttachment(f);
-				emailDialog.open();
-				*/
 			}); 
 			
 		return emailLabel;	

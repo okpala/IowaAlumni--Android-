@@ -39,10 +39,11 @@ function FeatureRow(post, tracker, title) {
 
 	this.containerheight = getContainerHeight(post.image);
 	container.height 	 = this.containerheight + 65 + 30;
-	row.height 			 = this.containerheight + 100 + 8;
+	row.height 			 = this.containerheight + 90 + 8;
 
 	var imagebox = createCachingImageView.createCachingImageView({
 		image: post.image,//Ti.Filesystem.resourcesDirectory +'test.png', 
+		defaultImage: Ti.Filesystem.resourcesDirectory + "loader400x600.gif",
 		width: Ti.UI.FILL,
 		height: this.containerheight,
 		top: 30,
@@ -51,7 +52,7 @@ function FeatureRow(post, tracker, title) {
 	var overlay = Ti.UI.createImageView({
 		width: Ti.UI.FILL,
 		height: 40,
-		top: 1,
+		top: 0,
 		image: Ti.Filesystem.resourcesDirectory +'gold.png'
 	});
 	var shadow = Ti.UI.createImageView({
@@ -62,11 +63,11 @@ function FeatureRow(post, tracker, title) {
 	});
 	
 	
-	var titlelbl = getTitleLabel(post.title, imagebox.height + imagebox.top);
+	var titlelbl = getTitleLabel(post.title, this.containerheight+30, post.description);
 	container.add(titlelbl);
 
-	var desclbl  = getDescriptionLabel(post.description, this.containerheight + 30);
-	container.add(desclbl);
+	//var desclbl  = getDescriptionLabel(post.description, this.containerheight + 30);
+	//container.add(desclbl);
 	
 	
 	var posted = Ti.UI.createLabel({
@@ -133,22 +134,25 @@ function getContainerHeight(img) {
 	return Math.floor( 300 * ratio );
 }
 
-function getTitleLabel(title,postheight) {
+function getTitleLabel(title,postheight, description) {
 
 	// Temp label to get height
 	// At this font-size/font-face the height per line is 32
+	
+	var screenWidth = Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160);
 	var temp = Ti.UI.createLabel({
 		text: title,
-		height:'auto',
-		width: 250,
+		width: Ti.UI.FILL,
 		left: 10,
 		right: 10,
-		bottom: 10,
+		bottom: 0,
 		color:'#efc006',
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:25,fontWeight:'bold'}
 	});
 	var view = Ti.UI.createView({
-		width: Ti.Platform.displayCaps.platformWidth - 20,
+		width: screenWidth - 20,
+		left: 10,
+		right: 10,
 		height:'auto'
 	});
 	view.add(temp);
@@ -157,8 +161,8 @@ function getTitleLabel(title,postheight) {
 	var titlelbl = Ti.UI.createLabel({
 		text: title,
 		left: 10,
-		height:theheight,
-		textAlign:'left',
+		top : 0,
+		//height:theheight,
 		width: Ti.UI.FILL,
 		color:'#efc006',
 		shadowColor:'#000000',
@@ -167,11 +171,51 @@ function getTitleLabel(title,postheight) {
         zIndex: 3,
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:25,fontWeight:'bold'}
 	});
+	
+	var table = Ti.UI.createTableView({
+		zIndex: 5, 
+		width: Ti.UI.FILL,
+		top: postheight,
+		separatorColor: '#000000',
+	});
+	
+	var row1 = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent",});
+	row1.add(titlelbl);
+	
+	var view = Ti.UI.createView({
+		backgroundColor: '#0c0c0c',
+		backgroundImage: Ti.Filesystem.resourcesDirectory + 'dark.jpg',
+		width: Ti.UI.FILL,
+		height: 65,
+		top: 0
+	});
 
-	titlelbl.top = postheight - (theheight);
+	var text = Ti.UI.createLabel({
+		text: description,
+		left: 10,
+		right: 10,
+		top: 0,
+		bottom: 10,
+		height: 50,
+		textAlign:'left',
+		ellipsize: true,
+		width: Ti.UI.FILL,
+		color:'#ffffff',
+		shadowColor:'#000000',
+        shadowOpacity:0.5,
+        shadowOffset:{x:0, y:1},
+		font:{fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+	});
+	view.add(text);
+	
+	var row2 = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
+	row2.add(view);
+	table.setData([row1, row2]);
+	//titlelbl.top = postheight - (theheight);
+	table.top = postheight - theheight - 15;
 	temp = null;
 	view = null;
-	return titlelbl;
+	return table;
 
 }
 

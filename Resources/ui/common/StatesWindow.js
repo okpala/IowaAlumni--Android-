@@ -2,6 +2,7 @@ var GameWatchWindow = require('ui/common/GameWatchWindow');
 var WebView = require('ui/common/WebView');
 var ApplicationWindow = require('ui/common/ApplicationWindow');
 var StaticAd = require('ui/common/StaticAd');
+
 var Feed = require('ui/common/Feed');
 var LoadingScreen = require('ui/common/LoadingScreen');
 var ErrorWindow = require('ui/common/ErrorWindow');

@@ -79,6 +79,7 @@ function SinglePost (post, tracker, title){
 		
 		var imagebox = createCachingImageView.createCachingImageView({
 			image: post.image, //'http://www.iowalum.com/giveaway/images/facebookPost.png',
+			defaultImage: Ti.Filesystem.resourcesDirectory + "loader120x120.gif",
 			width: 			60,
 			height: 		60,
 			top: 0

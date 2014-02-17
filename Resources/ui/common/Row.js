@@ -41,7 +41,7 @@ function Row(post, tracker, title) {
 
 	desclbl  = getDescriptionLabel(post.description);
 	container.add(desclbl);
-	desclbl.top = titlelbl.height + 15;
+	desclbl.top = titlelbl.height;
 
 	var posted = Ti.UI.createLabel({
 		text: 			(new DateObject(post.pubDate)).prettyDate(),
@@ -56,7 +56,7 @@ function Row(post, tracker, title) {
         shadowOffset: 	{x:0, y:1},
 		font: 			{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});
-	posted.top = titlelbl.height + desclbl.height + 20; 
+	posted.top = titlelbl.top + titlelbl.height + desclbl.height + 10; 
 	container.add(posted);
 
 
@@ -73,6 +73,7 @@ function Row(post, tracker, title) {
 	//var postImage = getPostImage(post.image);
 	var imagebox = createCachingImageView.createCachingImageView({
 		image: post.image, //"http://www.iowalum.com/blog/wp-content/uploads/2014/02/UIAA_Network1-150x150.png",
+		defaultImage: Ti.Filesystem.resourcesDirectory + "loader120x120.gif",
 		width: Ti.UI.FILL,
 		height: Ti.UI.FILL,
 	});
@@ -154,7 +155,7 @@ function getTitleLabel(title) {
 	var label = Ti.UI.createLabel({
 		text: title,
 		left: 15,
-		top: 15,
+		top: 5,
 		bottom:10,
 		height: view.toImage().height + 10,
 		textAlign:'left',
@@ -195,8 +196,6 @@ function getPostImage(image) {
 		image: image,
 		width: 'auto',
 		height: 'auto',
-		hires: true,
-		//top: -10, // this works for some reason
 	});
     //new CachedImageView('imageDirectoryName', image, tempimagebox);
 
