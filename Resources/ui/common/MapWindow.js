@@ -21,56 +21,65 @@ function MapWindow(title, tracker) {
 	
 
 	var textView = Ti.UI.createView({
-				backgroundColor: 	'#e2e2e2',
-				height:				85,
-				top:				195,
+		backgroundColor: 	'#e2e2e2',
+		height:				85,
+		top:				195,
 				
-			});
-			var introLabel = Ti.UI.createLabel({
-					 text: ('UI Alumni Association members have array of benfits available to them. Use your member benefit card at any of these locations.'),
-					 color: "#000000",
-					 textAlign: 'left',
-					 left: 10,
-					 right: 10,
-					 width: Ti.UI.FILL,
-					 top: 10,
-					font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+	});
+	var introLabel = Ti.UI.createLabel({
+		text: ('UI Alumni Association members have array of benfits available to them. Use your member benefit card at any of these locations.'),
+		color: "#000000",
+		textAlign: 'left',
+		left: 10,
+		right: 10,
+		width: Ti.UI.FILL,
+		top: 10,
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 					        
-				});
-			textView.add(introLabel);	
+	});
+	textView.add(introLabel);	
 			
-			var linkLabel = Ti.UI.createLabel({
-					 text: 'Benefits',
-					 textAlign: 'left',
-					 right: 10,
-					 bottom: 2,
-					 color: 'blue',
-					font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+	var linkLabel = Ti.UI.createLabel({
+		text: 'Benefits',
+		textAlign: 'left',
+		right: 10,
+		bottom: 2,
+		color: 'blue',
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 					        
-				});
+	});
 				
-			linkLabel.addEventListener('click', function(e){
-				new WebView ('http://iowalum.com/membership/benefits.cfm');
-				tracker.trackEvent({
-						category: "Benefits",
-						action: "click",
-						label: "Members Benefits' Website",
-						value: 1
-					});
-			});
+	linkLabel.addEventListener('click', function(e){
+		new WebView ('http://iowalum.com/membership/benefits.cfm');
+		tracker.trackEvent({
+			category: "Benefits",
+			action: "click",
+			label: "Members Benefits' Website",
+			value: 1
+		});
+	});
 			
-			var table = Ti.UI.createTableView({
-				height: 'auto',
-				top: textView.top + textView.height
-			});
-		
+	var table = Ti.UI.createTableView({
+		height: 'auto',
+		top: textView.top + textView.height
+	});
+	
+	var transparentView = Titanium.UI.createView({ 
+		backgroundColor: '#ccc',
+		opacity:0.9,
+		height: Ti.UI.FILL,
+		width: Ti.UI.FILL,
+		top: 0,
+		zIndex:5,
+	});	
 	
 	
 	tracker.trackScreen(title);
 	var loading = new LoadingScreen();
 	function refreshRssTable() {
-		self.add(loading);
+		transparentView.add(loading);
 		loading.show();
+		self.add(transparentView);
 		var xhr = Ti.Network.createHTTPClient({
 		    onload: function() {
 		    	
@@ -110,17 +119,17 @@ function MapWindow(title, tracker) {
 							})
 						);
 					}
-					
+					var mapHeight = ((Ti.Platform.displayCaps.platformHeight  * (Titanium.Platform.displayCaps.dpi / 160) - 60))/2;
 					map = Map.createView({
 						mapType:Map.NORMAL_TYPE,
 						region: {latitude: companyInfo[0].latitude, longitude: companyInfo[0].longitude,
 								latitudeDelta:0.01, longitudeDelta:0.01 },
-						//animate: true,
-						//userLocation:false,
-						height: 250,
+						height: mapHeight,
 					    annotations: companyInfo,
 						top: 0
 					});
+					//var screenWidth = Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160);
+					//alert(Ti.Platform.displayCaps.platformHeight  * (Titanium.Platform.displayCaps.dpi / 160));
 					textView.top = map.height;
 					table.top = textView.top + textView.height;
 					
@@ -207,14 +216,17 @@ function MapWindow(title, tracker) {
 				mapWin.add(textView);
 				mapWin.add(table);
 				self.add(mapWin);
-				self.remove(loading);
-				
-				
-				
-				
+				transparentView.remove(loading);
+			    self.remove(transparentView);
+				mapWin = null;
+				textView = null;
+				table = null;
+				linkLabel = null;
+				//map = null;
 		    },
 		    onerror: function(e) {
-			    self.remove(loading);
+			    transparentView.remove(loading);
+			    self.remove(transparentView);
 			    Ti.API.debug("STATUS: " + this.status);
 			    Ti.API.debug("TEXT:   " + this.responseText);
 			    Ti.API.debug("ERROR:  " + e.error);

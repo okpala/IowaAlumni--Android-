@@ -48,14 +48,14 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 			
 		}
 	 		
-		
+		var mapHeight = ((Ti.Platform.displayCaps.platformHeight  * (Titanium.Platform.displayCaps.dpi / 160) - 60))/2;
 		var map = Map.createView({
 			mapType:Map.NORMAL_TYPE,
 			region: {latitude: clubData[0].latitude, longitude: clubData[0].longitude,
 				latitudeDelta:0.01, longitudeDelta:0.01 },
 			animate: true,
 			userLocation: false,
-			height: 250,
+			height: mapHeight,
 		    annotations: gameWatchInfo,
 			top: 0
 		});
@@ -207,7 +207,7 @@ tabGroup.addEventListener("open", function() {
             if (actionBar) {
                 actionBar.backgroundImage = Ti.Filesystem.resourcesDirectory + 'navbar.png';
                 actionBar.title = windowtitle;
-                actionBar.logo = Ti.Filesystem.resourcesDirectory + "back.png";
+                actionBar.logo = "images/black.png";
                 actionBar.onHomeIconItemSelected = function() {
                     tabGroup.close();
                 };

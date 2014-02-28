@@ -21,6 +21,7 @@ function Ad(post, tracker, title) {
 
 	var imagebox = createCachingImageView.createCachingImageView({
 		image: post.ad,
+		defaultImage: Ti.Filesystem.resourcesDirectory + "loader480x120.png",
 		width: Ti.UI.FILL,
 		height: 70,
 		left: 10,
@@ -28,7 +29,8 @@ function Ad(post, tracker, title) {
 		top: 10
 		
 	});
-
+	Ti.API.info(post.ad);
+	//alert(post.ad);
 	row.add(imagebox);
 	imagebox = null;
 	

@@ -5,7 +5,7 @@ var WebView = require('ui/common/WebView');
 
 function IIBIntroRow(post) {
 
-var table = Ti.UI.createTableView({
+	var table = Ti.UI.createTableView({
 		separatorColor: 	'#ffffff',
 		backgroundColor: 	'#ffffff',
 		height:				'auto',
@@ -51,9 +51,9 @@ var table = Ti.UI.createTableView({
 	introLabel  = getText();
 	rowText.add(introLabel);
 
-	
-	
-	
+	rowText = null;
+	table = null;
+	introLabel = null;
 
 	return row;
 }

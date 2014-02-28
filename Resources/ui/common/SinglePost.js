@@ -54,7 +54,6 @@ function SinglePost (post, tracker, title){
 		top: 0,
 		bottom: 0,
 		backgroundColor: '#e2e2e2',
-		//selectedBackgroundColor: "blue"
 	});
 	
 
@@ -79,18 +78,14 @@ function SinglePost (post, tracker, title){
 		
 		var imagebox = createCachingImageView.createCachingImageView({
 			image: post.image, //'http://www.iowalum.com/giveaway/images/facebookPost.png',
-			defaultImage: Ti.Filesystem.resourcesDirectory + "loader120x120.gif",
+			defaultImage: Ti.Filesystem.resourcesDirectory + "loader120x120.png",
 			width: 			60,
 			height: 		60,
 			top: 0
 		});
 		
 		imageContainer.add(imagebox);	
-			//var postImage = getPostImage(post.image);
-			//new CachedImageView('imageDirectoryName', post.image, postImage);
-			//postImage = getPostImage(post.image);
-			
-			//imageContainer.add(postImage);
+	
 			
 			rowText.add(imageContainer);
 			

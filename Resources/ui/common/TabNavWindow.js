@@ -19,7 +19,7 @@ var self = Ti.UI.createWindow({
             if (actionBar) {
                 actionBar.backgroundImage = Ti.Filesystem.resourcesDirectory + 'navbar.png';
                 actionBar.title = windowtitle;
-                actionBar.logo = Ti.Filesystem.resourcesDirectory + "back.png";
+                actionBar.logo = "images/black.png";
                 actionBar.onHomeIconItemSelected = function() {
                     self.close();
                     tabGroup.close();

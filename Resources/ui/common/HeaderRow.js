@@ -7,7 +7,7 @@ var WebView = require('ui/common/WebView');
  */
 
 function HeaderRow(post, tracker, title) {
-	var screenWidth = Ti.Platform.displayCaps.platformWidth;
+
    var table = Ti.UI.createTableView({
 		separatorColor: 	'#e2e2e2',
 		backgroundColor: 	'#e2e2e2',
@@ -22,10 +22,9 @@ function HeaderRow(post, tracker, title) {
 
 	 var rowText = Ti.UI.createTableViewRow({
 	 		backgroundImage: Ti.Filesystem.resourcesDirectory + 'gold.png', 
-	        height: 50,
-	        //selectedBackgroundImage: 'blue.png'
-	        
-	    });
+	        height: 50,       
+	 });
+	 
 	 rowText.addEventListener('click', function(e) {
 	 		tracker.trackEvent({
 				category: "Events",
@@ -52,16 +51,14 @@ function HeaderRow(post, tracker, title) {
 		selectionStyle: 'none',
 		backgroundColor: '#e2e2e2',
 	});
-	//row.rightImage = null;
-	//row.backgroundSelectedImage = null;
-	//row.backgroundFocusImage = null;
+	
 
 	row.add(table);
 	datebl  = getpubDateLabel(post.pubDate);
 	rowText.add(datebl);
-
-	
-
+	table = null;
+	datebl = null;
+	rowText = null;
 	return row;
 }
 

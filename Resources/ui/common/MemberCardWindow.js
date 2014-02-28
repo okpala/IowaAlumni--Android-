@@ -136,12 +136,22 @@ function  MemberCardWindow(title, tracker){
 	  height: 127
 	});
 	
+	var transparentView = Titanium.UI.createView({ 
+		backgroundColor: '#ccc',
+		opacity:0.9,
+		height: Ti.UI.FILL,
+		width: Ti.UI.FILL,
+		top: 0,
+		zIndex:5,
+	});	
+	
 	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
 	row.add(thawk);
 	rows.push(row);
 	function refreshRssTable() {
-		self.add(loading);
+		transparentView.add(loading);
 		loading.show();
+		self.add(transparentView);
 		
 		var xhr = Ti.Network.createHTTPClient({
 	    onload: function(e) {
@@ -218,11 +228,13 @@ function  MemberCardWindow(title, tracker){
 				
 				table.setData(rows);
 				self.add(table);
-				self.remove(loading);	
+				transparentView.remove(loading);
+			    self.remove(transparentView);	
 				
 		    },
 		    onerror: function(e) {
-		    	self.remove(loading);
+		    	transparentView.remove(loading);
+			    self.remove(transparentView);
 				Ti.API.debug("STATUS: " + this.status);
 			    Ti.API.debug("TEXT:   " + this.responseText);
 			    Ti.API.debug("ERROR:  " + e.error);

@@ -10,6 +10,7 @@ function StaticAd(adList, tracker, title){
 	
 	var ad = createCachingImageView.createCachingImageView({
 	  image:    adList[0].ad,
+	  defaultImage: Ti.Filesystem.resourcesDirectory + "loader480x120.png",
 	  width: Ti.UI.FILL,
 	  height: 70,
 	  bottom:0,

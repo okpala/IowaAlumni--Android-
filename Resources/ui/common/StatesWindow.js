@@ -12,58 +12,99 @@ var ErrorWindow = require('ui/common/ErrorWindow');
  */
 
 function ClubsWindow(title, tracker){
+	
 	var Feeds = new Feed(); 
 	var url = Feeds.gameWatchFeed();
 	var self = new ApplicationWindow(title);
+	var introLabel = Ti.UI.createLabel({
+				text: 'Want to connect with fellow UI grads, need a place to watch the next game with fellow Hawkeye fans? IOWA clubs have you covered—find a location near you!',
+				textAlign: 'left',
+				color: "#000000",
+				left: 10,
+				right: 10,
+				width: Ti.UI.FILL,
+				height: 'auto',
+				top: 10,
+				font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+					        
+		});
+			
+		
+			
+		var people = Ti.UI.createImageView({
+				image:    Ti.Filesystem.resourcesDirectory + 'iowaPeople.png',
+			  	left: 10,
+				right: 10,
+				width: Ti.UI.FILL,
+			  	height: 70
+			  
+		});
 	
-	var tableHeader = Ti.UI.createTableView({
+
+	
+	var textView = Ti.UI.createView({
+			left: 10,
+            width: screenWidth,
+            visible: false,
+            height:'auto'
+         });
+         textView.add(introLabel);
+         self.add(textView) ; 
+              
+     var tableHeight = textView.toImage().height + people.height; 
+
+	var transparentView = Titanium.UI.createView({ 
+		backgroundColor: '#ccc',
+		opacity:0.9,
+		height: Ti.UI.FILL,
+		width: Ti.UI.FILL,
+		top: 0,
+		zIndex:5,
+	});	
+	var table = Ti.UI.createTableView({
+        height: 'auto',
+        backgroundColor:'#e2e2e2',
+        top: tableHeight,
+        zIndex: 1 
+    });
+    
+    /*	var errorLabel = Ti.UI.createLabel({
+		text:"Test test.",
+		top:15,
+		height:"auto",
+		color:"#576c89",
+		textAlign:"center",
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:15,fontWeight:'bold'},
+		shadowColor:"#fff",
+		shadowOffset:{x:0,y:1}
+	});
+	var row = Ti.UI.createTableViewRow();
+	row.add(errorLabel);
+	table.setData([row]);*/
+	tracker.trackScreen(title);
+	var loading = new LoadingScreen();
+
+	function refreshRssTable() {
+		
+		transparentView.add(loading);
+		loading.show();
+		self.add(transparentView);
+		
+		
+		
+		
+		var rows = [];
+		var tableHeader = Ti.UI.createTableView({
 			height: 'auto',
 			top: 0,
 			backgroundColor:'#e2e2e2',
 			separatorColor: "transparent"
 		
-	});
-	
-	
-	var introLabel = Ti.UI.createLabel({
-			text: 'Want to connect with fellow UI grads, need a place to watch the next game with fellow Hawkeye fans? IOWA clubs have you covered—find a location near you!',
-			textAlign: 'left',
-			color: "#000000",
-			left: 10,
-			right: 10,
-			width: Ti.UI.FILL,
-			height: 'auto',
-			top: 10,
-			font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
-				        
-	});
+		});
 		
-	
 		
-	var people = Ti.UI.createImageView({
-			image:    Ti.Filesystem.resourcesDirectory + 'iowaPeople.png',
-		  	left: 10,
-			right: 10,
-			width: Ti.UI.FILL,
-		  	height: 70
-		  
-	});
-
-	
-	var table = Ti.UI.createTableView({
-			height: 'auto',
-			bottom: 70,
-			backgroundColor:'#e2e2e2'
 		
-	});
-	
-	tracker.trackScreen(title);
-	var loading = new LoadingScreen();
-	
-	function refreshRssTable() {
-		var rows = [];
-
-		/* Table Header */
+		// Table Header 
 		var row = Ti.UI.createTableViewRow({backgroundSelectedColor: "transparent"});
 		row.add(introLabel);
 	
@@ -80,22 +121,12 @@ function ClubsWindow(title, tracker){
 		var adList = [];
 		var clubsInfo = [];
 		var data = [];	
-		var textView = Ti.UI.createView({
-        	left: 10,
-            width: screenWidth,
-            visible: false,
-            height:'auto'
-         });
-         textView.add(introLabel);
-         self.add(textView) ; 
-              
-       table.top = textView.toImage().height + people.height; 
+		
        self.remove(textView) ;
   
-                
+            
            
-		self.add(loading);
-		loading.show(); 
+	
 		var xhr = Ti.Network.createHTTPClient({
 		    onload: function() {
 		    	var xml = this.responseXML;
@@ -145,67 +176,76 @@ function ClubsWindow(title, tracker){
 			
 			
 			
-			var rowCounter = 0;	
-			for (var i = 0; i <= clubs.length - 1; i++) {
-				if ((i == 0) || ((clubs[i - 1].state != clubs[i].state) && i != 0) ){ 
-				if (rowCounter % 2 == 0){
-					    var row = Ti.UI.createTableViewRow({
-					    	text: clubs[i].state,
-					        height: 50
-					    });
-				  }
-				  else{
-				  		var row = Ti.UI.createTableViewRow({
-					    	text: clubs[i].state,
-					    	backgroundColor:'#cccccc',
-					        height: 50
-					    });
-				  }
-		
-				var label = Ti.UI.createLabel({
-					 text: clubs[i].state,
-					 textAlign: 'center',
-					 color: "#000000",
-					 font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
-					        
-				});
-				   
-				    row.add(label);
-				    data.push(row);
-				  	rowCounter++;
-			    }
-			    
-			   
-			};	
-
-		   	table.setData(data);
-		   
-			//Ti.API.info(table.top);
-			//Ti.API.info(textView.toImage().height);
-			//Ti.API.info(people.height);
-
-			self.add(tableHeader);
-			self.add(table);
-			self.add(ad);
-			 table.addEventListener('click', function(e){
-			 	tracker.trackEvent({
-						category: title,
-						action: "click",
-						label: e.row.text,
-						value: 1
-				});
-				var stateClubs = getStateList(clubs, clubsInfo, e.row.text);
-				(new GameWatchWindow(stateClubs[0], stateClubs[1], tracker));
-			});
-			self.remove(loading);
+				var rowCounter = 0;	
+				for (var i = 0; i <= clubs.length - 1; i++) {
+					if ((i == 0) || ((clubs[i - 1].state != clubs[i].state) && i != 0) ){ 
+					if (rowCounter % 2 == 0){
+						    var row = Ti.UI.createTableViewRow({
+						    	text: clubs[i].state,
+						        height: 50
+						    });
+					  }
+					  else{
+					  		var row = Ti.UI.createTableViewRow({
+						    	text: clubs[i].state,
+						    	backgroundColor:'#cccccc',
+						        height: 50
+						    });
+					  }
 			
+					var label = Ti.UI.createLabel({
+						 text: clubs[i].state,
+						 textAlign: 'center',
+						 color: "#000000",
+						 font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
+						        
+					});
+					   
+					    row.add(label);
+					    data.push(row);
+					  	rowCounter++;
+				    }
+				    
+				   
+				};	
+	
+			  
+			   
+			   	table.addEventListener('click', function(e){
+				 	tracker.trackEvent({
+							category: title,
+							action: "click",
+							label: e.row.text,
+							value: 1
+					});
+					var stateClubs = getStateList(clubs, clubsInfo, e.row.text);
+					(new GameWatchWindow(stateClubs[0], stateClubs[1], tracker));
+				});
+
+
+				table.setData(data);
+				self.add(tableHeader);
+				self.add(ad);
+				self.add(table);
+				
+				
+				transparentView.remove(loading);
+				self.remove(transparentView);
+				
+				//tableHeader = null;
+				//table = null;
+				//ad = null;
+				//introLabel = null;
+				//people = null;
+				
 		    },
 		    onerror: function(e) {
-			    self.remove(loading);
+			    transparentView.remove(loading);
+			    self.remove(transparentView);
 			    Ti.API.debug("STATUS: " + this.status);
 			    Ti.API.debug("TEXT:   " + this.responseText);
 			    Ti.API.debug("ERROR:  " + e.error);
-			    var errorView = new ErrorWindow(refreshRssTable, title, tracker);
+			    var errorView = new ErrorWindow(refreshRssTable, title, tracker);    
 				self.add(errorView);
 		    },
 		    timeout:5000

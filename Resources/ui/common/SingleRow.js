@@ -36,7 +36,7 @@ function SingleRow(post, tracker, title) {
 				value: 1
 			});
 			new WebView (post.url);
-			
+
 	 });
 	table.height = rowText.height;
 	var data = [];
@@ -52,7 +52,7 @@ function SingleRow(post, tracker, title) {
 		link: 				post.url,
 		layout: 'vertical',
 		selectionStyle: 'none',
-		
+
 		backgroundColor: '#e2e2e2'
 	});
 	//row.rightImage = null;
@@ -88,7 +88,7 @@ function SingleRow(post, tracker, title) {
 	rowText.height = titlelbl.height + inputtimebl.height + inputplacebl.height +  25;
 	table.height = rowText.height;
 	row.height = table.height + 15;
-	
+
 	titlelbl = null;
 	timebl  = null;
 	inputtimebl = null;
@@ -126,7 +126,7 @@ function getTitleLabel(title) {
 	});
         view.add(temp);
 
-	
+
 
 	var label = Ti.UI.createLabel({
 		text: title,

@@ -8,12 +8,12 @@ function HomeSMSection(tracker){
 			height:				36,
 			width: 				300,
 			top:				10,
-		});
+	});
 		
-		var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
-		row.add(socialMediaView);
+	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
+	row.add(socialMediaView);
 		
-		var icon = new SocialMediaIcons();
+	var icon = new SocialMediaIcons();
 	
 	var facebookimage = icon.facebook(0,0,tracker);
 	var twitterimage = icon.twitter(0,53.6,tracker);
@@ -36,6 +36,14 @@ function HomeSMSection(tracker){
 		socialMediaView.add(linkedInimage);
 		socialMediaView.add(foursquareimage);
 		socialMediaView.add(pinterestimage);
+		
+		socialMediaView = null;
+		facebookimage = null;
+		twitterimage = null;
+		instagramimage = null;
+		linkedInimage = null;
+		foursquareimage = null;
+		pinterestimage = null;
 		
 		return row;
 }

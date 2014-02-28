@@ -42,7 +42,7 @@ function HomeImageSlider(images){
 		
 	var imagebox = createCachingImageView.createCachingImageView({
 		image: images[1].image,//.'http://www.iowalum.com/images/mobileslider/photo2.jpg',
-		defaultImage: Ti.Filesystem.resourcesDirectory + "loader400x600.gif",
+		defaultImage: Ti.Filesystem.resourcesDirectory + "loader400x600.png",
 		width: Ti.UI.FILL,
 		height: this.containerheight,
 		//hires: true,

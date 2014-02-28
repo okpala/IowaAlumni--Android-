@@ -33,9 +33,7 @@ function IAMIntroRow(post) {
 	    height: 'auto'
 	       
 	 });
-	    
 
-	
 	table.setData([rowText]);
 
 	var row = Ti.UI.createTableViewRow({
@@ -101,8 +99,6 @@ function getText (imageWidth, tableWidth){
 		textAlign:'left',
 		right: (imageWidth + 15),
 		width: Ti.UI.FILL,
-		
-		//height: view.toImage().height,
 		color:'#000000',
 		font: {fontFamily:'HelveticaNeueBold',fontSize:12,fontWeight:'bold'}
 	});

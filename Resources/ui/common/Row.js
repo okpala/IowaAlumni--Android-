@@ -64,16 +64,17 @@ function Row(post, tracker, title) {
 		width: 			60,
 		height: 		60,
 		right: 			15,
-		top: 			titlelbl.height+20,
+		top: 			titlelbl.height,
 		borderRadius:	4,
 		borderColor: 	'#d5d5d5',
 		borderWidth: 	1
 
 	});
-	//var postImage = getPostImage(post.image);
+	desclbl.top = titlelbl.height;
+	
 	var imagebox = createCachingImageView.createCachingImageView({
 		image: post.image, //"http://www.iowalum.com/blog/wp-content/uploads/2014/02/UIAA_Network1-150x150.png",
-		defaultImage: Ti.Filesystem.resourcesDirectory + "loader120x120.gif",
+		defaultImage: Ti.Filesystem.resourcesDirectory + "loader120x120.png",
 		width: Ti.UI.FILL,
 		height: Ti.UI.FILL,
 	});
@@ -82,7 +83,7 @@ function Row(post, tracker, title) {
 	imageContainer.add(imagebox);
 	container.add(imageContainer);
 
-	container.height = titlelbl.height + desclbl.height + posted.height + 35;
+	container.height = titlelbl.height + desclbl.height + posted.height + 20;
 	row.height = container.height;
 
 	row.add(container);
@@ -181,7 +182,7 @@ function getDescriptionLabel(description) {
 		height: 70,
 		//textAlign:'left',
 		width: 200,
-		ellipsize: true,
+		//ellipsize: true,
 		color:'#000000',
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});

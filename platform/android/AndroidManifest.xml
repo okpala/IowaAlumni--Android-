@@ -12,10 +12,7 @@
                                 <category android:name="android.intent.category.LAUNCHER"/>
                         </intent-filter>
                 </activity>
-<!--
-                <activity android:configChanges="keyboardHidden" android:launchMode="singleTask" android:name="ti.modules.titanium.map.TiMapActivity"/>
-                <uses-library android:name="com.google.android.maps"/>
--->
+
                 <activity android:configChanges="keyboardHidden" android:screenOrientation="portrait" android:name="org.appcelerator.titanium.TiActivity"/>
                 <activity android:configChanges="keyboardHidden" android:screenOrientation="portrait" android:name="org.appcelerator.titanium.TiTranslucentActivity" android:theme="@android:style/Theme.Translucent"/>
                 <activity android:name="ti.modules.titanium.ui.android.TiPreferencesActivity"/>

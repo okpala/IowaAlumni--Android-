@@ -24,7 +24,7 @@ function NavigateWindow(windowtitle) {
             if (actionBar) {
                 actionBar.backgroundImage = Ti.Filesystem.resourcesDirectory + 'navbar.png';
                 actionBar.title = windowtitle;
-                actionBar.logo = "back.png";
+                actionBar.logo = "images/black.png";
                 actionBar.onHomeIconItemSelected = function() {
                     self.close();
                 };

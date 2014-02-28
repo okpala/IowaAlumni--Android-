@@ -37,6 +37,7 @@ function NationalBenefitsWindow(title, tracker){
 
  	var table = Ti.UI.createTableView({
         height: 'auto',
+        backgroundColor:'#e2e2e2',
         top: 70,
         zIndex: 1 
     });
@@ -53,11 +54,19 @@ function NationalBenefitsWindow(title, tracker){
          (new MapWindow("Iowa City Benefits", tracker)).open();
     });
     
-   
+   var transparentView = Titanium.UI.createView({ 
+		backgroundColor: '#ccc',
+		opacity:0.9,
+		height: Ti.UI.FILL,
+		width: Ti.UI.FILL,
+		top: 0,
+		zIndex:5,
+	});	
 		        
     function refreshRssTable() {
-		self.add(loading);
+		transparentView.add(loading);
 		loading.show();
+		self.add(transparentView);
 		var xhr = Ti.Network.createHTTPClient({
 		    onload: function() {
 		    	
@@ -132,11 +141,13 @@ function NationalBenefitsWindow(title, tracker){
 		        textView.add(linkLabel);
 		        table.setData(data);
 		        self.add(table);
-		        self.remove(loading);                
+		        transparentView.remove(loading);
+			    self.remove(transparentView);               
 		
 		    },
 		    onerror: function(e) {
-			    self.remove(loading);
+			    transparentView.remove(loading);
+			    self.remove(transparentView);
 			    Ti.API.debug("STATUS: " + this.status);
 			    Ti.API.debug("TEXT:   " + this.responseText);
 			    Ti.API.debug("ERROR:  " + e.error);

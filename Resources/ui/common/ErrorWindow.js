@@ -69,11 +69,14 @@ function ErrorWindow(refreshRssTable, title, tracker){
 	var row = Ti.UI.createTableViewRow();
 	row.add(errorLabel);
 	rows.push(row);
+	
+	table.setData(rows);
+	
 	errorLabel = null;
 	thawk = null;
 	lastUpdatedLabel = null;
 	refreshLabel = null;
-	table.setData(rows);
+	row = null;
 	return table;
 }
 module.exports = ErrorWindow;
