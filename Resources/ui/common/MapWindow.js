@@ -119,7 +119,7 @@ function MapWindow(title, tracker) {
 							})
 						);
 					}
-					var mapHeight = ((Ti.Platform.displayCaps.platformHeight  * (Titanium.Platform.displayCaps.dpi / 160) - 60))/2;
+					var mapHeight = ((Ti.Platform.displayCaps.platformHeight  / (Titanium.Platform.displayCaps.dpi / 160) - 60))/2;
 					map = Map.createView({
 						mapType:Map.NORMAL_TYPE,
 						region: {latitude: companyInfo[0].latitude, longitude: companyInfo[0].longitude,

@@ -25,10 +25,10 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	});
 	
 	var code = Map.isGooglePlayServicesAvailable();
-	Ti.API.info(Ti.Platform.version);
-	Ti.API.info(code);
-	Ti.API.info(Map.SUCCESS);
-	Ti.API.info(Ti.Platform.version >= "4.0" );
+	//Ti.API.info(Ti.Platform.version);
+	//Ti.API.info(code);
+	//Ti.API.info(Map.SUCCESS);
+	//Ti.API.info(Ti.Platform.version >= "4.0" );
 	
 	
 	if (code == Map.SUCCESS && Ti.Platform.version >= "4.0" ) {
@@ -48,7 +48,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 			
 		}
 	 		
-		var mapHeight = ((Ti.Platform.displayCaps.platformHeight  * (Titanium.Platform.displayCaps.dpi / 160) - 60))/2;
+		var mapHeight = ((Ti.Platform.displayCaps.platformHeight  / (Titanium.Platform.displayCaps.dpi / 160) - 60))/2;
 		var map = Map.createView({
 			mapType:Map.NORMAL_TYPE,
 			region: {latitude: clubData[0].latitude, longitude: clubData[0].longitude,
@@ -62,17 +62,22 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 		table.top = map.height;
 		
 		table.addEventListener('click', function(e){
-			tracker.trackEvent({
-					category: "Game Watches",
-					action: "click",
-					label: clubData[e.index].club,
-					value: 1
-			});
-			self.add(map);
-			map.region = {latitude: gameWatchInfo[e.index].latitude, longitude: gameWatchInfo[e.index].longitude,
-					latitudeDelta:0.01, longitudeDelta:0.01 };
-			
-			map.selectAnnotation(gameWatchInfo[e.index]);
+			try{
+				tracker.trackEvent({
+						category: "Game Watches",
+						action: "click",
+						label: clubData[e.index].club,
+						value: 1
+				});
+				self.add(map);
+				map.region = {latitude: gameWatchInfo[e.index].latitude, longitude: gameWatchInfo[e.index].longitude,
+						latitudeDelta:0.01, longitudeDelta:0.01 };
+				
+				map.selectAnnotation(gameWatchInfo[e.index]);
+			}
+			catch(e){
+				
+			}
 		});
 		
 		self.addEventListener('focus', function(e){
@@ -217,6 +222,9 @@ tabGroup.addEventListener("open", function() {
 });
 tabGroup.open();
 
+table = null;
+tab1 = null;
+tab2 = null;
 return self;
 }
 

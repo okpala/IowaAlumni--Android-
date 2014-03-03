@@ -123,9 +123,7 @@ function ArticlesWindow(title, feed, tracker) {
 					        	
 						        for (var i = lastRow, c = lastRow + itemsLoad; i < c; i++) {
 						        	var item = items.item(i);
-						      		//Ti.API.info(item.getElementsByTagName('title'));
-						      		//Ti.API.info(item.getElementsByTagName('title').item(0));
-						      		//Ti.API.info(item.getElementsByTagName('title').item(0).textContent);
+
 							   		data.push({
 										title: item.getElementsByTagName('title').item(0).textContent,
 										link: item.getElementsByTagName('link').item(0).textContent,

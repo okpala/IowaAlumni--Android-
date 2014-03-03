@@ -185,7 +185,7 @@ function getDescriptionLabel(description, descWidth) {
 		top: 0,
 		height: 70,
 		width: Ti.UI.FILL,
-		ellipsize: true,
+		//ellipsize: true,
 		color:'#000000',
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
 	});

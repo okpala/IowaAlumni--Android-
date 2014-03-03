@@ -2,6 +2,7 @@ var ApplicationWindow = require('ui/common/ApplicationWindow');
 var Feed = require('ui/common/Feed');
 var LoadingScreen = require('ui/common/LoadingScreen');
 var ErrorWindow = require('ui/common/ErrorWindow');
+var createCachingImageView = require('ui/common/createRemoteImageView2');
 function  MemberCardWindow(title, tracker){
 	var Feeds = new Feed();
 	tracker.trackScreen(title);
@@ -122,9 +123,9 @@ function  MemberCardWindow(title, tracker){
 	row.add(passwordInfoLabel);
 	rows.push(row);
 
-	var image = Ti.UI.createImageView({
+	var image = createCachingImageView.createCachingImageView({
 	  image:    'http://iowalum.com/membership/images/MemberCard.png',
-	  //top:    0,
+	  defaultImage: Ti.Filesystem.resourcesDirectory + "loader.png",
 	  height: 420,
 	  width:  320
 	});
@@ -172,16 +173,24 @@ function  MemberCardWindow(title, tracker){
 			
 			function getMemberCard(isCard2){
 
-					//passwordTextField.blur();
 					self.remove(table);
-					self.backgroundColor = '#202020';
+					
+					Ti.UI.Android.SOFT_INPUT_STATE_HIDDEN;
 					wrongPasswordLabel.setVisible(false);
 					
 					if (isCard2 == true){
 						image.image =  'http://iowalum.com/membership/images/MemberCard2.png';
 					}
-					
-					self.add(image);		
+					var scrollMainView = Ti.UI.createScrollView({
+						top: 0,
+						backgroundColor:'#202020',
+						contentWidth: Ti.UI.FILL,
+						contentHeight: Ti.UI.FILL,
+						showVerticalScrollIndicator: false,
+						showHorizontalScrollIndicator: false
+					});
+					scrollMainView.add(image);	
+					self.add(scrollMainView);	
 			}
 			
 			

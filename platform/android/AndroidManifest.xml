@@ -18,7 +18,7 @@
                 <activity android:name="ti.modules.titanium.ui.android.TiPreferencesActivity"/>
 
                 <service android:exported="false" android:name="org.appcelerator.titanium.analytics.TiAnalyticsService"/>
-                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDfXVCw5minmJHw2152uqSSgdp5X-YjqUY"/>
+                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAh_xLQS9EpEOES5o-elGmqpo2F6Lhq5Ec"/>
         </application>
 
         

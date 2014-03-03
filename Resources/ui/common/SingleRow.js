@@ -9,9 +9,9 @@ var subTextHieght = 15;
 
 function SingleRow(post, tracker, title) {
    var table = Ti.UI.createTableView({
-		separatorColor: 	'#d5d5d5',
+		separatorColor: 	'#ffffff',
 		backgroundColor: 	'#ffffff',
-		height:				'auto',
+		height:				 getTitleLabelHieght(post.title) + 65,
 		width: 				Ti.UI.FILL,
 		left: 				10,
 		right:				10,
@@ -23,7 +23,111 @@ function SingleRow(post, tracker, title) {
 		borderWidth: 		1,
 		scrollable: 		false
 	});
+	table.addEventListener('click', function(e) {
+	 		tracker.trackEvent({
+				category: "Events",
+				action: "click",
+				label: "An Event in the " + title + "'s Window - " + post.url,
+				value: 1
+			});
+			new WebView (post.url);
 
+	 });
+	
+	var label = Ti.UI.createLabel({
+		text: post.title,
+		left: 15,
+		right: 15,
+		top: 10,
+		//bottom:10,
+		//height: view.toImage().height,
+		textAlign:'left',
+		width: Ti.UI.FILL,
+		color:'#303030',
+        shadowOpacity:0.5,
+        shadowOffset:{x:0, y:1},
+		font:{fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
+	});
+	var row1 = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
+	row1.add(label);
+	
+	
+	var text = Ti.UI.createLabel({
+		text: 'Time: ',
+		left: 15,
+		top: 5,
+		textAlign:'left',
+		width: 200,
+		height: 15,
+		color:'#000000',
+		font:{fontFamily:'HelveticaNeue-Bold',fontSize:12,fontWeight:'bold'}
+	});
+	
+	var timeLabel = Ti.UI.createLabel({
+		text: (new EditText (post.snl)).adjustedText(),
+		left: 55,
+		top: 5,
+		textAlign:'left',
+		width: 200,
+		height: subTextHieght,
+		color:'#000000',
+		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+	});
+	var row2 = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
+	row2.add(text);
+	row2.add(timeLabel);
+	
+	var placeTitleLabel = Ti.UI.createLabel({
+		text: 'Place: ',
+		left: subTextHieght,
+		top: 3,
+		textAlign:'left',
+		width: 200,
+		height: 20,
+		color:'#000000',
+		font:{fontFamily:'HelveticaNeue-Bold',fontSize:12,fontWeight:'bold'}
+	});
+	
+	var placeLabel = Ti.UI.createLabel({
+		text: (new EditText (post.place)).adjustedText(),
+		left: 55,
+		//bottom: 10,
+		top:3,
+		height: subTextHieght,
+		textAlign:'left',
+		width: 200,
+		color:'#000000',
+		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+	});
+	
+	var row3 = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
+	row3.add(placeTitleLabel);
+	row3.add(placeLabel);
+	
+	var row = Ti.UI.createTableViewRow({
+		//hasChild: true,
+		height: table.height,
+		padding: 0,
+		top: 0,
+		bottom: 10,
+		link: 				post.url,
+		layout: 'vertical',
+		selectionStyle: 'none',
+		backgroundColor: '#e2e2e2'
+	});
+	
+	table.setData([row1, row2, row3]);
+	row.add(table);
+//	row.height = table.toImage().height;
+	
+	placeTitleLabel = null;
+	placeLabel  = null;
+	timeLabel = null;
+	text  = null;
+	label = null;
+	table = null;
+	
+/*
 	 var rowText = Ti.UI.createTableViewRow({
 	        height: 150
 	    });
@@ -97,7 +201,7 @@ function SingleRow(post, tracker, title) {
 	table = null;
 
 
-
+*/
 	return row;
 }
 
@@ -106,7 +210,7 @@ function SingleRow(post, tracker, title) {
  */
 
 
-function getTitleLabel(title) {
+function getTitleLabelHieght(title) {
 	// Temp label to get height
 	// At this font-size/font-face the height per line is 32
 
@@ -143,7 +247,7 @@ function getTitleLabel(title) {
 		font:{fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
 	});
 
-	return label;
+	return view.toImage().height;
 }
 
 /*

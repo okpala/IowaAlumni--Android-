@@ -29,8 +29,7 @@ function Ad(post, tracker, title) {
 		top: 10
 		
 	});
-	Ti.API.info(post.ad);
-	//alert(post.ad);
+	
 	row.add(imagebox);
 	imagebox = null;
 	

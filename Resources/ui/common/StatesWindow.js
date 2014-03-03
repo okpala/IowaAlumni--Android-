@@ -41,18 +41,19 @@ function ClubsWindow(title, tracker){
 		});
 	
 
-	
+	var screenWidth = Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160);
 	var textView = Ti.UI.createView({
 			left: 10,
-            width: screenWidth,
+            width: screenWidth - 20,
             visible: false,
             height:'auto'
          });
          textView.add(introLabel);
          self.add(textView) ; 
               
-     var tableHeight = textView.toImage().height + people.height; 
-
+     var tableHeight = textView.toImage().height + people.height - 10; 
+	self.remove(textView) ;
+	
 	var transparentView = Titanium.UI.createView({ 
 		backgroundColor: '#ccc',
 		opacity:0.9,
@@ -117,12 +118,12 @@ function ClubsWindow(title, tracker){
 		
 		
 	
-		var screenWidth = Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160);
+		
 		var adList = [];
 		var clubsInfo = [];
 		var data = [];	
 		
-       self.remove(textView) ;
+       
   
             
            
