@@ -2,7 +2,7 @@
         <supports-screens android:anyDensity="true"/><uses-sdk android:minSdkVersion="9" android:targetSdkVersion="14" />
 
         
-        <application android:debuggable="true" android:icon="@drawable/appicon" android:label="UIowa Alumni" android:name="UiowaAlumniApplication">
+        <application android:debuggable="false" android:icon="@drawable/appicon" android:label="UIowa Alumni" android:name="UiowaAlumniApplication">
 
                 <!-- TI_APPLICATION -->
 
@@ -18,7 +18,7 @@
                 <activity android:name="ti.modules.titanium.ui.android.TiPreferencesActivity"/>
 
                 <service android:exported="false" android:name="org.appcelerator.titanium.analytics.TiAnalyticsService"/>
-                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAh_xLQS9EpEOES5o-elGmqpo2F6Lhq5Ec"/>
+                <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDfXVCw5minmJHw2152uqSSgdp5X-YjqUY"/>
         </application>
 
         

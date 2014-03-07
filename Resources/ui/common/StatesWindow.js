@@ -25,7 +25,7 @@ function ClubsWindow(title, tracker){
 				width: Ti.UI.FILL,
 				height: 'auto',
 				top: 10,
-				font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+				font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'normal'}
 					        
 		});
 			
@@ -39,19 +39,28 @@ function ClubsWindow(title, tracker){
 			  	height: 70
 			  
 		});
-	
-
-	var screenWidth = Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160);
+	/*
+	alert("width dp -" + Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160));
+	alert("width -" + Ti.Platform.displayCaps.platformWidth  / (Titanium.Platform.displayCaps.dpi / 160));
+	alert("platform width -" + Ti.Platform.displayCaps.platformWidth );
+	alert("dpi-" + Titanium.Platform.displayCaps.dpi);
+	*/
+	var screenWidth;
+	if((Titanium.Platform.displayCaps.dpi / 160) >= 1)  screenWidth = Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160);
+	 else tableHeight = screenWidth = Ti.Platform.displayCaps.platformWidth;
 	var textView = Ti.UI.createView({
 			left: 10,
             width: screenWidth - 20,
             visible: false,
             height:'auto'
          });
-         textView.add(introLabel);
-         self.add(textView) ; 
-              
-     var tableHeight = textView.toImage().height + people.height - 10; 
+    textView.add(introLabel);
+    self.add(textView) ; 
+    var tableHeight;
+    if((Titanium.Platform.displayCaps.dpi / 160) >= 2)  tableHeight = textView.toImage().height + people.height - ((Titanium.Platform.displayCaps.dpi / 160) * 10); 
+	else if((Titanium.Platform.displayCaps.dpi / 160) >= 1)  tableHeight = textView.toImage().height + people.height - ((Titanium.Platform.displayCaps.dpi / 160) * 5); 
+    else tableHeight = textView.toImage().height + people.height;
+    
 	self.remove(textView) ;
 	
 	var transparentView = Titanium.UI.createView({ 
@@ -198,7 +207,7 @@ function ClubsWindow(title, tracker){
 						 text: clubs[i].state,
 						 textAlign: 'center',
 						 color: "#000000",
-						 font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
+						 font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'bold'}
 						        
 					});
 					   

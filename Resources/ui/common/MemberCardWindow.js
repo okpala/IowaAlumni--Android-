@@ -32,7 +32,7 @@ function  MemberCardWindow(title, tracker){
 		right: 10,
 		textAlign: 'center',
 		top: 10,
-		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'normal'}
 	});
 	
 	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
@@ -46,7 +46,7 @@ function  MemberCardWindow(title, tracker){
   		width: 140, 
   		height: 30,
   		backgroundColor :"#fff",
-  		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+  		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 	});
 	
 	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
@@ -58,7 +58,7 @@ function  MemberCardWindow(title, tracker){
 		//width: 50,
 		height:35,
 		top: 5,
-		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 		
 	});
 	
@@ -67,7 +67,7 @@ function  MemberCardWindow(title, tracker){
 	rows.push(row);
 	
 	var activityIndicator = Ti.UI.createActivityIndicator({
-		  font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'},
+		  font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'},
 		  message: 'Checking Password...',
 		  style: Ti.UI.ActivityIndicatorStyle.DARK,
 		  top:5,
@@ -86,7 +86,7 @@ function  MemberCardWindow(title, tracker){
 		width: 310,
 		color:'#FF0000',
 		top: 5,
-		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 	});
 	
 	
@@ -102,7 +102,7 @@ function  MemberCardWindow(title, tracker){
 		top: 5,
 		textAlign: 'left',
   		left: 10,
-		font: {fontFamily:'Helvetica-Bold',fontSize:12,fontWeight:'normal'}
+		font: {fontFamily:'Helvetica-Bold',fontSize:12,fontWeight:'bold'}
 	});
 	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
 	row.add(passwordHeaderLabel);
@@ -116,7 +116,7 @@ function  MemberCardWindow(title, tracker){
 		top: 3,
   		left: 10,
   		right: 10,
-		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 	});
 	
 	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});	
@@ -157,10 +157,12 @@ function  MemberCardWindow(title, tracker){
 		var xhr = Ti.Network.createHTTPClient({
 	    onload: function(e) {
 	    	
-		
+			
+
 			// function called in readyState DONE (4)
-			Ti.API.info('onload called, HTTP status = '+this.status);
+			//Ti.API.info('onload called, HTTP status = '+this.status);
 			var xml = this.responseXML;
+		
 		   	var items = xml.documentElement.getElementsByTagName("item");
 		   	var item = items.item(0);
 		   	var password = [];
@@ -183,7 +185,7 @@ function  MemberCardWindow(title, tracker){
 					}
 					var scrollMainView = Ti.UI.createScrollView({
 						top: 0,
-						backgroundColor:'#202020',
+						backgroundColor:'#191919',
 						contentWidth: Ti.UI.FILL,
 						contentHeight: Ti.UI.FILL,
 						showVerticalScrollIndicator: false,
@@ -229,7 +231,7 @@ function  MemberCardWindow(title, tracker){
 				else {
 					wrongPasswordLabel.setVisible(true);
 				}
-			
+		
 			}, 3000);
 					
 					

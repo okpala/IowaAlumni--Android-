@@ -34,7 +34,7 @@ function MapWindow(title, tracker) {
 		right: 10,
 		width: Ti.UI.FILL,
 		top: 10,
-		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'normal'}
 					        
 	});
 	textView.add(introLabel);	
@@ -45,7 +45,7 @@ function MapWindow(title, tracker) {
 		right: 10,
 		bottom: 2,
 		color: 'blue',
-		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'normal'}
 					        
 	});
 				
@@ -195,7 +195,7 @@ function MapWindow(title, tracker) {
 				        height: 20,
 				        top: 10,
 				        left: 10,
-				        font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
+				        font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'bold'}
 				    });
 				    var discountLabel = Ti.UI.createLabel({
 				        text: (businessesInfo[i].discount),
@@ -203,7 +203,7 @@ function MapWindow(title, tracker) {
 				        textAlign: 'left',
 				        left: 10,
 				        top: 31,
-				        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+				        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 				    });
 				    row.add(companyLabel);
 				    row.add(discountLabel);

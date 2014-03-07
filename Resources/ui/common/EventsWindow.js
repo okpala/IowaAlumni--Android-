@@ -17,7 +17,7 @@ function EventsWindow(title, tracker) {
 	/**
 	 * We're going to create an infinite loading table view. Whenever you get close to the bottom, we'll load more rows.
 	 */
-
+	var itemsLoad = 10;
 	var isAndroid = Ti.Platform.osname === 'android';
 	var Feeds = new Feed(); 
 	var url = Feeds.eventsFeed();
@@ -29,15 +29,8 @@ function EventsWindow(title, tracker) {
 		top: 0,
 		zIndex:5,
 	});	
-/*
-	var table = Ti.UI.createTableView({ 
-		height: 'auto',
-        //zIndex: 1, 
-		bottom: 70, 
-		backgroundColor:'#e2e2e2',
-		separatorColor: '#e2e2e2',
-	});
-*/
+
+
 	tracker.trackScreen(title);
 	function refreshRssTable() {
 		/**
@@ -89,95 +82,98 @@ function EventsWindow(title, tracker) {
 		    Ti.API.warn('LOAD DATA TRIGGERED!');
 		    var xhr = Ti.Network.createHTTPClient({
 			    onload: function() {
-
-
-			    	var xml = this.responseXML;
-
-			    	// simulate an asynchronous HTTP request loading data after 500 ms
-				    setTimeout(function() {
-				    	if (firstpass == true){
-				    		firstpass = false;
-				    		var items = xml.documentElement.getElementsByTagName("item2");
-						   	var item = items.item(0);
-						   	rows.push(refresh);
-						   	var adList = [];
-						   	adList.push({                 
-					           ad: item.getElementsByTagName( 'ad').item(0).textContent,
-					           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
-
-							});
-							var items = xml.documentElement.getElementsByTagName("item2");
-							var ad = new StaticAd(adList, tracker, title);
-
-							//In database the Events' Ads are from index 0 to 2
-							var items = xml.documentElement.getElementsByTagName("item3");
-							for (var i = 0; i < 3; i++) {
-						   		var item = items.item(i);
-							   	innerAdList.push({                 
+					if (this.responseXML != null){
+				    	var xml = this.responseXML;
+	
+				    	// simulate an asynchronous HTTP request loading data after 500 ms
+					    setTimeout(function() {
+					    	if (firstpass == true){
+					    		firstpass = false;
+					    		var items = xml.documentElement.getElementsByTagName("item2");
+							   	var item = items.item(0);
+							   	rows.push(refresh);
+							   	var adList = [];
+							   	adList.push({                 
 						           ad: item.getElementsByTagName( 'ad').item(0).textContent,
-						           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,      
+						           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+	
 								});
-							}
-
-							self.add(ad);
-
-				    	}
-
-				        // we got our data; push some new rows
-				        var items = xml.documentElement.getElementsByTagName("item");
-				        if ( lastRow + 10 < items.length){
-
-					        for (var i = lastRow, c = lastRow + 10; i < c; i++) {
-					        	var item = items.item(i);
-
-					   			data.push({
-									snl: item.getElementsByTagName('snl').item(0).textContent,	
-									place: item.getElementsByTagName('place').item(0).textContent,
-									title: item.getElementsByTagName('title').item(0).textContent,
-									link: item.getElementsByTagName('link').item(0).textContent,
-									description: item.getElementsByTagName('description').item(0).textContent,
-									pubDate: item.getElementsByTagName('pubDate').item(0).textContent,
-									hlink: item.getElementsByTagName('hlink').item(0).textContent,
-								});
-
-								var post = new Post(data[i]);
-
-								if ((Counter == 0) ||(tempDate != post.pubDate && Counter != 0)){
-										var header = new HeaderRow(post, tracker, title);
-
-										if (headerCounter != 0 && (headerCounter % 3) == 0 && adIndex < 3 ){
-											
-											var row = new Ad(innerAdList[adIndex], tracker, title);
-											rows.push(row);
-											adIndex++;
-											if (adIndex == 3){
-												adIndex = 0;
-											} 
-										}
-
-										rows.push(header);
-										headerCounter++;
-
+								//var items = xml.documentElement.getElementsByTagName("item2");
+								var ad = new StaticAd(adList, tracker, title);
+	
+								//In database the Events' Ads are from index 0 to 2
+								var items = xml.documentElement.getElementsByTagName("item3");
+								for (var i = 0; i < 3; i++) {
+							   		var item = items.item(i);
+								   	innerAdList.push({                 
+							           ad: item.getElementsByTagName( 'ad').item(0).textContent,
+							           adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,      
+									});
 								}
-								var row = new SingleRow(post, tracker, title);
-								rows.push(row);
-
-								Counter++;
-								tempDate = post.pubDate;
-					            //rows.push({ title: 'Row ' + i });
+	
+								self.add(ad);
+	
+					    	}
+	
+					        // we got our data; push some new rows
+					        var items = xml.documentElement.getElementsByTagName("item");
+					        if ( lastRow < items.length){
+								if ( lastRow + itemsLoad > items.length){
+						        	itemsLoad = items.length - lastRow;
+						        }
+						        	
+						        for (var i = lastRow, c = lastRow + itemsLoad; i < c; i++) {
+						        	var item = items.item(i);
+						        	
+	
+						   			data.push({
+										snl: item.getElementsByTagName('snl').item(0).textContent,	
+										place: item.getElementsByTagName('place').item(0).textContent,
+										title: item.getElementsByTagName('title').item(0).textContent,
+										link: item.getElementsByTagName('link').item(0).textContent,
+										description: item.getElementsByTagName('description').item(0).textContent,
+										pubDate: item.getElementsByTagName('pubDate').item(0).textContent,
+										hlink: item.getElementsByTagName('hlink').item(0).textContent,
+									});
+	
+									var post = new Post(data[i]);
+	
+									if ((Counter == 0) ||(tempDate != post.pubDate && Counter != 0)){
+											var header = new HeaderRow(post, tracker, title);
+	
+											if (headerCounter != 0 && (headerCounter % 3) == 0 && adIndex < 3 ){
+												
+												var row = new Ad(innerAdList[adIndex], tracker, title);
+												rows.push(row);
+												adIndex++;
+												if (adIndex == 3){
+													adIndex = 0;
+												} 
+											}
+	
+											rows.push(header);
+											headerCounter++;
+	
+									}
+									var row = new SingleRow(post, tracker, title);
+									rows.push(row);
+	
+									Counter++;
+									tempDate = post.pubDate;
+						            //rows.push({ title: 'Row ' + i });
+						        }
 					        }
-				        }
-				        lastRow = c;
-				        // and push this into our table.
-				        transparentView.remove(loading);
-			    		self.remove(transparentView);
-				        table.setData(rows);
-				        // now we're done; reset the loadData flag and start the interval up again
-				        loadData = false;
-				        setTimeout(checkSync, 200);
-				        Ti.API.warn('DATA LOADED!');
-				    }, 500);
-
+					        lastRow = c;
+					        // and push this into our table.
+					        transparentView.remove(loading);
+				    		self.remove(transparentView);
+					        table.setData(rows);
+					        // now we're done; reset the loadData flag and start the interval up again
+					        loadData = false;
+					        setTimeout(checkSync, 200);
+					        Ti.API.warn('DATA LOADED!');
+					    }, 500);
+				}
 			 },
 		    onerror: function(e) {
 			    transparentView.remove(loading);

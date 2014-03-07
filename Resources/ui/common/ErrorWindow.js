@@ -29,7 +29,7 @@ function ErrorWindow(refreshRssTable, title, tracker){
 		shadowOffset:{x:0,y:1}
 	});
 	
-	var row = Ti.UI.createTableViewRow({height:30});
+	var row = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent", height:30});
 	row.add(lastUpdatedLabel);	
 	row.add(refreshLabel);
 	row.addEventListener('click', function() {

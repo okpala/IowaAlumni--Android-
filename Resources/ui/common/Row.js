@@ -2,6 +2,7 @@ var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
 var WebView = require('ui/common/WebView');
 var createCachingImageView = require('ui/common/createRemoteImageView2');
+var EditText = require('ui/common/EditText');
 /*
  * Post Object
  * Essential attributes
@@ -64,14 +65,14 @@ function Row(post, tracker, title) {
 		width: 			60,
 		height: 		60,
 		right: 			15,
-		top: 			titlelbl.height,
+		top: 			titlelbl.height + 3,
 		borderRadius:	4,
 		borderColor: 	'#d5d5d5',
 		borderWidth: 	1
 
 	});
-	desclbl.top = titlelbl.height;
 	
+
 	var imagebox = createCachingImageView.createCachingImageView({
 		image: post.image, //"http://www.iowalum.com/blog/wp-content/uploads/2014/02/UIAA_Network1-150x150.png",
 		defaultImage: Ti.Filesystem.resourcesDirectory + "loader120x120.png",
@@ -83,7 +84,15 @@ function Row(post, tracker, title) {
 	imageContainer.add(imagebox);
 	container.add(imageContainer);
 
-	container.height = titlelbl.height + desclbl.height + posted.height + 20;
+	container.height = titlelbl.height + desclbl.height + posted.height + 25;
+	 if((Titanium.Platform.displayCaps.dpi / 160) > 2) {
+	 	titlelbl.height = titlelbl.height - 10;
+	 	titlelbl.top = 0;
+	 	desclbl.top = titlelbl.height;
+	 	imageContainer.top = titlelbl.height;
+	 	 container.height = titlelbl.height + desclbl.height + posted.height + 10;
+	 	 posted.top = titlelbl.top + titlelbl.height + desclbl.height + 5;
+	 }
 	row.height = container.height;
 
 	row.add(container);
@@ -98,7 +107,7 @@ function Row(post, tracker, title) {
 
 		new WebView (e.row.link);
 	});
-	
+
 
 	 posted = null;
 	 titlelbl = null;
@@ -175,13 +184,14 @@ function getTitleLabel(title) {
 function getDescriptionLabel(description) {
 
 	var text = Ti.UI.createLabel({
-		text: description,
+		text: (new EditText (description)).adjustedText(),
 		left: 15,
 		bottom: 10,
-		top: 0,
+		top: 3,
 		height: 70,
+		right: 80,
 		//textAlign:'left',
-		width: 200,
+		width: Ti.UI.FILL,
 		//ellipsize: true,
 		color:'#000000',
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}

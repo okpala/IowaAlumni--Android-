@@ -45,7 +45,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 	        height: 20,
 	        top: 10,
 	        left: 10,
-	        font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
+	        font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'bold'}
 	    });
 	    row.add(cityLabel);
 	    
@@ -57,7 +57,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 		        textAlign: 'left',
 		        left: 10,
 		        top: currentTop,
-		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 		    }); 
 	    row.add(leaderLabel);
 	    currentTop = currentTop + 15;
@@ -72,7 +72,7 @@ function ClubsWindow(clubData, clubInfoData, tabGroup, tracker) {
 		        left: 10,
 		        top: currentTop,
 		        autoLink: Titanium.UI.AUTOLINK_PHONE_NUMBERS,
-		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 		    });
 		    row.add(phoneLabel);
 		    currentTop = currentTop + 15;
@@ -112,7 +112,7 @@ function createEmail(clubInfoData, index, currentTop, tracker){
 		        left: 10,
 		        top: currentTop,
 		        autoLink: Titanium.UI.AUTOLINK_EMAIL_ADDRESSES,
-		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 		    });
 		    
 		   
@@ -136,7 +136,7 @@ function createWeb(clubInfoData, index, currentTop, tracker){
 		        left: 10,
 		        top: currentTop,
 		        color: "blue",
-		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 		    });
 		   
 		    

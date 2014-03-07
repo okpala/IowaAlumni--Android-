@@ -31,7 +31,7 @@ function NationalBenefitsWindow(title, tracker){
         right: 10,
         width:  Ti.UI.FILL,
         top: 10,
-        font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+        font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'normal'}
                                 
      });
 
@@ -47,7 +47,7 @@ function NationalBenefitsWindow(title, tracker){
         right: 10,
         top: 60,
         color: 'blue',
-        font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+        font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'normal'}
     });
                 
    linkLabel.addEventListener('click', function(e){
@@ -113,15 +113,15 @@ function NationalBenefitsWindow(title, tracker){
 		                height: 20,
 		                top: 10,
 		                left: 10,
-		                font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
+		                font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'bold'}
 		            });
 		            var descriptionLabel = Ti.UI.createLabel({
 		                text: (discount[i].description),
 		                color: "#000000",
 		                textAlign: 'left',
 		                left: 10,
-		                top: 31,
-		                font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		                top: 34,
+		                font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 		            });
 		            row.add(titleLabel);
 		            row.add(descriptionLabel);

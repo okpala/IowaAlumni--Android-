@@ -11,7 +11,7 @@ function SingleRow(post, tracker, title) {
    var table = Ti.UI.createTableView({
 		separatorColor: 	'#ffffff',
 		backgroundColor: 	'#ffffff',
-		height:				 getTitleLabelHieght(post.title) + 65,
+		height:				getTitleLabelHieght(post.title) + 75,
 		width: 				Ti.UI.FILL,
 		left: 				10,
 		right:				10,
@@ -33,9 +33,9 @@ function SingleRow(post, tracker, title) {
 			new WebView (post.url);
 
 	 });
-	
+	if((Titanium.Platform.displayCaps.dpi / 160) >= 2)  table.height = getTitleLabelHieght(post.title) + 50;
 	var label = Ti.UI.createLabel({
-		text: post.title,
+		text: (new EditText (post.title)).adjustedText(),
 		left: 15,
 		right: 15,
 		top: 10,
@@ -46,7 +46,7 @@ function SingleRow(post, tracker, title) {
 		color:'#303030',
         shadowOpacity:0.5,
         shadowOffset:{x:0, y:1},
-		font:{fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
+		font:{fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'bold'}
 	});
 	var row1 = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
 	row1.add(label);
@@ -71,7 +71,7 @@ function SingleRow(post, tracker, title) {
 		width: 200,
 		height: subTextHieght,
 		color:'#000000',
-		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 	});
 	var row2 = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
 	row2.add(text);
@@ -97,7 +97,7 @@ function SingleRow(post, tracker, title) {
 		textAlign:'left',
 		width: 200,
 		color:'#000000',
-		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		font:{fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 	});
 	
 	var row3 = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
@@ -118,7 +118,7 @@ function SingleRow(post, tracker, title) {
 	
 	table.setData([row1, row2, row3]);
 	row.add(table);
-//	row.height = table.toImage().height;
+
 	
 	placeTitleLabel = null;
 	placeLabel  = null;
@@ -127,87 +127,14 @@ function SingleRow(post, tracker, title) {
 	label = null;
 	table = null;
 	
-/*
-	 var rowText = Ti.UI.createTableViewRow({
-	        height: 150
-	    });
 
-	 rowText.addEventListener('click', function(e) {
-	 		tracker.trackEvent({
-				category: "Events",
-				action: "click",
-				label: "An Event in the " + title + "'s Window - " + post.url,
-				value: 1
-			});
-			new WebView (post.url);
-
-	 });
-	table.height = rowText.height;
-	var data = [];
-	 data.push(rowText);
-	table.setData(data);
-
-	var row = Ti.UI.createTableViewRow({
-		//hasChild: true,
-		height: table.height+15,
-		padding: 0,
-		top: 0,
-		bottom: 0,
-		link: 				post.url,
-		layout: 'vertical',
-		selectionStyle: 'none',
-
-		backgroundColor: '#e2e2e2'
-	});
-	//row.rightImage = null;
-	//row.backgroundSelectedImage = null;
-	//row.backgroundFocusImage = null;
-
-	row.add(table);
-
-
-	var titlelbl = getTitleLabel(post.title);
-	rowText.add(titlelbl);
-
-	var timebl  = timeLabel();
-	rowText.add(timebl);
-
-	var inputtimebl  = getTime(post.snl);
-	rowText.add(inputtimebl);
-
-	var inputplacebl  = getPlace(post.place);
-	rowText.add(inputplacebl);
-
-	var placebl  = placeLabel();
-	rowText.add(placebl);
-
-
-	timebl.top =   titlelbl.height + 10 ;
-	inputtimebl.top  = timebl.top;
-	placebl.top =  inputplacebl.top = timebl.height  + titlelbl.height + 15 ;
-
-
-
-
-	rowText.height = titlelbl.height + inputtimebl.height + inputplacebl.height +  25;
-	table.height = rowText.height;
-	row.height = table.height + 15;
-
-	titlelbl = null;
-	timebl  = null;
-	inputtimebl = null;
-	inputplacebl  = null;
-	placebl = null;
-	table = null;
-
-
-*/
 	return row;
 }
 
 /*
  * Helper Functions
  */
+
 
 
 function getTitleLabelHieght(title) {

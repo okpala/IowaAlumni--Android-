@@ -22,6 +22,7 @@ function HeaderRow(post, tracker, title) {
 
 	 var rowText = Ti.UI.createTableViewRow({
 	 		backgroundImage: Ti.Filesystem.resourcesDirectory + 'gold.png', 
+	 		backgroundSelectedImage: Ti.Filesystem.resourcesDirectory + 'blue.png', 
 	        height: 50,       
 	 });
 	 
@@ -48,7 +49,7 @@ function HeaderRow(post, tracker, title) {
 		bottom: 0,
 		link: 	post.hlink,
 		layout: 'vertical',
-		selectionStyle: 'none',
+		backgroundSelectedColor : "transparent",
 		backgroundColor: '#e2e2e2',
 	});
 	
@@ -77,7 +78,7 @@ function getpubDateLabel(pubDate) {
 		width: 200,
 		height: 25,
 		color:'#5c4e1a',
-		font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
+		font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'bold'}
 	});
 
 	return text;

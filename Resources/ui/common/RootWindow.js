@@ -67,7 +67,7 @@ function RootWindow(title, tracker) {
 		top: 10,
 		right: 10,
 		left: 10,
-		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+		font: {fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'normal'}
 	});
 	
 	var eventHeaderLabel = Ti.UI.createLabel({
@@ -76,7 +76,7 @@ function RootWindow(title, tracker) {
 		width: 300,
 		top: 10,
 		left: 10,
-		font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
+		font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'bold'}
 	});
 	
 	
@@ -86,7 +86,7 @@ function RootWindow(title, tracker) {
 		width: 300,
 		top: 10,
 		left: 10,
-		font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
+		font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'bold'}
 	});
 
 	function refreshRssTable() {
@@ -202,7 +202,7 @@ function RootWindow(title, tracker) {
 							width: screenWidth - 10,
 							top: 10,
 							left: 10,
-							font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'normal'}
+							font:{fontFamily:'Helvetica-Bold',fontSize:20,fontWeight:'bold'}
 						});
 	
 						

@@ -50,6 +50,7 @@ function ArticlesWindow(title, feed, tracker) {
 		});
 		var rows = [];
 		self.add(table);
+		var innerAdList;
 		var group = [];
 		var featureSet = false;
 		var groupCount = 0;
@@ -75,125 +76,128 @@ function ArticlesWindow(title, feed, tracker) {
 			    var xhr = Ti.Network.createHTTPClient({
 				    onload: function() {
 				    	
-				    	
-				    	var xml = this.responseXML;
-				   		
-				    	// simulate an asynchronous HTTP request loading data after 500 ms
-					    setTimeout(function() {
-					    	//var xml = this.responseXML;
-					    	if (firstpass == true){
-					    		
-					    		
-					    		if (feed == Feeds.magazineFeed()){
-					
-									var items = xml.documentElement.getElementsByTagName("item2");
-									var item = items.item(0);
-									var adList = [];
-									adList.push({                 
-								    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
-								        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,         
-									});
-									
-									var ad = new StaticAd(adList, tracker, title);
-									table.bottom = 70;
-											
-									
-									var items = xml.documentElement.getElementsByTagName("item3");
-									var innerAdList = [];
-									for (var i = 0; i < items.length; i++) {
-									   	var item = items.item(i);
-										innerAdList.push({                 
+				    	if (this.responseXML != null){
+					    	var xml = this.responseXML;
+					   		
+					    	// simulate an asynchronous HTTP request loading data after 500 ms
+						    setTimeout(function() {
+						    	
+						    	
+						    	if (firstpass == true){
+						    		
+						    		
+						    		if (feed == Feeds.magazineFeed()){
+						
+										var items = xml.documentElement.getElementsByTagName("item2");
+										var item = items.item(0);
+										var adList = [];
+										adList.push({                 
 									    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
-									        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
-									                  
+									        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,         
 										});
-									}
-									self.add(ad);/*	
-								*/
-								}
-								
-					    		
-				    			
-					    	}
-					    	
-					        // we got our data; push some new rows
-					       
-					        var items = xml.documentElement.getElementsByTagName("item");
-					        if ( lastRow + itemsLoad < items.length){
-					        	
-						        for (var i = lastRow, c = lastRow + itemsLoad; i < c; i++) {
-						        	var item = items.item(i);
-
-							   		data.push({
-										title: item.getElementsByTagName('title').item(0).textContent,
-										link: item.getElementsByTagName('link').item(0).textContent,
-										description: item.getElementsByTagName('description').item(0).textContent,
-										pubDate: item.getElementsByTagName('pubDate').item(0).textContent
 										
-									});
-									
-									var post = new Post(data[i]);
-									
-									if (i == 0 && feed == Feeds.iowaInsiderFeed()){
-										var row = new IIBIntroRow();
-										rows.push(row);
-									}
+										var ad = new StaticAd(adList, tracker, title);
+										table.bottom = 70;
+										self.add(ad);		
 										
-									if (i == 0 && feed == Feeds.magazineFeed()){
-										var row = new IAMIntroRow();
-										rows.push(row);
+										var items = xml.documentElement.getElementsByTagName("item3");
+										innerAdList = [];
+										for (var i = 0; i < items.length; i++) {
+										   	var item = items.item(i);
+											innerAdList.push({                 
+										    	ad: item.getElementsByTagName( 'ad').item(0).textContent,
+										        adUrl: item.getElementsByTagName( 'adUrl').item(0).textContent,
+										                  
+											});
+										}
+										
 									}
 									
-									/*	
-									if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
-										var row = new Ad(innerAdList[adIndex], tracker, title);
-										rows.push(row);
-										adIndex++;
-									}
-									*/
-									if(featureSet == false ) {
-										var row = new FeatureRow(post, tracker, title);
-										featureSet = true;
-										rows.push(row);
-									}
+						    		
+					    			
+						    	}
+						    	
+						        // we got our data; push some new rows
+						       
+						        var items = xml.documentElement.getElementsByTagName("item");
+						        if ( lastRow  < items.length){
+						        	if ( lastRow + itemsLoad > items.length){
+						        		itemsLoad = items.length - lastRow;
+						        	}
+						        	
+							        for (var i = lastRow, c = lastRow + itemsLoad; i < c; i++) {
+							        	var item = items.item(i);
+	
+								   		data.push({
+											title: item.getElementsByTagName('title').item(0).textContent,
+											link: item.getElementsByTagName('link').item(0).textContent,
+											description: item.getElementsByTagName('description').item(0).textContent,
+											pubDate: item.getElementsByTagName('pubDate').item(0).textContent
 											
-									else {
-										var row =  new Row(post, tracker, title);
-										if(groupCount >= 1) {
-											group.push(row);
-											rows.push(new PostGroup(group));
-											group = [];
-											groupCount = 0;
-											featureSet = false;
+										});
+										
+										var post = new Post(data[i]);
+										
+										if (i == 0 && feed == Feeds.iowaInsiderFeed()){
+											var row = new IIBIntroRow();
+											rows.push(row);
 										}
-										else {
-											group.push(row);
-											groupCount++;
+											
+										if (i == 0 && feed == Feeds.magazineFeed()){
+											var row = new IAMIntroRow();
+											rows.push(row);
 										}
 										
-									}
-									Counter++;
-								
-						            //rows.push({ title: 'Row ' + i });
+										
+										if (Counter != 0 && (Counter % 3) == 0 && adIndex < 3 && feed == Feeds.magazineFeed()){
+											var row = new Ad(innerAdList[adIndex], tracker, title);
+											rows.push(row);
+											adIndex++;
+										}
+										
+										if(featureSet == false ) {
+											var row = new FeatureRow(post, tracker, title);
+											featureSet = true;
+											rows.push(row);	
+										}
+												
+										else {
+											var row =  new Row(post, tracker, title);
+											if(groupCount >= 1) {
+												group.push(row);
+												rows.push(new PostGroup(group));
+												group = [];
+												groupCount = 0;
+												featureSet = false;
+											}
+											else {
+												group.push(row);
+												groupCount++;
+											}
+											
+										}
+										Counter++;
+									
+							            //rows.push({ title: 'Row ' + i });
+							        }
+							        lastRow = c;
 						        }
-						        lastRow = c;
-					        }
-					        else{
-					        	isListFinished = true;
-					        }
-					        
-					        // and push this into our table.
-					        transparentView.remove(loading);
-				    		self.remove(transparentView);
-				    		
-					        firstpass = false;
-					        table.setData(rows);
-					        // now we're done; reset the loadData flag and start the interval up again
-					        loadData = false;
-					        setTimeout(checkSync, 200);
-					        Ti.API.warn('DATA LOADED!');
-					    }, 500);
-					   
+						        else{
+						        	isListFinished = true;
+						        }
+						        
+						        // and push this into our table.
+						        transparentView.remove(loading);
+					    		self.remove(transparentView);
+					    		
+						        firstpass = false;
+						        table.setData(rows);
+						        // now we're done; reset the loadData flag and start the interval up again
+						        loadData = false;
+						        setTimeout(checkSync, 200);
+						        Ti.API.warn('DATA LOADED!');
+						    }, 500);
+					}   
 				 },
 			    onerror: function(e) {
 				    transparentView.remove(loading);

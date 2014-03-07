@@ -2,7 +2,7 @@ var DateObject = require('ui/common/DateObject');
 var CachedImageView = require('ui/common/CachedImageView');
 var WebView = require('ui/common/WebView');
 var createCachingImageView = require('ui/common/createRemoteImageView2');
-
+var theheight;
 /*
  * Post Object
  * Essential attributes
@@ -26,7 +26,7 @@ function FeatureRow(post, tracker, title) {
 
 
 	var container =  Titanium.UI.createView({
-		backgroundColor: 'transparent',
+		backgroundColor: '#fff',//'transparent',
 			height:			300,
 			width: 			Ti.UI.FILL,
 			left: 			10,
@@ -36,16 +36,18 @@ function FeatureRow(post, tracker, title) {
 			padding:		0,
 			borderRadius:	5
 	});
-
+	
 	this.containerheight = getContainerHeight(post.image);
-	container.height 	 = this.containerheight + 65 + 30;
-	row.height 			 = this.containerheight + 100 + 8;
-
+	
+	container.height 	 = this.containerheight + 10;
+	row.height 			 = container.height + 10;
+	
 	var imagebox = createCachingImageView.createCachingImageView({
-		image: post.image,//Ti.Filesystem.resourcesDirectory +'test.png', 
+		image: post.image, 
 		defaultImage: Ti.Filesystem.resourcesDirectory + "loader400x600.png",
 		width: Ti.UI.FILL,
 		height: this.containerheight,
+		zIndex: 0,
 		top: 30,
 	});
 	
@@ -55,24 +57,6 @@ function FeatureRow(post, tracker, title) {
 		top: 0,
 		image: Ti.Filesystem.resourcesDirectory +'gold.png'
 	});
-	var shadow = Ti.UI.createImageView({
-		width: Ti.UI.FILL,
-		height: 150,
-		top: this.containerheight-120,
-		image: Ti.Filesystem.resourcesDirectory +'shadow.png'
-	});
-	
-	container.add(imagebox);
-	container.add(shadow);
-	container.add(overlay);
-	
-	
-
-	var desclbl  = getDescriptionLabel(post.description, this.containerheight + 30);
-	container.add(desclbl);
-	
-	var titlelbl = getTitleLabel(post.title, this.containerheight  + 30, post.description);
-	container.add(titlelbl);
 	
 	var posted = Ti.UI.createLabel({
 		text: 'Posted ' + (new DateObject(post.pubDate)).prettyDate() + ' in Kudos to Iowa People',
@@ -89,21 +73,34 @@ function FeatureRow(post, tracker, title) {
         zIndex: 3,
 		font:{fontFamily:'HelveticaNeue-CondensedBold',fontSize:12,fontWeight:'bold'}
 	});
-	container.add(posted);
 	
-	
-	row.add(container);
-	
-	
-	row.addEventListener('click', function(e) {
-		tracker.trackEvent({
-				category: "Featured Articles",
-				action: "click",
-				label: "An Event in the " + title + "'s Window - " + post.url,
-				value: 1
-			});
-		new WebView (post.url);
+	var shadow = Ti.UI.createImageView({
+		width: Ti.UI.FILL,
+		height: 150,
+		top: this.containerheight-120,
+		image: Ti.Filesystem.resourcesDirectory +'shadow.png'
 	});
+	
+	
+	/*
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+
 	
 	
 	
@@ -115,11 +112,42 @@ function FeatureRow(post, tracker, title) {
 	
 	desclbl = null; 
 	titlelbl = null;
+	
+	
+	*/
+	
+	
+	container.add(imagebox);
+	container.add(overlay);
+	container.add(posted);
+	container.add(shadow);
+	var titlelbl = getTitleLabel(post.title, container.height);
+	
+	
+	var desclbl  = getDescriptionLabel(post.description, container.height);
+	titlelbl.bottom = desclbl.height;
+	container.add(titlelbl);
+	container.height 	 = container.height + desclbl.height;
+	row.height 			 = container.height + 10;
+	container.add(desclbl);
+	
+	row.add(container);
+	row.addEventListener('click', function(e) {
+		tracker.trackEvent({
+				category: "Featured Articles",
+				action: "click",
+				label: "An Event in the " + title + "'s Window - " + post.url,
+				value: 1
+			});
+		new WebView (post.url);
+	});
+	
 	posted = null;
-	container = null;
 	shadow = null;
 	overlay = null;
 	imagebox = null;
+	container = null;
+	
 	return row;
 
 }
@@ -143,7 +171,7 @@ function getContainerHeight(img) {
 }
 
 
-function getTitleLabel(title,postheight, description) {
+function getTitleLabel(title, postheight) {
 
 	// Temp label to get height
 	// At this font-size/font-face the height per line is 32
@@ -171,67 +199,19 @@ function getTitleLabel(title,postheight, description) {
 		text: title,
 		left: 10,
 		right: 10,
-		//bottom:0,
-		//height:theheight,
+		//top: postheight - theheight,
+		//bottom: 0,
+		height:'auto',//theheight,
 		textAlign:'left',
 		width: Ti.UI.FILL,
 		color:'#efc006',
 		shadowColor:'#000000',
         shadowOpacity:0.5,
         shadowOffset:{x:0, y:1},
-		font:{fontFamily:'HelveticaNeue-Light',fontSize:25,fontWeight:'bold'}
+		font:{fontFamily:'HelveticaNeue-Light',fontSize:25,fontWeight:'normal'}
 	});
 
-	var table = Ti.UI.createTableView({
-		zIndex: 5, 
-		width: Ti.UI.FILL,
-		height:Ti.UI.FILL,
-		top: postheight,
-		separatorColor: "transparent",
-	});
-	
-	var row1 = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent",});
-	row1.add(titlelbl);
-	
-	var view = Ti.UI.createView({
-		backgroundColor: '#0c0c0c',
-		backgroundImage: Ti.Filesystem.resourcesDirectory + 'dark.jpg',
-		width: Ti.UI.FILL,
-		height: Ti.UI.FILL,
-		top: 0
-	});
-
-	var text = Ti.UI.createLabel({
-		text: description,
-		left: 10,
-		right: 10,
-		top: 0,
-		bottom: 10,
-		height: 50,
-		textAlign:'left',
-		//ellipsize: true,
-		width: Ti.UI.FILL,
-		color:'#ffffff',
-		shadowColor:'#000000',
-        shadowOpacity:0.5,
-        shadowOffset:{x:0, y:1},
-		font:{fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
-	});
-	view.add(text);
-	
-	var row2 = Ti.UI.createTableViewRow({backgroundSelectedColor : "transparent"});
-	row2.add(text);
-	table.setData([row1, row2]);
-	//titlelbl.top = postheight - theheight - 5;
-	//titlelbl.bottom = postheight;
-	table.top = postheight - theheight;
-	//Ti.API.info("" + title + " - " + theheight);
-	temp = null;
-	view = null;
-	
-	//titlelbl.top = postheight - theheight - 5;
-	//titlelbl.bottom = postheight;
-	return table ;
+	return titlelbl;
 
 }
 
@@ -261,7 +241,7 @@ function getDescriptionLabel(description,postheight) {
         shadowOffset:{x:0, y:1},
 		font:{fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
 	});
-	//view.add(text);
+	view.add(text);
 
 	return view;
 

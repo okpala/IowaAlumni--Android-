@@ -99,7 +99,7 @@ function HomeImageSlider(images){
 	        shadowOpacity:0.5,
 	        shadowOffset:{x:0, y:1},
 	        top: 0,
-			font:{fontFamily:'HelveticaNeue-Light',fontSize:25,fontWeight:'bold'}
+			font:{fontFamily:'HelveticaNeue-Light',fontSize:25,fontWeight:'normal'}
 		});
 		
 		view.add(titlelbl);
@@ -115,7 +115,7 @@ function HomeImageSlider(images){
 			shadowColor:'#000000',
 	        shadowOpacity:0.5,
 	        shadowOffset:{x:0, y:1},
-			font:{fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'bold'}
+			font:{fontFamily:'HelveticaNeue-Light',fontSize:14,fontWeight:'normal'}
 		});
 		
 

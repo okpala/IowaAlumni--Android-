@@ -100,7 +100,7 @@ function getText (imageWidth, tableWidth){
 		right: (imageWidth + 15),
 		width: Ti.UI.FILL,
 		color:'#000000',
-		font: {fontFamily:'HelveticaNeueBold',fontSize:12,fontWeight:'bold'}
+		font: {fontFamily:'HelveticaNeueBold',fontSize:12,fontWeight:'normal'}
 	});
 	
 

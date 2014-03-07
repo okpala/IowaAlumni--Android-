@@ -74,7 +74,7 @@ function getText (){
 		width: 290,
 		//height: 20,
 		color:'#000000',
-		font: {fontFamily:'HelveticaNeueBold',fontSize:12,fontWeight:'bold'}
+		font: {fontFamily:'HelveticaNeueBold',fontSize:12,fontWeight:'normal'}
 	});
 	
 

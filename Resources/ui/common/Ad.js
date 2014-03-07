@@ -15,7 +15,6 @@ function Ad(post, tracker, title) {
 		layout: 'vertical',
 		backgroundColor: '#e2e2e2',
 		borderRadius: 0.5,
-		selectionStyle: 'none',
 		backgroundSelectedImage: "transparent"
 	});
 

@@ -129,7 +129,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	        height: 20,
 	        top: 10,
 	        left: 10,
-	        font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'normal'}
+	        font: {fontFamily:'Helvetica-Bold',fontSize:16,fontWeight:'bold'}
 	    });
 	    var placeLabel = Ti.UI.createLabel({
 	        text: (clubData[i].place),
@@ -138,7 +138,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	        left: 10,
 	        top: 31,
 	        height: 14,
-	        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+	        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 	    });
 	    var streetLabel = Ti.UI.createLabel({
 	        text: clubData[i].street,
@@ -147,7 +147,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 	        left: 10,
 	        top: 46,
 	        height: 14,
-	        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+	        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 	    });
 	    if (clubData[i].phone != 'NA'){
 	    	var phoneLabel = Ti.UI.createLabel({
@@ -158,7 +158,7 @@ function GameWatchWindow(clubData, clubInfoData, tracker) {
 		        left: 10,
 		        top: 61,
 		        height: 14,
-		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'bold'}
+		        font: {fontFamily:'HelveticaNeue-Light',fontSize:12,fontWeight:'normal'}
 		    });
 			
 		    row.add(phoneLabel);
@@ -186,7 +186,7 @@ var mainWinTab1 = new ClubsWindow(clubData, clubInfoData, tabGroup, tracker);
 
 
 var tab1 = Titanium.UI.createTab({  
-    icon: "people.png",
+    icon: "images/people.png",
     title: 'Iowa Clubs',
     window: mainWinTab1
 });
@@ -194,7 +194,7 @@ tabGroup.addTab(tab1);
 
 
 var tab2 = Titanium.UI.createTab({  
-    icon: 'tv.png',
+    icon: 'images/tv.png',
     title: 'Game Watch Locations',
     window: self
 });
