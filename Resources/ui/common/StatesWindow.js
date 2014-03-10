@@ -6,7 +6,7 @@ var StaticAd = require('ui/common/StaticAd');
 var Feed = require('ui/common/Feed');
 var LoadingScreen = require('ui/common/LoadingScreen');
 var ErrorWindow = require('ui/common/ErrorWindow');
-
+//var Map = require('ti.map');
 /*
  * Root Window for Clubs and Gamewatches
  */
@@ -16,6 +16,25 @@ function ClubsWindow(title, tracker){
 	var Feeds = new Feed(); 
 	var url = Feeds.gameWatchFeed();
 	var self = new ApplicationWindow(title);
+	/*
+	var code = Map.isGooglePlayServicesAvailable();
+	if (code == Map.SUCCESS && Ti.Platform.version >= "4.0" ) {
+					
+					var mapHeight = ((Ti.Platform.displayCaps.platformHeight  / (Titanium.Platform.displayCaps.dpi / 160) - 60))/2;
+					map = Map.createView({
+						mapType:Map.NORMAL_TYPE,
+						//region: {latitude: companyInfo[0].latitude, longitude: companyInfo[0].longitude,
+						//		latitudeDelta:0.01, longitudeDelta:0.01 },
+						height: mapHeight,
+					    //annotations: companyInfo,
+						top: 0
+					});
+					
+					self.add(map);
+					
+				}
+				*/
+	
 	var introLabel = Ti.UI.createLabel({
 				text: 'Want to connect with fellow UI grads, need a place to watch the next game with fellow Hawkeye fans? IOWA clubs have you covered—find a location near you!',
 				textAlign: 'left',
@@ -39,12 +58,12 @@ function ClubsWindow(title, tracker){
 			  	height: 70
 			  
 		});
-	/*
-	alert("width dp -" + Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160));
-	alert("width -" + Ti.Platform.displayCaps.platformWidth  / (Titanium.Platform.displayCaps.dpi / 160));
-	alert("platform width -" + Ti.Platform.displayCaps.platformWidth );
-	alert("dpi-" + Titanium.Platform.displayCaps.dpi);
-	*/
+	
+	//alert("width dp -" + Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160));
+	//alert("width -" + Ti.Platform.displayCaps.platformWidth  / (Titanium.Platform.displayCaps.dpi / 160));
+	//alert("platform width -" + Ti.Platform.displayCaps.platformWidth );
+	//alert("dpi-" + Titanium.Platform.displayCaps.dpi);
+	
 	var screenWidth;
 	if((Titanium.Platform.displayCaps.dpi / 160) >= 1)  screenWidth = Ti.Platform.displayCaps.platformWidth  * (Titanium.Platform.displayCaps.dpi / 160);
 	 else tableHeight = screenWidth = Ti.Platform.displayCaps.platformWidth;
@@ -78,19 +97,7 @@ function ClubsWindow(title, tracker){
         zIndex: 1 
     });
     
-    /*	var errorLabel = Ti.UI.createLabel({
-		text:"Test test.",
-		top:15,
-		height:"auto",
-		color:"#576c89",
-		textAlign:"center",
-		font: {fontFamily:'HelveticaNeue-Light',fontSize:15,fontWeight:'bold'},
-		shadowColor:"#fff",
-		shadowOffset:{x:0,y:1}
-	});
-	var row = Ti.UI.createTableViewRow();
-	row.add(errorLabel);
-	table.setData([row]);*/
+ 
 	tracker.trackScreen(title);
 	var loading = new LoadingScreen();
 

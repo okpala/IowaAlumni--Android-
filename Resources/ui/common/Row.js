@@ -85,7 +85,7 @@ function Row(post, tracker, title) {
 	container.add(imageContainer);
 
 	container.height = titlelbl.height + desclbl.height + posted.height + 25;
-	 if((Titanium.Platform.displayCaps.dpi / 160) > 2) {
+	 if((Titanium.Platform.displayCaps.dpi / 160) >= 2) {
 	 	titlelbl.height = titlelbl.height - 10;
 	 	titlelbl.top = 0;
 	 	desclbl.top = titlelbl.height;
